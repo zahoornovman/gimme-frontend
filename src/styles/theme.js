@@ -1,10 +1,11 @@
 export const theme = {
     colors: {
-        color1: "#FF8C00", // dark orange
-        color2: "#FF1493", // pink
-        color3: "#FDF040", // yellow
-        color4: "#00008B", // dark blue
+        color1: "#009639", // green
+        color2: "#EF3340", // red
+        color3: "#FFD100", // yellow
+        color4: "#000000", // black
         color5: "#ffffff", // white
+        color6: "#00B5E2", // blue
     },
     fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
     size: {
