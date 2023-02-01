@@ -56,5 +56,6 @@ body{
   font-size: ${(props)=>props.theme.size.basic};
   width: 100vw;
   background-color: ${(props)=>props.theme.colors.color1};
+  color: ${(props)=>props.theme.colors.color3};
 }
 `
