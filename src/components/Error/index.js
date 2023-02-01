@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux';
 import FooterElement from "../../elements/Footer";
 import { EmjoyContainer, Header1, TextButton, TextContainer } from "../../styles/MasterStyles";
 import { MainError } from "./styles";
@@ -7,6 +8,7 @@ let date = new Date
 let hour = date.getHours()
 
 function Error() {
+  const userFirstname = useSelector((state) => state.user.first_name)
   const navigate = useNavigate()
   return (
     <MainError>
@@ -16,25 +18,49 @@ function Error() {
         {
           hour < 12
             ?
-            <Header1
-              className="fontSize"
-            >Good morning!</Header1>
-            :
-            hour < 17
+            userFirstname === "NoNa"
               ?
               <Header1
                 className="fontSize"
-              >Good afternoon!</Header1>
+              >Good morning!</Header1>
               :
-              hour < 22
+              <Header1
+                className="fontSize"
+              >{`Good morning ${userFirstname}!`}</Header1>
+            :
+            hour < 17
+              ?
+              userFirstname === "NoNa"
                 ?
                 <Header1
                   className="fontSize"
-                >Good evening!</Header1>
+                >Good afternoon!</Header1>
                 :
                 <Header1
                   className="fontSize"
-                >Good night!</Header1>
+                >{`Good afternoon ${userFirstname}!`}</Header1>
+              :
+              hour < 22
+                ?
+                userFirstname === "NoNa"
+                  ?
+                  <Header1
+                    className="fontSize"
+                  >Good evening!</Header1>
+                  :
+                  <Header1
+                    className="fontSize"
+                  >{`Good evening ${userFirstname}!`}</Header1>
+                :
+                userFirstname === "NoNa"
+                  ?
+                  <Header1
+                    className="fontSize"
+                  >Good night!</Header1>
+                  :
+                  <Header1
+                    className="fontSize"
+                  >{`Good night ${userFirstname}!`}</Header1>
         }
       </div>
       <div
@@ -51,8 +77,8 @@ function Error() {
           😝
         </EmjoyContainer>
         <TextButton
-        className="errorButton fontSize"
-        onClick={() => { navigate(-1) }}
+          className="errorButton fontSize"
+          onClick={() => { navigate(-1) }}
         >
           Go back to previous page
         </TextButton>

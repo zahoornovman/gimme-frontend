@@ -6,11 +6,19 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-
 .contentSignIn{
     display: flex;
     flex-direction: column;
+    row-gap: ${(props) => props.theme.size.xs};
+    .signInMessage{
+
+    }
+    .inputSignIn{
+    display: flex;
+    flex-direction: column;
     row-gap: ${(props) => props.theme.size.xxxxxxs};
+    justify-content: center;
+    align-items: center;
    .inputField{
     display: flex;
     align-items: center;
@@ -32,7 +40,10 @@ align-items: center;
     display: flex;
     flex-direction: column;
     row-gap: ${(props) => props.theme.size.xxxxxxs};
-   }              
-   
+   }         
 }
+
+}
+
+
 `

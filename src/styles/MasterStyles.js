@@ -37,4 +37,5 @@ background-color: ${(props) => props.theme.colors.color5};
 color: ${(props) => props.theme.colors.color2};
 text-align: center;
 font-weight: bold;
+font-family: ${(props)=>props.theme.fontFamily};
 `

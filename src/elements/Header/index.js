@@ -1,41 +1,102 @@
 import img_menu from "../../images/menu.svg"
 import { TextButton, Header1 } from "../../styles/MasterStyles";
 import { HeaderContainer } from "./styles";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from "react";
+import Menu from "../Menu";
+import { signOut } from "../../features/user/userSlice";
 
 let date = new Date
 let hour = date.getHours()
 
 function Header() {
   const navigate = useNavigate()
-    return ( <HeaderContainer>
-      <img src={img_menu}/>
-      <TextButton
-        onClick={()=>navigate("/signin")}
-      >Sign in</TextButton>
-      <TextButton>Sign up</TextButton>
-      <TextButton>New like</TextButton>
-      <TextButton>New Offer</TextButton>
-      <TextButton>My Likes</TextButton>
-      <TextButton>My Offers</TextButton>
-      <TextButton>Sign out</TextButton>
-      <div
-        className="errorHeader"
-      >
-        {
-          hour < 12
+  const dispatch = useDispatch()
+  const userFirstname = useSelector((state) => state.user.first_name)
+  const status = useSelector((state) => state.user.loading)
+
+  const handleSignOut = () => {
+    dispatch(signOut())
+  }
+
+  //related to the menu
+  const [isHoveringMenu, setIsHoveringMenu] = useState(false);
+
+  const handleMouseOverMenu = () => {
+    setIsHoveringMenu(true);
+  };
+
+  const handleMouseOutMenu = () => {
+    setIsHoveringMenu(false);
+  };
+
+  return (<HeaderContainer>
+    <div className="firstLine">
+      <img
+        className="menuButton"
+        onMouseOver={handleMouseOverMenu}
+        src={img_menu} />
+      {isHoveringMenu && (
+        <div
+          onMouseLeave={handleMouseOutMenu}
+        >
+          <Menu></Menu>
+        </div>
+      )}
+      {
+        status === "completed"
+          ?
+
+          <TextButton
+            className="buttonSignIn"
+            onClick={handleSignOut}
+          >Sign out</TextButton>
+
+          :
+          <>
+            <TextButton
+              onClick={() => navigate("/signin")}
+              className="buttonSignIn"
+            >Sign in</TextButton>
+            <TextButton
+              className="buttonSignIn"
+              onClick={()=>navigate('/signup')}
+            >Sign up</TextButton>
+          </>
+      }
+    </div>
+    <div
+      className="secondLine"
+    >
+      {
+        hour < 12
+          ?
+          userFirstname === "NoNa"
             ?
             <Header1
               className="fontSize"
             >Good morning!</Header1>
             :
-            hour < 17
+            <Header1
+              className="fontSize"
+            >{`Good morning ${userFirstname}!`}</Header1>
+          :
+          hour < 17
+            ?
+            userFirstname === "NoNa"
               ?
               <Header1
                 className="fontSize"
               >Good afternoon!</Header1>
               :
-              hour < 22
+              <Header1
+                className="fontSize"
+              >{`Good afternoon ${userFirstname}!`}</Header1>
+            :
+            hour < 22
+              ?
+              userFirstname === "NoNa"
                 ?
                 <Header1
                   className="fontSize"
@@ -43,10 +104,20 @@ function Header() {
                 :
                 <Header1
                   className="fontSize"
+                >{`Good evening ${userFirstname}!`}</Header1>
+              :
+              userFirstname === "NoNa"
+                ?
+                <Header1
+                  className="fontSize"
                 >Good night!</Header1>
-        }
-      </div>
-    </HeaderContainer> );
+                :
+                <Header1
+                  className="fontSize"
+                >{`Good night ${userFirstname}!`}</Header1>
+      }
+    </div>
+  </HeaderContainer>);
 }
 
 export default Header;
