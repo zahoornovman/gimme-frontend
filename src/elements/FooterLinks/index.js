@@ -10,7 +10,7 @@ function FooterLinks() {
         <LinksFooter>                
                 <a
                     title="To send an email to Gimme."
-                    href="mailto:christian.f.g.zube@gmail.com"><img src={img_email} /></a>
+                    href="mailto:gimme.switzerland@gmail.com"><img src={img_email} /></a>
                 <div>|</div>
                 <a
                     title="To access Facebook."
