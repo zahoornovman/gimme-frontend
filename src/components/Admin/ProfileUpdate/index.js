@@ -12,6 +12,32 @@ function UpdateUserProfile() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
+    const handleSaveChanges = () => {
+        window.alert("Changes will be sent to backend!")
+
+        var myHeaders = new Headers();
+        //myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc1NTIwMzUzLCJqdGkiOiI4MDJhZTIwOWZlZTA0NzUwYmVmMTZiY2E5MTFjZjRkNCIsInVzZXJfaWQiOjE5NzR9.astmhSWqikkfR7Hg_piMw70NpBn7onrR5-e8_-068us");
+        myHeaders.append("Authorization", `Bearer ${user.acces}`);
+
+        var formdata = new FormData();
+        formdata.append("email", `${document.getElementById("email").value}`);
+        formdata.append("first_name", `${document.getElementById("first_name").value}`);
+        formdata.append("last_name", `${document.getElementById("last_name").value}`);
+        formdata.append("location", `${document.getElementById("location").value}`);
+
+        var requestOptions = {
+            method: 'PATCH',
+            headers: myHeaders,
+            body: formdata,
+            redirect: 'follow'
+        };
+
+        fetch("https://motion.propulsion-home.ch/backend/api/users/me/", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+    }
+
 
 
     return (
@@ -29,17 +55,7 @@ function UpdateUserProfile() {
                     <span
                         className="profileItemTitle"
                     >
-                        User number:
-                    </span>
-                    <span>{user.id}</span>
-                </div>
-                <div
-                    className="profileItem"
-                >
-                    <span
-                        className="profileItemTitle"
-                    >
-                        Username:
+                        Username (unchangeable):
                     </span>
                     <span>{user.username}</span>
                 </div>
@@ -56,7 +72,7 @@ function UpdateUserProfile() {
                         type="email"
                         id="email"
                         defaultValue={user.email}
-                        className="fontSize"
+                        className="profileItemInput fontSize"
                     ></input>
                 </div>
                 <div
@@ -71,7 +87,7 @@ function UpdateUserProfile() {
                     <input
                         id="first_name"
                         defaultValue={user.first_name}
-                        className="fontSize"
+                        className="profileItemInput fontSize"
                     ></input>
                 </div>
                 <div
@@ -86,7 +102,7 @@ function UpdateUserProfile() {
                     <input
                         id="last_name"
                         defaultValue={user.last_name}
-                        className="fontSize"
+                        className="profileItemInput fontSize"
                     ></input>
                 </div>
                 <div
@@ -101,21 +117,25 @@ function UpdateUserProfile() {
                     <input
                         id="location"
                         defaultValue={user.location}
-                        className="fontSize"
+                        className="profileItemInput fontSize"
                     ></input>
                 </div>
-                <div>
-                    <TextButton
-                        className="fontSize"
-                    >
-                        Save changes
-                    </TextButton>
-                    <TextButton
-                        className="fontSize"
-                    >
-                        Drop changes
-                    </TextButton>
-                </div>
+            </div>
+            <div
+                className="profileButtonContainer"
+            >
+                <TextButton
+                    className="fontSize"
+                    onClick={handleSaveChanges}
+                >
+                    Save changes
+                </TextButton>
+                <TextButton
+                    className="fontSize"
+                    onClick={() => navigate(-1)}
+                >
+                    Drop changes
+                </TextButton>
             </div>
 
 

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerPasswordForgotten = styled.div`
+export const ContainerProfileChangeError = styled.div`
 height: 100vh;
 width: 100vw;
 display: flex;
@@ -39,4 +39,5 @@ row-gap: ${(props) => props.theme.size.s};
         padding: 0 ${(props) => props.theme.size.xxxxxxxxxxl};
     }
 }
+
 `

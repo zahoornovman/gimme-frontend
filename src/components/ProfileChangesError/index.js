@@ -1,23 +1,23 @@
 import FooterElement from "../../elements/Footer";
 import Header from "../../elements/Header";
 import { TextButton } from "../../styles/MasterStyles";
-import { ContainerPasswordForgotten } from "./styles";
+import { ContainerProfileChangeError} from "./styles"
 import { useNavigate, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import HomeContactButtonSection from "../../elements/HomeContactButtonSection";
 
-function PasswordForgotten() {
+function ProfileChangeError() {
     const navigate = useNavigate()
     return (
-        <ContainerPasswordForgotten>
+        <ContainerProfileChangeError>
             <Header></Header>
             <div className="passwordForgotenMessage fontSize">
-                Please contact our backoffice. They will initialize the resetting of your password.
+                Please contact our backoffice, as an error has occured. They will be able to assist you.
             </div>
             <HomeContactButtonSection></HomeContactButtonSection>
             <FooterElement></FooterElement>
-        </ContainerPasswordForgotten>
+        </ContainerProfileChangeError>
     );
 }
 
-export default PasswordForgotten;
+export default ProfileChangeError;

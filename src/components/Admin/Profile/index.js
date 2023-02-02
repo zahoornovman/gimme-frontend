@@ -61,16 +61,6 @@ function Profile() {
                     <span
                         className="profileItemTitle"
                     >
-                        User number:
-                    </span>
-                    <span>{user.id}</span>
-                </div>
-                <div
-                    className="profileItem"
-                >
-                    <span
-                        className="profileItemTitle"
-                    >
                         Username:
                     </span>
                     <span>{user.username}</span>

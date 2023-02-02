@@ -4,6 +4,7 @@ import { TextButton } from "../../styles/MasterStyles";
 import { ContainerProfileDeleteError } from "./styles";
 import { useNavigate, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
+import HomeContactButtonSection from "../../elements/HomeContactButtonSection";
 
 function ProfileDeleteError() {
     const navigate = useNavigate()
@@ -13,20 +14,7 @@ function ProfileDeleteError() {
             <div className="passwordForgotenMessage fontSize">
                 Please contact our backoffice, as an error has occured. They will be able to delete your account.
             </div>
-            <div className="passwordForgottenButtonsSection">
-                <TextButton
-                    onClick={() => navigate('/')}
-                    className="fontSize"
-                >
-                    Home
-                </TextButton>
-                <TextButton
-                    onClick={()=> navigate("/admin/contact")}
-                    className="fontSize"
-                >
-                    Contact us
-                    </TextButton>
-            </div>
+            <HomeContactButtonSection></HomeContactButtonSection>
             <FooterElement></FooterElement>
         </ContainerProfileDeleteError>
     );

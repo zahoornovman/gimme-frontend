@@ -20,6 +20,7 @@ import OneOffer from './components/Offers/One';
 import SignUp from './components/SignUp';
 import UpdateUserProfile from './components/Admin/ProfileUpdate';
 import ProfileDeleteError from './components/ProfileDeleteError';
+import ProfileChangeError from './components/ProfileChangesError';
 
 
 
@@ -37,6 +38,7 @@ function App() {
         <Route path='/admin/profile' element={<Profile/>}></Route>
         <Route path='/admin/profile/update' element={<UpdateUserProfile/>}></Route>
         <Route path='/admin/profile/deleteerror' element={<ProfileDeleteError/>}></Route>
+        <Route path='/admin/profile/changeserror' element={<ProfileChangeError/>}></Route>
         <Route path='/admin/termsofuse' element={<TermsOfUse/>}></Route>
         {/*likes*/}
         <Route path='/likes/all' element={<AllLikes/>}></Route>

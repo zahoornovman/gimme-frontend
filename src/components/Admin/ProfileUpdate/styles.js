@@ -60,6 +60,13 @@ row-gap: ${(props) => props.theme.size.s};
             font-weight: bold;
             color: ${(props) => props.theme.colors.color5}
         }
+        .profileItemInput{
+            width: 240px;
+            border: none;
+            border-bottom: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxxs};
+            color: ${(props) => props.theme.colors.color3};
+            background-color: ${(props) => props.theme.colors.color1};
+        }
     }
 }
 .profileButtonContainer{
@@ -75,43 +82,5 @@ row-gap: ${(props) => props.theme.size.s};
         color: ${(props) => props.theme.colors.color3};
     }
 }
-.popUpProfileDelete{
-    display: flex;
-    flex-direction: column;
-    row-gap: ${(props) => props.theme.size.xxxxxxxs};
-    padding: ${(props) => props.theme.size.xxxxxxxs} 0;
-    @media (orientation: landscape){
-        flex-direction: row;
-        column-gap: ${(props) => props.theme.size.xxxxxxs};
-        align-items: center;
-        justify-content: center;
-        width: 350px;
-        padding: ${(props) => props.theme.size.xxxxxxxxs} 0;
-    }
-    @media (orientation: portrait) and (min-width: 768px){
-        width: 500px;
-        row-gap: ${(props) => props.theme.size.xxxxxs};
-    }
-    @media (orientation: landscape) and (min-height: 768px){
-        width: 600px;
-    }
-    @media (orientation: portrait) and (min-width: 1024px){
-        width: 600px;
-        row-gap: ${(props) => props.theme.size.xxxxxs};
-    }
-    @media (orientation: landscape) and (min-height: 1024px){
-        width: 800px;
-        padding: ${(props) => props.theme.size.xxxxxxs} 0;
-    }
-    
-    .popUpButtonSection{
-        display: flex;
-        column-gap: ${(props) => props.theme.size.xxxxxxxs};
-        justify-content: center;
-        align-items: center;
-        @media (orientation: landscape) and (min-height: 768px){
-            column-gap: ${(props) => props.theme.size.xxxxxxs};
-         }
-    }
-}
+
 `

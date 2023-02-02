@@ -39,9 +39,4 @@ row-gap: ${(props) => props.theme.size.s};
         padding: 0 ${(props) => props.theme.size.xxxxxxxxxxl};
     }
 }
-.passwordForgottenButtonsSection{
-    display: flex;
-    width: 100vw;
-    justify-content: space-around;
-}
 `
