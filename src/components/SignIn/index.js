@@ -62,7 +62,7 @@ function SignIn() {
             <div
                 className="contentSignIn"
             >
-                <div className="messageSignIn">
+                <div className="messageSignIn fontSize">
                     {
                         status === "true"
                             ?
@@ -75,7 +75,7 @@ function SignIn() {
                                 <TextContainer
                                     className="signInMessage"
                                 >
-                                    Either the username doesn't exist or the password is spelt incorrectly. Please check and try again. 😊
+                                    Either the email address doesn't exist or the password is spelt incorrectly. Please check and try again. 😊
                                 </TextContainer>
                                 :
                                 <></>
@@ -90,6 +90,7 @@ function SignIn() {
                             id="email"
                             type="email"
                             placeholder="your email address"
+                            className="fontSize"
                         ></input>
                     </div>
                     <div
@@ -100,6 +101,7 @@ function SignIn() {
                             id="password"
                             type="password"
                             placeholder="your password"
+                            className="fontSize"
                         ></input>
                     </div>
                     <div
@@ -107,12 +109,21 @@ function SignIn() {
                     >
                         <TextButton
                             onClick={() => navigate('/passwordreset')}
+                            className="notSignInButton fontSize"
                         >
                             Password forgotten
                         </TextButton>
                         <TextButton
-                            onClick={signInHandler}>
+                            onClick={signInHandler}   
+                            className="fontSize"                         
+                            >
                             Sign in
+                        </TextButton>
+                        <TextButton
+                            onClick={() => navigate('/signup')}
+                            className="notSignInButton fontSize"
+                        >
+                            Create account
                         </TextButton>
                     </div>
                 </div>

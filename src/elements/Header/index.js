@@ -17,6 +17,7 @@ function Header() {
   const status = useSelector((state) => state.user.loading)
 
   const handleSignOut = () => {
+
     dispatch(signOut())
   }
 
@@ -30,13 +31,20 @@ function Header() {
   const handleMouseOutMenu = () => {
     setIsHoveringMenu(false);
   };
-
+  let path = window.location.pathname
   return (<HeaderContainer>
     <div className="firstLine">
-      <img
-        className="menuButton"
-        onMouseOver={handleMouseOverMenu}
-        src={img_menu} />
+      {
+        path === "/signin" || path === "/passwordreset" || path === "/signup"
+          ?
+          <></>
+          :
+          <img
+            className="menuButton"
+            onMouseOver={handleMouseOverMenu}
+            src={img_menu} />
+      }
+
       {isHoveringMenu && (
         <div
           onMouseLeave={handleMouseOutMenu}
@@ -51,19 +59,25 @@ function Header() {
           <TextButton
             className="buttonSignIn"
             onClick={handleSignOut}
-          >Sign out</TextButton>
+          >
+            Sign out
+          </TextButton>
 
           :
-          <>
-            <TextButton
-              onClick={() => navigate("/signin")}
-              className="buttonSignIn"
-            >Sign in</TextButton>
-            <TextButton
-              className="buttonSignIn"
-              onClick={()=>navigate('/signup')}
-            >Sign up</TextButton>
-          </>
+          path === "/signin" || path === "/passwordreset" || path === "/signup"
+            ?
+            <></>
+            :
+            <>
+              <TextButton
+                onClick={() => navigate("/signin")}
+                className="buttonSignIn"
+              >Sign in</TextButton>
+              <TextButton
+                className="buttonSignIn"
+                onClick={() => navigate('/signup')}
+              >Sign up</TextButton>
+            </>
       }
     </div>
     <div

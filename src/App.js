@@ -18,6 +18,8 @@ import MyOffers from './components/Offers/My';
 import NewOffer from './components/Offers/New';
 import OneOffer from './components/Offers/One';
 import SignUp from './components/SignUp';
+import UpdateUserProfile from './components/Admin/ProfileUpdate';
+import ProfileDeleteError from './components/ProfileDeleteError';
 
 
 
@@ -33,6 +35,8 @@ function App() {
         <Route path='/admin/contact' element={<Contact/>}></Route>
         <Route path='/admin/faq' element={<FAQ/>}></Route>
         <Route path='/admin/profile' element={<Profile/>}></Route>
+        <Route path='/admin/profile/update' element={<UpdateUserProfile/>}></Route>
+        <Route path='/admin/profile/deleteerror' element={<ProfileDeleteError/>}></Route>
         <Route path='/admin/termsofuse' element={<TermsOfUse/>}></Route>
         {/*likes*/}
         <Route path='/likes/all' element={<AllLikes/>}></Route>

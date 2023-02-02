@@ -35,7 +35,15 @@ const userSlice = createSlice({
             state.loading = "error"
         },
         signout: (state) =>{
-            state = initialState
+            state.id = "";
+            state.email= "";
+            state.first_name= "NoNa";
+            state.last_name= "";
+            state.username= "";
+            state.location= "";
+            state.refresh= "";
+            state.acces= "";
+            state.loading= "false";
         }
     }
 })

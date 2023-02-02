@@ -1,17 +1,17 @@
 import FooterElement from "../../elements/Footer";
 import Header from "../../elements/Header";
 import { TextButton } from "../../styles/MasterStyles";
-import { ContainerPasswordForgotten } from "./styles";
+import { ContainerProfileDeleteError } from "./styles";
 import { useNavigate, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 
-function PasswordForgotten() {
+function ProfileDeleteError() {
     const navigate = useNavigate()
     return (
-        <ContainerPasswordForgotten>
+        <ContainerProfileDeleteError>
             <Header></Header>
             <div className="passwordForgotenMessage fontSize">
-                Please contact our backoffice. They will initialize the resetting of your password.
+                Please contact our backoffice, as an error has occured. They will be able to delete your account.
             </div>
             <div className="passwordForgottenButtonsSection">
                 <TextButton
@@ -28,8 +28,8 @@ function PasswordForgotten() {
                     </TextButton>
             </div>
             <FooterElement></FooterElement>
-        </ContainerPasswordForgotten>
+        </ContainerProfileDeleteError>
     );
 }
 
-export default PasswordForgotten;
+export default ProfileDeleteError;
