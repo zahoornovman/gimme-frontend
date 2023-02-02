@@ -44,6 +44,12 @@ const userSlice = createSlice({
             state.refresh= "";
             state.acces= "";
             state.loading= "false";
+        },
+        updateProfile: (state, {payload})=>{
+            state.email = payload.email;
+            state.first_name = payload.first_name;
+            state.last_name = payload.last_name;
+            state.location = payload.location;
         }
     }
 })
@@ -52,6 +58,7 @@ const loading = userSlice.actions.loading;
 const successfulSignIn = userSlice.actions.successfulSignIn;
 const errorSignIn = userSlice.actions.errorSignIn;
 const signOut = userSlice.actions.signout
+const updateProfile = userSlice.actions.updateProfile
 const reducer = userSlice.reducer;
 
-export {loading, successfulSignIn, errorSignIn, signOut, reducer}
+export {loading, successfulSignIn, errorSignIn, signOut, updateProfile, reducer}

@@ -5,7 +5,8 @@ import { ContainerUpdateUserProfile } from "./styles"
 import { useNavigate, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from "react";
-import { signOut } from "../../../features/user/userSlice";
+import { updateProfile } from "../../../features/user/userSlice";
+
 
 function UpdateUserProfile() {
     const user = useSelector((state) => state.user)
@@ -33,9 +34,19 @@ function UpdateUserProfile() {
         };
 
         fetch("https://motion.propulsion-home.ch/backend/api/users/me/", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
+            .then(response => response.json())
+            .then(result => {
+                dispatch(updateProfile({
+                    email: result.email,
+                    first_name: result.first_name,
+                    last_name: result.last_name,
+                    location: result.location,
+                }))
+                navigate("/")
+            })
+            .catch(error => {
+                navigate('/admin/profile/changeserror')
+            });
     }
 
 

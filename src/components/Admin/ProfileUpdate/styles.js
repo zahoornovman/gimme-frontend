@@ -41,7 +41,7 @@ row-gap: ${(props) => props.theme.size.s};
     @media (orientation: landscape){
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        row-gap: ${(props) => props.theme.size.xxxxxs};
+        row-gap: ${(props) => props.theme.size.xxxs};
     }
     @media (orientation: landscape) and (min-height: 768px){
         display: flex;
@@ -55,7 +55,14 @@ row-gap: ${(props) => props.theme.size.s};
         row-gap: ${(props) => props.theme.size.xxxxxxxxs};
         @media (orientation: landscape){
         row-gap: ${(props) => props.theme.size.xxxxxxxxs};
+        width: 210px;
         }
+        @media (orientation: landscape) and (min-height: 768px){
+        width: 400px;
+        }
+        @media (orientation: landscape) and (min-height: 1024px){
+            width: 600px;
+            }
         .profileItemTitle{
             font-weight: bold;
             color: ${(props) => props.theme.colors.color5}
@@ -66,6 +73,21 @@ row-gap: ${(props) => props.theme.size.s};
             border-bottom: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxxs};
             color: ${(props) => props.theme.colors.color3};
             background-color: ${(props) => props.theme.colors.color1};
+            @media (orientation: landscape){
+            width: 190px;
+            }
+            @media (orientation: portrait) and (min-width: 768px){
+            width: 400px;
+            }
+            @media (orientation: landscape) and (min-height: 768px){
+            width: 400px;
+            }
+            @media (orientation: portrait) and (min-width: 1024px){
+            width: 600px;
+            }
+            @media (orientation: landscape) and (min-height: 1024px){
+            width: 600px;
+            }
         }
     }
 }
