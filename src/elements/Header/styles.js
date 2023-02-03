@@ -8,6 +8,7 @@ border-bottom: ${(props) => props.theme.colors.color3} solid ${(props) => props.
 display: flex;
 flex-direction: column;
 font-size: ${(props) => props.theme.size.xxxxxs};
+background-color: ${(props) => props.theme.colors.color1};
         @media (orientation: portrait) and (min-width: 768px){
             font-size: ${(props) => props.theme.size.xs};
         }
