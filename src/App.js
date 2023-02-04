@@ -23,6 +23,14 @@ import UpdateUserProfile from './components/Admin/ProfileUpdate';
 import ProfileDeleteError from './components/ProfileDeleteError';
 import ProfileChangeError from './components/ProfileChangesError';
 import SingUpValidationError from './components/SignUpValidationError';
+import MessageService from './components/Message';
+import UpdateOffer from './components/Offers/Update';
+import UpdateLike from './components/Likes/Update';
+import SearchOffers from './components/Offers/Search';
+import SearchLikes from './components/Likes/Search';
+import AllLikesRelatedToTag from './components/Likes/Tags';
+import AllOffersRelatedToTag from './components/Offers/Tags';
+import MessageResponse from './components/MessageResponse';
 
 
 
@@ -49,11 +57,20 @@ function App() {
         <Route path='/likes/my' element={<MyLikes/>}></Route>
         <Route path='/likes/new' element={<NewLike/>}></Route>
         <Route path='/likes/one' element={<OneLike/>}></Route>
+        <Route path='/likes/update' element={<UpdateLike/>}></Route>
+        <Route path='/likes/search' element={<SearchLikes/>}></Route>
+        <Route path='/likes/tag' element={<AllLikesRelatedToTag/>}></Route>
         {/*offers*/}
         <Route path='/offers/all' element={<AllOffers/>}></Route>
         <Route path='/offers/my' element={<MyOffers/>}></Route>
         <Route path='/offers/new' element={<NewOffer/>}></Route>
         <Route path='/offers/one' element={<OneOffer/>}></Route>
+        <Route path='/offers/update' element={<UpdateOffer/>}></Route>
+        <Route path='/offers/search' element={<SearchOffers/>}></Route>
+        <Route path='/offers/tag' element={<AllOffersRelatedToTag/>}></Route>
+        {/*message*/}
+        <Route path="/message" element={<MessageService/>}></Route>
+        <Route path="/message/response" element={<MessageResponse/>}></Route>
 
         <Route path="*" element={<Error />}></Route>
       </Routes>
