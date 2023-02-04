@@ -38,7 +38,10 @@ background-color: ${(props) => props.theme.colors.color1};
 }
 .firstLine{
     display: flex;
-    padding: ${(props) => props.theme.size.xxxxxxs};
+    padding-left: ${(props) => props.theme.size.xxxxxxs};
+    padding-top: ${(props) => props.theme.size.xxxxxxs};
+    padding-bottom: ${(props) => props.theme.size.xxxxxxs};
+    padding-right: ${(props) => props.theme.size.s};
     align-items: center;
     justify-content: space-between;
     .menuButton{

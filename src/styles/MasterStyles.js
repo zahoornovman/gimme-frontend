@@ -81,3 +81,113 @@ width: 90vw;
 font-weight: bold;
 text-align: center;
 `
+
+//open & close box
+export const OpenCloseBox = styled.div`
+display: flex;
+flex-direction: column;
+border: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxs};
+border-radius: ${(props) => props.theme.size.xxxxxxxs};
+width: 252px;
+background-color: ${(props) => props.theme.colors.color5};
+color: ${(props) => props.theme.colors.color2};
+@media (orientation: landscape){
+    width: 580px;
+}
+@media (orientation: portrait) and (min-width: 768px){
+   width: 690px;
+}
+@media (orientation: landscape) and (min-height: 768px){
+   width: 800px;
+}
+@media (orientation: portrait) and (min-width: 1024px){
+        width: 900px;
+    }
+@media (orientation: landscape) and (min-height: 1024px){
+        width: 1100px;
+    }
+.padding{
+    padding: ${(props) => props.theme.size.xxxxxxs};
+    @media (orientation: portrait) and (min-width: 768px){
+    padding: ${(props) => props.theme.size.xxxxs};
+    }
+}
+.fontSize{
+        font-size: ${(props) => props.theme.size.xxxs};
+    @media (orientation: landscape){
+        font-size: ${(props) => props.theme.size.xxxxs};
+    }
+    @media (orientation: portrait) and (min-width: 768px){
+        font-size: ${(props) => props.theme.size.s};
+    }
+    @media (orientation: landscape) and (min-height: 768px){
+        font-size: ${(props) => props.theme.size.s};
+    }
+    @media (orientation: portrait) and (min-width: 1024px){
+        font-size: ${(props) => props.theme.size.l};
+    }
+    @media (orientation: landscape) and (min-height: 1024px){
+        font-size: ${(props) => props.theme.size.l};
+    }
+    }
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxs};
+    h3{
+        font-weight: bold;
+        width: 232px;
+        text-align: center;
+        @media (orientation: landscape){
+        width: 560px;
+        }
+        @media (orientation: portrait) and (min-width: 768px){
+        width: 660px;
+        }
+        @media (orientation: landscape) and (min-height: 768px){
+        width: 770px;
+        }
+        @media (orientation: portrait) and (min-width: 1024px){
+        width: 860px;
+    }
+    @media (orientation: landscape) and (min-height: 1024px){
+        width: 1060px;
+    }
+    }
+    img{
+        height: 20px;
+        width: 20px;
+        cursor: pointer;
+        @media (orientation: portrait) and (min-width: 768px){
+        width: 30px;
+        height: 30px;
+        }
+        @media (orientation: landscape) and (min-height: 768px){
+        width: 30px;
+        height: 30px;
+        }
+        @media (orientation: portrait) and (min-width: 1024px){
+        width: 40px;
+        height: 40px;
+    }
+    @media (orientation: landscape) and (min-height: 1024px){
+        width: 40px;
+        height: 40px;
+    }
+    }
+}
+.content{
+   
+    a{
+        color: ${(props) => props.theme.colors.color4};
+    }
+    a:hover{
+        font-weight: bold;
+    }
+    a:visited{
+        color: ${(props) => props.theme.colors.color2};
+        
+    }
+}
+`
