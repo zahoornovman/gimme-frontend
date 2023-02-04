@@ -6,7 +6,9 @@ import { TextButton, TextContainer } from "../../styles/MasterStyles";
 import img_email from "../../images/email.svg"
 import img_password from "../../images/password.svg"
 
-import { loading, successfulSignIn, errorSignIn } from "../../features/user/userSlice"
+import { baseUrl } from "../../baseurl";
+
+import { loading, successfulSignIn, successfulGettingUserData, errorSignIn } from "../../features/user/userSlice"
 
 import { useNavigate, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,6 +18,7 @@ function SignIn() {
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const status = useSelector((state) => state.user.loading)
+    const access = useSelector((state) => state.user.acces)
     const signInHandler = () => {
         dispatch(loading())
         const myHeaders = new Headers();
@@ -33,22 +36,57 @@ function SignIn() {
             redirect: 'follow'
         };
 
-        fetch("https://motion.propulsion-home.ch/backend/api/auth/token/", requestOptions)
+        fetch(`${baseUrl}/backend/api/auth/token/`, requestOptions)
             .then(response => response.json())
             .then(result => {
 
                 dispatch(successfulSignIn({
-                    id: result.user.id,
-                    email: result.user.email,
-                    first_name: result.user.first_name,
-                    last_name: result.user.last_name,
-                    username: result.user.username,
-                    location: result.user.location,
+                    id: result.id,
+                    //email: result.email,
+                    //first_name: result.first_name,
+                    //last_name: result.last_name,
+                    //username: result.username,
+                    //location: "Chur, Switzerland",
                     refresh: result.refresh,
                     acces: result.access,
                 }))
-                navigate(-1)
+                //navigate(-1)
             })
+            .then(() => {
+                var myHeaders = new Headers();
+                myHeaders.append("Authorization", `Bearer ${access}`);
+
+                var formdata = new FormData();
+
+                var requestOptions = {
+                    method: 'GET',
+                    headers: myHeaders,
+                    //body: formdata,
+                    redirect: 'follow'
+                };
+
+                fetch(`${baseUrl}/backend/api/user/me/`, requestOptions)
+                    .then(response => response.json())
+                    .then(result => {
+                        dispatch(successfulGettingUserData({
+                            //id: result.id,
+                            email: result.email,
+                            first_name: result.first_name,
+                            last_name: result.last_name,
+                            username: result.username,
+                            location: result.userprofile.location,
+                            //refresh: result.refresh,
+                            //acces: result.access,
+                        }))
+                        navigate(-1)
+                    })
+                    .catch(
+                        error => {dispatch(errorSignIn())
+                        }
+                    )
+            }
+
+            )
             .catch(
                 error => dispatch(errorSignIn())
             )
@@ -114,9 +152,9 @@ function SignIn() {
                             Password forgotten
                         </TextButton>
                         <TextButton
-                            onClick={signInHandler}   
-                            className="fontSize"                         
-                            >
+                            onClick={signInHandler}
+                            className="fontSize"
+                        >
                             Sign in
                         </TextButton>
                         <TextButton

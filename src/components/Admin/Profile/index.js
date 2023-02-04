@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from "react";
 import { signOut } from "../../../features/user/userSlice";
+import { baseUrl } from "../../../baseurl";
 
 function Profile() {
     const user = useSelector((state) => state.user)
@@ -33,7 +34,7 @@ function Profile() {
             redirect: 'follow'
         };
 
-        fetch("https://motion.propulsion-home.ch/backend/api/users/me/", requestOptions)
+        fetch(`${baseUrl}/backend/api/user/me/`, requestOptions)
             .then(() => {
                 dispatch(signOut())
                 navigate("/")
