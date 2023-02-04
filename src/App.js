@@ -18,9 +18,11 @@ import MyOffers from './components/Offers/My';
 import NewOffer from './components/Offers/New';
 import OneOffer from './components/Offers/One';
 import SignUp from './components/SignUp';
+import SignUpValidation from './components/SignUpValidation'
 import UpdateUserProfile from './components/Admin/ProfileUpdate';
 import ProfileDeleteError from './components/ProfileDeleteError';
 import ProfileChangeError from './components/ProfileChangesError';
+import SingUpValidationError from './components/SignUpValidationError';
 
 
 
@@ -32,6 +34,8 @@ function App() {
         <Route path="/signin" element={<SignIn/>}></Route> 
         <Route path='/passwordreset' element={<PasswordForgotten/>}></Route>
         <Route path='/signup' element={<SignUp/>}></Route>
+        <Route path='/signup/validation' element={<SignUpValidation/>}></Route>
+        <Route path='/signup/validation/error' element={<SingUpValidationError/>}></Route>
         {/*admin*/}
         <Route path='/admin/contact' element={<Contact/>}></Route>
         <Route path='/admin/faq' element={<FAQ/>}></Route>

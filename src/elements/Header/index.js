@@ -35,7 +35,7 @@ function Header() {
   return (<HeaderContainer>
     <div className="firstLine">
       {
-        path === "/signin" || path === "/passwordreset" || path === "/signup"
+        path === "/signin" || path === "/passwordreset" || path === "/signup" || path==="/signup/validation"
           ?
           <></>
           :
@@ -64,7 +64,7 @@ function Header() {
           </TextButton>
 
           :
-          path === "/signin" || path === "/passwordreset" || path === "/signup"
+          path === "/signin" || path === "/passwordreset" || path === "/signup" || path==="/signup/validation"
             ?
             <></>
             :
