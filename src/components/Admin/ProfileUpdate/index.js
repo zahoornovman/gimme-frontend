@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from "react";
 import { updateProfile } from "../../../features/user/userSlice";
+import { baseUrl } from "../../../baseurl";
 
 
 function UpdateUserProfile() {
@@ -14,7 +15,7 @@ function UpdateUserProfile() {
     const dispatch = useDispatch()
 
     const handleSaveChanges = () => {
-        window.alert("Changes will be sent to backend!")
+
 
         var myHeaders = new Headers();
         //myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc1NTIwMzUzLCJqdGkiOiI4MDJhZTIwOWZlZTA0NzUwYmVmMTZiY2E5MTFjZjRkNCIsInVzZXJfaWQiOjE5NzR9.astmhSWqikkfR7Hg_piMw70NpBn7onrR5-e8_-068us");
@@ -24,7 +25,7 @@ function UpdateUserProfile() {
         formdata.append("email", `${document.getElementById("email").value}`);
         formdata.append("first_name", `${document.getElementById("first_name").value}`);
         formdata.append("last_name", `${document.getElementById("last_name").value}`);
-        formdata.append("location", `${document.getElementById("location").value}`);
+        formdata.append("userprofile.location", `${document.getElementById("location").value}`);
 
         var requestOptions = {
             method: 'PATCH',
@@ -33,14 +34,14 @@ function UpdateUserProfile() {
             redirect: 'follow'
         };
 
-        fetch("https://motion.propulsion-home.ch/backend/api/users/me/", requestOptions)
+        fetch(`${baseUrl}/backend/api/user/me/`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 dispatch(updateProfile({
                     email: result.email,
                     first_name: result.first_name,
                     last_name: result.last_name,
-                    location: result.location,
+                    location: result.userprofile.location,
                 }))
                 navigate("/")
             })
