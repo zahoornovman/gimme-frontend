@@ -3,13 +3,15 @@ import Header from "../../../elements/Header";
 import { ContainerMyOffers } from "./styles";
 
 function MyOffers() {
-    return ( 
+    return (
         <ContainerMyOffers>
             <Header></Header>
-            <h2>My offers</h2>
+            <div className="any">
+                <h2>My Offers</h2>
+            </div>
             <FooterElement></FooterElement>
         </ContainerMyOffers>
-     );
+    );
 }
 
 export default MyOffers;

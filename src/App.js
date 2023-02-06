@@ -52,14 +52,14 @@ function App() {
         <Route path='/admin/profile/deleteerror' element={<ProfileDeleteError/>}></Route>
         <Route path='/admin/profile/changeserror' element={<ProfileChangeError/>}></Route>
         <Route path='/admin/termsofuse' element={<TermsOfUse/>}></Route>
-        {/*likes*/}
-        <Route path='/likes/all' element={<AllLikes/>}></Route>
-        <Route path='/likes/my' element={<MyLikes/>}></Route>
-        <Route path='/likes/new' element={<NewLike/>}></Route>
-        <Route path='/likes/one' element={<OneLike/>}></Route>
-        <Route path='/likes/update' element={<UpdateLike/>}></Route>
-        <Route path='/likes/search' element={<SearchLikes/>}></Route>
-        <Route path='/likes/tag' element={<AllLikesRelatedToTag/>}></Route>
+        {/*requests*/}
+        <Route path='/requests/all' element={<AllLikes/>}></Route>
+        <Route path='/requests/my' element={<MyLikes/>}></Route>
+        <Route path='/requests/new' element={<NewLike/>}></Route>
+        <Route path='/requests/one' element={<OneLike/>}></Route>
+        <Route path='/requests/update' element={<UpdateLike/>}></Route>
+        <Route path='/requests/search' element={<SearchLikes/>}></Route>
+        <Route path='/requests/tag' element={<AllLikesRelatedToTag/>}></Route>
         {/*offers*/}
         <Route path='/offers/all' element={<AllOffers/>}></Route>
         <Route path='/offers/my' element={<MyOffers/>}></Route>
