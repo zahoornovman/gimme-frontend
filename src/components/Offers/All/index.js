@@ -31,7 +31,7 @@ function AllOffers() {
       redirect: "follow",
     };
 
-    fetch(`${baseUrl}/haves/`, requestOptions)
+    fetch(`${baseUrl}/backend/api/haves/`, requestOptions)
       .then((response) => response.json())
       .then((result) => setOfferList(result))
       .catch((error) => console.log("error", error));
@@ -44,7 +44,6 @@ function AllOffers() {
       <Header />
       <h2>Latest offers</h2>
       <ListRequestsContainer>
-        
         {offerList == "" && <div>Loading....</div>}
         {offerList.map((obj) => (
           <OfferCard key={obj.id} obj={obj} />
