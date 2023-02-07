@@ -41,7 +41,7 @@ function SignIn() {
         fetch(`${baseUrl}/backend/api/auth/token/`, requestOptions)
             .then(response => response.json())
             .then(result => {
-                setAccess(result.access)
+                
                 dispatch(successfulSignIn({
                     id: result.id,
                     //email: result.email,
@@ -52,14 +52,11 @@ function SignIn() {
                     refresh: result.refresh,
                     acces: result.access,
                 }))
-                
-                //navigate(-1)
-            })
-            .then(() => {
-                console.log(`access ${access}`)
+
+               
                 var myHeaders = new Headers();
-                myHeaders.append("Authorization", `Bearer ${access}`);
-                console.log(access)
+                myHeaders.append("Authorization", `Bearer ${result.access}`);
+
 
                 var formdata = new FormData();
 
@@ -89,9 +86,8 @@ function SignIn() {
                         error => {dispatch(errorSignIn())
                         }
                     )
-            }
-
-            )
+                
+            })           
             .catch(
                 error => dispatch(errorSignIn())
             )
