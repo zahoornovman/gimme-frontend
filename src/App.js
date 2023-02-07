@@ -31,7 +31,7 @@ import SearchRequests from "./components/Request/Search";
 import AllrequestsRelatedToTag from "./components/Request/Tags";
 import AllOffersRelatedToTag from "./components/Offers/Tags";
 import MessageResponse from "./components/MessageResponse";
-import NewRequests from "./components/Request/New";
+//import NewRequest from "./components/Request/New";
 
 function App() {
   return (

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
 
-    adds_liked: [
+    requests: [
         {
             author: "Christian",
             created_time: "31.01.2023",
@@ -39,8 +39,8 @@ const initialState = {
     ]
 
 }
-const likesSlice = createSlice({
-    name: 'likes',
+const requestsSlice = createSlice({
+    name: 'requests',
     initialState,
     reducers: {
         loading: (state) => {
@@ -74,10 +74,10 @@ const likesSlice = createSlice({
     }
 })
 
-const loading = likesSlice.actions.loading;
-const successfulSignIn = likesSlice.actions.successfulSignIn;
-const errorSignIn = likesSlice.actions.errorSignIn;
-const signOut = likesSlice.actions.signout
-const reducer = likesSlice.reducer;
+const loading = requestsSlice.actions.loading;
+const successfulSignIn = requestsSlice.actions.successfulSignIn;
+const errorSignIn = requestsSlice.actions.errorSignIn;
+const signOut = requestsSlice.actions.signout
+const reducer = requestsSlice.reducer;
 
 export { loading, successfulSignIn, errorSignIn, signOut, reducer }

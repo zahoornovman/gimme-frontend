@@ -22,14 +22,14 @@ export default store
 import { configureStore } from "@reduxjs/toolkit";
 
 import {reducer as userReducer} from "../features/user/userSlice"
-import {reducer as likesReducer} from "../features/likes/likesSlice"
+import {reducer as requestsReducer} from "../features/requests/requestsSlice"
 import {reducer as offersReducer} from "../features/offers/offersSlice"
 
 export const store = configureStore(
        {
               reducer: {
                      user: userReducer,
-                     likes: likesReducer,
+                     requests: requestsReducer,
                      offers: offersReducer,
               },
        }
