@@ -15,29 +15,29 @@ function Menu() {
                 <h2
                     className="fontsize"
                 >
-                    Likes
+                    Requests
                 </h2>
                 <div
-                    onClick={() => navigate('/likes/all')}
+                    onClick={() => navigate('/requests/all')}
                     className="fontsize"
                 >
-                    All likes
+                    All requests
                 </div>
                 {
                     status === "completed"
                         ?
                         <>
                             <div
-                                onClick={() => navigate('/likes/my')}
+                                onClick={() => navigate('/requests/my')}
                                 className="fontsize"
                             >
-                                My likes
+                                My requests
                             </div>
                             <div
-                                onClick={() => navigate('/likes/new')}
+                                onClick={() => navigate('/requests/new')}
                                 className="fontsize"
                             >
-                                New like
+                                New request
                             </div>
                         </>
                         :

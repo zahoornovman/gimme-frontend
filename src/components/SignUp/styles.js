@@ -32,18 +32,24 @@ align-items: center;
         row-gap: ${(props) => props.theme.size.l};
         }  
     .messageSignUp{
+        background-color: ${(props) => props.theme.colors.color2};
+        color: ${(props) => props.theme.colors.color5};
+        border: ${(props) => props.theme.colors.color5} solid ${(props) => props.theme.size.xxxxxxxs};
+        border-radius: ${(props) => props.theme.size.xxxxxxxs};
+        text-align: center;
+        padding:${(props) => props.theme.size.xxxxxxxs};
         width: 250px;
         @media (orientation: landscape) {
-        width: 500px;
+        width: 450px;
         }
         @media (orientation: portrait) and (min-width: 768px){
-        width: 600px;
+        width: 450px;
         }
         @media (orientation: landscape) and (min-height: 768px){
-        width: 800px;
+        width: 450px;
         }
         @media (orientation: portrait) and (min-width: 1024px){
-        width: 900px;
+        width: 650px;
         }
         @media (orientation: landscape) and (min-height: 1024px){
         width: 1000px;
@@ -52,7 +58,7 @@ align-items: center;
     .inputSignUp{
     display: flex;
     flex-direction: column;
-    row-gap: ${(props) => props.theme.size.xxxxxxs};
+    row-gap: ${(props) => props.theme.size.xxxxs};
     justify-content: center;
     align-items: center;
     @media (orientation: portrait) and (min-width: 768px){
@@ -61,6 +67,23 @@ align-items: center;
         @media (orientation: portrait) and (min-width: 1024px){
         row-gap: ${(props) => props.theme.size.xxxs};
         }
+    .termsOfUseAcceptance{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100vw;
+        align-items: center;
+        row-gap: ${(props) => props.theme.size.xxxxxxxxs};
+        a{
+            color: ${(props) => props.theme.colors.color5}
+        }
+        a:hover{
+            font-weight: bold;
+        }
+        a:visited{
+            color: ${(props) => props.theme.colors.color3}
+        }
+    }
    .inputField{
     display: flex;
     align-items: center;

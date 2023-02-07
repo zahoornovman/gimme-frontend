@@ -12,13 +12,15 @@ import { loading, successfulSignIn, successfulGettingUserData, errorSignIn } fro
 
 import { useNavigate, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
+import { useState } from "react";
 import { store } from "../../store/store";
 
 function SignIn() {
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const status = useSelector((state) => state.user.loading)
-    const access = useSelector((state) => state.user.acces)
+    //const access = useSelector((state) => state.user.acces)
+    const [access, setAccess] = useState("");
     const signInHandler = () => {
         dispatch(loading())
         const myHeaders = new Headers();
@@ -39,7 +41,7 @@ function SignIn() {
         fetch(`${baseUrl}/backend/api/auth/token/`, requestOptions)
             .then(response => response.json())
             .then(result => {
-
+                setAccess(result.access)
                 dispatch(successfulSignIn({
                     id: result.id,
                     //email: result.email,
@@ -50,11 +52,14 @@ function SignIn() {
                     refresh: result.refresh,
                     acces: result.access,
                 }))
+                
                 //navigate(-1)
             })
             .then(() => {
+                console.log(`access ${access}`)
                 var myHeaders = new Headers();
                 myHeaders.append("Authorization", `Bearer ${access}`);
+                console.log(access)
 
                 var formdata = new FormData();
 
