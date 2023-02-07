@@ -1,16 +1,16 @@
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
 import { Header2 } from "../../../styles/MasterStyles";
-import { ContainerSearchLikes } from "./styles";
+import { ContainerUpdateRequest } from "./styles";
 
-function SearchLikes() {
+function UpdateRequest() {
     return ( 
-        <ContainerSearchLikes>
+        <ContainerUpdateRequest>
             <Header></Header>
-            <Header2>Search for a specific like</Header2>
+            <Header2>Update Request</Header2>
             <FooterElement></FooterElement>
-        </ContainerSearchLikes>
+        </ContainerUpdateRequest>
      );
 }
 
-export default SearchLikes;
+export default UpdateRequest;

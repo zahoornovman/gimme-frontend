@@ -1,15 +1,15 @@
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
-import { ContainerNewLike } from "./styles";
+import { ContainerMyRequests } from "./styles";
 
-function NewLike() {
+function MyRequests() {
     return ( 
-        <ContainerNewLike>
+        <ContainerMyRequests>
             <Header></Header>
-            <h2>New Like</h2>
+            <h2>My Requests</h2>
             <FooterElement></FooterElement>
-        </ContainerNewLike>
+        </ContainerMyRequests>
      );
 }
 
-export default NewLike;
+export default MyRequests;

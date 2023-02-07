@@ -1,15 +1,15 @@
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
-import { ContainerAllLikes } from "./styles";
+import { ContainerAllRequests } from "./styles";
 
-function AllLikes() {
+function AllRequests() {
     return ( 
-        <ContainerAllLikes>
+        <ContainerAllRequests>
             <Header></Header>
-            <h2>All likes</h2>
+            <h2>All Requests</h2>
             <FooterElement></FooterElement>
-        </ContainerAllLikes>
+        </ContainerAllRequests>
     );
 }
 
-export default AllLikes;
+export default AllRequests;

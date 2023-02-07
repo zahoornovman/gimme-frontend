@@ -1,16 +1,16 @@
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
 import { Header2 } from "../../../styles/MasterStyles";
-import { ContainerTagsLikes } from "./styles";
+import { ContainerTagsRequests } from "./styles";
 
-function AllLikesRelatedToTag() {
+function AllrequestsRelatedToTag() {
     return ( 
-        <ContainerTagsLikes>
+        <ContainerTagsRequests>
             <Header></Header>
-            <Header2>All likes for a selected tag</Header2>
+            <Header2>All requests for a selected tag</Header2>
             <FooterElement></FooterElement>
-        </ContainerTagsLikes>
+        </ContainerTagsRequests>
      );
 }
 
-export default AllLikesRelatedToTag;
+export default AllrequestsRelatedToTag;

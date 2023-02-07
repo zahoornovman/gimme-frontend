@@ -1,15 +1,15 @@
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
-import { ContainerAllOffers } from "./styles";
+import { ContainerNewRequest } from "./styles";
 
-function AllOffers() {
+function NewRequest() {
   return (
-    <ContainerAllOffers>
+    <ContainerNewRequest>
       <Header></Header>
-      <h2>All offers</h2>
+      <h2>New Requests</h2>
       <FooterElement></FooterElement>
-    </ContainerAllOffers>
+    </ContainerNewRequest>
   );
 }
 
-export default AllOffers;
+export default NewRequest;
