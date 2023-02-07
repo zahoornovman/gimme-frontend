@@ -12,38 +12,53 @@ import { fetchingTags } from "../../features/tags/tagsSlice";
 
 function Welcome() {
     const user = useSelector((state) => state.user)
+    const [tags, setTags] = useState([])
     const dispatch = useDispatch()
 
-    // useEffect(
-    //     () => {
-    //         var myHeaders = new Headers();
-    //         myHeaders.append("Content-Type", "application/json");
+    useEffect(
+        () => {
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
 
-    //         var raw = "\n";
+            var raw = "\n";
 
-    //         var requestOptions = {
-    //             method: 'GET',
-    //             headers: myHeaders,
-    //             //body: raw,
-    //             redirect: 'follow'
-    //         };
+            var requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+                //body: raw,
+                redirect: 'follow'
+            };
 
-    //         fetch(`${baseUrl}/backend/api/tags/`, requestOptions)
-    //             .then(response => response.json())
-    //             .then(result => {
-    //                 dispatch(fetchingTags({
-    //                     tags: result
-    //                 }))
-    //                 console.log(result)}
-    //                 )
-    //             .catch(error => console.log('error', error));
-    //     }, []
-    // )
+            fetch(`${baseUrl}/backend/api/tags/`, requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    dispatch(fetchingTags({
+                        tags: result
+                    }))
+                    
+                    setTags(result)
+                    }
+                    )
+                .catch(error => console.log('error', error));
+        }, []
+    )
 
     return (
         <ContainerWelcome>
             <Header></Header>
             <div>{user.first_name}</div>
+            {
+                tags.map((tag, index)=>
+                <div
+                key={index}
+                id={index}
+                >
+                    {
+                        `${tag.id}: ${tag.title}`
+                    }
+                </div>
+                )
+            }
             <FooterElement></FooterElement>
         </ContainerWelcome>
 
