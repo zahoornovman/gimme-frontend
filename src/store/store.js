@@ -24,6 +24,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import {reducer as userReducer} from "../features/user/userSlice"
 import {reducer as likesReducer} from "../features/likes/likesSlice"
 import {reducer as offersReducer} from "../features/offers/offersSlice"
+import { reducer as tagsReducer } from "../features/tags/tagsSlice";
 
 export const store = configureStore(
        {
@@ -31,6 +32,7 @@ export const store = configureStore(
                      user: userReducer,
                      likes: likesReducer,
                      offers: offersReducer,
+                     tags: tagsReducer,
               },
        }
 )
