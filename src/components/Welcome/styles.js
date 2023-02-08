@@ -6,4 +6,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+.loading{
+    margin-top: 80px;
+}
 `
