@@ -22,6 +22,12 @@ export const ContainernewOffer = styled.div`
 .accessDenied{
     margin-top: ${(props) => props.theme.size.xxxxxxxl};
 }
+.created{
+    margin-top: ${(props) => props.theme.size.xxxxxxxl};
+}
+.error{
+    margin-top: ${(props) => props.theme.size.xxxxxxxl};
+}
 .offerContentSection{
     margin-top: ${(props) => props.theme.size.xxxxxxl};
 }`
