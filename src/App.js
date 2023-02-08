@@ -67,7 +67,7 @@ function App() {
         <Route path="/requests/all" element={<AllRequests />}></Route>
         <Route path="/requests/my" element={<MyRequests />}></Route>
         <Route path="/requests/new" element={<NewRequest />}></Route>
-        <Route path="/requests/one" element={<OneRequest />}></Route>
+        <Route path="/requests/1" element={<OneRequest />}></Route>
         <Route path="/requests/update" element={<UpdateRequest />}></Route>
         <Route path="/requests/search" element={<SearchRequests />}></Route>
         <Route
@@ -78,7 +78,7 @@ function App() {
         <Route path="/offers/all" element={<AllOffers />}></Route>
         <Route path="/offers/my" element={<MyOffers />}></Route>
         <Route path="/offers/new" element={<NewOffer />}></Route>
-        <Route path="/offers/one" element={<OneOffer />}></Route>
+        <Route path="/offers/1" element={<OneOffer />}></Route>
         <Route path="/offers/update" element={<UpdateOffer />}></Route>
         <Route path="/offers/search" element={<SearchOffers />}></Route>
         <Route path="/offers/tag" element={<AllOffersRelatedToTag />}></Route>

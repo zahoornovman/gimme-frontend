@@ -25,7 +25,7 @@ export const useSettingTags = () => {
           dispatch(
             fetchingTags({
               tags: result,
-            })
+            })          
           );
         })
         .catch((error) => console.log("error", error));

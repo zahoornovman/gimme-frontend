@@ -8,13 +8,16 @@ import { useNavigate } from "react-router-dom";
 import { fetchingTags } from "../../../features/tags/tagsSlice";
 import { useDispatch } from "react-redux";
 import { baseUrl } from "../../../baseurl";
+import { useSettingTags } from "../../../hooks/tagsFetch";
 
 function NewOffer() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
-    const tags = useSelector((state) => state.tags.tags)
-    const [tagsBackend, setTagsBackend] = useState([])
+    // const tags = useSelector((state) => state.tags.tags)
+    // const [tagsBackend, setTagsBackend] = useState([])
+
+    
     const userFirstName = useSelector(state => state.user.first_name)
     const maxImageFileSize = 3145728
     const maxNumberFiles = 5
@@ -32,38 +35,46 @@ function NewOffer() {
     const [action, setAction] = useState("new")
     const [imagesPath, setImagesPath] = useState([])
 
-    useEffect(
-        () => {
+    const [tagsBackend, setTagsBackground] = useState([]);
+    const tags = useSelector((state) => state.tags.tags);
 
-            //fetching only, if user has access page without being on the welcome page before
-            if (tags === "notFetched") {
-                var myHeaders = new Headers();
-                myHeaders.append("Content-Type", "application/json");
+    useSettingTags();
+    useEffect(() => {
+        setTagsBackground(tags);
+    }, [tags]);
 
-                var raw = "\n";
+    // useEffect(
+    //     () => {
 
-                var requestOptions = {
-                    method: 'GET',
-                    headers: myHeaders,
-                    //body: raw,
-                    redirect: 'follow'
-                };
+    //         //fetching only, if user has access page without being on the welcome page before
+    //         if (tags === "notFetched") {
+    //             var myHeaders = new Headers();
+    //             myHeaders.append("Content-Type", "application/json");
 
-                fetch(`${baseUrl}/backend/api/tags/`, requestOptions)
-                    .then(response => response.json())
-                    .then(result => {
-                        dispatch(fetchingTags({
-                            tags: result
-                        }))
-                        setTagsBackend(result)
+    //             var raw = "\n";
 
-                    }
-                    )
-                    .catch(error => console.log('error', error));
+    //             var requestOptions = {
+    //                 method: 'GET',
+    //                 headers: myHeaders,
+    //                 //body: raw,
+    //                 redirect: 'follow'
+    //             };
 
-            }
-        }, []
-    )
+    //             fetch(`${baseUrl}/backend/api/tags/`, requestOptions)
+    //                 .then(response => response.json())
+    //                 .then(result => {
+    //                     dispatch(fetchingTags({
+    //                         tags: result
+    //                     }))
+    //                     setTagsBackend(result)
+
+    //                 }
+    //                 )
+    //                 .catch(error => console.log('error', error));
+
+    //         }
+    //     }, []
+    // )
 
     const handleChangeTitle = (event) => {
         let inputValue = event.target.value.length
@@ -161,8 +172,8 @@ function NewOffer() {
             formdata.append("wants_for_this_item", `${requested}`);
             formdata.append("tags", `${tag}`);
             // for (let k = 0; k < imagesNumber; k++){
-            //     console.log(`${k} path: ${imagesPath[k]}`)
-            //     formdata.append("images", imagesPath[k], `${title}-${k}`)
+            //      console.log(`${k} path: ${imagesPath[k]}`)
+            //      formdata.append("images", imagesPath[k], `${title}-${k}`)
             // }
             //formdata.append("images", URL.createObjectURL(document.getElementById("images").files[0]), "/C:/Users/Christian/OneDrive/Bilder/Diashow/ISchgl, Schwarzwasser See.jpg");
 
@@ -193,7 +204,7 @@ function NewOffer() {
                 userFirstName === "NoNa"
                     ?
                     <div className="fontSize accessDenied">
-                        Please sign in to the place a new offer. 😋
+                        Please sign in to place a new offer. 😋
                     </div>
                     :
                     action === "created"

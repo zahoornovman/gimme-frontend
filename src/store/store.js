@@ -25,6 +25,7 @@ import {reducer as userReducer} from "../features/user/userSlice"
 import {reducer as requestsReducer} from "../features/requests/requestsSlice"
 import {reducer as offersReducer} from "../features/offers/offersSlice"
 import { reducer as tagsReducer } from "../features/tags/tagsSlice";
+import { reducer as messageReducer } from "../features/messages/messageSlice";
 
 export const store = configureStore(
        {
@@ -33,6 +34,7 @@ export const store = configureStore(
                      requests: requestsReducer,
                      offers: offersReducer,
                      tags: tagsReducer,
+                     message: messageReducer,
               },
        }
 )
