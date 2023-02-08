@@ -1,16 +1,34 @@
-import { useDispatch, useSelector } from "react-redux";
+//react
 import { useEffect, useState } from "react";
+
+//react redux
+import { useDispatch, useSelector } from "react-redux";
+
+//components import
 import { baseUrl } from "../../../baseurl";
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
+
+//styled components import
 import { ContainerAllOffers, ListRequestsContainer } from "./styles";
 import { OfferCard } from "../../../elements/OfferCard/offerCard";
 
-function AllOffers() {
-  // userState hook to keep track of all Offers
-  const [offerList, setOfferList] = useState([]);
+//selectors
+import {
+  selectAllOffers,
+  selectTags,
+} from "../../../store/selectors/selectors";
 
-  let x = useSelector((state) => state.offers.adds_offered);
+//custom hooks
+import { useSettingTags } from "../../../hooks/tagsFetch";
+
+function AllOffers() {
+  // userState hook to keep track of all Offers and tags
+  const [offerList, setOfferList] = useState([]);
+  const [tags, setTagsBackground] = useState([]);
+
+  const tag = useSelector(selectTags);
+  const x = useSelector(selectAllOffers);
 
   //offers loaded one time for now
   useEffect(() => {
@@ -19,11 +37,21 @@ function AllOffers() {
     console.log(offerList);
   }, []);
 
+  // Calling tags
+  useSettingTags();
+
+  //when tags store changes
+  useEffect(() => {
+    console.log("Entering tag changing useeffect");
+    setTagsBackground(tag);
+  }, [tag]);
+
+  //temp setup. to be removed later
   const tempOfferList = () => {
     setOfferList(x);
-    console.log(typeof x);
   };
 
+  // Getting Offers from server
   const getAllOffers = () => {
     const requestOptions = {
       method: "GET",
@@ -35,8 +63,6 @@ function AllOffers() {
       .then((result) => setOfferList(result))
       .catch((error) => console.log("error", error));
   };
-
-  console.log(offerList);
 
   return (
     <ContainerAllOffers>
