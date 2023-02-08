@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    tags: []
+    tags: "notFetched"
 }
 const tagsSlice = createSlice({
     name: 'tags',

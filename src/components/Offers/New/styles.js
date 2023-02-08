@@ -19,6 +19,9 @@ export const ContainernewOffer = styled.div`
         font-size: ${(props) => props.theme.size.l};
     }
 }
+.accessDenied{
+    margin-top: ${(props) => props.theme.size.xxxxxxxl};
+}
 .offerContentSection{
     margin-top: ${(props) => props.theme.size.xxxxxxl};
 }`
