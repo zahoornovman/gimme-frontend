@@ -1,15 +1,15 @@
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
-import { ContainerMyLikes } from "./styles";
+import { ContainerOneRequest } from "./styles";
 
-function MyLikes() {
+function OneRequest() {
     return ( 
-        <ContainerMyLikes>
+        <ContainerOneRequest>
             <Header></Header>
-            <h2>My Likes</h2>
+            <h2>Requests</h2>
             <FooterElement></FooterElement>
-        </ContainerMyLikes>
+        </ContainerOneRequest>
      );
 }
 
-export default MyLikes;
+export default OneRequest;
