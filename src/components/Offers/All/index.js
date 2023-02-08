@@ -4,7 +4,6 @@ import { baseUrl } from "../../../baseurl";
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
 import { ContainerAllOffers, ListRequestsContainer } from "./styles";
-//import { setAllOffers } from "../../../features/offers/offersSlice";
 import { OfferCard } from "../../../elements/OfferCard/offerCard";
 
 function AllOffers() {
@@ -15,8 +14,8 @@ function AllOffers() {
 
   //offers loaded one time for now
   useEffect(() => {
-    //getAllOffers();
-    tempOfferList();
+    getAllOffers();
+    //tempOfferList();
     console.log(offerList);
   }, []);
 
