@@ -21,20 +21,18 @@ export default store
 */
 import { configureStore } from "@reduxjs/toolkit";
 
-import {reducer as userReducer} from "../features/user/userSlice"
-import {reducer as requestsReducer} from "../features/requests/requestsSlice"
-import {reducer as offersReducer} from "../features/offers/offersSlice"
-import { reducer as tagsReducer } from "../features/tags/tagsSlice";
-import { reducer as messageReducer } from "../features/messages/messageSlice";
+import { reducer as userReducer } from "../slices/user/userSlice";
+import { reducer as requestsReducer } from "../slices/requests/requestsSlice";
+import { reducer as offersReducer } from "../slices/offers/offersSlice";
+import { reducer as tagsReducer } from "../slices/tags/tagsSlice";
+import { reducer as messageReducer } from "../slices/messages/messageSlice";
 
-export const store = configureStore(
-       {
-              reducer: {
-                     user: userReducer,
-                     requests: requestsReducer,
-                     offers: offersReducer,
-                     tags: tagsReducer,
-                     message: messageReducer,
-              },
-       }
-)
+export const store = configureStore({
+  reducer: {
+    user: userReducer,
+    requests: requestsReducer,
+    offers: offersReducer,
+    tags: tagsReducer,
+    message: messageReducer,
+  },
+});
