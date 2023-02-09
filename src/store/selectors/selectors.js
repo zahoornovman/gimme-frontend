@@ -2,7 +2,7 @@
 
 
 // Offers slice selectors
-export const selectAllOffers = (state) => state.offers.adds_offered
+export const selectOffers = (state) => state.offers.offers
 
 // Request slice selectors
 

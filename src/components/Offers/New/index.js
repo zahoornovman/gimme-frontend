@@ -5,7 +5,7 @@ import { ContainernewOffer } from "./styles";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchingTags } from "../../../features/tags/tagsSlice";
+import { fetchingTags } from "../../../slices/tags/tagsSlice";
 import { useDispatch } from "react-redux";
 import { baseUrl } from "../../../baseurl";
 import { useSettingTags } from "../../../hooks/tagsFetch";

@@ -5,137 +5,155 @@ import { ContainerNewRequest } from "./styles";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchingTags } from "../../../features/tags/tagsSlice";
+import { fetchingTags } from "../../../slices/tags/tagsSlice";
 import { useDispatch } from "react-redux";
 import { baseUrl } from "../../../baseurl";
 import { useSettingTags } from "../../../hooks/tagsFetch";
 
 function NewRequest() {
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
-    const user = useSelector((state) => state.user)
-    // const tags = useSelector((state) => state.tags.tags)
-    // const [tagsBackend, setTagsBackend] = useState([])
-    const userFirstName = useSelector(state => state.user.first_name)
-    const maxImageFileSize = 3145728
-    const maxNumberFiles = 5
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  // const tags = useSelector((state) => state.tags.tags)
+  // const [tagsBackend, setTagsBackend] = useState([])
+  const userFirstName = useSelector((state) => state.user.first_name);
+  const maxImageFileSize = 3145728;
+  const maxNumberFiles = 5;
 
-    const maxLengthDescription = 500;
-    const [currentLengthDescription, setCurrentLengthDescription] = useState(0)
+  const maxLengthDescription = 500;
+  const [currentLengthDescription, setCurrentLengthDescription] = useState(0);
 
-    const maxLenghtTitle = 100;
-    const [currentLengthTitle, setCurrentLengthTitle] = useState(0)
+  const maxLenghtTitle = 100;
+  const [currentLengthTitle, setCurrentLengthTitle] = useState(0);
 
-    const maxLengthOffered = 200;
-    const [currentLengthOffered, setCurrentLengthOffered] = useState(0)
+  const maxLengthOffered = 200;
+  const [currentLengthOffered, setCurrentLengthOffered] = useState(0);
 
-    const [message, setMessage] = useState("no")
-    const [action, setAction] = useState("new")
-    const [imagesPath, setImagesPath] = useState([])
+  const [message, setMessage] = useState("no");
+  const [action, setAction] = useState("new");
+  const [imagesPath, setImagesPath] = useState([]);
 
-    const [tagsBackend, setTagsBackground] = useState([]);
-    const tags = useSelector((state) => state.tags.tags);
+  const [tagsBackend, setTagsBackground] = useState([]);
+  const tags = useSelector((state) => state.tags.tags);
 
-    useSettingTags();
-    useEffect(() => {
-        setTagsBackground(tags);
-    }, [tags]);
+  useSettingTags();
+  useEffect(() => {
+    setTagsBackground(tags);
+  }, [tags]);
 
-    // useEffect(
-    //     () => {
+  // useEffect(
+  //     () => {
 
-    //         //fetching only, if user has access page without being on the welcome page before
-    //         if (tags === "notFetched") {
-    //             var myHeaders = new Headers();
-    //             myHeaders.append("Content-Type", "application/json");
+  //         //fetching only, if user has access page without being on the welcome page before
+  //         if (tags === "notFetched") {
+  //             var myHeaders = new Headers();
+  //             myHeaders.append("Content-Type", "application/json");
 
-    //             var raw = "\n";
+  //             var raw = "\n";
 
-    //             var requestOptions = {
-    //                 method: 'GET',
-    //                 headers: myHeaders,
-    //                 //body: raw,
-    //                 redirect: 'follow'
-    //             };
+  //             var requestOptions = {
+  //                 method: 'GET',
+  //                 headers: myHeaders,
+  //                 //body: raw,
+  //                 redirect: 'follow'
+  //             };
 
-    //             fetch(`${baseUrl}/backend/api/tags/`, requestOptions)
-    //                 .then(response => response.json())
-    //                 .then(result => {
-    //                     dispatch(fetchingTags({
-    //                         tags: result
-    //                     }))
-    //                     setTagsBackend(result)
+  //             fetch(`${baseUrl}/backend/api/tags/`, requestOptions)
+  //                 .then(response => response.json())
+  //                 .then(result => {
+  //                     dispatch(fetchingTags({
+  //                         tags: result
+  //                     }))
+  //                     setTagsBackend(result)
 
-    //                 }
-    //                 )
-    //                 .catch(error => console.log('error', error));
+  //                 }
+  //                 )
+  //                 .catch(error => console.log('error', error));
 
-    //         }
-    //     }, []
-    // )
+  //         }
+  //     }, []
+  // )
 
-    const handleChangeTitle = (event) => {
-        let inputValue = event.target.value.length
-        setCurrentLengthTitle(inputValue)
-    }
-    const handleChangeDescription = (event) => {
-        let inputValue = event.target.value.length
-        setCurrentLengthDescription(inputValue)
-    }
-    const handleChangeOffered = (event) => {
-        let inputValue = event.target.value.length
-        setCurrentLengthOffered(inputValue)
-    }
+  const handleChangeTitle = (event) => {
+    let inputValue = event.target.value.length;
+    setCurrentLengthTitle(inputValue);
+  };
+  const handleChangeDescription = (event) => {
+    let inputValue = event.target.value.length;
+    setCurrentLengthDescription(inputValue);
+  };
+  const handleChangeOffered = (event) => {
+    let inputValue = event.target.value.length;
+    setCurrentLengthOffered(inputValue);
+  };
 
-    const handleFileUpload = (event) => {
-        event.preventDefault()
-        setMessage("no")
-        const images = event.target.files
-        const numberImages = Object.keys(images).length
-        console.log(images)
-        console.log(`number images: ${numberImages}`)
-        console.log(message)
-        if (numberImages === 0) {
-            setMessage("noImageSelected")
+  const handleFileUpload = (event) => {
+    event.preventDefault();
+    setMessage("no");
+    const images = event.target.files;
+    const numberImages = Object.keys(images).length;
+    console.log(images);
+    console.log(`number images: ${numberImages}`);
+    console.log(message);
+    if (numberImages === 0) {
+      setMessage("noImageSelected");
+    } else {
+      if (numberImages > 5) {
+        setMessage("fileQuantityError");
+      } else {
+        for (let i = 0; i < numberImages; i++) {
+          console.log(images[`${i}`].size);
+          if (images[`${i}`].size > maxImageFileSize) {
+            setMessage("fileSizeExceededLimit");
+            break;
+          }
         }
-        else {
-            if (numberImages > 5) {
-                setMessage("fileQuantityError")
-            }
-            else {
-                for (let i = 0; i < numberImages; i++) {
-                    console.log(images[`${i}`].size)
-                    if (images[`${i}`].size > maxImageFileSize) {
-                        setMessage("fileSizeExceededLimit");
-                        break;
-                    }
+        if (message === "no") {
+          const imagesUrl = [];
+          for (let j = 0; j < numberImages; j++) {
+            let imageUrl = URL.createObjectURL(event.target.files[`${j}`]);
+            imagesUrl.push(imageUrl);
+          }
 
-                }
-                if (message === "no") {
-                    const imagesUrl = []
-                    for (let j = 0; j < numberImages; j++) {
-                        let imageUrl = URL.createObjectURL(event.target.files[`${j}`])
-                        imagesUrl.push(imageUrl)
-                    }
-
-                    setImagesPath(imagesUrl)
-                    console.log(imagesPath)
-                }
-            }
+          setImagesPath(imagesUrl);
+          console.log(imagesPath);
         }
-
+      }
     }
-    const handleSave = () => {
-        setMessage("no")
-        console.log(imagesPath)
-        const title = document.getElementById('title').value
-        const description = document.getElementById('description').value
-        const condition = document.getElementById('condition').value
-        const offered = document.getElementById('offer').value
-        const tag = document.getElementById('tags').value
-        const images = imagesPath
-        const imagesNumber = imagesPath.length
+  };
+  const handleSave = () => {
+    setMessage("no");
+    console.log(imagesPath);
+    const title = document.getElementById("title").value;
+    const description = document.getElementById("description").value;
+    const condition = document.getElementById("condition").value;
+    const offered = document.getElementById("offer").value;
+    const tag = document.getElementById("tags").value;
+    const images = imagesPath;
+    const imagesNumber = imagesPath.length;
 
+    console.log(`title: ${title}`);
+    console.log(`description: ${description}`);
+    console.log(`condition: ${condition}`);
+    console.log(`offered: ${offered}`);
+    console.log(`tag: ${tag}`);
+    console.log(`images: ${images}`);
+    console.log(`images number: ${imagesNumber}`);
+    //console.log(`url create object:${URL.createObjectURL(document.getElementById("images").files[0])}`)
+
+    if (
+      title === "" ||
+      description === "" ||
+      condition === "" ||
+      offered === "" ||
+      tag === ""
+    ) {
+      setMessage("FieldsNotCompleted");
+    } else {
+      console.log("everything is okay");
+      var myHeaders = new Headers();
+      //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2MjI2NjYyLCJpYXQiOjE2NzU3OTQ2NjIsImp0aSI6IjBiZDUwNTlmM2QxNDRlNzY4ZjRiOTM5ZWNjNjk0M2JhIiwidXNlcl9pZCI6Mn0.r6TsaD9OlR9c-1w6yPA5AAOshfHceTY6ai0TdxL_A-s");
+      myHeaders.append("Authorization", `Bearer ${user.acces}`);
         console.log(`title: ${title}`)
         console.log(`description: ${description}`)
         console.log(`condition: ${condition}`)
@@ -158,24 +176,24 @@ function NewRequest() {
             //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2MjI2NjYyLCJpYXQiOjE2NzU3OTQ2NjIsImp0aSI6IjBiZDUwNTlmM2QxNDRlNzY4ZjRiOTM5ZWNjNjk0M2JhIiwidXNlcl9pZCI6Mn0.r6TsaD9OlR9c-1w6yPA5AAOshfHceTY6ai0TdxL_A-s");
             myHeaders.append("Authorization", `Bearer ${user.acces}`);
 
-            var formdata = new FormData();
-            formdata.append("title", `${title}`);
-            formdata.append("description", `${description}`);
-            formdata.append("condition", `${condition}`);
-            formdata.append("has_for_this_item", `${offered}`);
-            formdata.append("tags", `${tag}`);
-            // for (let k = 0; k < imagesNumber; k++){
-            //     console.log(`${k} path: ${imagesPath[k]}`)
-            //     formdata.append("images", imagesPath[k], `${title}-${k}`)
-            // }
-            //formdata.append("images", URL.createObjectURL(document.getElementById("images").files[0]), "/C:/Users/Christian/OneDrive/Bilder/Diashow/ISchgl, Schwarzwasser See.jpg");
+      var formdata = new FormData();
+      formdata.append("title", `${title}`);
+      formdata.append("description", `${description}`);
+      formdata.append("condition", `${condition}`);
+      formdata.append("has_for_this_item", `${offered}`);
+      formdata.append("tags", `${tag}`);
+      // for (let k = 0; k < imagesNumber; k++){
+      //     console.log(`${k} path: ${imagesPath[k]}`)
+      //     formdata.append("images", imagesPath[k], `${title}-${k}`)
+      // }
+      //formdata.append("images", URL.createObjectURL(document.getElementById("images").files[0]), "/C:/Users/Christian/OneDrive/Bilder/Diashow/ISchgl, Schwarzwasser See.jpg");
 
-            var requestOptions = {
-                method: 'POST',
-                headers: myHeaders,
-                body: formdata,
-                redirect: 'follow'
-            };
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: formdata,
+        redirect: "follow",
+      };
 
             fetch(`${baseUrl}/backend/api/wants/me/`, requestOptions)
                 .then(response => response.json())
@@ -414,9 +432,9 @@ function NewRequest() {
                                 </div>
             }
 
-            <FooterElement></FooterElement>
-        </ContainerNewRequest>
-    );
-}
+      <FooterElement></FooterElement>
+    </ContainerNewRequest>
+  );
+}}
 
 export default NewRequest;

@@ -6,12 +6,12 @@ import Header from "../../elements/Header";
 import FooterElement from "../../elements/Footer";
 import { ContainerWelcome } from "./styles";
 import { baseUrl } from "../../baseurl";
-import { fetchingTags } from "../../features/tags/tagsSlice";
+import { fetchingTags } from "../../slices/tags/tagsSlice";
 import { useSettingTags } from "../../hooks/tagsFetch";
 import { Header2, PopUp, PopUpButtonNo, PopUpButtonYes, TextButton } from "../../styles/MasterStyles";
 import { OfferCard } from "../../elements/OfferCard/offerCard";
 import img_noPicture from "../../images/no_picture.jpeg"
-import { reply } from "../../features/acceptance/acceptanceSlice";
+import { reply } from "../../slices/acceptance/acceptanceSlice";
 
 
 
@@ -140,34 +140,33 @@ function Welcome() {
     }
 
 
-    // useEffect(
-    //     () => {
-    //         var myHeaders = new Headers();
-    //         myHeaders.append("Content-Type", "application/json");
+  // useEffect(
+  //     () => {
+  //         var myHeaders = new Headers();
+  //         myHeaders.append("Content-Type", "application/json");
 
-    //         var raw = "\n";
+  //         var raw = "\n";
 
-    //         var requestOptions = {
-    //             method: 'GET',
-    //             headers: myHeaders,
-    //             //body: raw,
-    //             redirect: 'follow'
-    //         };
+  //         var requestOptions = {
+  //             method: 'GET',
+  //             headers: myHeaders,
+  //             //body: raw,
+  //             redirect: 'follow'
+  //         };
 
-    //         fetch(`${baseUrl}/backend/api/tags/`, requestOptions)
-    //             .then(response => response.json())
-    //             .then(result => {
-    //                 dispatch(fetchingTags({
-    //                     tags: result
-    //                 }))
+  //         fetch(`${baseUrl}/backend/api/tags/`, requestOptions)
+  //             .then(response => response.json())
+  //             .then(result => {
+  //                 dispatch(fetchingTags({
+  //                     tags: result
+  //                 }))
 
-    //                 setTags(result)
-    //                 }
-    //                 )
-    //             .catch(error => console.log('error', error));
-    //     }, []
-    // )
-
+  //                 setTags(result)
+  //                 }
+  //                 )
+  //             .catch(error => console.log('error', error));
+  //     }, []
+  // )
 
     return (
         <ContainerWelcome>
@@ -364,10 +363,9 @@ function Welcome() {
 
 
 
-            <FooterElement></FooterElement>
-        </ContainerWelcome>
-
-    );
+      <FooterElement></FooterElement>
+    </ContainerWelcome>
+  );
 }
 
 export default Welcome;
