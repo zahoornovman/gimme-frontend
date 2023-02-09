@@ -4,33 +4,33 @@ import { TextButton } from "../../../styles/MasterStyles";
 import { ContainerOneOffer } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { lastPath } from "../../../features/messages/messageSlice";
+import { lastPath } from "../../../slices/messages/messageSlice";
 
-function OneOffer() {
-    const navigate = useNavigate()
-    const dispatch = useDispatch()
+function OfferDetails() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-    const handleMessagedClicked = ()=>{
-        const currentPath = window.location.pathname
-        const indexLastSlash = currentPath.lastIndexOf('/')
-        const addId = currentPath.substring(indexLastSlash+1)
+  const handleMessagedClicked = () => {
+    const currentPath = window.location.pathname;
+    const indexLastSlash = currentPath.lastIndexOf("/");
+    const addId = currentPath.substring(indexLastSlash + 1);
 
-        dispatch(lastPath({
-            type: "have",
-            id: addId
-        }))
-        navigate("/message")
-    }
-    return (
-        <ContainerOneOffer>
-            <Header></Header>
-            <h2>One offer</h2>
-            <TextButton
-                onClick={handleMessagedClicked}
-            >Message</TextButton>
-            <FooterElement></FooterElement>
-        </ContainerOneOffer>
+    dispatch(
+      lastPath({
+        type: "have",
+        id: addId,
+      })
     );
+    navigate("/message");
+  };
+  return (
+    <ContainerOneOffer>
+      <Header></Header>
+      <h2>Offer Details</h2>
+      <TextButton onClick={handleMessagedClicked}>Message</TextButton>
+      <FooterElement></FooterElement>
+    </ContainerOneOffer>
+  );
 }
 
-export default OneOffer;
+export default OfferDetails;

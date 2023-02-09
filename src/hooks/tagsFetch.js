@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { fetchingTags } from "../features/tags/tagsSlice";
+import { fetchingTags } from "../slices/tags/tagsSlice";
 import { baseUrl } from "../baseurl";
 import { selectTags } from "../store/selectors/selectors";
 
@@ -25,7 +25,7 @@ export const useSettingTags = () => {
           dispatch(
             fetchingTags({
               tags: result,
-            })          
+            })
           );
         })
         .catch((error) => console.log("error", error));

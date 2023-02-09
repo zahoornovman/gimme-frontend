@@ -1,3 +1,3 @@
 import styled from "styled-components";
 
-export const ContainerSearch = styled.div``
+export const SearchContainer = styled.div``;
