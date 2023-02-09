@@ -207,6 +207,12 @@ function NewOffer() {
                         Please sign in to place a new offer. 😋
                     </div>
                     :
+                    tags === "notFetched"
+                    ?
+                    <div className="loading">
+                        Loading. Please be patient. 😊
+                    </div>
+                    :
                     action === "created"
                         ?
                         <div className="created fontSize">
