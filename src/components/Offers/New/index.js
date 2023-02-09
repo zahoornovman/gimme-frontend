@@ -175,7 +175,7 @@ function NewOffer() {
             //      console.log(`${k} path: ${imagesPath[k]}`)
             //      formdata.append("images", imagesPath[k], `${title}-${k}`)
             // }
-            //formdata.append("images", URL.createObjectURL(document.getElementById("images").files[0]), "/C:/Users/Christian/OneDrive/Bilder/Diashow/ISchgl, Schwarzwasser See.jpg");
+            formdata.append("images", URL.createObjectURL(document.getElementById("images").files[0]), "/C:/Users/Christian/OneDrive/Bilder/Diashow/ISchgl, Schwarzwasser See.jpg");
 
             var requestOptions = {
                 method: 'POST',
