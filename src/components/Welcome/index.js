@@ -11,7 +11,7 @@ import { useSettingTags } from "../../hooks/tagsFetch";
 import { Header2, PopUp, PopUpButtonNo, PopUpButtonYes, TextButton } from "../../styles/MasterStyles";
 import { OfferCard } from "../../elements/OfferCard/offerCard";
 import img_noPicture from "../../images/no_picture.jpeg"
-import { reply } from "../../features/acceptance/acceptanceSlice";
+import { reply } from "../../slices/acceptance/acceptanceSlice";
 
 
 

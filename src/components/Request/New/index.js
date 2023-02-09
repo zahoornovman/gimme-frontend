@@ -435,6 +435,6 @@ function NewRequest() {
       <FooterElement></FooterElement>
     </ContainerNewRequest>
   );
-}
+}}
 
 export default NewRequest;

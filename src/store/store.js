@@ -35,6 +35,6 @@ export const store = configureStore({
     offers: offersReducer,
     tags: tagsReducer,
     message: messageReducer,
-                     acceptance: acceptanceReducer,
+    acceptance: acceptanceReducer,
   },
 });
