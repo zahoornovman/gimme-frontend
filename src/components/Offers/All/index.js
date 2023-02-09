@@ -32,8 +32,9 @@ function AllOffers() {
 
   //offers loaded one time for now
   useEffect(() => {
-    //getAllOffers();
-    tempOfferList();
+    getAllOffers();
+    //tempOfferList();
+    console.log(offerList);
   }, []);
 
   // Calling tags

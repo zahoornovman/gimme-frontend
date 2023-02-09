@@ -12,9 +12,10 @@ export const ContainerOfferCardStyled = styled.div`
 
   margin: 15px 10px;
   padding: 10px 10px;
+  margin: 10px 10px;
 
   img {
-    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 `;
