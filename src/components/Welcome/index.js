@@ -365,9 +365,7 @@ function Welcome() {
       <FooterElement></FooterElement>
     </ContainerWelcome>
   );
-      <FooterElement></FooterElement>
-    </ContainerWelcome>
-  );
+ 
 }
 
 export default Welcome;
