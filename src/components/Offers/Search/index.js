@@ -32,16 +32,18 @@ function Search() {
   useEffect(() => {
     console.log("Entering tag changing useeffect");
     setTagsBackground(storeTags);
+    console.log(storeTags);
   }, [storeTags]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(event);
     console.log(event.target[0].value);
-    searchOffers(event.target[0].value);
+    console.log(event.target[1].value);
+    searchOffers(event.target[0].value, event.target[1].value);
   };
 
-  const searchOffers = (titleParam) => {
+  const searchOffers = (tagParam, titleParam) => {
     //var raw = "";
 
     const requestOptions = {
@@ -50,10 +52,12 @@ function Search() {
       redirect: "follow",
     };
 
-    fetch(`${baseUrl}/backend/api/wants/?title=${titleParam}`, requestOptions)
+    fetch(
+      `${baseUrl}/backend/api/wants/?title=${titleParam}&tag=${tagParam}`,
+      requestOptions
+    )
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         dispatch(setOffersInSlice(result));
       })
       .catch((error) => console.log("error", error));
@@ -62,6 +66,18 @@ function Search() {
   return (
     <SearchContainer>
       <form onSubmit={handleSubmit}>
+        {tags === "notFetched" ? (
+          <span>loading..</span>
+        ) : (
+          <select name="tag" id="tags">
+            <option value="">All</option>
+            {tags.map((key) => (
+              <option key={key.id} value={key.id}>
+                {`${key.title}`}
+              </option>
+            ))}
+          </select>
+        )}
         <input
           type="text"
           value={searchTerm}
