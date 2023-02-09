@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 //react redux
 import { useDispatch, useSelector } from "react-redux";
 
-//components 
+//components
 import { baseUrl } from "../../../baseurl";
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
@@ -20,6 +20,7 @@ import { selectOffers, selectTags } from "../../../store/selectors/selectors";
 //custom hooks
 import { useSettingTags } from "../../../hooks/tagsFetch";
 
+//slices
 import { setOffersInSlice } from "../../../slices/offers/offersSlice";
 
 function AllOffers() {
@@ -29,6 +30,7 @@ function AllOffers() {
 
   const dispatch = useDispatch();
 
+  //variables to  provide data from redux store
   const storeTags = useSelector(selectTags);
   const offers = useSelector(selectOffers);
 
@@ -39,7 +41,7 @@ function AllOffers() {
     //tempOfferList();
   }, []);
 
-  //when offers in store changes
+  //Called when offers in redux store change
   useEffect(() => {
     console.log("entering useeffect to get new offers from store");
     setOfferList(offers);
@@ -49,7 +51,7 @@ function AllOffers() {
   // Calling tags
   useSettingTags();
 
-  //when tags store changes
+  //called when tags is redux store change
   useEffect(() => {
     console.log("Entering tag changing useeffect");
     setTagsBackground(storeTags);

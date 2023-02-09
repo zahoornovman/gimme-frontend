@@ -16,42 +16,41 @@ import { selectOffers, selectTags } from "../../../store/selectors/selectors";
 //custom hooks
 import { useSettingTags } from "../../../hooks/tagsFetch";
 
+//slices
 import { setOffersInSlice } from "../../../slices/offers/offersSlice";
 
 function Search() {
+  //hooks to keep track of tags and search params locally
   const [tags, setTagsBackground] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
 
+  //variables to  provide data from redux store
   const storeTags = useSelector(selectTags);
+
   const dispatch = useDispatch();
 
   // Calling tags
   useSettingTags();
 
-  //when tags store changes
+  //called when tags in redux store change
   useEffect(() => {
     console.log("Entering tag changing useeffect");
     setTagsBackground(storeTags);
     console.log(storeTags);
   }, [storeTags]);
 
+  // calling endpoint with title and tag params
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event);
-    console.log(event.target[0].value);
-    console.log(event.target[1].value);
     searchOffers(event.target[0].value, event.target[1].value);
   };
 
+  //Getting offers based on search params
   const searchOffers = (tagParam, titleParam) => {
-    //var raw = "";
-
     const requestOptions = {
       method: "GET",
-      //body: raw,
       redirect: "follow",
     };
-
     fetch(
       `${baseUrl}/backend/api/wants/?title=${titleParam}&tag=${tagParam}`,
       requestOptions
