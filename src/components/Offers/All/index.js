@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 //react redux
 import { useDispatch, useSelector } from "react-redux";
 
-//component import
+//components 
 import { baseUrl } from "../../../baseurl";
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
-import Search from "../../../elements/OfferSearch/";
+import Search from "../Search";
 
 //styled components import
 import { ContainerAllOffers, ListRequestsContainer } from "./styles";
@@ -29,7 +29,7 @@ function AllOffers() {
 
   const dispatch = useDispatch();
 
-  const tag = useSelector(selectTags);
+  const storeTags = useSelector(selectTags);
   const offers = useSelector(selectOffers);
 
   //offers loaded first time
@@ -52,8 +52,8 @@ function AllOffers() {
   //when tags store changes
   useEffect(() => {
     console.log("Entering tag changing useeffect");
-    setTagsBackground(tag);
-  }, [tag]);
+    setTagsBackground(storeTags);
+  }, [storeTags]);
 
   //temp setup. to be removed later
   // const tempOfferList = () => {
@@ -76,7 +76,7 @@ function AllOffers() {
   return (
     <ContainerAllOffers>
       <Header />
-      {/* <Search list={offerList} /> */}
+      <Search />
       <h2>Latest offers</h2>
       <ListRequestsContainer>
         {offerList === "" ? (

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { lastPath } from "../../../slices/messages/messageSlice";
 
-function OneOffer() {
+function OfferDetails() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -26,11 +26,11 @@ function OneOffer() {
   return (
     <ContainerOneOffer>
       <Header></Header>
-      <h2>One offer</h2>
+      <h2>Offer Details</h2>
       <TextButton onClick={handleMessagedClicked}>Message</TextButton>
       <FooterElement></FooterElement>
     </ContainerOneOffer>
   );
 }
 
-export default OneOffer;
+export default OfferDetails;

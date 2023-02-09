@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { lastPath } from "../../../slices/messages/messageSlice";
 
-function OneRequest() {
+function RequestDetails() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleMessagedClicked = () => {
@@ -32,4 +32,4 @@ function OneRequest() {
   );
 }
 
-export default OneRequest;
+export default RequestDetails;
