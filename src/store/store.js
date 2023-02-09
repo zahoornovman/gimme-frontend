@@ -26,6 +26,7 @@ import {reducer as requestsReducer} from "../features/requests/requestsSlice"
 import {reducer as offersReducer} from "../features/offers/offersSlice"
 import { reducer as tagsReducer } from "../features/tags/tagsSlice";
 import { reducer as messageReducer } from "../features/messages/messageSlice";
+import { reducer as acceptanceReducer } from "../features/acceptance/acceptanceSlice";
 
 export const store = configureStore(
        {
@@ -35,6 +36,7 @@ export const store = configureStore(
                      offers: offersReducer,
                      tags: tagsReducer,
                      message: messageReducer,
+                     acceptance: acceptanceReducer,
               },
        }
 )

@@ -30,4 +30,8 @@ export const ContainerNewRequest = styled.div`
 }
 .requestContentSection{
     margin-top: ${(props) => props.theme.size.xxxxxxl};
-}`
+}
+.loading{
+    margin-top: ${(props) => props.theme.size.xxxxxxl};
+}
+`

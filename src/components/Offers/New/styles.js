@@ -30,4 +30,8 @@ export const ContainernewOffer = styled.div`
 }
 .offerContentSection{
     margin-top: ${(props) => props.theme.size.xxxxxxl};
-}`
+}
+.loading{
+    margin-top: ${(props) => props.theme.size.xxxxxxl};
+}
+`
