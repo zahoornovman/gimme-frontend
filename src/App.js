@@ -12,11 +12,11 @@ import TermsOfUse from "./components/Admin/TermsOfUse";
 import AllRequests from "./components/Request/All";
 import MyRequests from "./components/Request/My";
 import NewRequest from "./components/Request/New";
-import OneRequest from "./components/Request/One";
+import RequestDetails from "./components/Request/One";
 import AllOffers from "./components/Offers/All";
 import MyOffers from "./components/Offers/My";
 import NewOffer from "./components/Offers/New";
-import OneOffer from "./components/Offers/One";
+import OfferDetails from "./components/Offers/One";
 import SignUp from "./components/SignUp";
 import SignUpValidation from "./components/SignUpValidation";
 import UpdateUserProfile from "./components/Admin/ProfileUpdate";
@@ -55,7 +55,7 @@ function App() {
         <Route path="/requests/all" element={<AllRequests />}></Route>
         <Route path="/requests/my" element={<MyRequests />}></Route>
         <Route path="/requests/new" element={<NewRequest />}></Route>
-        <Route path="/requests/1" element={<OneRequest />}></Route>
+        <Route path="/request/:pk" element={<RequestDetails />}></Route>
         <Route path="/requests/update" element={<UpdateRequest />}></Route>
         <Route path="/requests/search" element={<SearchRequests />}></Route>
         <Route path="/requests/tag" element={<AllrequestsRelatedToTag />}></Route>
@@ -63,7 +63,7 @@ function App() {
         <Route path="/offers/all" element={<AllOffers />}></Route>
         <Route path="/offers/my" element={<MyOffers />}></Route>
         <Route path="/offers/new" element={<NewOffer />}></Route>
-        <Route path="/offers/1" element={<OneOffer />}></Route>
+        <Route path="/offer/:pk" element={<OfferDetails />}></Route>
         <Route path="/offers/update" element={<UpdateOffer />}></Route>
         <Route path="/offers/search" element={<SearchOffers />}></Route>
         <Route path="/offers/tag" element={<AllOffersRelatedToTag />}></Route>

@@ -1,16 +1,94 @@
-import FooterElement from "../../../elements/Footer";
-import Header from "../../../elements/Header";
-import { Header2 } from "../../../styles/MasterStyles";
-import { ContainerSearch } from "./styles";
+//react
+import { useState, useEffect } from "react";
 
-function SearchOffers() {
-    return ( 
-        <ContainerSearch>
-            <Header></Header>
-            <Header2>Search in the offers</Header2>
-            <FooterElement></FooterElement>
-        </ContainerSearch>
-     );
+//react redux
+import { useSelector, useDispatch } from "react-redux";
+
+//components
+import { baseUrl } from "../../../baseurl";
+
+//styled components
+import { SearchContainer } from "./styles";
+
+//selectors
+import { selectOffers, selectTags } from "../../../store/selectors/selectors";
+
+//custom hooks
+import { useSettingTags } from "../../../hooks/tagsFetch";
+
+//slices
+import { setOffersInSlice } from "../../../slices/offers/offersSlice";
+
+function Search() {
+  //hooks to keep track of tags and search params locally
+  const [tags, setTagsBackground] = useState([]);
+  const [searchTerm, setSearchTerm] = useState([]);
+
+  //variables to  provide data from redux store
+  const storeTags = useSelector(selectTags);
+
+  const dispatch = useDispatch();
+
+  // Calling tags
+  useSettingTags();
+
+  //called when tags in redux store change
+  useEffect(() => {
+    console.log("Entering tag changing useeffect");
+    setTagsBackground(storeTags);
+    console.log(storeTags);
+  }, [storeTags]);
+
+  // calling endpoint with title and tag params
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    searchOffers(event.target[0].value, event.target[1].value);
+  };
+
+  //Getting offers based on search params
+  const searchOffers = (tagParam, titleParam) => {
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+    fetch(
+      `${baseUrl}/backend/api/wants/?title=${titleParam}&tag=${tagParam}`,
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        dispatch(setOffersInSlice(result));
+      })
+      .catch((error) => console.log("error", error));
+  };
+
+  return (
+    <SearchContainer>
+      <form onSubmit={handleSubmit}>
+        {tags === "notFetched" ? (
+          <span>loading..</span>
+        ) : (
+          <select name="tag" id="tags">
+            <option value="">All</option>
+            {tags.map((key) => (
+              <option key={key.id} value={key.id}>
+                {`${key.title}`}
+              </option>
+            ))}
+          </select>
+        )}
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+          placeholder="Enter part of the title..."
+        />
+        <button type="submit">Search</button>
+      </form>
+    </SearchContainer>
+  );
 }
 
-export default SearchOffers;
+export default Search;
