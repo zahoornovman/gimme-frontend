@@ -8,10 +8,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { baseUrl } from "../../../baseurl";
 
 //styled components
-import { SearchContainer } from "./styles";
+import { SearchOfferContainer } from "./styles";
 
 //selectors
-import { selectOffers, selectTags } from "../../../store/selectors/selectors";
+import { selectTags } from "../../../store/selectors/selectors";
 
 //custom hooks
 import { useSettingTags } from "../../../hooks/tagsFetch";
@@ -20,12 +20,12 @@ import { useSettingTags } from "../../../hooks/tagsFetch";
 import { setOffersInSlice } from "../../../slices/offers/offersSlice";
 
 function Search() {
-  //hooks to keep track of tags and search params locally
+  //Hooks to keep track of tags and search params locally
   const [tags, setTagsBackground] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  //variables to  provide data from redux store
+  //Variables to  provide data from redux store
   const storeTags = useSelector(selectTags);
 
   const dispatch = useDispatch();
@@ -33,14 +33,12 @@ function Search() {
   // Calling tags
   useSettingTags();
 
-  //called when tags in redux store change
+  //Called when tags in redux store change
   useEffect(() => {
-    //console.log("Entering tag changing useeffect");
     setTagsBackground(storeTags);
-    //console.log(storeTags);
   }, [storeTags]);
 
-  // calling endpoint with title and tag params
+  // Calling endpoint with title and tag params
   const handleSubmit = (event) => {
     event.preventDefault();
     searchOffers(event.target[0].value, event.target[1].value);
@@ -68,7 +66,7 @@ function Search() {
   };
 
   return (
-    <SearchContainer>
+    <SearchOfferContainer>
       {errorMessage !== null && <div>{errorMessage}</div>}
       <form onSubmit={handleSubmit}>
         {tags === "notFetched" ? (
@@ -93,7 +91,7 @@ function Search() {
         />
         <button type="submit">Search</button>
       </form>
-    </SearchContainer>
+    </SearchOfferContainer>
   );
 }
 

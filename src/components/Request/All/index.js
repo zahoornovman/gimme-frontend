@@ -4,10 +4,10 @@ import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
 import SearchRequests from "../SearchBar";
 
-//react
+//react hooks
 import { useEffect, useState } from "react";
 
-//react redux
+//react redux hooks
 import { useDispatch, useSelector } from "react-redux";
 
 //selectors
@@ -24,19 +24,23 @@ import { ContainerAllRequests, ListRequestsContainer } from "./styles";
 import { RequestCard } from "../../../elements/RequestCard/requestCard";
 
 function AllRequests() {
+  //useState hook for requests tags and errors
   const [requestList, setRequestList] = useState([]);
   const [tags, setTagsBackground] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
   const dispatch = useDispatch();
 
+  //Variables with redux store data
   const storeTags = useSelector(selectTags);
   const requests = useSelector(selectRequests);
 
+  //Requests on first load
   useEffect(() => {
     getAllRequests();
   }, []);
 
+  //Called when requests in redux store change
   useEffect(() => {
     setRequestList(requests);
   }, [requests]);
@@ -44,7 +48,7 @@ function AllRequests() {
   // Calling tags
   useSettingTags();
 
-  //called when tags is redux store change
+  //Called when tags in redux store change
   useEffect(() => {
     setTagsBackground(storeTags);
   }, [storeTags]);
