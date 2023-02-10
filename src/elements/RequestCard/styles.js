@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const ContainerRequestCardStyled = styled.div`
-  height: 300px;
+  cursor: pointer;
+  /* height: 300px;
   width: 300px;
 
   display: flex;
@@ -12,10 +13,10 @@ export const ContainerRequestCardStyled = styled.div`
 
   margin: 15px 10px;
   padding: 10px 10px;
-  margin: 10px 10px;
+  margin: 10px 10px; */
 
-  img {
+  /* img {
     height: 100%;
     object-fit: cover;
-  }
+  } */
 `;
