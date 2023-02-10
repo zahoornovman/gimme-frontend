@@ -1,55 +1,67 @@
 import FooterElement from '../../../elements/Footer';
 import Header from '../../../elements/Header';
 import { ContainerMyOffers } from './styles';
-import { TextButton } from '../../../styles/MasterStyles';
+import { Header2, TextButton } from '../../../styles/MasterStyles';
 import { useNavigate, Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { baseUrl } from '../../../baseurl';
+import { OfferCard } from '../../../elements/OfferCard/offerCard';
 
 function MyOffers() {
   const navigate = useNavigate();
-  const access_key =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2NDIyMDI1LCJpYXQiOjE2NzU5OTAwMjUsImp0aSI6IjMxNTY4Y2NlNWU2MjQ1OTk5ZTFmYjUwOGQ4NDA0YjRkIiwidXNlcl9pZCI6MX0.4f-UVFUkXzXnaiNiLxQ6Xx6D60XNND-MaljVWQzzr-o';
-  const [data, setData] = useState([]);
+  const user = useSelector((state) => state.user);
+  const [myOffers, setMyOffers] = useState([])
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('http://127.0.0.1:8000/backend/api/haves/me/', {
-        headers: {
-          Authorization: `Bearer ${access_key}`,
-        },
-      });
-      const apiData = await response.json();
-      setData(apiData);
+    var myHeaders = new Headers();
+    //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2NDg1NjQ2LCJpYXQiOjE2NzYwNTM2NDYsImp0aSI6ImJiOWMwYjczYTAwMjQ0MTc5ZDNiZjVlZDRkYTAwMTY1IiwidXNlcl9pZCI6Mn0.EtgweMDaWsCbiF524p4pVoZ_3VnfsnRoOkUvBujkYEU");
+    myHeaders.append("Authorization", `Bearer ${user.acces}`);
+
+    //var formdata = new FormData();
+
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      //body: formdata,
+      redirect: 'follow'
     };
 
-    fetchData();
-  }, []);
+    fetch(`${baseUrl}/backend/api/haves/me/`, requestOptions)
+      .then(response => response.json())
+      .then(result => {
+        console.log(result)
+        setMyOffers(result)
+      })
+      .catch(error => console.log('error', error));
+  }, [])
+
+
   return (
     <ContainerMyOffers>
       <Header></Header>
       <div className="any">
-        <div>
-          {data.map((offer) => (
-            <div key={offer.id}>
-              <h2>{offer.title}</h2>
-              <p>Author: {offer.author.user.username}</p>
-              <p>Location: {offer.author.location}</p>
-              <p>Description: {offer.description}</p>
-              <p>Condition: {offer.condition}</p>
-              <p>Wants for this item: {offer.wants_for_this_item}</p>
-              <p>Created at: {offer.created_time}</p>
-              <p>Updated at: {offer.updated_time}</p>
-              <p>Tag Title: {offer.tags[0].title}</p>
-              {offer.images.map((image) => (
-                <img key={image.id} src={image.images} alt={offer.title} />
-              ))}
-              <Link to={`/offers/${offer.id}`}>
-                <button>View Offer</button>
-              </Link>
-              <TextButton onClick={() => navigate(`/offers/${offer.id}`)}>One Offer</TextButton>
-            </div>
-          ))}
-        </div>
+        <Header2>My offers</Header2>
+        <div className="objects">
+                {myOffers.map((obj) => (
+                  <OfferCard key={obj.id} obj={obj} />
+                  // <div
+                  //     key={obj.id}
+                  //     className="object fontSize"
+                  // >
+                  //     <h3>{obj.title}</h3>
+                  //     {
+                  //         obj.images[0]
+                  //             ?
+                  //             <img src={obj.images[0]} />
+                  //             :
+                  //             <img src={img_noPicture} />
+                  //     }
+
+                  // </div>
+                ))}
+              </div>
+
       </div>
 
       <FooterElement></FooterElement>
