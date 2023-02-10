@@ -1,4 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const ContainerOneOffer = styled.div`
-margin-top: 300px;`
+  .any {
+    margin-top: 150px;
+  }
+`;
