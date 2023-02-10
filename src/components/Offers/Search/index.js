@@ -23,6 +23,7 @@ function Search() {
   //hooks to keep track of tags and search params locally
   const [tags, setTagsBackground] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   //variables to  provide data from redux store
   const storeTags = useSelector(selectTags);
@@ -34,9 +35,9 @@ function Search() {
 
   //called when tags in redux store change
   useEffect(() => {
-    console.log("Entering tag changing useeffect");
+    //console.log("Entering tag changing useeffect");
     setTagsBackground(storeTags);
-    console.log(storeTags);
+    //console.log(storeTags);
   }, [storeTags]);
 
   // calling endpoint with title and tag params
@@ -59,14 +60,19 @@ function Search() {
       .then((result) => {
         dispatch(setOffersInSlice(result));
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) =>
+        setErrorMessage(
+          "An error occurred while submitting the form. Please try again."
+        )
+      );
   };
 
   return (
     <SearchContainer>
+      {errorMessage !== null && <div>{errorMessage}</div>}
       <form onSubmit={handleSubmit}>
         {tags === "notFetched" ? (
-          <span>loading..</span>
+          <span>Loading..</span>
         ) : (
           <select name="tag" id="tags">
             <option value="">All</option>
