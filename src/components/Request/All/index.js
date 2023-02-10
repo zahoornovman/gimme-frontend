@@ -2,6 +2,7 @@
 import { baseUrl } from "../../../baseurl";
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
+import SearchRequests from "../SearchBar";
 
 //react
 import { useEffect, useState } from "react";
@@ -68,15 +69,24 @@ function AllRequests() {
   return (
     <ContainerAllRequests>
       <Header />
-      <h1>Here</h1>
+      <SearchRequests />
       <h2>Latest Requests</h2>
-      <ListRequestsContainer>
-        {requestList === "" ? (
-          <div>Loading....</div>
-        ) : (
-          requestList.map((obj) => <RequestCard key={obj.id} obj={obj} />)
-        )}
-      </ListRequestsContainer>
+      {requestList.length === 0 && (
+        <div>
+          No Search Results found. Please try a different search criteria..
+        </div>
+      )}
+      {errorMessage !== null ? (
+        <div>{errorMessage}</div>
+      ) : (
+        <ListRequestsContainer>
+          {requestList === "" ? (
+            <div>Loading....</div>
+          ) : (
+            requestList.map((obj) => <RequestCard key={obj.id} obj={obj} />)
+          )}
+        </ListRequestsContainer>
+      )}
       <FooterElement />
     </ContainerAllRequests>
   );

@@ -27,7 +27,7 @@ import MessageService from "./components/Message";
 import UpdateOffer from "./components/Offers/Update";
 import UpdateRequest from "./components/Request/Update";
 import SearchOffers from "./components/Offers/Search";
-import SearchRequests from "./components/Request/Search";
+//import SearchRequests from "./components/Request/Search";
 import AllrequestsRelatedToTag from "./components/Request/Tags";
 import AllOffersRelatedToTag from "./components/Offers/Tags";
 
@@ -57,7 +57,7 @@ function App() {
         <Route path="/requests/new" element={<NewRequest />}></Route>
         <Route path="/request/:pk" element={<RequestDetails />}></Route>
         <Route path="/requests/update" element={<UpdateRequest />}></Route>
-        <Route path="/requests/search" element={<SearchRequests />}></Route>
+        {/* <Route path="/requests/search" element={<SearchRequests />}></Route> */}
         <Route path="/requests/tag" element={<AllrequestsRelatedToTag />}></Route>
         {/*offers*/}
         <Route path="/offers/all" element={<AllOffers />}></Route>
