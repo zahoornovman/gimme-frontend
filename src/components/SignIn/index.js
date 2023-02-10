@@ -95,6 +95,13 @@ function SignIn() {
       .catch((error) => dispatch(errorSignIn()));
   };
 
+  const handleEnter = (event) => {    
+    if (event.key === "Enter"){
+      if (document.getElementById("email").value !== "" && document.getElementById("password").value !== ""){
+        signInHandler()
+      }      
+    }
+  }
   return (
     <SignInContainer>
       <Header></Header>
@@ -122,6 +129,7 @@ function SignIn() {
               type="email"
               placeholder="your email address"
               className="fontSize"
+              onKeyDown={handleEnter}
             ></input>
           </div>
           <div className="inputField">
@@ -131,6 +139,7 @@ function SignIn() {
               type="password"
               placeholder="your password"
               className="fontSize"
+              onKeyDown={handleEnter}
             ></input>
           </div>
           <div className="buttonsSignIn">
