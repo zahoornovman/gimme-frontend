@@ -199,7 +199,7 @@ function Welcome() {
   return (
     <ContainerWelcome>
       <Header></Header>
-      {offersLatest10 == "" ? (
+      {offersLatest10 === "" ? (
         <div className="loading">Loading. Please be patient. 😊</div>
       ) : (
         <div className="notLoading">
