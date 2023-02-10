@@ -1,14 +1,14 @@
-//react
+//react hooks
 import { useEffect, useState } from "react";
 
-//react redux
+//react redux hooks
 import { useDispatch, useSelector } from "react-redux";
 
 //components
 import { baseUrl } from "../../../baseurl";
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
-import Search from "../Search";
+import Search from "../SearchBar";
 
 //styled components import
 import { ContainerAllOffers, ListOffersContainer } from "./styles";
@@ -24,27 +24,24 @@ import { useSettingTags } from "../../../hooks/tagsFetch";
 import { setOffersInSlice } from "../../../slices/offers/offersSlice";
 
 function AllOffers() {
-  // userState hook to keep track of all Offers and tags
+  // useState hook to ffers, tags and errors
   const [offerList, setOfferList] = useState([]);
   const [tags, setTagsBackground] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
 
   const dispatch = useDispatch();
 
-  //variables to  provide data from redux store
+  //Variables to  provide data from redux store
   const storeTags = useSelector(selectTags);
   const offers = useSelector(selectOffers);
 
-  //offers loaded first time
+  //Offers loaded first time
   useEffect(() => {
-    //console.log("Entering component did load");
     getAllOffers();
-    //tempOfferList();
   }, []);
 
   //Called when offers in redux store change
   useEffect(() => {
-    //console.log("entering useeffect to get new offers from store");
     setOfferList(offers);
   }, [offers]);
 
@@ -53,14 +50,8 @@ function AllOffers() {
 
   //called when tags is redux store change
   useEffect(() => {
-    //console.log("Entering tag changing useeffect");
     setTagsBackground(storeTags);
   }, [storeTags]);
-
-  //temp setup. to be removed later
-  // const tempOfferList = () => {
-  //   setOfferList(x);
-  // };
 
   // Getting Offers from server
   const getAllOffers = () => {
@@ -85,7 +76,11 @@ function AllOffers() {
       <Search />
       <h2>Latest offers</h2>
       {console.log(offerList)}
-      {offerList.length === 0 && <div> No Search Results found. Please try a different search criteria..</div>}
+      {offerList.length === 0 && (
+        <div>
+          No Search Results found. Please try a different search criteria..
+        </div>
+      )}
       {errorMessage !== null ? (
         <div>{errorMessage}</div>
       ) : (
