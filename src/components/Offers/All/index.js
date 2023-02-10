@@ -11,7 +11,7 @@ import Header from "../../../elements/Header";
 import Search from "../Search";
 
 //styled components import
-import { ContainerAllOffers, ListRequestsContainer } from "./styles";
+import { ContainerAllOffers, ListOffersContainer } from "./styles";
 import { OfferCard } from "../../../elements/OfferCard/offerCard";
 
 //selectors
@@ -89,13 +89,13 @@ function AllOffers() {
       {errorMessage !== null ? (
         <div>{errorMessage}</div>
       ) : (
-        <ListRequestsContainer>
+        <ListOffersContainer>
           {offerList === "notFetched" ? (
             <div>Loading....</div>
           ) : (
             offerList.map((obj) => <OfferCard key={obj.id} obj={obj} />)
           )}
-        </ListRequestsContainer>
+        </ListOffersContainer>
       )}
       <FooterElement />
     </ContainerAllOffers>

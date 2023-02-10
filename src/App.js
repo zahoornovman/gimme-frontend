@@ -1,35 +1,35 @@
-import { BrowserRouter, Route, Routes, Link, Navigate } from 'react-router-dom';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import Welcome from './components/Welcome';
-import Error from './components/Error';
-import SignIn from './components/SignIn';
-import PasswordForgotten from './components/PasswordForgotten';
-import Contact from './components/Admin/Contact';
-import FAQ from './components/Admin/FAQ';
-import Profile from './components/Admin/Profile';
-import TermsOfUse from './components/Admin/TermsOfUse';
-import AllRequests from './components/Request/All';
-import MyRequests from './components/Request/My';
-import NewRequest from './components/Request/New';
-import RequestDetails from './components/Request/One';
-import AllOffers from './components/Offers/All';
-import MyOffers from './components/Offers/My';
-import NewOffer from './components/Offers/New';
-import OfferDetails from './components/Offers/One';
-import SignUp from './components/SignUp';
-import SignUpValidation from './components/SignUpValidation';
-import UpdateUserProfile from './components/Admin/ProfileUpdate';
-import ProfileDeleteError from './components/ProfileDeleteError';
-import ProfileChangeError from './components/ProfileChangesError';
-import SingUpValidationError from './components/SignUpValidationError';
-import MessageService from './components/Message';
-import UpdateOffer from './components/Offers/Update';
-import UpdateRequest from './components/Request/Update';
-import SearchOffers from './components/Offers/Search';
-import SearchRequests from './components/Request/Search';
-import AllrequestsRelatedToTag from './components/Request/Tags';
-import AllOffersRelatedToTag from './components/Offers/Tags';
+import { BrowserRouter, Route, Routes, Link, Navigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Welcome from "./components/Welcome";
+import Error from "./components/Error";
+import SignIn from "./components/SignIn";
+import PasswordForgotten from "./components/PasswordForgotten";
+import Contact from "./components/Admin/Contact";
+import FAQ from "./components/Admin/FAQ";
+import Profile from "./components/Admin/Profile";
+import TermsOfUse from "./components/Admin/TermsOfUse";
+import AllRequests from "./components/Request/All";
+import MyRequests from "./components/Request/My";
+import NewRequest from "./components/Request/New";
+import RequestDetails from "./components/Request/One";
+import AllOffers from "./components/Offers/All";
+import MyOffers from "./components/Offers/My";
+import NewOffer from "./components/Offers/New";
+import OfferDetails from "./components/Offers/One";
+import SignUp from "./components/SignUp";
+import SignUpValidation from "./components/SignUpValidation";
+import UpdateUserProfile from "./components/Admin/ProfileUpdate";
+import ProfileDeleteError from "./components/ProfileDeleteError";
+import ProfileChangeError from "./components/ProfileChangesError";
+import SingUpValidationError from "./components/SignUpValidationError";
+import MessageService from "./components/Message";
+import UpdateOffer from "./components/Offers/Update";
+import UpdateRequest from "./components/Request/Update";
+import SearchOffers from "./components/Offers/Search";
+//import SearchRequests from "./components/Request/Search";
+import AllrequestsRelatedToTag from "./components/Request/Tags";
+import AllOffersRelatedToTag from "./components/Offers/Tags";
 
 //import NewRequest from "./components/Request/New";
 
@@ -57,7 +57,7 @@ function App() {
         <Route path="/requests/new" element={<NewRequest />}></Route>
         <Route path="/request/:pk" element={<RequestDetails />}></Route>
         <Route path="/requests/update" element={<UpdateRequest />}></Route>
-        <Route path="/requests/search" element={<SearchRequests />}></Route>
+        {/* <Route path="/requests/search" element={<SearchRequests />}></Route> */}
         <Route path="/requests/tag" element={<AllrequestsRelatedToTag />}></Route>
         {/*offers*/}
         <Route path="/offers/all" element={<AllOffers />}></Route>
