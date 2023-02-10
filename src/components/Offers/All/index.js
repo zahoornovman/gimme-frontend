@@ -11,7 +11,7 @@ import Header from "../../../elements/Header";
 import Search from "../Search";
 
 //styled components import
-import { ContainerAllOffers, ListRequestsContainer } from "./styles";
+import { ContainerAllOffers, ListOffersContainer } from "./styles";
 import { OfferCard } from "../../../elements/OfferCard/offerCard";
 
 //selectors

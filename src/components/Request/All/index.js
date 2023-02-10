@@ -2,7 +2,6 @@
 import { baseUrl } from "../../../baseurl";
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
-import { ContainerAllRequests, ListRequestsContainer } from "./styles";
 
 //react
 import { useEffect, useState } from "react";
@@ -12,6 +11,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 //selectors
 import { selectRequests, selectTags } from "../../../store/selectors/selectors";
+
+//custom hooks
+import { useSettingTags } from "../../../hooks/tagsFetch";
+
+//slices
+import { setRequestsInSlice } from "../../../slices/requests/requestsSlice";
+
+//styled components import
+import { ContainerAllRequests, ListRequestsContainer } from "./styles";
+import { RequestCard } from "../../../elements/RequestCard/requestCard";
 
 function AllRequests() {
   const [requestList, setRequestList] = useState([]);
@@ -24,19 +33,7 @@ function AllRequests() {
   const requests = useSelector(selectRequests);
 
   useEffect(() => {
-    const requestOptions = {
-      method: "GET",
-      redirect: "follow",
-    };
-
-    fetch(`${baseUrl}/backend/api/wants/`, requestOptions)
-      .then((response) => response.json())
-      .then((result) => dispatch(setRequestsInSlice(result)))
-      .catch((error) =>
-        setErrorMessage(
-          "An error occurred while submitting the form. Please try again."
-        )
-      );
+    getAllRequests();
   }, []);
 
   useEffect(() => {
@@ -51,17 +48,33 @@ function AllRequests() {
     setTagsBackground(storeTags);
   }, [storeTags]);
 
+  //  Getting Requests from server
+  const getAllRequests = () => {
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    fetch(`${baseUrl}/backend/api/wants/`, requestOptions)
+      .then((response) => response.json())
+      .then((result) => dispatch(setRequestsInSlice(result)))
+      .catch((error) =>
+        setErrorMessage(
+          "An error occurred while submitting the form. Please try again."
+        )
+      );
+  };
+
   return (
     <ContainerAllRequests>
       <Header />
+      <h1>Here</h1>
       <h2>Latest Requests</h2>
       <ListRequestsContainer>
         {requestList === "" ? (
           <div>Loading....</div>
         ) : (
-          requestList.map((obj) => {
-            console.log(obj);
-          })
+          requestList.map((obj) => <RequestCard key={obj.id} obj={obj} />)
         )}
       </ListRequestsContainer>
       <FooterElement />

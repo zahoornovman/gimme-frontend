@@ -65,7 +65,7 @@ const requestsSlice = createSlice({
   reducers: {
     setRequests: (state, { payload }) => {
       console.log("Entering slice to set requests");
-      state.offers = payload;
+      state.requests = payload;
       console.log(payload);
     },
     // loading: (state) => {
@@ -99,7 +99,7 @@ const requestsSlice = createSlice({
   },
 });
 
-const setRequestsInSlice = offerSlice.actions.setRequests;
+const setRequestsInSlice = requestsSlice.actions.setRequests;
 // const loading = requestsSlice.actions.loading;
 // const successfulSignIn = requestsSlice.actions.successfulSignIn;
 // const errorSignIn = requestsSlice.actions.errorSignIn;
