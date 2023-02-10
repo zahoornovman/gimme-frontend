@@ -80,7 +80,7 @@ function AllRequests() {
         <div>{errorMessage}</div>
       ) : (
         <ListRequestsContainer>
-          {requestList === "" ? (
+          {requestList === "notFetched" ? (
             <div>Loading....</div>
           ) : (
             requestList.map((obj) => <RequestCard key={obj.id} obj={obj} />)
