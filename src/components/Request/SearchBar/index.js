@@ -23,6 +23,7 @@ function SearchRequests() {
   //hooks to keep track of tags and search params locally
   const [tags, setTagsBackground] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   //variables to  provide data from redux store
   const storeTags = useSelector(selectTags);
@@ -59,11 +60,16 @@ function SearchRequests() {
       .then((result) => {
         dispatch(setRequestsInSlice(result));
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) =>
+        setErrorMessage(
+          "An error occurred while submitting the form. Please try again."
+        )
+      );
   };
 
   return (
     <SearchRequestsContainer>
+      {errorMessage !== null && <div>{errorMessage}</div>}
       <form onSubmit={handleSubmit}>
         {tags === "notFetched" ? (
           <span>loading..</span>
