@@ -5,7 +5,7 @@ import Header from "../../elements/Header";
 import FooterElement from "../../elements/Footer";
 import { ContainerWelcome } from "./styles";
 import { baseUrl } from "../../baseurl";
-import { fetchingTags } from "../../slices/tags/tagsSlice";
+//import { fetchingTags } from "../../slices/tags/tagsSlice";
 import { useSettingTags } from "../../hooks/tagsFetch";
 import {
   Header2,
@@ -15,7 +15,7 @@ import {
   TextButton,
 } from "../../styles/MasterStyles";
 import { OfferCard } from "../../elements/OfferCard/offerCard";
-import img_noPicture from "../../images/no_picture.jpeg"
+//import img_noPicture from "../../images/no_picture.jpeg"
 import { reply } from "../../slices/acceptance/acceptanceSlice";
 
 
@@ -36,7 +36,7 @@ function Welcome() {
   const acceptance = useSelector((state) => state.acceptance.acceptance);
 
   const [offersLatest10, setOffersLatest10] = useState([]);
-  const [offersLatest4to10, setOffersLatest4to10] = useState([]);
+  //const [offersLatest4to10, setOffersLatest4to10] = useState([]);
 
   useSettingTags();
   useEffect(() => {
@@ -57,11 +57,11 @@ function Welcome() {
       .then((result) => {
         //console.log(result);
         setOffersLatest10(result);
-        const offersIndex3toIndex9 = [];
-        for (let i = 3; i < 10; i++) {
-          offersIndex3toIndex9.push(result[i]);
-        }
-        setOffersLatest4to10(offersIndex3toIndex9);
+        // const offersIndex3toIndex9 = [];
+        // for (let i = 3; i < 10; i++) {
+        //   offersIndex3toIndex9.push(result[i]);
+        // }
+        // setOffersLatest4to10(offersIndex3toIndex9);
       })
       .catch((error) => {
         console.log("error", error);
@@ -288,27 +288,29 @@ function Welcome() {
                     Latest offers can't be displayed at the moment. We apologise
                     for the inconvenience. 😖
                   </div>
-                ) : user.first_name === "NoNa" ? (
-                  <div className="objects">
-                    {offersLatest4to10.map((obj) => (
-                      <OfferCard key={obj.id} obj={obj} />
-                      // <div
-                      //     key={obj.id}
-                      //     className="object fontSize"
-                      // >
-                      //     <h3>{obj.title}</h3>
-                      //     {
-                      //         obj.images[0]
-                      //             ?
-                      //             <img src={obj.images[0]} />
-                      //             :
-                      //             <img src={img_noPicture} />
-                      //     }
+                ) 
+                // : user.first_name === "NoNa" ? (
+                //   <div className="objects">
+                //     {offersLatest4to10.map((obj) => (
+                //       <OfferCard key={obj.id} obj={obj} />
+                //       // <div
+                //       //     key={obj.id}
+                //       //     className="object fontSize"
+                //       // >
+                //       //     <h3>{obj.title}</h3>
+                //       //     {
+                //       //         obj.images[0]
+                //       //             ?
+                //       //             <img src={obj.images[0]} />
+                //       //             :
+                //       //             <img src={img_noPicture} />
+                //       //     }
 
-                      // </div>
-                    ))}
-                  </div>
-                ) : (
+                //       // </div>
+                //     ))}
+                //   </div>
+                // ) 
+                : (
                   <div className="objects">
                     {offersLatest10.map((obj) => (
                       <OfferCard key={obj.id} obj={obj} />
