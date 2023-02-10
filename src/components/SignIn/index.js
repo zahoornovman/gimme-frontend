@@ -18,12 +18,13 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { store } from "../../store/store";
+import { lastPage } from "../../slices/lastPageSignUpBeforeSignIn/lastPageSignUpBeforeSignInSlice";
 
 function SignIn() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const status = useSelector((state) => state.user.loading);
+  const lastPageBeforeSignIn = useSelector((state) => state.lastPageBeforeSignIn.lastPage)
   //const access = useSelector((state) => state.user.acces)
   const [access, setAccess] = useState("");
   const signInHandler = () => {
@@ -86,7 +87,15 @@ function SignIn() {
                 //acces: result.access,
               })
             );
-            navigate(-1);
+            if (lastPageBeforeSignIn === "signUp"){
+              navigate(-2)
+              dispatch(lastPage({
+                lastPage: "notSignUp"
+              }))
+            }
+            else{
+              navigate(-1);
+            }
           })
           .catch((error) => {
             dispatch(errorSignIn());
@@ -95,6 +104,13 @@ function SignIn() {
       .catch((error) => dispatch(errorSignIn()));
   };
 
+  const handleEnter = (event) => {    
+    if (event.key === "Enter"){
+      if (document.getElementById("email").value !== "" && document.getElementById("password").value !== ""){
+        signInHandler()
+      }      
+    }
+  }
   return (
     <SignInContainer>
       <Header></Header>
@@ -122,6 +138,7 @@ function SignIn() {
               type="email"
               placeholder="your email address"
               className="fontSize"
+              onKeyDown={handleEnter}
             ></input>
           </div>
           <div className="inputField">
@@ -131,6 +148,7 @@ function SignIn() {
               type="password"
               placeholder="your password"
               className="fontSize"
+              onKeyDown={handleEnter}
             ></input>
           </div>
           <div className="buttonsSignIn">

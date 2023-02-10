@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+const body = document.body;
+const html = document.documentElement;
+const height = Math.max(body.scrollHeight, body.offsetHeight,  html.clientHeight, html.scrollHeight, html.offsetHeight);
+const width = Math.max(body.scrollWidth, body.offsetWidth,  html.clientWidth, html.scrollWidth, html.offsetWidth);
+
+
 export const ContainerWelcome = styled.div`
 margin-top: ${(props) => props.theme.size.xxxxxxl};
 margin-bottom: ${(props) => props.theme.size.xxxxxxl};
@@ -60,13 +66,16 @@ align-items: center;
 .overlayer{
     background-color: transparent;
     z-index: 10;
-    height: 100vh;
-    width: 100vw;
+    height: ${height}px;
+    width: ${width}px;
     position: absolute;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     .popUpWelcomePage{
+        position: fixed;
+        top: ${(props) => props.theme.size.xxxxxxxxl};
+        width: 400px;
         z-index: 20;
         a{
         color: ${(props) => props.theme.colors.color3};
