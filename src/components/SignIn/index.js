@@ -18,12 +18,13 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { store } from "../../store/store";
+import { lastPage } from "../../slices/lastPageSignUpBeforeSignIn/lastPageSignUpBeforeSignInSlice";
 
 function SignIn() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const status = useSelector((state) => state.user.loading);
+  const lastPageBeforeSignIn = useSelector((state) => state.lastPageBeforeSignIn.lastPage)
   //const access = useSelector((state) => state.user.acces)
   const [access, setAccess] = useState("");
   const signInHandler = () => {
@@ -86,7 +87,15 @@ function SignIn() {
                 //acces: result.access,
               })
             );
-            navigate(-1);
+            if (lastPageBeforeSignIn === "signUp"){
+              navigate(-2)
+              dispatch(lastPage({
+                lastPage: "notSignUp"
+              }))
+            }
+            else{
+              navigate(-1);
+            }
           })
           .catch((error) => {
             dispatch(errorSignIn());
