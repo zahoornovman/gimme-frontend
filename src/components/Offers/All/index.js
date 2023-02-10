@@ -80,13 +80,13 @@ function AllOffers() {
       <Header />
       <Search />
       <h2>Latest offers</h2>
-      <ListRequestsContainer>
+      <ListOffersContainer>
         {offerList === "" ? (
           <div>Loading....</div>
         ) : (
           offerList.map((obj) => <OfferCard key={obj.id} obj={obj} />)
         )}
-      </ListRequestsContainer>
+      </ListOffersContainer>
       <FooterElement />
     </ContainerAllOffers>
   );
