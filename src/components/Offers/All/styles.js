@@ -8,7 +8,7 @@ export const ContainerAllOffers = styled.div`
   /* border: 5px solid red; */
 `;
 
-export const ListRequestsContainer = styled.div`
+export const ListOffersContainer = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;

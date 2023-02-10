@@ -8,18 +8,18 @@ import { useSelector, useDispatch } from "react-redux";
 import { baseUrl } from "../../../baseurl";
 
 //styled components
-import { SearchContainer } from "./styles";
+import { SearchRequestsContainer } from "./styles";
 
 //selectors
-import { selectOffers, selectTags } from "../../../store/selectors/selectors";
+import { selectTags } from "../../../store/selectors/selectors";
 
 //custom hooks
 import { useSettingTags } from "../../../hooks/tagsFetch";
 
 //slices
-import { setOffersInSlice } from "../../../slices/offers/offersSlice";
+import { setRequestsInSlice } from "../../../slices/requests/requestsSlice";
 
-function Search() {
+function SearchRequests() {
   //hooks to keep track of tags and search params locally
   const [tags, setTagsBackground] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
@@ -35,30 +35,30 @@ function Search() {
 
   //called when tags in redux store change
   useEffect(() => {
-    //console.log("Entering tag changing useeffect");
+    console.log("Entering tag changing useeffect");
     setTagsBackground(storeTags);
-    //console.log(storeTags);
+    console.log(storeTags);
   }, [storeTags]);
 
   // calling endpoint with title and tag params
   const handleSubmit = (event) => {
     event.preventDefault();
-    searchOffers(event.target[0].value, event.target[1].value);
+    searchRequests(event.target[0].value, event.target[1].value);
   };
 
-  //Getting offers based on search params
-  const searchOffers = (tagParam, titleParam) => {
+  //Getting Requests based on search params
+  const searchRequests = (tagParam, titleParam) => {
     const requestOptions = {
       method: "GET",
       redirect: "follow",
     };
     fetch(
-      `${baseUrl}/backend/api/haves/?title=${titleParam}&tag=${tagParam}`,
+      `${baseUrl}/backend/api/wants/?title=${titleParam}&tag=${tagParam}`,
       requestOptions
     )
       .then((response) => response.json())
       .then((result) => {
-        dispatch(setOffersInSlice(result));
+        dispatch(setRequestsInSlice(result));
       })
       .catch((error) =>
         setErrorMessage(
@@ -68,11 +68,11 @@ function Search() {
   };
 
   return (
-    <SearchContainer>
+    <SearchRequestsContainer>
       {errorMessage !== null && <div>{errorMessage}</div>}
       <form onSubmit={handleSubmit}>
         {tags === "notFetched" ? (
-          <span>Loading..</span>
+          <span>loading..</span>
         ) : (
           <select name="tag" id="tags">
             <option value="">All</option>
@@ -93,8 +93,8 @@ function Search() {
         />
         <button type="submit">Search</button>
       </form>
-    </SearchContainer>
+    </SearchRequestsContainer>
   );
 }
 
-export default Search;
+export default SearchRequests;
