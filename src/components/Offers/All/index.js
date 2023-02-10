@@ -27,6 +27,7 @@ function AllOffers() {
   // userState hook to keep track of all Offers and tags
   const [offerList, setOfferList] = useState([]);
   const [tags, setTagsBackground] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -36,16 +37,15 @@ function AllOffers() {
 
   //offers loaded first time
   useEffect(() => {
-    console.log("Entering component did load");
+    //console.log("Entering component did load");
     getAllOffers();
     //tempOfferList();
   }, []);
 
   //Called when offers in redux store change
   useEffect(() => {
-    console.log("entering useeffect to get new offers from store");
+    //console.log("entering useeffect to get new offers from store");
     setOfferList(offers);
-    console.log(`offers: ${offers} `);
   }, [offers]);
 
   // Calling tags
@@ -53,7 +53,7 @@ function AllOffers() {
 
   //called when tags is redux store change
   useEffect(() => {
-    console.log("Entering tag changing useeffect");
+    //console.log("Entering tag changing useeffect");
     setTagsBackground(storeTags);
   }, [storeTags]);
 
@@ -72,7 +72,11 @@ function AllOffers() {
     fetch(`${baseUrl}/backend/api/haves/`, requestOptions)
       .then((response) => response.json())
       .then((result) => dispatch(setOffersInSlice(result)))
-      .catch((error) => console.log("error", error));
+      .catch((error) =>
+        setErrorMessage(
+          "An error occurred while submitting the form. Please try again."
+        )
+      );
   };
 
   return (
@@ -80,13 +84,19 @@ function AllOffers() {
       <Header />
       <Search />
       <h2>Latest offers</h2>
-      <ListOffersContainer>
-        {offerList === "" ? (
-          <div>Loading....</div>
-        ) : (
-          offerList.map((obj) => <OfferCard key={obj.id} obj={obj} />)
-        )}
-      </ListOffersContainer>
+      {console.log(offerList)}
+      {offerList.length === 0 && <div> No Search Results found. Please try a different search criteria..</div>}
+      {errorMessage !== null ? (
+        <div>{errorMessage}</div>
+      ) : (
+        <ListOffersContainer>
+          {offerList === "notFetched" ? (
+            <div>Loading....</div>
+          ) : (
+            offerList.map((obj) => <OfferCard key={obj.id} obj={obj} />)
+          )}
+        </ListOffersContainer>
+      )}
       <FooterElement />
     </ContainerAllOffers>
   );

@@ -63,8 +63,8 @@ function App() {
         <Route path="/offers/all" element={<AllOffers />}></Route>
         <Route path="/offers/my" element={<MyOffers />}></Route>
         <Route path="/offers/new" element={<NewOffer />}></Route>
-        <Route path="/offer/:pk" element={<OfferDetails />}></Route>
-        <Route path="/offers/update" element={<UpdateOffer />}></Route>
+        <Route path="/offers/:id" element={<OfferDetails />}></Route>
+        <Route path="/offers/update/:id" element={<UpdateOffer />}></Route>
         <Route path="/offers/search" element={<SearchOffers />}></Route>
         <Route path="/offers/tag" element={<AllOffersRelatedToTag />}></Route>
         {/*message*/}
