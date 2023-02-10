@@ -17,6 +17,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { store } from "../../store/store";
 
+import { lastPage } from "../../slices/lastPageSignUpBeforeSignIn/lastPageSignUpBeforeSignInSlice";
+
 function SignUp() {
   const [acceptanceTermsOfUse, setAcceptanceTermsOfUse] = useState("true");
   const navigate = useNavigate();
@@ -92,7 +94,13 @@ function SignUp() {
               Sign up
             </TextButton>
             <TextButton
-              onClick={() => navigate("/signin")}
+              onClick={() => {
+                navigate("/signin");
+                dispatch(lastPage({
+                  lastPage: "signUp"
+                }))
+              }
+                }
               className="notSignUpButton fontSize"
             >
               Have an account
