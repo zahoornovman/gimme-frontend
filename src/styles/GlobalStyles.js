@@ -1,5 +1,4 @@
-import { createGlobalStyle } from "styled-components"
-
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -52,10 +51,12 @@ table {
 }
 body{
 
-  font-family: ${(props)=>props.theme.fontFamily};
-  font-size: ${(props)=>props.theme.size.basic};
-  width: 100vw;
-  background-color: ${(props)=>props.theme.colors.color1};
-  color: ${(props)=>props.theme.colors.color3};
+  display: flex;
+  flex-direction: column;
+  font-family: ${(props) => props.theme.fontFamily};
+  font-size: ${(props) => props.theme.size.basic};
+  width: 100%;
+  background-color: ${(props) => props.theme.colors.color5};
+  color: ${(props) => props.theme.colors.color4};
 }
-`
+`;
