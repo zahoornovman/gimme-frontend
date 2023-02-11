@@ -150,7 +150,7 @@ function NewOffer() {
         const condition = document.getElementById('condition').value
         const requested = document.getElementById('request').value
         const tag = document.getElementById('tags').value
-        const images = imagesPath
+        //const images = imagesPath
         const imagesNumber = imagesPath.length
 
         if (title === "" || description === "" || condition === "" || requested === "" || tag === "") {
