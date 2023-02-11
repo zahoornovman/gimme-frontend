@@ -9,7 +9,7 @@ function RequestCard(props) {
 
   //Navigation to individual Request display
   const handleClickNavigate = (pk) => {
-    navigate(`/request/${pk}`);
+    navigate(`/requests/${pk}`);
   };
   return (
     <ContainerRequestCardStyled

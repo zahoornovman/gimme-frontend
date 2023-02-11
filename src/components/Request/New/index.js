@@ -14,6 +14,7 @@ function NewRequest() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
+    const conditions = useSelector((state) => state.conditions)
 
 
     const userFirstName = useSelector(state => state.user.first_name)
@@ -282,22 +283,22 @@ function NewRequest() {
                                             <option
                                                 value="1"
                                                 className="fontSize">
-                                                New
+                                                {conditions.c1}
                                             </option>
                                             <option
                                                 value="2"
                                                 className="fontSize">
-                                                Used like new
+                                                {conditions.c2}
                                             </option>
                                             <option
                                                 value="3"
                                                 className="fontSize">
-                                                Used good
+                                                {conditions.c3}
                                             </option>
                                             <option
                                                 value="4"
                                                 className="fontSize">
-                                                Used fair
+                                                {conditions.c4}
                                             </option>
                                         </select>
                                     </div>
