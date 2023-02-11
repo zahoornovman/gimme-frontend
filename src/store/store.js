@@ -9,7 +9,7 @@ import { reducer as messageReducer } from "../slices/messages/messageSlice";
 import { reducer as acceptanceReducer } from "../slices/acceptance/acceptanceSlice";
 import { reducer as lastPageBeforeInReducer } from "../slices/lastPageSignUpBeforeSignIn/lastPageSignUpBeforeSignInSlice";
 import { reducer as conditionReducer } from "../slices/conditions/conditionsSlice";
-import { reducer as statusReducer } from "../slices/status/statusSlice";
+import { reducer as statusReducer} from "../slices/status/statusSlice"
 
 export const store = configureStore({
   reducer: {
