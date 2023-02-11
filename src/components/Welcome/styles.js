@@ -64,7 +64,7 @@ align-items: center;
     }
 }
 .overlayer{
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.8);
     z-index: 10;
     height: ${height}px;
     width: ${width}px;
