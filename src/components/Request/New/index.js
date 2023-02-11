@@ -1,211 +1,166 @@
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
 import { Header2, TextButton } from "../../../styles/MasterStyles";
-import { ContainerNewRequest } from "./styles";
+import { ContainerNewRequest} from "./styles"
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchingTags } from "../../../slices/tags/tagsSlice";
 import { useDispatch } from "react-redux";
 import { baseUrl } from "../../../baseurl";
 import { useSettingTags } from "../../../hooks/tagsFetch";
 
+
 function NewRequest() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
-  // const tags = useSelector((state) => state.tags.tags)
-  // const [tagsBackend, setTagsBackend] = useState([])
-  const userFirstName = useSelector((state) => state.user.first_name);
-  const maxImageFileSize = 3145728;
-  const maxNumberFiles = 5;
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const user = useSelector((state) => state.user)
 
-  const maxLengthDescription = 500;
-  const [currentLengthDescription, setCurrentLengthDescription] = useState(0);
 
-  const maxLenghtTitle = 100;
-  const [currentLengthTitle, setCurrentLengthTitle] = useState(0);
+    const userFirstName = useSelector(state => state.user.first_name)
+    const maxImageFileSize = 3145728
+    const maxNumberFiles = 5
 
-  const maxLengthOffered = 200;
-  const [currentLengthOffered, setCurrentLengthOffered] = useState(0);
+    const maxLengthDescription = 500;
+    const [currentLengthDescription, setCurrentLengthDescription] = useState(0);
 
-  const [message, setMessage] = useState("no");
-  const [action, setAction] = useState("new");
-  const [imagesPath, setImagesPath] = useState([]);
+    const maxLenghtTitle = 100;
+    const [currentLengthTitle, setCurrentLengthTitle] = useState(0);
 
-  const [tagsBackend, setTagsBackground] = useState([]);
-  const tags = useSelector((state) => state.tags.tags);
+    const maxLengthOffered = 200;
+    const [currentLengthOffered, setCurrentLengthOffered] = useState(0);
 
-  useSettingTags();
-  useEffect(() => {
-    setTagsBackground(tags);
-  }, [tags]);
+    const [message, setMessage] = useState("no")
+    const [action, setAction] = useState("new")
+    const [imagesPath, setImagesPath] = useState([])
 
-  // useEffect(
-  //     () => {
+    const [tagsBackend, setTagsBackground] = useState([]);
+    const tags = useSelector((state) => state.tags.tags);
 
-  //         //fetching only, if user has access page without being on the welcome page before
-  //         if (tags === "notFetched") {
-  //             var myHeaders = new Headers();
-  //             myHeaders.append("Content-Type", "application/json");
+    useSettingTags();
+    useEffect(() => {
+        setTagsBackground(tags);
+    }, [tags]);
 
-  //             var raw = "\n";
 
-  //             var requestOptions = {
-  //                 method: 'GET',
-  //                 headers: myHeaders,
-  //                 //body: raw,
-  //                 redirect: 'follow'
-  //             };
-
-  //             fetch(`${baseUrl}/backend/api/tags/`, requestOptions)
-  //                 .then(response => response.json())
-  //                 .then(result => {
-  //                     dispatch(fetchingTags({
-  //                         tags: result
-  //                     }))
-  //                     setTagsBackend(result)
-
-  //                 }
-  //                 )
-  //                 .catch(error => console.log('error', error));
-
-  //         }
-  //     }, []
-  // )
-
-  const handleChangeTitle = (event) => {
-    let inputValue = event.target.value.length;
-    setCurrentLengthTitle(inputValue);
-  };
-  const handleChangeDescription = (event) => {
-    let inputValue = event.target.value.length;
-    setCurrentLengthDescription(inputValue);
-  };
-  const handleChangeOffered = (event) => {
-    let inputValue = event.target.value.length;
-    setCurrentLengthOffered(inputValue);
-  };
-
-  const handleFileUpload = (event) => {
-    event.preventDefault();
-    setMessage("no");
-    const images = event.target.files;
-    const numberImages = Object.keys(images).length;
-    console.log(images);
-    console.log(`number images: ${numberImages}`);
-    console.log(message);
-    if (numberImages === 0) {
-      setMessage("noImageSelected");
-    } else {
-      if (numberImages > 5) {
-        setMessage("fileQuantityError");
-      } else {
-        for (let i = 0; i < numberImages; i++) {
-          console.log(images[`${i}`].size);
-          if (images[`${i}`].size > maxImageFileSize) {
-            setMessage("fileSizeExceededLimit");
-            break;
-          }
-        }
-        if (message === "no") {
-          const imagesUrl = [];
-          for (let j = 0; j < numberImages; j++) {
-            let imageUrl = URL.createObjectURL(event.target.files[`${j}`]);
-            imagesUrl.push(imageUrl);
-          }
-
-          setImagesPath(imagesUrl);
-          console.log(imagesPath);
-        }
-      }
+    const handleChangeTitle = (event) => {
+        let inputValue = event.target.value.length
+        setCurrentLengthTitle(inputValue)
     }
-  };
-  const handleSave = () => {
-    setMessage("no");
-    console.log(imagesPath);
-    const title = document.getElementById("title").value;
-    const description = document.getElementById("description").value;
-    const condition = document.getElementById("condition").value;
-    const offered = document.getElementById("offer").value;
-    const tag = document.getElementById("tags").value;
-    const images = imagesPath;
-    const imagesNumber = imagesPath.length;
+    const handleChangeDescription = (event) => {
+        let inputValue = event.target.value.length
+        setCurrentLengthDescription(inputValue)
+    }
+    const handleChangeOffered = (event) => {
+        let inputValue = event.target.value.length
+        setCurrentLengthOffered(inputValue)
+    }
 
-    console.log(`title: ${title}`);
-    console.log(`description: ${description}`);
-    console.log(`condition: ${condition}`);
-    console.log(`offered: ${offered}`);
-    console.log(`tag: ${tag}`);
-    console.log(`images: ${images}`);
-    console.log(`images number: ${imagesNumber}`);
-    //console.log(`url create object:${URL.createObjectURL(document.getElementById("images").files[0])}`)
 
-    if (
-      title === "" ||
-      description === "" ||
-      condition === "" ||
-      offered === "" ||
-      tag === ""
-    ) {
-      setMessage("FieldsNotCompleted");
-    } else {
-      console.log("everything is okay");
-      var myHeaders = new Headers();
-      //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2MjI2NjYyLCJpYXQiOjE2NzU3OTQ2NjIsImp0aSI6IjBiZDUwNTlmM2QxNDRlNzY4ZjRiOTM5ZWNjNjk0M2JhIiwidXNlcl9pZCI6Mn0.r6TsaD9OlR9c-1w6yPA5AAOshfHceTY6ai0TdxL_A-s");
-      myHeaders.append("Authorization", `Bearer ${user.acces}`);
-        console.log(`title: ${title}`)
-        console.log(`description: ${description}`)
-        console.log(`condition: ${condition}`)
-        console.log(`offered: ${offered}`)
-        console.log(`tag: ${tag}`)
-        console.log(`images: ${images}`)
-        console.log(`images number: ${imagesNumber}`)
-        //console.log(`url create object:${URL.createObjectURL(document.getElementById("images").files[0])}`)
 
+    const handleFileUpload = (event) => {
+
+        //source: https://www.youtube.com/watch?v=XeiOnkEI7XI
+        //source: https://levelup.gitconnected.com/how-to-implement-multiple-file-uploads-in-react-4cdcaadd0f6e
+
+        //code for 1 image
+        //setImagesPath(event.target.files[0])
+        event.preventDefault()
+        setMessage("no")
+        const images = Array.prototype.slice.call(event.target.files)
+        const amountImages = images.length
+        let fileSizeExceeded = "no"
+
+        for (let i = 0; i < amountImages; i++) {
+            if (Number(images[i].size) > maxImageFileSize) {
+
+                fileSizeExceeded = "yes"
+
+            }
+        }
+
+
+
+        if (amountImages === 0) {
+            setMessage("noImageSelected")
+        }
+        if (amountImages > 5) {
+            setMessage("fileQuantityError")
+        }
+        else if (fileSizeExceeded === "yes") {
+            setMessage("fileSizeExceededLimit")
+        }
+        else {
+            const uploadedImages = []
+            for (let j = 0; j < amountImages; j++) {
+                uploadedImages.push(images[j])
+            }
+            setImagesPath(uploadedImages)
+        }      
+
+    }
+    const handleSave = () => {
+        setMessage("no");
+        console.log(imagesPath);
+        const title = document.getElementById("title").value;
+        const description = document.getElementById("description").value;
+        const condition = document.getElementById("condition").value;
+        const offered = document.getElementById("offer").value;
+        const tag = document.getElementById("tags").value;
+        //const images = imagesPath;
+        const imagesNumber = imagesPath.length;
 
         if (title === "" || description === "" || condition === "" || offered === "" || tag === "") {
-
-            setMessage("FieldsNotCompleted")
-
+            
+           
+                setMessage("FieldsNotCompleted")
+           
         }
-
+        
         else {
             console.log("everything is okay")
-            var myHeaders = new Headers();
-            //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2MjI2NjYyLCJpYXQiOjE2NzU3OTQ2NjIsImp0aSI6IjBiZDUwNTlmM2QxNDRlNzY4ZjRiOTM5ZWNjNjk0M2JhIiwidXNlcl9pZCI6Mn0.r6TsaD9OlR9c-1w6yPA5AAOshfHceTY6ai0TdxL_A-s");
-            myHeaders.append("Authorization", `Bearer ${user.acces}`);
+            if (message === "no") {
+                //trial 3
+                //source: https://www.youtube.com/watch?v=XeiOnkEI7XI
 
-      var formdata = new FormData();
-      formdata.append("title", `${title}`);
-      formdata.append("description", `${description}`);
-      formdata.append("condition", `${condition}`);
-      formdata.append("has_for_this_item", `${offered}`);
-      formdata.append("tags", `${tag}`);
-      // for (let k = 0; k < imagesNumber; k++){
-      //     console.log(`${k} path: ${imagesPath[k]}`)
-      //     formdata.append("images", imagesPath[k], `${title}-${k}`)
-      // }
-      //formdata.append("images", URL.createObjectURL(document.getElementById("images").files[0]), "/C:/Users/Christian/OneDrive/Bilder/Diashow/ISchgl, Schwarzwasser See.jpg");
+                var myHeaders = new Headers();
+                //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2MjI2NjYyLCJpYXQiOjE2NzU3OTQ2NjIsImp0aSI6IjBiZDUwNTlmM2QxNDRlNzY4ZjRiOTM5ZWNjNjk0M2JhIiwidXNlcl9pZCI6Mn0.r6TsaD9OlR9c-1w6yPA5AAOshfHceTY6ai0TdxL_A-s");
+                myHeaders.append("Authorization", `Bearer ${user.acces}`);
 
-      var requestOptions = {
-        method: "POST",
-        headers: myHeaders,
-        body: formdata,
-        redirect: "follow",
-      };
 
-            fetch(`${baseUrl}/backend/api/wants/me/`, requestOptions)
-                .then(response => response.json())
-                .then(result => {
-                    setAction("created")
 
-                })
-                .catch(error => {
-                    console.log('error', error)
-                    setAction("error")
-                });
-        }
+                const formdata = new FormData();
+                for (let k = 0; k < imagesNumber; k++) {
+                    formdata.append('images', imagesPath[k], imagesPath.name);
+                }
+
+                formdata.append("title", `${title}`);
+                formdata.append("description", `${description}`);
+                formdata.append("condition", `${condition}`);
+                formdata.append("has_for_this_item", `${offered}`);
+                formdata.append("tags", `${tag}`);
+                formdata.append("status", "1");
+                var requestOptions = {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: formdata,
+                    redirect: 'follow'
+                };
+
+                fetch(`${baseUrl}/backend/api/wants/me/`, requestOptions)
+                    .then(response => response.json())
+                    .then(result => {
+                        setAction("created")
+                        setImagesPath([])
+
+                    })
+                    .catch(error => {
+                        console.log('error', error)
+                        setAction("error")
+                        setImagesPath([])
+                    });
+            }
+
+        }      
 
     }
     return (
@@ -276,15 +231,9 @@ function NewRequest() {
                                                 message === "noImageSelected" || message === "noImageChoosen"
                                                     ?
                                                     <div className="fontSize">
-                                                        {`Offers require an image. 😉`}
+                                                        {`No image has been added. A request doesn't require an image. 😉`}
                                                     </div>
-                                                    :
-                                                    message === "imageAndFieldsNotCompleted"
-                                                        ?
-                                                        <div className="fontSize">
-                                                            Please upload at least 1 image and fill in all fields. 😉
-                                                        </div>
-                                                        :
+                                                    :                                                    
                                                         message === "FieldsNotCompleted"
                                                             ?
                                                             <div className="fontSize">
@@ -410,7 +359,7 @@ function NewRequest() {
                                             className="fontSize"
                                             htmlFor="images"
                                         >
-                                            Images(s):
+                                            <a className="fontSize buttonStyle">Upload images</a>
                                         </label>
                                         <input
                                             className="fontSize"
@@ -418,11 +367,34 @@ function NewRequest() {
                                             type="file"
                                             accept=".jpeg, .jpg, .png, .gif"
                                             onChange={handleFileUpload}
+                                            style={{ display: "none" }}
                                             multiple></input>
+
                                         <div className="fontSize">
                                             <p>only .jpeg, .jpg, .png, .gif</p>
                                             <p>{`max. ${maxNumberFiles} images`}</p>
                                             <p>{`max. ${maxImageFileSize / 1024 / 1024} MB / image`}</p>
+                                        </div>
+                                        <div>
+
+                                            {
+                                                imagesPath.length === 0
+                                                    ?
+                                                    <></>
+                                                    :
+                                                    <>
+                                                        <h3 className="fontSize">files selected:</h3>
+                                                        {
+                                                            imagesPath.map((image, index) =>
+                                                                <div
+                                                                    className="fontSize"
+                                                                    key={index}
+                                                                >{`${image.name} (size: ${Math.round(image.size / 1024 / 1024 * 100) / 100} MB)`}</div>)
+                                                        }
+                                                    </>
+
+
+                                            }
                                         </div>
                                     </div>
                                     <TextButton
@@ -432,9 +404,9 @@ function NewRequest() {
                                 </div>
             }
 
-      <FooterElement></FooterElement>
-    </ContainerNewRequest>
-  );
-}}
+            <FooterElement></FooterElement>
+        </ContainerNewRequest>
+    );
+}
 
 export default NewRequest;

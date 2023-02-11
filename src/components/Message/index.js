@@ -41,7 +41,7 @@ function MessageService() {
                     "sender": "",
                     "receiver": {
                         "id": Number(addSubject.accessedFromID),
-                        "type": "haves"
+                        "type": "have"
                     },
                     "content": `${document.getElementById('message').value}`
                 });
@@ -53,7 +53,7 @@ function MessageService() {
                     "sender": "",
                     "receiver": {
                         "id": Number(addSubject.accessedFromID),
-                        "type": "wants"
+                        "type": "want"
                     },
                     "content": `${document.getElementById('message').value}`
                 });

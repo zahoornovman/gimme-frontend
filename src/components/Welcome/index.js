@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import Header from "../../elements/Header";
 import FooterElement from "../../elements/Footer";
-import { ContainerWelcome } from "./styles";
+import { ContainerHome, ContainerWelcome } from "./styles";
 import { baseUrl } from "../../baseurl";
 //import { fetchingTags } from "../../slices/tags/tagsSlice";
 import { useSettingTags } from "../../hooks/tagsFetch";
@@ -36,7 +36,7 @@ function Welcome() {
   const acceptance = useSelector((state) => state.acceptance.acceptance);
 
   const [offersLatest10, setOffersLatest10] = useState([]);
-  //const [offersLatest4to10, setOffersLatest4to10] = useState([]);
+  const [offersLatest4to5, setOffersLatest4to5] = useState([]);
 
   useSettingTags();
   useEffect(() => {
@@ -57,11 +57,11 @@ function Welcome() {
       .then((result) => {
         //console.log(result);
         setOffersLatest10(result);
-        // const offersIndex3toIndex9 = [];
-        // for (let i = 3; i < 10; i++) {
-        //   offersIndex3toIndex9.push(result[i]);
-        // }
-        // setOffersLatest4to10(offersIndex3toIndex9);
+        const offersIndex3toIndex4 = [];
+        for (let i = 3; i < 4; i++) {
+          offersIndex3toIndex4.push(result[i]);
+        }
+        setOffersLatest4to5(offersIndex3toIndex4);
       })
       .catch((error) => {
         console.log("error", error);
@@ -145,229 +145,176 @@ function Welcome() {
     handleExitSearchResults();
   };
 
-  // useEffect(
-  //     () => {
-  //         var myHeaders = new Headers();
-  //         myHeaders.append("Content-Type", "application/json");
-  // useEffect(
-  //     () => {
-  //         var myHeaders = new Headers();
-  //         myHeaders.append("Content-Type", "application/json");
-
-  //         var raw = "\n";
-  //         var raw = "\n";
-
-  //         var requestOptions = {
-  //             method: 'GET',
-  //             headers: myHeaders,
-  //             //body: raw,
-  //             redirect: 'follow'
-  //         };
-  //         var requestOptions = {
-  //             method: 'GET',
-  //             headers: myHeaders,
-  //             //body: raw,
-  //             redirect: 'follow'
-  //         };
-
-  //         fetch(`${baseUrl}/backend/api/tags/`, requestOptions)
-  //             .then(response => response.json())
-  //             .then(result => {
-  //                 dispatch(fetchingTags({
-  //                     tags: result
-  //                 }))
-  //         fetch(`${baseUrl}/backend/api/tags/`, requestOptions)
-  //             .then(response => response.json())
-  //             .then(result => {
-  //                 dispatch(fetchingTags({
-  //                     tags: result
-  //                 }))
-
-  //                 setTags(result)
-  //                 }
-  //                 )
-  //             .catch(error => console.log('error', error));
-  //     }, []
-  // )
-  //                 setTags(result)
-  //                 }
-  //                 )
-  //             .catch(error => console.log('error', error));
-  //     }, []
-  // )
 
   return (
-    <ContainerWelcome>
-      <Header></Header>
-      {offersLatest10 == "" ? (
-        <div className="loading">Loading. Please be patient. 😊</div>
-      ) : (
-        <div className="notLoading">
-          {searchStatus === "match" ? (
-            <div className="searchMatch">
-              <div className="objects">
-                {searchResult.map((obj) => (
-                  <OfferCard key={obj.id} obj={obj} />
-                  // <div
-                  //     key={obj.id}
-                  //     className="object fontSize"
-                  // >
-                  //     <h3>{obj.title}</h3>
-                  //     {
-                  //         obj.images[0]
-                  //             ?
-                  //             <img src={obj.images[0]} />
-                  //             :
-                  //             <img src={img_noPicture} />
-                  //     }
 
-                  // </div>
-                ))}
+    <>
+      {
+        acceptance === "notAnswered" && user.first_name === "NoNa"
+          ?
+          <ContainerHome>
+            <Header></Header>
+            {offersLatest10 === ""
+              ?
+              <div className="loading">Loading. Please be patient. 😊</div>
+              :
+              <div className="notLoading">
+                <div className="latestOfferContainer">
+                  <Header2>Latest offers</Header2>
+                  {fetchingStatus === "error"
+                    ?
+                    <div>
+                      Latest offers can't be displayed at the moment. We apologise
+                      for the inconvenience. 😖
+                    </div>
+                    :
+                    <div className="objects">
+                      {offersLatest4to5.map((obj) => (
+                        <OfferCard key={obj.id} obj={obj} />
+
+                      ))}
+                    </div>
+                  }
+                </div>
+
+
               </div>
-              <div className="searchResultButtons">
-                <TextButton onClick={handleNewSearchDismissSearchResults}>
-                  New search
-                </TextButton>
-                <TextButton onClick={handleNewSearchDismissSearchResults}>
-                  Discard search results
-                </TextButton>
-                <TextButton onClick={handleClickedAllOffers}>
-                  All offers
-                </TextButton>
-                <TextButton onClick={handleClickedAllRequests}>
-                  All requets
-                </TextButton>
+            }
+            {acceptance === "notAnswered" ?
+
+              <div className="overlayer">
+                <PopUp className="popUpWelcomePage">
+                  <div className="fontSize">
+                    Do you agree with the{" "}
+                    <Link to={"../admin/termsofuse"}>terms of use</Link> and with
+                    usage of cookies?
+                  </div>
+                  <div>
+                    <PopUpButtonYes className="fontSize" onClick={handleAgreement}>
+                      Yes, I do.
+                    </PopUpButtonYes>
+                    <PopUpButtonNo className="fontSize" onClick={handleDisagreement}>
+                      No, I don't.
+                    </PopUpButtonNo>
+                  </div>
+                </PopUp>
               </div>
-            </div>
-          ) : (
-            <>
-              <div className="searchContainer">
-                <Header2>Search</Header2>
-                {searchStatus === "noKeyWordGiven" ? (
-                  <div>
-                    Please enter a key word and click on the search button
-                    afterwards. 😜
+
+              :
+              acceptance === "no"
+                ?
+                <div className="overlayer">
+                  <PopUp className="popUpWelcomePage">
+                    <div className="fontSize">You can't use our service. ??</div>
+                  </PopUp>
+                </div>
+                :
+                <></>
+            }
+            <FooterElement></FooterElement>
+          </ContainerHome>
+          :
+          <ContainerWelcome>
+            <Header></Header>
+            {offersLatest10 === "" ? (
+              <div className="loading">Loading. Please be patient. 😊</div>
+            ) : (
+              <div className="notLoading">
+                {searchStatus === "match" ? (
+                  <div className="searchMatch">
+                    <div className="objects">
+                      {searchResult.map((obj) => (
+                        <OfferCard key={obj.id} obj={obj} />
+
+                      ))}
+                    </div>
+                    <div className="searchResultButtons">
+                      <TextButton onClick={handleNewSearchDismissSearchResults}>
+                        New search
+                      </TextButton>
+                      <TextButton onClick={handleNewSearchDismissSearchResults}>
+                        Discard search results
+                      </TextButton>
+                      <TextButton onClick={handleClickedAllOffers}>
+                        All offers
+                      </TextButton>
+                      <TextButton onClick={handleClickedAllRequests}>
+                        All requets
+                      </TextButton>
+                    </div>
                   </div>
-                ) : searchStatus === "error" ? (
-                  <div>
-                    Search is currently out of service. We apologise for the
-                    inconvenience. 🙄 Please try again later.
-                  </div>
-                ) : searchResult === "noResult" ? (
-                  <div>No match. 😬</div>
                 ) : (
-                  <></>
-                )}
-                <div>
-                  <label className="fontSize" htmlFor="searchKeyWords">
-                    Key words
-                  </label>
-                  <input id="searchKeyWords"></input>
-                </div>
-                <div>
-                  <label className="fontSize" htmlFor="searchIn">
-                    Search in
-                  </label>
-                  <select id="searchIn">
-                    <option className="fontSize" value="offers">
-                      offers
-                    </option>
-                    <option className="fontSize" value="requests">
-                      requests
-                    </option>
-                  </select>
-                </div>
-                <TextButton className="fontSize" onClick={handleSearch}>
-                  Search
-                </TextButton>
-              </div>
-              <div className="latestOfferContainer">
-                <Header2>Latest offers</Header2>
-                {fetchingStatus === "error" ? (
-                  <div>
-                    Latest offers can't be displayed at the moment. We apologise
-                    for the inconvenience. 😖
-                  </div>
-                ) 
-                // : user.first_name === "NoNa" ? (
-                //   <div className="objects">
-                //     {offersLatest4to10.map((obj) => (
-                //       <OfferCard key={obj.id} obj={obj} />
-                //       // <div
-                //       //     key={obj.id}
-                //       //     className="object fontSize"
-                //       // >
-                //       //     <h3>{obj.title}</h3>
-                //       //     {
-                //       //         obj.images[0]
-                //       //             ?
-                //       //             <img src={obj.images[0]} />
-                //       //             :
-                //       //             <img src={img_noPicture} />
-                //       //     }
+                  <>
+                    <div className="searchContainer">
+                      <Header2>Search</Header2>
+                      {searchStatus === "noKeyWordGiven" ? (
+                        <div>
+                          Please enter a key word and click on the search button
+                          afterwards. 😜
+                        </div>
+                      ) : searchStatus === "error" ? (
+                        <div>
+                          Search is currently out of service. We apologise for the
+                          inconvenience. 🙄 Please try again later.
+                        </div>
+                      ) : searchResult === "noResult" ? (
+                        <div>No match. 😬</div>
+                      ) : (
+                        <></>
+                      )}
+                      <div>
+                        <label className="fontSize" htmlFor="searchKeyWords">
+                          Key words
+                        </label>
+                        <input id="searchKeyWords"></input>
+                      </div>
+                      <div>
+                        <label className="fontSize" htmlFor="searchIn">
+                          Search in
+                        </label>
+                        <select id="searchIn">
+                          <option className="fontSize" value="offers">
+                            offers
+                          </option>
+                          <option className="fontSize" value="requests">
+                            requests
+                          </option>
+                        </select>
+                      </div>
+                      <TextButton className="fontSize" onClick={handleSearch}>
+                        Search
+                      </TextButton>
+                    </div>
+                    <div className="latestOfferContainer">
+                      <Header2>Latest offers</Header2>
+                      {fetchingStatus === "error" ? (
+                        <div>
+                          Latest offers can't be displayed at the moment. We apologise
+                          for the inconvenience. 😖
+                        </div>
+                      )
 
-                //       // </div>
-                //     ))}
-                //   </div>
-                // ) 
-                : (
-                  <div className="objects">
-                    {offersLatest10.map((obj) => (
-                      <OfferCard key={obj.id} obj={obj} />
-                      // <div
-                      //     key={obj.id}
-                      //     className="object fontSize"
-                      // >
-                      //     <h3>{obj.title}</h3>
-                      //     {
-                      //         obj.images[0]
-                      //             ?
-                      //             <img src={obj.images[0]} />
-                      //             :
-                      //             <img src={img_noPicture} />
-                      //     }
+                        : (
+                          <div className="objects">
+                            {offersLatest10.map((obj) => (
+                              <OfferCard key={obj.id} obj={obj} />
 
-                      // </div>
-                    ))}
-                  </div>
+                            ))}
+                          </div>
+                        )}
+                    </div>
+                  </>
                 )}
               </div>
-            </>
-          )}
-        </div>
-      )}
-      {acceptance === "notAnswered" ? (
-        <div className="overlayer">
-          <PopUp className="popUpWelcomePage">
-            <div className="fontSize">
-              Do you agree with the{" "}
-              <Link to={"../admin/termsofuse"}>terms of use</Link> and with
-              usage of cookies?
-            </div>
-            <div>
-              <PopUpButtonYes className="fontSize" onClick={handleAgreement}>
-                Yes, I do.
-              </PopUpButtonYes>
-              <PopUpButtonNo className="fontSize" onClick={handleDisagreement}>
-                No, I don't.
-              </PopUpButtonNo>
-            </div>
-          </PopUp>
-        </div>
-      ) : acceptance === "no" ? (
-        <div className="overlayer">
-          <PopUp className="popUpWelcomePage">
-            <div className="fontSize">You can't use our service. 😞</div>
-          </PopUp>
-        </div>
-      ) : (
-        <></>
-      )}
+            )}
 
-      <FooterElement></FooterElement>
-    </ContainerWelcome>
+
+            <FooterElement></FooterElement>
+          </ContainerWelcome>
+      }
+    </>
   );
- 
+
 }
 
 export default Welcome;
