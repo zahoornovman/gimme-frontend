@@ -5,6 +5,7 @@ export const ContainerAllOffers = styled.div`
   flex-direction: column;
   margin-top: 50px;
   align-items: center;
+  justify-content: center;
   /* border: 5px solid red; */
 `;
 
@@ -15,5 +16,6 @@ export const ListOffersContainer = styled.div`
   max-width: 1170px;
   margin: 5rem auto;
   gap: 2rem;
+  justify-items: center;
   /* border: 2px solid pink; */
 `;
