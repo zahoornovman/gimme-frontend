@@ -38,7 +38,7 @@ cursor: pointer;
 .error{
     margin-top: ${(props) => props.theme.size.xxxxxxxl};
 }
-.offerContentSection{
+.requestContentSection{
     margin-top: ${(props) => props.theme.size.xxxxxxl};
 }
 .loading{

@@ -516,7 +516,7 @@ function NewOffer() {
                                                                 <div
                                                                     className="fontSize"
                                                                     key={index}
-                                                                >{`${image.name} (size: ${Math.round(image.size / 1024 / 1024 * 100) / 100}MB)`}</div>)
+                                                                >{`${image.name} (size: ${Math.round(image.size / 1024 / 1024 * 100) / 100} MB)`}</div>)
                                                         }
                                                     </>
 
