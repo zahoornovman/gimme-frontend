@@ -1,12 +1,13 @@
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
 import { ContainerMyRequests } from "./styles";
-import { TextButton } from "../../../styles/MasterStyles";
+import { Header2, TextButton } from "../../../styles/MasterStyles";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
 import { baseUrl } from "../../../baseurl";
+import { RequestCard } from "../../../elements/RequestCard/requestCard";
 
 function MyRequests() {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ function MyRequests() {
       .then(result => {
         console.log(result)
         if (result.length === 0) {
-          setMyRequests("noOffersPlaced")
+          setMyRequests("noRequestsPlaced")
         }
         else {
           setMyRequests(result)
@@ -50,10 +51,45 @@ function MyRequests() {
   return (
     <ContainerMyRequests>
       <Header></Header>
-      <h2>My Requests</h2>
-      <TextButton onClick={() => navigate("/requests/1")}>
-        One Request
-      </TextButton>
+      <div
+        className="requestContent"
+      >
+        {
+          user.first_name === "NoNa"
+            ?
+            <div>Please sign in to access your requests. 😋</div>
+            :
+            myRequests === ""
+              ?
+              <div>Loading. Please be patient. 😊</div>
+              :
+              myRequests === "noRequestsPlaced"
+                ?
+                <>
+                  <div>You haven't placed a request yet!</div>
+                  <TextButton
+                    onClick={() => navigate("/requests/new")}
+                  >Place a request</TextButton>
+                </>
+                :
+                myRequests === "error"
+                  ?
+                  <div>
+                    Your requests can't be displayed at the moment. We apologise for the inconvenience. 😒 Please try later again.
+                  </div>
+                  :
+                  <>
+                  <Header2>My requests</Header2>
+                  <div className="objects">
+                      {myRequests.map((obj) => (
+                        <RequestCard key={obj.id} obj={obj} />                        
+                      ))}
+                    </div>
+                  </>
+
+        }
+      </div>
+
       <FooterElement></FooterElement>
     </ContainerMyRequests>
   );
