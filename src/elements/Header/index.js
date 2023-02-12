@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import Menu from "../Menu";
 import { signOut } from "../../slices/user/userSlice";
+import SearchOffers from "../SearchOffers";
+import SearchRequests from "../SearchRequests";
 
 let date = new Date();
 let hour = date.getHours();
@@ -101,6 +103,15 @@ function Header() {
           <Header1 className="fontSize">Good night!</Header1>
         ) : (
           <Header1 className="fontSize">{`Good night ${userFirstname}!`}</Header1>
+        )}
+        {path === "/requests/all" ||
+        path === "/requests/my" ||
+        path === "/requests/new" ||
+        path === "/requests/:id" ||
+        path === "/requests/update/:id" ? (
+          <SearchRequests />
+        ) : (
+          <SearchOffers />
         )}
       </div>
     </HeaderContainer>
