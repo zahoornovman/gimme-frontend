@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { baseUrl } from "../../../baseurl";
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
-import Search from "../SearchBar";
 
 //styled components import
 import { ContainerAllOffers, ListOffersContainer } from "./styles";
@@ -73,7 +72,6 @@ function AllOffers() {
   return (
     <ContainerAllOffers>
       <Header />
-      <Search />
       <h2>Latest offers</h2>
       {console.log(offerList)}
       {offerList.length === 0 && (

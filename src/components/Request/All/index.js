@@ -2,7 +2,6 @@
 import { baseUrl } from "../../../baseurl";
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
-import SearchRequests from "../SearchBar";
 
 //react hooks
 import { useEffect, useState } from "react";
@@ -73,7 +72,6 @@ function AllRequests() {
   return (
     <ContainerAllRequests>
       <Header />
-      <SearchRequests />
       <h2>Latest Requests</h2>
       {requestList.length === 0 && (
         <div>
