@@ -23,6 +23,9 @@ import { useSettingTags } from '../../../hooks/tagsFetch';
 //slices
 import { setOffersInSlice } from '../../../slices/offers/offersSlice';
 
+//header
+import { Header2 } from '../../../styles/MasterStyles';
+
 function AllOffers() {
   // useState hook to ffers, tags and errors
   const [offerList, setOfferList] = useState([]);
@@ -68,10 +71,10 @@ function AllOffers() {
 
   return (
     <>
-      <Header />
+      <Header/>
       <ContainerAllOffers>
         {/* <Search /> */}
-        <h2>Latest offers</h2>
+        <Header2>All offers</Header2>
         {console.log(offerList)}
         {offerList.length === 0 && <div>No Search Results found. Please try a different search criteria..</div>}
         {errorMessage !== null ? (

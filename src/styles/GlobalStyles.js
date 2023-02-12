@@ -50,7 +50,7 @@ table {
 	border-spacing: 0;
 }
 body{
-
+  min-height: 100vh;	
   display: flex;
   flex-direction: column;
   font-family: ${(props) => props.theme.fontFamily};

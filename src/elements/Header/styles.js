@@ -9,7 +9,7 @@ export const HeaderContainer = styled.div`
   align-items: center;
   justify-content: center;
   font-size: ${(props) => props.theme.size.xxxxxs};
-  background-color: ${(props) => props.theme.colors.color5};
+  background-color: ${(props) => props.theme.colors.color7};
   box-shadow: 0px 15px 10px -18px #111;
   /* @media (orientation: portrait) and (min-width: 768px) {
     font-size: ${(props) => props.theme.size.xs};
@@ -24,7 +24,14 @@ export const HeaderContainer = styled.div`
     font-size: ${(props) => props.theme.size.s};
   } */
   .buttonSignIn {
-    font-size: ${(props) => props.theme.size.xxxxxs};
+    font-size: 16px;
+    height: 40px;
+    border-style: none;
+    color: ${(props) => props.theme.colors.color5};
+    border-radius: 10px;
+    margin-left: 20px;
+
+
     /*         @media (orientation: portrait) and (min-width: 768px){
             font-size: ${(props) => props.theme.size.xs};
         }
@@ -51,6 +58,7 @@ export const HeaderContainer = styled.div`
       height: ${(props) => props.theme.size.s};
       width: ${(props) => props.theme.size.s};
       border-radius: 50%;
+      margin-right: 30px;
 
       img {
         height: ${(props) => props.theme.size.xs};

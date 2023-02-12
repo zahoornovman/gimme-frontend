@@ -20,8 +20,7 @@ function OfferCard(props) {
     <ContainerOfferCardStyled onClick={() => handleClickNavigate(props.obj.id)}>
       {props.obj.images[0] ? (
         <div className="imageBox">
-          {/* <img src={props.obj.images[0]} /> */}
-          <img src="https://cdn.mos.cms.futurecdn.net/xUmiWSrVN5RSjRw3htM5rL-970-80.jpg.webp" />
+          <img src={props.obj.images[0].images} alt='' /> 
         </div>
       ) : (
         <img src={no_picture} />

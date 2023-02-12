@@ -260,8 +260,8 @@ function UpdateOffer() {
   }, [])
 
   return (
+    <><Header></Header>
     <ContainerUpdateOffer>
-      <Header></Header>
       {
         offer === ""
           ?
@@ -540,8 +540,10 @@ function UpdateOffer() {
             </>
       }
 
-      <FooterElement></FooterElement>
+      
     </ContainerUpdateOffer>
+    <FooterElement></FooterElement>
+    </>
   );
 }
 

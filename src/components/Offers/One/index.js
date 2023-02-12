@@ -108,8 +108,10 @@ function OfferDetails() {
   }
 
   return (
+    <>
+    <Header></Header>
     <ContainerOneOffer>
-      <Header></Header>
+      
       {
         offer === ""
           ?
@@ -133,8 +135,10 @@ function OfferDetails() {
                 <div className='contentSection fontSize'>
                   {
                     offer.images.length === 1
-                      ?
-                      <img src={offer.images[0]} />
+                      ? 
+                      <div className='imageBox'>
+                        <img src={offer.images[0].images} />
+                      </div>
                       :
                       <div className='imageGallery'>
                         {
@@ -161,6 +165,7 @@ function OfferDetails() {
                         }
                       </div>
                   }
+                  <div className='details'>
                   <div>
                     <h3>Description:</h3>
                     <div>{offer.description}</div>
@@ -181,6 +186,7 @@ function OfferDetails() {
                     <h3>Status:</h3>
                     <StatusTranslation obj={offer} />
                   </div>
+                  </div>
                 </div>
                 {
                   deletePopUp === "notDisplayed"
@@ -192,15 +198,16 @@ function OfferDetails() {
                           ?
                           <>
                             <TextButton
+                              className='messageUpdateDeleteButton'
                               onClick={() => navigate(`/offers/update/${id}`)}
                             >Update</TextButton>
                             <TextButton
-                              className='deleteButton'
+                              className='messageUpdateDeleteButton'
                               onClick={handleDeleteObject}
                             >Delete</TextButton>
                           </>
                           :
-                          <TextButton onClick={handleMessagedClicked}>Message</TextButton>
+                          <TextButton className='messageUpdateDeleteButton' onClick={handleMessagedClicked}>Message</TextButton>
 
                       }
 
@@ -221,8 +228,10 @@ function OfferDetails() {
       }
 
 
-      <FooterElement></FooterElement>
+      
     </ContainerOneOffer>
+    <FooterElement></FooterElement>
+    </>
   );
 }
 
