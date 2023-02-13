@@ -12,8 +12,8 @@ padding: ${(props) => props.theme.size.xxxxxxs};
 }
 `
 export const Header2 = styled.h2`
-color: ${(props) => props.theme.colors.color3};
-font-weight: bold;
+color: ${(props) => props.theme.colors.color4};
+font-size: 30px;
 text-align: center;
 padding: ${(props) => props.theme.size.xxxxxxs};
 @media (orientation: portrait) and (min-width: 768px){
@@ -40,12 +40,10 @@ text-align: center;
 
 //buttons
 export const TextButton = styled.button`
-border: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxs};
-border-radius: 25px;
-background-color: ${(props) => props.theme.colors.color5};
+border-radius: 5px;
+background-color: ${(props) => props.theme.colors.color1};
 color: ${(props) => props.theme.colors.color2};
 text-align: center;
-font-weight: bold;
 font-family: ${(props)=>props.theme.fontFamily};
 cursor: pointer;
 `

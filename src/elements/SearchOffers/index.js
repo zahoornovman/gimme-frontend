@@ -4,22 +4,25 @@ import { useState, useEffect } from "react";
 //react redux
 import { useSelector, useDispatch } from "react-redux";
 
+// react router dom
+import { useNavigate, useHistory } from "react-router-dom";
+
 //components
-import { baseUrl } from "../../../baseurl";
+import { baseUrl } from "../../baseurl";
 
 //styled components
 import { SearchOfferContainer } from "./styles";
 
 //selectors
-import { selectTags } from "../../../store/selectors/selectors";
+import { selectTags } from "../../store/selectors/selectors";
 
 //custom hooks
-import { useSettingTags } from "../../../hooks/tagsFetch";
+import { useSettingTags } from "../../hooks/tagsFetch";
 
 //slices
-import { setOffersInSlice } from "../../../slices/offers/offersSlice";
+import { setOffersInSlice } from "../../slices/offers/offersSlice";
 
-function Search() {
+function SearchOffers() {
   //Hooks to keep track of tags and search params locally
   const [tags, setTagsBackground] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
@@ -29,6 +32,7 @@ function Search() {
   const storeTags = useSelector(selectTags);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Calling tags
   useSettingTags();
@@ -42,6 +46,7 @@ function Search() {
   const handleSubmit = (event) => {
     event.preventDefault();
     searchOffers(event.target[0].value, event.target[1].value);
+    navigate("/offers/searchResults");
   };
 
   //Getting offers based on search params
@@ -87,7 +92,7 @@ function Search() {
           onChange={(event) => {
             setSearchTerm(event.target.value);
           }}
-          placeholder="Enter part of the title..."
+          placeholder="Enter Offer title..."
         />
         <button type="submit">Search</button>
       </form>
@@ -95,4 +100,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default SearchOffers;

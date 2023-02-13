@@ -276,8 +276,8 @@ function UpdateOffer() {
   }, [])
 
   return (
+    <><Header></Header>
     <ContainerUpdateOffer>
-      <Header></Header>
       {
         user.first_name === "NoNa"
           ?
@@ -580,8 +580,11 @@ function UpdateOffer() {
             }
           </>
       }
-      <FooterElement></FooterElement>
+
+      
     </ContainerUpdateOffer>
+    <FooterElement></FooterElement>
+    </>
   );
 }
 

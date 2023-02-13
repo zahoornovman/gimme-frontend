@@ -1,11 +1,11 @@
 //styled components
-import { ContainerOfferCardStyled } from "./styles";
+import { ContainerOfferCardStyled } from './styles';
 
 //images
-import no_picture from "../../images/no_picture.jpeg";
+import no_picture from '../../images/no_picture.jpeg';
 
 //hooks
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 function OfferCard(props) {
   const navigate = useNavigate();
@@ -19,7 +19,9 @@ function OfferCard(props) {
   return (
     <ContainerOfferCardStyled onClick={() => handleClickNavigate(props.obj.id)}>
       {props.obj.images[0] ? (
-        <img src={props.obj.images[0]} />
+        <div className="imageBox">
+          <img src={props.obj.images[0].images} alt='' /> 
+        </div>
       ) : (
         <img src={no_picture} />
       )}

@@ -4,20 +4,23 @@ import { useState, useEffect } from "react";
 //react redux
 import { useSelector, useDispatch } from "react-redux";
 
+// react router dom
+import { useNavigate } from "react-router-dom";
+
 //components
-import { baseUrl } from "../../../baseurl";
+import { baseUrl } from "../../baseurl";
 
 //styled components
 import { SearchRequestsContainer } from "./styles";
 
 //selectors
-import { selectTags } from "../../../store/selectors/selectors";
+import { selectTags } from "../../store/selectors/selectors";
 
 //custom hooks
-import { useSettingTags } from "../../../hooks/tagsFetch";
+import { useSettingTags } from "../../hooks/tagsFetch";
 
 //slices
-import { setRequestsInSlice } from "../../../slices/requests/requestsSlice";
+import { setRequestsInSlice } from "../../slices/requests/requestsSlice";
 
 function SearchRequests() {
   //hooks to keep track of tags and search params locally
@@ -29,6 +32,7 @@ function SearchRequests() {
   const storeTags = useSelector(selectTags);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Calling tags
   useSettingTags();
@@ -37,13 +41,13 @@ function SearchRequests() {
   useEffect(() => {
     console.log("Entering tag changing useeffect");
     setTagsBackground(storeTags);
-    console.log(storeTags);
   }, [storeTags]);
 
   // calling endpoint with title and tag params
   const handleSubmit = (event) => {
     event.preventDefault();
     searchRequests(event.target[0].value, event.target[1].value);
+    navigate("/requests/searchResults");
   };
 
   //Getting Requests based on search params
@@ -89,7 +93,7 @@ function SearchRequests() {
           onChange={(event) => {
             setSearchTerm(event.target.value);
           }}
-          placeholder="Enter part of the title..."
+          placeholder="Enter Request title..."
         />
         <button type="submit">Search</button>
       </form>
