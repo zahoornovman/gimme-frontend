@@ -49,7 +49,7 @@ function Header() {
           />
         )}
 
-        <Search/>
+        <SearchOffers/>
 
         {isHoveringMenu && (
           <div onMouseLeave={handleMouseOutMenu}>
@@ -82,6 +82,7 @@ function Header() {
           </>
         )}
       </div>
+      
       {/* <div className="secondLine">
         {hour < 12 ? (
           userFirstname === "NoNa" ? (
@@ -115,9 +116,10 @@ function Header() {
         ) : (
           <SearchOffers />
         )}
-      </div>
+        </div> */}
     </HeaderContainer>
   );
 }
+
 
 export default Header;
