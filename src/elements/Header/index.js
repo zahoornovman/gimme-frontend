@@ -6,7 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import Menu from "../Menu";
 import { signOut } from "../../slices/user/userSlice";
-import  Search  from "../../components/Offers/SearchBar";
+import SearchOffers from "../SearchOffers";
+import SearchRequests from "../SearchRequests";
 
 let date = new Date();
 let hour = date.getHours();
@@ -48,7 +49,7 @@ function Header() {
           />
         )}
 
-        <Search/>
+        <SearchOffers/>
 
         {isHoveringMenu && (
           <div onMouseLeave={handleMouseOutMenu}>
@@ -81,6 +82,7 @@ function Header() {
           </>
         )}
       </div>
+      
       {/* <div className="secondLine">
         {hour < 12 ? (
           userFirstname === "NoNa" ? (
@@ -105,9 +107,19 @@ function Header() {
         ) : (
           <Header1 className="fontSize">{`Good night ${userFirstname}!`}</Header1>
         )}
-      </div> */}
+        {path === "/requests/all" ||
+        path === "/requests/my" ||
+        path === "/requests/new" ||
+        path === "/requests/:id" ||
+        path === "/requests/update/:id" ? (
+          <SearchRequests />
+        ) : (
+          <SearchOffers />
+        )}
+        </div> */}
     </HeaderContainer>
   );
 }
+
 
 export default Header;

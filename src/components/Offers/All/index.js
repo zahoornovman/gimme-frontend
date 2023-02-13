@@ -5,10 +5,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 //components
-import { baseUrl } from '../../../baseurl';
-import FooterElement from '../../../elements/Footer';
-import Header from '../../../elements/Header';
-import Search from '../SearchBar';
+import { baseUrl } from "../../../baseurl";
+import FooterElement from "../../../elements/Footer";
+import Header from "../../../elements/Header";
 
 //styled components import
 import { ContainerAllOffers, ListOffersContainer } from './styles';

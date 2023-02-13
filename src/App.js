@@ -13,10 +13,12 @@ import AllRequests from "./components/Request/All";
 import MyRequests from "./components/Request/My";
 import NewRequest from "./components/Request/New";
 import RequestDetails from "./components/Request/One";
+import RequestsSearchResults from "./components/Request/Search";
 import AllOffers from "./components/Offers/All";
 import MyOffers from "./components/Offers/My";
 import NewOffer from "./components/Offers/New";
 import OfferDetails from "./components/Offers/One";
+import OffersSearchResults from "./components/Offers/Search";
 import SignUp from "./components/SignUp";
 import SignUpValidation from "./components/SignUpValidation";
 import UpdateUserProfile from "./components/Admin/ProfileUpdate";
@@ -67,12 +69,20 @@ function App() {
         <Route path="/requests/new" element={<NewRequest />}></Route>
         <Route path="/requests/:id" element={<RequestDetails />}></Route>
         <Route path="/requests/update" element={<UpdateRequest />}></Route>
+        <Route
+          path="/requests/searchResults"
+          element={<RequestsSearchResults />}
+        ></Route>
         {/*offers*/}
         <Route path="/offers/all" element={<AllOffers />}></Route>
         <Route path="/offers/my" element={<MyOffers />}></Route>
         <Route path="/offers/new" element={<NewOffer />}></Route>
         <Route path="/offers/:id" element={<OfferDetails />}></Route>
         <Route path="/offers/update/:id" element={<UpdateOffer />}></Route>
+        <Route
+          path="/offers/searchResults"
+          element={<OffersSearchResults />}
+        ></Route>
         {/*message*/}
         <Route path="/message" element={<MessageService />}></Route>
 
