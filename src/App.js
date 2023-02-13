@@ -66,7 +66,7 @@ function App() {
         <Route path="/requests/my" element={<MyRequests />}></Route>
         <Route path="/requests/new" element={<NewRequest />}></Route>
         <Route path="/requests/:id" element={<RequestDetails />}></Route>
-        <Route path="/requests/update" element={<UpdateRequest />}></Route>
+        <Route path="/requests/update/:id" element={<UpdateRequest />}></Route>
         {/*offers*/}
         <Route path="/offers/all" element={<AllOffers />}></Route>
         <Route path="/offers/my" element={<MyOffers />}></Route>

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { baseUrl } from "../../../baseurl";
 import { useSettingTags } from "../../../hooks/tagsFetch";
+import { errorNew, fields, loading } from "../../../elements/Statements/statements";
 
 
 function NewRequest() {
@@ -177,7 +178,7 @@ function NewRequest() {
                     tags === "notFetched"
                         ?
                         <div className="loading">
-                            Loading. Please be patient. 😊
+                            {loading}
                         </div>
                         :
                         action === "created"
@@ -205,7 +206,7 @@ function NewRequest() {
                             action === "error"
                                 ?
                                 <div className="error fontSize">
-                                    <div>Unfortunately, an error has occured. Please contact our backoffice.</div>
+                                    <div>{errorNew}</div>
                                     <TextButton
                                         className="fontSize"
                                         onClick={() => navigate("/admin/contact")}
@@ -238,7 +239,7 @@ function NewRequest() {
                                                         message === "FieldsNotCompleted"
                                                             ?
                                                             <div className="fontSize">
-                                                                Please fill in all fields. 😉
+                                                                {fields}
                                                             </div>
                                                             :
                                                             <></>

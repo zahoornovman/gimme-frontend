@@ -11,6 +11,7 @@ import { baseUrl } from "../../../baseurl";
 import { useSettingTags } from "../../../hooks/tagsFetch";
 import axios from "axios";
 import { useRef } from "react";
+import { errorNew, fields, loading, offerImage, offerImageFields } from "../../../elements/Statements/statements";
 
 function NewOffer() {
     const navigate = useNavigate()
@@ -298,7 +299,7 @@ function NewOffer() {
                     tags === "notFetched"
                         ?
                         <div className="loading">
-                            Loading. Please be patient. 😊
+                            {loading}
                         </div>
                         :
                         action === "created"
@@ -326,7 +327,7 @@ function NewOffer() {
                             action === "error"
                                 ?
                                 <div className="error fontSize">
-                                    <div>Unfortunately, an error has occured. Please contact our backoffice.</div>
+                                    <div>{errorNew}</div>
                                     <TextButton
                                         className="fontSize"
                                         onClick={() => navigate("/admin/contact")}
@@ -353,19 +354,19 @@ function NewOffer() {
                                                 message === "noImageSelected" || message === "noImageChoosen"
                                                     ?
                                                     <div className="fontSize">
-                                                        {`Offers require an image. 😉`}
+                                                        {offerImage}
                                                     </div>
                                                     :
                                                     message === "imageAndFieldsNotCompleted"
                                                         ?
                                                         <div className="fontSize">
-                                                            Please upload at least 1 image and fill in all fields. 😉
+                                                            {offerImageFields}
                                                         </div>
                                                         :
                                                         message === "FieldsNotCompleted"
                                                             ?
                                                             <div className="fontSize">
-                                                                Please fill in all fields. 😉
+                                                                {fields}
                                                             </div>
                                                             :
                                                             <></>

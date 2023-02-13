@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { baseUrl } from '../../../baseurl';
 import { OfferCard } from '../../../elements/OfferCard/offerCard';
+import { loading } from '../../../elements/Statements/statements';
 
 function MyOffers() {
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ function MyOffers() {
             :
             myOffers === ""
               ?
-              <div>Loading. Please be patient. 😊</div>
+              <div>{loading}</div>
               :
               myOffers === "noOffersPlaced"
                 ?

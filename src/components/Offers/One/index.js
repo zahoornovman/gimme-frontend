@@ -13,6 +13,7 @@ import ConditionTranslation from '../../../elements/ConditionTranslation';
 import StatusTranslation from '../../../elements/StatusTranslation';
 import img_cheveronDoubleLeft from "../../../images/chevronDoubleLeft.svg"
 import img_cheveronDoubleRight from "../../../images/chevronDoubleRight.svg"
+import { loading, offerNotDisplayed } from '../../../elements/Statements/statements';
 
 function OfferDetails() {
   const navigate = useNavigate();
@@ -97,7 +98,14 @@ function OfferDetails() {
 
     fetch(`${baseUrl}/backend/api/haves/${id}/`, requestOptions)
       .then(
-        () => navigate("/offers/all")
+        (response) => {
+          if (response.status < 300) {
+            navigate("/offers/all")
+          }
+          else{
+            setOffer("deletionFailed")
+          }
+        }
       )
       //.then(result => console.log(result))
       .catch(error => {
@@ -113,11 +121,11 @@ function OfferDetails() {
       {
         offer === ""
           ?
-          <div>Loading. Please be patient. 😉</div>
+          <div>{loading}</div>
           :
           offer === "error"
             ?
-            <div>The desired offer can't be displayed at the moment. We apologise fot the inconvenience. 😕</div>
+            <div>{offerNotDisplayed}</div>
             :
             offer === "deletionFailed"
               ?
@@ -132,9 +140,9 @@ function OfferDetails() {
                 <Header2>{offer.title}</Header2>
                 <div className='contentSection fontSize'>
                   {
-                    offer.images.length === 1
+                    offer.images.length === 0
                       ?
-                      <img src={offer.images[0]} />
+                      <></>
                       :
                       <div className='imageGallery'>
                         {
@@ -148,7 +156,7 @@ function OfferDetails() {
                               src={img_cheveronDoubleLeft} />
 
                         }
-                        <img src={`offer.images[${imageDisplayed}]`} />
+                        <img src={`${offer.images[imageDisplayed].images}`} />
                         {
                           imageDisplayed === offer.images.length - 1
                             ?
@@ -186,7 +194,7 @@ function OfferDetails() {
                   deletePopUp === "notDisplayed"
                     ?
                     <div className='buttonSection'>
-                      
+
                       {
                         offer.author.user.id === user.id
                           ?

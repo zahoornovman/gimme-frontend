@@ -12,6 +12,7 @@ import { lastPath } from '../../../slices/messages/messageSlice';
 import img_cheveronDoubleLeft from "../../../images/chevronDoubleLeft.svg"
 import img_cheveronDoubleRight from "../../../images/chevronDoubleRight.svg"
 import img_trash from "../../../images/trash.svg"
+import { deletedImageNotSuccessful, deletedImageSuccessful, fields, loading, offerImage, offerImageFields, offerNotDisplayed, updateObjectFailed } from '../../../elements/Statements/statements';
 
 function UpdateOffer() {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ function UpdateOffer() {
   const [offer, setOffer] = useState("");
   const { id } = useParams();
   const [imageDisplayed, setImageDisplayed] = useState(0)
+  const [imageAvailable, setImageAvailable] = useState([])
   const [actionResponse, setActionResponse] = useState("")
 
   const conditions = useSelector((state) => state.conditions)
@@ -41,7 +43,7 @@ function UpdateOffer() {
   const [currentLengthRequested, setCurrentLengthRequested] = useState(0)
 
   const [message, setMessage] = useState("no")
-  const [action, setAction] = useState("new")
+  const [action, setAction] = useState("notChanged")
   const [imagesPath, setImagesPath] = useState([])
 
   const [tagsBackend, setTagsBackground] = useState([]);
@@ -51,31 +53,37 @@ function UpdateOffer() {
 
   const handleChangeTitle = (event) => {
     setActionResponse("")
+    setMessage("no")
     let inputValue = event.target.value.length
     setCurrentLengthTitle(inputValue)
   }
   const handleChangeDescription = (event) => {
     setActionResponse("")
+    setMessage("no")
     let inputValue = event.target.value.length
     setCurrentLengthDescription(inputValue)
   }
   const handleChangeRequested = (event) => {
     setActionResponse("")
+    setMessage("no")
     let inputValue = event.target.value.length
     setCurrentLengthRequested(inputValue)
   }
 
   const handleRightCheveron = () => {
     setActionResponse("")
+    setMessage("no")
     setImageDisplayed(imageDisplayed + 1)
   }
   const handleLeftCheveron = () => {
     setActionResponse("")
+    setMessage("no")
     setImageDisplayed(imageDisplayed - 1)
   }
 
   const getRequestObject = () => {
     setActionResponse("")
+    setMessage("no")
     setOffer("")
 
     //var formdata = new FormData();
@@ -94,6 +102,7 @@ function UpdateOffer() {
         setCurrentLengthTitle(result.title.length)
         setCurrentLengthRequested(result.wants_for_this_item.length)
         setMaxNumberFiles(maxNumberFiles - result.images.length)
+        setImageAvailable(result.images)
         setOffer(result)
       })
       .catch(error => {
@@ -104,6 +113,7 @@ function UpdateOffer() {
 
   const handleDeleteImage = () => {
     setActionResponse("")
+    setMessage("no")
     let imageId = offer.images[imageDisplayed].id
 
 
@@ -127,16 +137,18 @@ function UpdateOffer() {
         if (response.status < 300) {
           setActionResponse("imageSuccessfullyDeleted")
           setMaxNumberFiles(maxNumberFiles + 1)
+          setImageAvailable(imageAvailable.splice(imageDisplayed, 1))
+          setImageDisplayed(0)
         }
         else {
           setActionResponse("imageDeletionFailed")
         }
       })
-      .then(
-        getRequestObject()
-      )
       // .then(result => console.log(result))
-      .catch(error => console.log('error', error));
+      .catch(error => {
+        console.log('error', error);
+        setActionResponse("imageDeletionFailed");
+      });
   }
 
   const handleFileUpload = (event) => {
@@ -162,6 +174,9 @@ function UpdateOffer() {
 
     if (amountImages === 0 && maxNumberFiles === 5) {
       setMessage("noImageSelected")
+    }
+    else if (amountImages === 0) {
+
     }
     else if (amountImages > maxNumberFiles) {
       setMessage("fileQuantityError")
@@ -189,18 +204,19 @@ function UpdateOffer() {
     const condition = document.getElementById('condition').value
     const requested = document.getElementById('request').value
     const tag = document.getElementById('tags').value
+    const status = document.getElementById('status').value
     //const images = imagesPath
     const imagesNumber = imagesPath.length
 
-    if (title === "" || description === "" || condition === "" || requested === "" || tag === "") {
-      if (imagesNumber === 0) {
+    if (title === "" || description === "" || condition === "" || requested === "" || tag === "" || status === "") {
+      if (imagesNumber === 0 && maxNumberFiles === 5) {
         setMessage("imageAndFieldsNotCompleted")
       }
       else {
         setMessage("FieldsNotCompleted")
       }
     }
-    else if (imagesNumber === 0) {
+    else if (imagesNumber === 0 && maxNumberFiles === 5) {
       setMessage("noImageChoosen")
     }
     else {
@@ -225,24 +241,24 @@ function UpdateOffer() {
         formdata.append("condition", `${condition}`);
         formdata.append("wants_for_this_item", `${requested}`);
         formdata.append("tags", `${tag}`);
-        formdata.append("status", "1");
+        formdata.append("status", `${status}`);
         var requestOptions = {
-          method: 'POST',
+          method: 'PATCH',
           headers: myHeaders,
           body: formdata,
           redirect: 'follow'
         };
 
-        fetch(`${baseUrl}/backend/api/haves/me/`, requestOptions)
+        fetch(`${baseUrl}/backend/api/haves/${id}/`, requestOptions)
           .then(response => response.json())
           .then(result => {
-            setAction("created")
+            navigate(`/offers/${id}`)
             setImagesPath([])
 
           })
           .catch(error => {
             console.log('error', error)
-            setAction("error")
+            setActionResponse("updateFailed")
             setImagesPath([])
           });
       }
@@ -263,283 +279,307 @@ function UpdateOffer() {
     <ContainerUpdateOffer>
       <Header></Header>
       {
-        offer === ""
+        user.first_name === "NoNa"
           ?
-          <div>Loading. Please be patient. 😉</div>
+          <div>Please sign in to update an offer. 😋</div>
           :
-          offer === "error"
-            ?
-            <div>The desired offer can't be displayed at the moment. We apologise fot the inconvenience. 😕</div>
-            :
-            <>
-              <Header2>Please modify your offer!</Header2>
-              <div className='contentSection'>
-                {
-                  actionResponse === "imageSuccessfullyDeleted"
-                    ?
-                    <div>The image has been successfully deleted. 😎</div>
-                    :
-                    actionResponse === "imageDeletionFailed"
-                      ?
-                      <>
-                        <div>Due to technical issues, the image hasn't been deleted. Please contact our backoffice. 😮</div>
-                        <TextButton
-                          onClick={() => navigate("/admin/contact")}
-                        >Contact details</TextButton>
-                      </>
-                      :
-                      message === "noImageSelected"
-                        ?
-                        <div>Offers require an image. 😉</div>
-                        :
-                        message === "fileQuantityError"
+          <>
+            {
+              offer === ""
+                ?
+                <div>{loading}</div>
+                :
+                offer === "error"
+                  ?
+                  <div>{offerNotDisplayed}</div>
+                  :
+                  <>
+                    <Header2>Please modify your offer!</Header2>
+                    <div className='contentSection'>
+                      {
+                        actionResponse === "imageSuccessfullyDeleted"
                           ?
-                          <div>{`Only ${maxNumberFiles} images are allowed. Please reduce the number of images to ${maxNumberFiles}. 😁`}</div>
+                          <div>{deletedImageSuccessful}</div>
                           :
-                          message === "fileSizeExceededLimit"
+                          actionResponse === "imageDeletionFailed"
                             ?
-                            <div>{`File size can't exceed ${maxImageFileSize / 1024 / 1024} MB. Please remove all files exceeding ${maxImageFileSize / 1024 / 1024} MB. 😉`}</div>
+                            <>
+                              <div>{deletedImageNotSuccessful}</div>
+                              <TextButton
+                                onClick={() => navigate("/admin/contact")}
+                              >Contact details</TextButton>
+                            </>
                             :
-                            <></>
-                }
-                <div className="inputField">
-                  <label
-                    className="fontSize"
-                    htmlFor="title"
-                  >
-                    Title:
-                  </label>
-                  <input
-                    className="fontSize"
-                    onChange={handleChangeTitle}
-                    maxLength={maxLenghtTitle}
-                    defaultValue={offer.title}
-                    id="title"></input>
-                  <div className="fontSize">{`(${currentLengthTitle}/${maxLenghtTitle})`}</div>
-                </div>
-                {
-                  offer.images.length === 1
-                    ?
-                    <div className='imageGallery'>
-                      <img src={offer.images[0]} />
-                      <img
-                        className="imageTrash"
-                        src={img_trash} />
-                    </div>
-                    :
-                    <div className='imageGallery'>
-                      <div>
-                        {
-                          imageDisplayed === 0
-                            ?
-                            <></>
-                            :
-                            <img
-                              className='cheveronButton'
-                              onClick={handleLeftCheveron}
-                              src={img_cheveronDoubleLeft} />
-
-                        }
-                        <img src={`offer.images[${imageDisplayed}]`} />
-                        {
-                          imageDisplayed === offer.images.length - 1
-                            ?
-                            <></>
-                            :
-                            <img
-                              className='cheveronButton'
-                              onClick={handleRightCheveron}
-                              src={img_cheveronDoubleRight} />
-                        }
+                            message === "noImageSelected" || message === "noImageChoosen"
+                              ?
+                              <div>{offerImage}</div>
+                              :
+                              message === "fileQuantityError"
+                                ?
+                                <div>{`Only ${maxNumberFiles} images are allowed. Please reduce the number of images to ${maxNumberFiles}. 😁`}</div>
+                                :
+                                message === "fileSizeExceededLimit"
+                                  ?
+                                  <div>{`File size can't exceed ${maxImageFileSize / 1024 / 1024} MB. Please remove all files exceeding ${maxImageFileSize / 1024 / 1024} MB. 😉`}</div>
+                                  :
+                                  message === "imageAndFieldsNotCompleted"
+                                    ?
+                                    <div>{offerImageFields}</div>
+                                    :
+                                    message === "FieldsNotCompleted"
+                                      ?
+                                      <div>{fields}</div>
+                                      :
+                                      actionResponse === "updateFailed"
+                                        ?
+                                        <>
+                                          <div>{updateObjectFailed}</div>
+                                          <TextButton
+                                            onClick={() => navigate("/admin/contact")}
+                                          >Contact details</TextButton>
+                                        </>
+                                        :
+                                        <></>
+                      }
+                      <div className="inputField">
+                        <label
+                          className="fontSize"
+                          htmlFor="title"
+                        >
+                          Title:
+                        </label>
+                        <input
+                          className="fontSize"
+                          onChange={handleChangeTitle}
+                          maxLength={maxLenghtTitle}
+                          defaultValue={offer.title}
+                          id="title"></input>
+                        <div className="fontSize">{`(${currentLengthTitle}/${maxLenghtTitle})`}</div>
                       </div>
-                      <div>
-                        <img
-                          src={img_trash}
-                          onClick={handleDeleteImage}
-                          className="imageTrash" />
-                      </div>
-                    </div>
-                }
-                <div className="inputField">
-                  <label
-                    className="fontSize"
-                    htmlFor="images"
-                  >
-                    <a className="fontSize buttonStyle">Add images</a>
-                  </label>
-                  <input
-                    className="fontSize"
-                    id="images"
-                    type="file"
-                    accept=".jpeg, .jpg, .png, .gif"
-                    onChange={handleFileUpload}
-                    style={{ display: "none" }}
-                    multiple></input>
+                      {
+                        imageAvailable.length === 0
+                          ?
+                          <></>
+                          :
+                          <div className='imageGallery'>
+                            <div>
+                              {
+                                imageDisplayed === 0
+                                  ?
+                                  <></>
+                                  :
+                                  <img
+                                    className='cheveronButton'
+                                    onClick={handleLeftCheveron}
+                                    src={img_cheveronDoubleLeft} />
 
-                  <div className="fontSize">
-                    <p>only .jpeg, .jpg, .png, .gif</p>
-                    <p>{`max. ${maxNumberFiles} images`}</p>
-                    <p>{`max. ${maxImageFileSize / 1024 / 1024} MB / image`}</p>
-                  </div>
-                  <div>
+                              }
+                              <img src={`${imageAvailable[imageDisplayed].images}`} />
+                              {
+                                imageDisplayed === offer.images.length - 1
+                                  ?
+                                  <></>
+                                  :
+                                  <img
+                                    className='cheveronButton'
+                                    onClick={handleRightCheveron}
+                                    src={img_cheveronDoubleRight} />
+                              }
+                            </div>
+                            <div>
+                              <img
+                                src={img_trash}
+                                onClick={handleDeleteImage}
+                                className="imageTrash" />
+                            </div>
+                          </div>
+                      }
+                      <div className="inputField">
+                        <label
+                          className="fontSize"
+                          htmlFor="images"
+                        >
+                          <a className="fontSize buttonStyle">Add images</a>
+                        </label>
+                        <input
+                          className="fontSize"
+                          id="images"
+                          type="file"
+                          accept=".jpeg, .jpg, .png, .gif"
+                          onChange={handleFileUpload}
+                          style={{ display: "none" }}
+                          multiple></input>
 
-                    {
-                      imagesPath.length === 0
-                        ?
-                        <></>
-                        :
-                        <>
-                          <h3 className="fontSize">files selected:</h3>
+                        <div className="fontSize">
+                          <p>only .jpeg, .jpg, .png, .gif</p>
+                          <p>{`max. ${maxNumberFiles} images`}</p>
+                          <p>{`max. ${maxImageFileSize / 1024 / 1024} MB / image`}</p>
+                        </div>
+                        <div>
+
                           {
-                            imagesPath.map((image, index) =>
-                              <div
-                                className="fontSize"
-                                key={index}
-                              >{`${image.name} (size: ${Math.round(image.size / 1024 / 1024 * 100) / 100} MB)`}</div>)
+                            imagesPath.length === 0
+                              ?
+                              <></>
+                              :
+                              <>
+                                <h3 className="fontSize">files selected:</h3>
+                                {
+                                  imagesPath.map((image, index) =>
+                                    <div
+                                      className="fontSize"
+                                      key={index}
+                                    >{`${image.name} (size: ${Math.round(image.size / 1024 / 1024 * 100) / 100} MB)`}</div>)
+                                }
+                              </>
                           }
-                        </>
-                    }
-                  </div>
-                </div>
-                <div className="inputField">
-                  <label
-                    className="fontSize"
-                    htmlFor="description"
-                  >
-                    Description:
-                  </label>
-                  <input
-                    className="fontSize"
-                    onChange={handleChangeDescription}
-                    maxLength={maxLengthDescription}
-                    defaultValue={offer.description}
-                    id="description"></input>
-                  <div className="fontSize">{`(${currentLengthDescription}/${maxLengthDescription})`}</div>
-                </div>
-                <div className="inputField">
-                  <label
-                    className="fontSize"
-                    htmlFor="condition"
-                  >Condition:</label>
+                        </div>
+                      </div>
+                      <div className="inputField">
+                        <label
+                          className="fontSize"
+                          htmlFor="description"
+                        >
+                          Description:
+                        </label>
+                        <input
+                          className="fontSize"
+                          onChange={handleChangeDescription}
+                          maxLength={maxLengthDescription}
+                          defaultValue={offer.description}
+                          id="description"></input>
+                        <div className="fontSize">{`(${currentLengthDescription}/${maxLengthDescription})`}</div>
+                      </div>
+                      <div className="inputField">
+                        <label
+                          className="fontSize"
+                          htmlFor="condition"
+                        >Condition:</label>
 
-                  <select
-                    id="condition"
-                    defaultValue={offer.condition}
-                  >
-                    <option
-                      value="1"
-                      className="fontSize">
-                      {conditions.c1}
-                    </option>
-                    <option
-                      value="2"
-                      className="fontSize">
-                      {conditions.c2}
-                    </option>
-                    <option
-                      value="3"
-                      className="fontSize">
-                      {conditions.c3}
-                    </option>
-                    <option
-                      value="4"
-                      className="fontSize">
-                      {conditions.c4}
-                    </option>
-                  </select>
-                </div>
-                <div className="inputField">
-                  <label
-                    className="fontSize"
-                    htmlFor="request"
-                  >
-                    Requested:
-                  </label>
-                  <input
-                    className="fontSize"
-                    onChange={handleChangeRequested}
-                    maxLength={maxLengthRequested}
-                    defaultValue={offer.wants_for_this_item}
-                    id="request"></input>
-                  <div className="fontSize">{`(${currentLengthRequested}/${maxLengthRequested})`}</div>
-                </div>
-                <div className="inputField">
-                  <label
-                    className="fontSize"
-                    htmlFor="tags"
-                  >Tag:</label>
-
-                  <select
-                    defaultValue={offer.tags[0]}
-                    id="tags">
-                    {
-                      tags === "notFetched"
-                        ?
-                        tagsBackend.map((tag, index) =>
+                        <select
+                          id="condition"
+                          defaultValue={offer.condition}
+                        >
                           <option
-                            key={index}
-                            id={index}
-                            className="fontSize"
-                            value={`${tag.id}`}
-                          >
-                            {
-                              `${tag.title}`
-                            }
+                            value="1"
+                            className="fontSize">
+                            {conditions.c1}
                           </option>
-                        )
-                        :
-                        tags.map((tag, index) =>
                           <option
-                            key={index}
-                            id={index}
-                            className="fontSize"
-                            value={`${tag.id}`}
-                          >
-                            {
-                              `${tag.title}`
-                            }
+                            value="2"
+                            className="fontSize">
+                            {conditions.c2}
                           </option>
-                        )
-                    }
-                  </select>
-                </div>
-                <div className="inputField">
-                  <label
-                    className="fontSize"
-                    htmlFor="status"
-                  >Status:</label>
+                          <option
+                            value="3"
+                            className="fontSize">
+                            {conditions.c3}
+                          </option>
+                          <option
+                            value="4"
+                            className="fontSize">
+                            {conditions.c4}
+                          </option>
+                        </select>
+                      </div>
+                      <div className="inputField">
+                        <label
+                          className="fontSize"
+                          htmlFor="request"
+                        >
+                          Requested:
+                        </label>
+                        <input
+                          className="fontSize"
+                          onChange={handleChangeRequested}
+                          maxLength={maxLengthRequested}
+                          defaultValue={offer.wants_for_this_item}
+                          id="request"></input>
+                        <div className="fontSize">{`(${currentLengthRequested}/${maxLengthRequested})`}</div>
+                      </div>
+                      <div className="inputField">
+                        <label
+                          className="fontSize"
+                          htmlFor="tags"
+                        >Tag:</label>
 
-                  <select
-                    id="status"
-                    defaultValue={offer.status}
-                  >
-                    <option
-                      value="1"
-                      className="fontSize">
-                      {status.s1}
-                    </option>
-                    <option
-                      value="2"
-                      className="fontSize">
-                      {status.s2}
-                    </option>
-                    <option
-                      value="3"
-                      className="fontSize">
-                      {status.s3}
-                    </option>
-                    <option
-                      value="4"
-                      className="fontSize">
-                      {status.s4}
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <TextButton>Save changes</TextButton>
-            </>
+                        <select
+                          defaultValue={offer.tags[0]}
+                          id="tags">
+                          {
+                            tags === "notFetched"
+                              ?
+                              tagsBackend.map((tag, index) =>
+                                <option
+                                  key={index}
+                                  id={index}
+                                  className="fontSize"
+                                  value={`${tag.id}`}
+                                >
+                                  {
+                                    `${tag.title}`
+                                  }
+                                </option>
+                              )
+                              :
+                              tags.map((tag, index) =>
+                                <option
+                                  key={index}
+                                  id={index}
+                                  className="fontSize"
+                                  value={`${tag.id}`}
+                                >
+                                  {
+                                    `${tag.title}`
+                                  }
+                                </option>
+                              )
+                          }
+                        </select>
+                      </div>
+                      <div className="inputField">
+                        <label
+                          className="fontSize"
+                          htmlFor="status"
+                        >Status:</label>
+
+                        <select
+                          id="status"
+                          defaultValue={offer.status}
+                        >
+                          <option
+                            value="1"
+                            className="fontSize">
+                            {status.s1}
+                          </option>
+                          <option
+                            value="2"
+                            className="fontSize">
+                            {status.s2}
+                          </option>
+                          <option
+                            value="3"
+                            className="fontSize">
+                            {status.s3}
+                          </option>
+                          <option
+                            value="4"
+                            className="fontSize">
+                            {status.s4}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <TextButton
+                      onClick={handleSave}
+                    >Save changes</TextButton>
+                    <TextButton
+                      onClick={() => navigate(`/offers/${id}`)}
+                    >Go back</TextButton>
+                  </>
+            }
+          </>
       }
-
       <FooterElement></FooterElement>
     </ContainerUpdateOffer>
   );
