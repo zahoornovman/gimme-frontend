@@ -10,25 +10,20 @@ justify-content:flex-start;
 align-items: center;
 .contentSection{
   display: flex;
-  flex-direction: row;
-  .imageBox {
-    width: 600px;
-    height: 400px;
-    border: 1px solid grey;
-    margin-top: 20px;
-    margin-bottom: 50px;
-  }
-
-  .imageBox img {
-    width:100%;
-    height: 100%;
-    object-fit:cover;
-  }
-
+  flex-direction: column;
+  
   .imageGallery{
     border: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxxs};
-    height: 600px;
-    width: 400px;
+    height: 400px;
+    width: 600px;
+    background-color: ${(props) => props.theme.colors.color3};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img{
+      max-width: 450px;
+      max-height: 300px;
+    }
     .cheveronButton{
       height: 20px;
       cursor: pointer;
