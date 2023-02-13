@@ -127,7 +127,7 @@ const offersSlice = createSlice({
       console.log(payload);
     },
     addMoreOffers: (state, { payload }) => {
-      state.offers = [...state.offers].push(payload.results);
+      state.offers = [...state.offers, ...payload.results];
     },
     // loading: (state) => {
     //   state.loading = "true";
