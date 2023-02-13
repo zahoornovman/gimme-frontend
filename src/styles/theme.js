@@ -1,13 +1,14 @@
 export const theme = {
     colors: {
-        color1: "#009639", // green
-        color2: "#EF3340", // red
-        color3: "#FFD100", // yellow
+        color1: "#FFA800", // orange
+        color2: "#E9E9E9", // grey
+        color3: "#F1F1F1", // light grey
         color4: "#000000", // black
         color5: "#ffffff", // white
-        color6: "#00B5E2", // blue
+        color6: "#E9E9E9", // grey
+        color7: "#577590", // blue background
     },
-    fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
+    fontFamily: "Sulphur Point, Verdana, Geneva, Tahoma, sans-serif",
     size: {
         basic: "16px",
         xxxxxxxxxs: "1px", //9x
