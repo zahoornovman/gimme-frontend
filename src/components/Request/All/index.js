@@ -16,7 +16,10 @@ import { selectRequests, selectTags } from "../../../store/selectors/selectors";
 import { useSettingTags } from "../../../hooks/tagsFetch";
 
 //slices
-import { setRequestsInSlice } from "../../../slices/requests/requestsSlice";
+import {
+  setMoreRequests,
+  setRequestsInSlice,
+} from "../../../slices/requests/requestsSlice";
 
 //styled components import
 import { ContainerAllRequests, ListRequestsContainer } from "./styles";
@@ -27,6 +30,9 @@ function AllRequests() {
   const [requestList, setRequestList] = useState([]);
   const [tags, setTagsBackground] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [next, setNext] = useState(null);
+
+  // let next;
 
   const dispatch = useDispatch();
 
@@ -41,6 +47,7 @@ function AllRequests() {
 
   //Called when requests in redux store change
   useEffect(() => {
+    //console.log("Request in store changed");
     setRequestList(requests);
   }, [requests]);
 
@@ -59,9 +66,33 @@ function AllRequests() {
       redirect: "follow",
     };
 
-    fetch(`${baseUrl}/backend/api/wants/`, requestOptions)
+    const url = `${baseUrl}/backend/api/wants/`;
+    fetch(url, requestOptions)
       .then((response) => response.json())
-      .then((result) => dispatch(setRequestsInSlice(result)))
+      .then((result) => {
+        setNext(result.next);
+        dispatch(setRequestsInSlice(result));
+      })
+      .catch((error) =>
+        setErrorMessage(
+          "An error occurred while submitting the form. Please try again."
+        )
+      );
+  };
+
+  const fetchMoreRequests = () => {
+    console.log("More");
+    console.log(next);
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+    fetch(next, requestOptions)
+      .then((response) => response.json())
+      .then((result) => {
+        setNext(result.next);
+        dispatch(setMoreRequests(result));
+      })
       .catch((error) =>
         setErrorMessage(
           "An error occurred while submitting the form. Please try again."
@@ -88,6 +119,9 @@ function AllRequests() {
             requestList.map((obj) => <RequestCard key={obj.id} obj={obj} />)
           )}
         </ListRequestsContainer>
+      )}
+      {next !== null && (
+        <button onClick={fetchMoreRequests}> Click for More..</button>
       )}
       <FooterElement />
     </ContainerAllRequests>

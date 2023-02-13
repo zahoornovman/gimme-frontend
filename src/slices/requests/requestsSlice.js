@@ -65,12 +65,15 @@ const requestsSlice = createSlice({
   initialState,
   reducers: {
     setRequests: (state, { payload }) => {
-      console.log("Entering slice to set requests");
+      //console.log("Entering slice to set requests");
       state.requests = payload.results;
-      console.log(payload);
+      //console.log(payload.results);
+      //console.log(state.requests);
     },
     addMoreRequests: (state, { payload }) => {
-      state.requests = [...state.requests].push(payload.results);
+      //console.log(payload.results);
+      state.requests = [...state.requests, ...payload.results];
+      //console.log(state.requests);
     },
     // loading: (state) => {
     //   state.loading = "true";
