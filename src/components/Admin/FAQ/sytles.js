@@ -21,6 +21,7 @@ width: 100vw;
     }
     }
 .faqSection{
+    height: 80vh;
     margin-top: ${(props) => props.theme.size.xxxxxxl};
     margin-bottom: ${(props) => props.theme.size.xxxxxxl};
     display: flex;

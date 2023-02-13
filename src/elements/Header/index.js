@@ -49,6 +49,8 @@ function Header() {
           />
         )}
 
+        <Search/>
+
         {isHoveringMenu && (
           <div onMouseLeave={handleMouseOutMenu}>
             <Menu></Menu>
@@ -80,7 +82,7 @@ function Header() {
           </>
         )}
       </div>
-      <div className="secondLine">
+      {/* <div className="secondLine">
         {hour < 12 ? (
           userFirstname === "NoNa" ? (
             <Header1 className="fontSize">Good morning!</Header1>
