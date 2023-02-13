@@ -12,10 +12,10 @@ export const ContainerAllOffers = styled.div`
 export const ListOffersContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  width: 90%;
-  max-width: 1170px;
+  /* max-width: 1170px; */
   margin: 5rem auto;
   gap: 2rem;
   justify-items: center;
+  align-items: center;
   /* border: 2px solid pink; */
 `;
