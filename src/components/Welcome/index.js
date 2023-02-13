@@ -49,7 +49,7 @@ function Welcome() {
     fetch(`${baseUrl}/backend/api/haves/`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
+        //console.log(result);
         setOffersLatest10(result.results);
       })
       .catch((error) => {
@@ -127,7 +127,6 @@ function Welcome() {
                   </div>
                 ) : (
                   <div className="objects">
-                    {console.log(offersLatest10)}
                     {offersLatest10.map((obj) => (
                       <OfferCard key={obj.id} obj={obj} />
                     ))}
