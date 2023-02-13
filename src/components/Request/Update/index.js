@@ -74,11 +74,13 @@ function UpdateRequest() {
     setActionResponse("")
     setMessage("no")
     setImageDisplayed(imageDisplayed + 1)
+    console.log(`image displayed: ${imageDisplayed}`)
   }
   const handleLeftCheveron = () => {
     setActionResponse("")
     setMessage("no")
     setImageDisplayed(imageDisplayed - 1)
+    console.log(`image displayed: ${imageDisplayed}`)
   }
 
   const getRequestObject = () => {
@@ -115,9 +117,7 @@ function UpdateRequest() {
     setActionResponse("")
     setMessage("no")
     let imageId = request.images[imageDisplayed].id
-
-
-
+    console.log(`image id: ${imageId}`)
     var myHeaders = new Headers();
     //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2NTQ0MzY0LCJpYXQiOjE2NzYxMTIzNjQsImp0aSI6IjA4ZDgzZDZiYzJmMTQyNzQ5YjZiOTA1MWJkZjgyYWNhIiwidXNlcl9pZCI6Mn0.0WNLR973Gggaiwl4h0KAgmEuq0RRLUHHI9YwlCHvCsk");
     myHeaders.append("Authorization", `Bearer ${user.acces}`);
@@ -137,7 +137,9 @@ function UpdateRequest() {
         if (response.status < 300) {
           setActionResponse("imageSuccessfullyDeleted")
           setMaxNumberFiles(maxNumberFiles + 1)
-          setImageAvailable(imageAvailable.splice(imageDisplayed, 1))
+          let availableImages = imageAvailable
+          availableImages.splice(imageDisplayed, 1)
+          setImageAvailable(availableImages)
           setImageDisplayed(0)
         }
         else {

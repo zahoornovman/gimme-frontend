@@ -137,7 +137,9 @@ function UpdateOffer() {
         if (response.status < 300) {
           setActionResponse("imageSuccessfullyDeleted")
           setMaxNumberFiles(maxNumberFiles + 1)
-          setImageAvailable(imageAvailable.splice(imageDisplayed, 1))
+          let availableImages = imageAvailable
+          availableImages.splice(imageDisplayed, 1)
+          setImageAvailable(availableImages)
           setImageDisplayed(0)
         }
         else {

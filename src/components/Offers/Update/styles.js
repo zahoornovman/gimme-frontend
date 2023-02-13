@@ -4,7 +4,7 @@ export const ContainerUpdateOffer = styled.div`
   margin-top: ${(props) => props.theme.size.xxxxxxxl};
   margin-bottom: ${(props) => props.theme.size.xxxxxxxl};
   .contentSection{
-    height: 100vh;
+ 
   .imageGallery{
     border: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxxs};
     height: 200px;
