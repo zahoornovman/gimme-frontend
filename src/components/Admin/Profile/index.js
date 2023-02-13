@@ -41,9 +41,16 @@ function Profile() {
     };
 
     fetch(`${baseUrl}/backend/api/user/me/`, requestOptions)
-      .then(() => {
-        dispatch(signOut());
-        navigate("/");
+      .then((response) => {
+
+        if (response.status < 300) {
+          dispatch(signOut());
+          navigate("/");
+        }
+        else {
+          navigate("/admin/profile/deleteerror");
+        }
+
       })
       .catch((error) => {
         navigate("/admin/profile/deleteerror");

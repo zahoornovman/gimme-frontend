@@ -68,7 +68,7 @@ function App() {
         <Route path="/requests/my" element={<MyRequests />}></Route>
         <Route path="/requests/new" element={<NewRequest />}></Route>
         <Route path="/requests/:id" element={<RequestDetails />}></Route>
-        <Route path="/requests/update" element={<UpdateRequest />}></Route>
+        <Route path="/requests/update/:id" element={<UpdateRequest />}></Route>
         <Route
           path="/requests/searchResults"
           element={<RequestsSearchResults />}

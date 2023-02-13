@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { baseUrl } from "../../../baseurl";
 import { RequestCard } from "../../../elements/RequestCard/requestCard";
+import { loading } from "../../../elements/Statements/statements";
 
 function MyRequests() {
   const navigate = useNavigate();
@@ -61,7 +62,7 @@ function MyRequests() {
             :
             myRequests === ""
               ?
-              <div>Loading. Please be patient. 😊</div>
+              <div>{loading}</div>
               :
               myRequests === "noRequestsPlaced"
                 ?

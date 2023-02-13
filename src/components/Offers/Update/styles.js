@@ -20,6 +20,15 @@ export const ContainerUpdateOffer = styled.div`
 
   }
 }
+.buttonStyle{
+    border: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxs};
+    border-radius: 25px;
+    background-color: ${(props) => props.theme.colors.color5};
+    color: ${(props) => props.theme.colors.color2};
+    text-align: center;
+    font-weight: bold;
+    font-family: ${(props) => props.theme.fontFamily};
+    cursor: pointer;}
 .buttonSection{
   .deleteButton{
     background-color: ${(props) => props.theme.colors.color1};

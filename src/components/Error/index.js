@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import FooterElement from "../../elements/Footer";
 import { EmjoyContainer, Header1, TextButton, TextContainer } from "../../styles/MasterStyles";
 import { MainError } from "./styles";
+import { statementPage404 } from "../../elements/Statements/statements";
 
 let date = new Date
 let hour = date.getHours()
@@ -69,7 +70,7 @@ function Error() {
         <TextContainer
           className="errorMessage fontSize"
         >
-          Sorry, this page doesn't exist.
+          {statementPage404}
         </TextContainer>
         <EmjoyContainer
           className="errorEmojy"
