@@ -18,8 +18,6 @@ import { OfferCard } from "../../elements/OfferCard/offerCard";
 //import img_noPicture from "../../images/no_picture.jpeg"
 import { reply } from "../../slices/acceptance/acceptanceSlice";
 
-
-
 function Welcome() {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -30,11 +28,9 @@ function Welcome() {
 
   const [fetchingStatus, setFetchingStatus] = useState("noError");
 
-
   const acceptance = useSelector((state) => state.acceptance.acceptance);
 
   const [offersLatest10, setOffersLatest10] = useState([]);
-
 
   useSettingTags();
   useEffect(() => {
@@ -50,11 +46,11 @@ function Welcome() {
       redirect: "follow",
     };
 
-    fetch(`${baseUrl}/backend/api/haves`, requestOptions)
+    fetch(`${baseUrl}/backend/api/haves/`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        //console.log(result);
-        setOffersLatest10(result);        
+        console.log(result);
+        setOffersLatest10(result.results);
       })
       .catch((error) => {
         console.log("error", error);
@@ -63,7 +59,6 @@ function Welcome() {
   }, []);
 
   const handleAgreement = () => {
-
     dispatch(
       reply({
         reply: "yes",
@@ -79,85 +74,74 @@ function Welcome() {
     );
   };
 
-
-
-
   return (
-
     <>
-      {
-        acceptance === "notAnswered" && user.first_name === "NoNa"
-          ?
-          <ContainerHome>
-            <Header></Header>
-            <div className="overlayer">
-              <PopUp className="popUpWelcomePage">
-                <div className="fontSize">
-                  Do you agree with the{" "}
-                  <Link to={"../admin/termsofuse"}>terms of use</Link> and with
-                  usage of cookies?
-                </div>
-                <div>
-                  <PopUpButtonYes className="fontSize" onClick={handleAgreement}>
-                    Yes, I do.
-                  </PopUpButtonYes>
-                  <PopUpButtonNo className="fontSize" onClick={handleDisagreement}>
-                    No, I don't.
-                  </PopUpButtonNo>
-                </div>
-              </PopUp>
-            </div>
-            <FooterElement></FooterElement>
-          </ContainerHome>
-          :
-          acceptance === "no"
-            ?
-            <ContainerHome>
-              <Header></Header>
-              <div className="overlayer">
-                <PopUp className="popUpWelcomePage">
-                  <div className="fontSize">You can't use our service. 😢</div>
-                </PopUp>
+      {acceptance === "notAnswered" && user.first_name === "NoNa" ? (
+        <ContainerHome>
+          <Header></Header>
+          <div className="overlayer">
+            <PopUp className="popUpWelcomePage">
+              <div className="fontSize">
+                Do you agree with the{" "}
+                <Link to={"../admin/termsofuse"}>terms of use</Link> and with
+                usage of cookies?
               </div>
-              <FooterElement></FooterElement>
-            </ContainerHome>
-            :
-            <ContainerWelcome>
-              <Header></Header>
-              {offersLatest10 === "" ?
-
-                <div className="loading">Loading. Please be patient. 😊</div>
-                :
-
-                <div className="notLoading">
-                  <div className="latestOfferContainer">
-                    <Header2>Latest offers</Header2>
-                    {fetchingStatus === "error"
-                      ?
-                      <div>
-                        Latest offers can't be displayed at the moment. We apologise
-                        for the inconvenience. 😖
-                      </div>
-                      :
-                      <div className="objects">
-                        {offersLatest10.map((obj) => (
-                          <OfferCard key={obj.id} obj={obj} />
-                        ))}
-                      </div>
-                    }
+              <div>
+                <PopUpButtonYes className="fontSize" onClick={handleAgreement}>
+                  Yes, I do.
+                </PopUpButtonYes>
+                <PopUpButtonNo
+                  className="fontSize"
+                  onClick={handleDisagreement}
+                >
+                  No, I don't.
+                </PopUpButtonNo>
+              </div>
+            </PopUp>
+          </div>
+          <FooterElement></FooterElement>
+        </ContainerHome>
+      ) : acceptance === "no" ? (
+        <ContainerHome>
+          <Header></Header>
+          <div className="overlayer">
+            <PopUp className="popUpWelcomePage">
+              <div className="fontSize">You can't use our service. 😢</div>
+            </PopUp>
+          </div>
+          <FooterElement></FooterElement>
+        </ContainerHome>
+      ) : (
+        <ContainerWelcome>
+          <Header></Header>
+          {offersLatest10 === "" ? (
+            <div className="loading">Loading. Please be patient. 😊</div>
+          ) : (
+            <div className="notLoading">
+              <div className="latestOfferContainer">
+                <Header2>Latest offers</Header2>
+                {fetchingStatus === "error" ? (
+                  <div>
+                    Latest offers can't be displayed at the moment. We apologise
+                    for the inconvenience. 😖
                   </div>
+                ) : (
+                  <div className="objects">
+                    {console.log(offersLatest10)}
+                    {offersLatest10.map((obj) => (
+                      <OfferCard key={obj.id} obj={obj} />
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
 
-
-                </div>
-              }
-
-
-              <FooterElement></FooterElement>
-            </ContainerWelcome>
-      }
+          <FooterElement></FooterElement>
+        </ContainerWelcome>
+      )}
     </>
   );
-
 }
 
 export default Welcome;
