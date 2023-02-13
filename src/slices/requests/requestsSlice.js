@@ -66,8 +66,11 @@ const requestsSlice = createSlice({
   reducers: {
     setRequests: (state, { payload }) => {
       console.log("Entering slice to set requests");
-      state.requests = payload;
+      state.requests = payload.results;
       console.log(payload);
+    },
+    addMoreRequests: (state, { payload }) => {
+      state.requests = [...state.requests].push(payload.results);
     },
     // loading: (state) => {
     //   state.loading = "true";
@@ -101,6 +104,7 @@ const requestsSlice = createSlice({
 });
 
 const setRequestsInSlice = requestsSlice.actions.setRequests;
+const setMoreRequests = requestsSlice.actions.addMoreRequests;
 // const loading = requestsSlice.actions.loading;
 // const successfulSignIn = requestsSlice.actions.successfulSignIn;
 // const errorSignIn = requestsSlice.actions.errorSignIn;
@@ -109,6 +113,7 @@ const reducer = requestsSlice.reducer;
 
 export {
   setRequestsInSlice,
+  setMoreRequests,
   // loading,
   // successfulSignIn,
   // errorSignIn,
