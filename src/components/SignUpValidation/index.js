@@ -2,23 +2,16 @@ import FooterElement from "../../elements/Footer";
 import Header from "../../elements/Header";
 import {
   Header2,
-  PopUp,
-  PopUpButtonNo,
-  PopUpButtonYes,
   TextButton,
   TextContainer,
 } from "../../styles/MasterStyles";
 import { ContainerSignUpValidation } from "./styles";
-import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { updateProfile } from "../../slices/user/userSlice";
-import { baseUrl } from "../../baseurl";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { loading } from "../../elements/Statements/statements";
 
 function SignUpValidation() {
-  const user = useSelector((state) => state.user);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const [status, setStatus] = useState("codeSent");
 
@@ -31,8 +24,6 @@ function SignUpValidation() {
     let lastName = document.getElementById("last_name").value;
     let location = document.getElementById("location").value;
     let validationCode = document.getElementById("validationCode").value;
-
-    console.log(location);
 
     if (password === passwordRepeat) {
       if (
@@ -61,7 +52,7 @@ function SignUpValidation() {
       <Header2 className="fontSize">Just a step a head from swaping!</Header2>
       <div className="messageSignUp fontSize">
         {status === "loading" ? (
-          <TextContainer>Loading. Please be patient. 😉</TextContainer>
+          <TextContainer>{loading}</TextContainer>
         ) : status === "passwordNotEqual" ? (
           <TextContainer className="errorMessage">
             The password and and password repeat aren't equal. Please correct.

@@ -1,27 +1,24 @@
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import Header from "../../elements/Header";
 import FooterElement from "../../elements/Footer";
 import { ContainerHome, ContainerWelcome } from "./styles";
 import { baseUrl } from "../../baseurl";
-//import { fetchingTags } from "../../slices/tags/tagsSlice";
 import { useSettingTags } from "../../hooks/tagsFetch";
 import {
   Header2,
   PopUp,
   PopUpButtonNo,
   PopUpButtonYes,
-  TextButton,
 } from "../../styles/MasterStyles";
 import { OfferCard } from "../../elements/OfferCard/offerCard";
-//import img_noPicture from "../../images/no_picture.jpeg"
 import { reply } from "../../slices/acceptance/acceptanceSlice";
+import { loading } from "../../elements/Statements/statements";
 
 function Welcome() {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [tags, setTagsBackground] = useState([]);
   const tag = useSelector((state) => state.tags.tags);
@@ -38,22 +35,18 @@ function Welcome() {
   }, [tag]);
 
   useEffect(() => {
-    //var formdata = new FormData();
     setFetchingStatus("noError");
     var requestOptions = {
       method: "GET",
-      //body: formdata,
       redirect: "follow",
     };
 
     fetch(`${baseUrl}/backend/api/haves/`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        //console.log(result);
         setOffersLatest10(result.results);
       })
-      .catch((error) => {
-        console.log("error", error);
+      .catch(() => {
         setFetchingStatus("error");
       });
   }, []);
@@ -116,7 +109,7 @@ function Welcome() {
         <Header></Header>
         <ContainerWelcome>
           {offersLatest10 === "" ? (
-            <div className="loading">Loading. Please be patient. 😊</div>
+            <div className="loading">{loading}</div>
           ) : (
             <div className="notLoading">
               <div className="latestOfferContainer">

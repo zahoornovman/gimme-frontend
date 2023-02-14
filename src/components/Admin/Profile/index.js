@@ -8,9 +8,9 @@ import {
   TextButton,
 } from "../../../styles/MasterStyles";
 import { ContainerUserProfile } from "./sytles";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { signOut } from "../../../slices/user/userSlice";
 import { baseUrl } from "../../../baseurl";
 
@@ -52,7 +52,7 @@ function Profile() {
         }
 
       })
-      .catch((error) => {
+      .catch(() => {
         navigate("/admin/profile/deleteerror");
       });
   };

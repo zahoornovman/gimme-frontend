@@ -1,5 +1,5 @@
-import { useNavigate, useParams } from "react-router-dom"
-import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom"
+import { useSelector } from 'react-redux';
 import FooterElement from "../../elements/Footer";
 import { EmjoyContainer, Header1, TextButton, TextContainer } from "../../styles/MasterStyles";
 import { MainError } from "./styles";

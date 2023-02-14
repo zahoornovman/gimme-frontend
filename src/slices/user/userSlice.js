@@ -22,24 +22,15 @@ const userSlice = createSlice({
         },
         successfulSignIn: (state, {payload}) => {
             state.id = payload.id;
-            //state.email = payload.email;
-            //state.first_name = payload.first_name;
-            //state.last_name = payload.last_name;
-            //state.username = payload.username;
-            //state.location = payload.location;
             state.refresh = payload.refresh;
             state.acces = payload.acces;
-            //state.loading = "completed"
         },
         successfulGettingUserData: (state, {payload}) => {
-            //state.id = payload.id;
             state.email = payload.email;
             state.first_name = payload.first_name;
             state.last_name = payload.last_name;
             state.username = payload.username;
             state.location = payload.location;
-            //state.refresh = payload.refresh;
-            //state.acces = payload.acces;
             state.loading = "completed"
         },
         errorSignIn: (state) => {

@@ -31,7 +31,6 @@ function MessageService() {
             setCurrentLengthMessage(0)
 
             var myHeaders = new Headers();
-            //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2MjI2NjYyLCJpYXQiOjE2NzU3OTQ2NjIsImp0aSI6IjBiZDUwNTlmM2QxNDRlNzY4ZjRiOTM5ZWNjNjk0M2JhIiwidXNlcl9pZCI6Mn0.r6TsaD9OlR9c-1w6yPA5AAOshfHceTY6ai0TdxL_A-s");
             myHeaders.append("Authorization", `Bearer ${accessToken}`);
             myHeaders.append("Content-Type", "application/json");
 
@@ -78,8 +77,8 @@ function MessageService() {
                 })
 
 
-                .catch(error => {
-                    console.log('error', error)
+                .catch(() => {
+            
                     setMessageStatus("error")
                 });
 
@@ -89,11 +88,10 @@ function MessageService() {
     useEffect(() => {
         setMessageStatus("draft")
         if (addSubject.accessedFromOfferOrRequest === "have") {
-            var formdata = new FormData();
+           
 
             var requestOptions = {
                 method: 'GET',
-                //body: formdata,
                 redirect: 'follow'
             };
 
@@ -102,22 +100,20 @@ function MessageService() {
                 .then(result => {
                     setReceiverId(Number(result.author.id))
                 })
-                .catch(error => {
-                    console.log('error', error)
+                .catch(() => {
+               
                     setMessageStatus("ReceiverNotAccessible")
                 });
         }
         else {
             var myHeaders = new Headers();
-            //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2MjI2NjYyLCJpYXQiOjE2NzU3OTQ2NjIsImp0aSI6IjBiZDUwNTlmM2QxNDRlNzY4ZjRiOTM5ZWNjNjk0M2JhIiwidXNlcl9pZCI6Mn0.r6TsaD9OlR9c-1w6yPA5AAOshfHceTY6ai0TdxL_A-s");
             myHeaders.append("Authorization", `Bearer ${accessToken}`);
 
-            var formdata = new FormData();
+            
 
             var requestOptions = {
                 method: 'GET',
                 headers: myHeaders,
-                //body: formdata,
                 redirect: 'follow'
             };
 
@@ -205,8 +201,6 @@ function MessageService() {
                                     </div>
 
             }
-
-
             <FooterElement></FooterElement>
         </ContainerMessageService>
     );
