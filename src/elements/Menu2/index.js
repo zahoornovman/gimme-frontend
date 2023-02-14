@@ -1,8 +1,8 @@
 import "./styles.css";
-import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { ReactComponent as CogIcon } from "../../images/cog.svg";
-import { ReactComponent as ChevronIcon } from "../../images/chevron.svg";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { ReactComponent as ChevronRightIcon } from "../../images/chevronDoubleRight.svg";
+import { ReactComponent as ChevronLeftIcon } from "../../images/chevronDoubleLeft.svg";
 import { CSSTransition } from "react-transition-group";
 import { useState } from "react";
 
@@ -56,12 +56,25 @@ function DropdownMenu() {
         onEnter={calcHeight}
       >
         <div className="menu">
-          <DropdownItem rightIcon={<ChevronIcon />}>My Profile</DropdownItem>
-          <DropdownItem rightIcon={<ChevronIcon />} goToMenu="offers">
+          {status === "completed" && (
+            <DropdownItem goToMenu={() => navigate("/admin/profile")}>
+              My Profile
+            </DropdownItem>
+          )}
+          <DropdownItem rightIcon={<ChevronRightIcon />} goToMenu="offers">
             Offers
           </DropdownItem>
-          <DropdownItem rightIcon={<ChevronIcon />} goToMenu="requests">
+          <DropdownItem rightIcon={<ChevronRightIcon />} goToMenu="requests">
             Requests
+          </DropdownItem>
+          <DropdownItem goToMenu={() => navigate("/admin/faq")}>
+            FAQs
+          </DropdownItem>
+          <DropdownItem goToMenu={() => navigate("/admin/contact")}>
+            Contact
+          </DropdownItem>
+          <DropdownItem goToMenu={() => navigate("/admin/termsofuse")}>
+            Terms of use
           </DropdownItem>
         </div>
       </CSSTransition>
@@ -74,16 +87,22 @@ function DropdownMenu() {
         onEnter={calcHeight}
       >
         <div className="menu">
-          <DropdownItem goToMenu="main"> Go Back</DropdownItem>
+          <DropdownItem leftIcon={<ChevronLeftIcon />} goToMenu="main">
+            Go Back
+          </DropdownItem>
           <DropdownItem goToMenu={() => navigate("/offers/all")}>
             All Offers
           </DropdownItem>
-          <DropdownItem goToMenu={() => navigate("/requests/my")}>
-            My Offers
-          </DropdownItem>
-          <DropdownItem goToMenu={() => navigate("/requests/new")}>
-            Create New Offer
-          </DropdownItem>
+          {status === "completed" && (
+            <DropdownItem goToMenu={() => navigate("/offers/my")}>
+              My Offers
+            </DropdownItem>
+          )}
+          {status === "completed" && (
+            <DropdownItem goToMenu={() => navigate("/offers/new")}>
+              Create New Offer
+            </DropdownItem>
+          )}
         </div>
       </CSSTransition>
 
@@ -95,16 +114,22 @@ function DropdownMenu() {
         onEnter={calcHeight}
       >
         <div className="menu">
-          <DropdownItem goToMenu="main"> Go Back</DropdownItem>
+          <DropdownItem leftIcon={<ChevronLeftIcon />} goToMenu="main">
+            Go Back
+          </DropdownItem>
           <DropdownItem goToMenu={() => navigate("/requests/all")}>
             All Requests
           </DropdownItem>
-          <DropdownItem goToMenu={() => navigate("/requests/my")}>
-            My Requests
-          </DropdownItem>
-          <DropdownItem goToMenu={() => navigate("/requests/new")}>
-            Create New Request
-          </DropdownItem>
+          {status === "completed" && (
+            <DropdownItem goToMenu={() => navigate("/requests/my")}>
+              My Requests
+            </DropdownItem>
+          )}
+          {status === "completed" && (
+            <DropdownItem goToMenu={() => navigate("/requests/new")}>
+              Create New Request
+            </DropdownItem>
+          )}
         </div>
       </CSSTransition>
     </div>
