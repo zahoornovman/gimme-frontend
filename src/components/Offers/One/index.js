@@ -158,7 +158,7 @@ function OfferDetails() {
                               src={img_cheveronDoubleLeft} />
 
                         }
-                        <img src={`${offer.images[imageDisplayed].images}`} />
+                        <img className='image' src={`${offer.images[imageDisplayed].images}`} />
                         {
                           imageDisplayed === offer.images.length - 1
                             ?
@@ -236,7 +236,7 @@ function OfferDetails() {
 
       
     </ContainerOneOffer>
-    {/* <FooterElement></FooterElement> */}
+    <FooterElement></FooterElement>
     </>
   );
 }

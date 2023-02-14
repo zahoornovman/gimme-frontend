@@ -40,9 +40,10 @@ export const ContainerHome = styled.div`
 
     .objects {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       row-gap: ${(props) => props.theme.size.xxxxxxs};
       column-gap: ${(props) => props.theme.size.xxxxxxs};
+      border: 10px solid pink;
       .object {
         border: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxxs};
         border-radius: 4px;
@@ -123,9 +124,9 @@ export const ContainerWelcome = styled.div`
 
     .objects {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      row-gap: ${(props) => props.theme.size.xxxxxxs};
-      column-gap: ${(props) => props.theme.size.xxxxxxs};
+      grid-template-columns: repeat(3, 1fr);
+      margin: 5rem auto;
+      gap: 2rem;
       .object {
         border: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxxs};
         border-radius: 4px;

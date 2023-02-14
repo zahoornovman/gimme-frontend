@@ -112,8 +112,9 @@ function Welcome() {
           <FooterElement></FooterElement>
         </ContainerHome>
       ) : (
+        <>
+        <Header></Header>
         <ContainerWelcome>
-          <Header></Header>
           {offersLatest10 === "" ? (
             <div className="loading">Loading. Please be patient. 😊</div>
           ) : (
@@ -134,10 +135,10 @@ function Welcome() {
                 )}
               </div>
             </div>
-          )}
-
-          <FooterElement></FooterElement>
+          )}          
         </ContainerWelcome>
+        <FooterElement></FooterElement>
+        </>
       )}
     </>
   );

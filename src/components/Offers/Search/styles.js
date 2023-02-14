@@ -3,16 +3,18 @@ import styled from "styled-components";
 export const ContainerSearchListOffers = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 90px;
-  height: 100vh;
+  align-items: center;
+  justify-content: center;
   /* border: 5px solid red; */
 `;
 
 export const ListOffersSearchContainer = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* max-width: 1170px; */
+  margin: 5rem auto;
+  gap: 2rem;
+  justify-items: center;
   align-items: center;
-  height: 100%;
   /* border: 2px solid pink; */
 `;
