@@ -151,7 +151,7 @@ function NewOffer() {
         const description = document.getElementById('description').value
         const condition = document.getElementById('condition').value
         const requested = document.getElementById('request').value
-        const tag = document.getElementById('tags').value
+        const tag = document.getElementById('tagsSelection').value
         //const images = imagesPath
         const imagesNumber = imagesPath.length
 
@@ -447,11 +447,11 @@ function NewOffer() {
                                     <div className="inputField">
                                         <label
                                             className="fontSize"
-                                            htmlFor="tags"
+                                            htmlFor="tagsSelection"
                                         >Tag:</label>
 
                                         <select
-                                            id="tags">
+                                            id="tagsSelection">
                                             {
                                                 tags === "notFetched"
                                                     ?
