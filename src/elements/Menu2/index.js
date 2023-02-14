@@ -46,8 +46,10 @@ function DropdownMenu() {
     );
   }
 
+  //rendering of the Dropdown Menu
   return (
     <div className="dropdown" style={{ height: menuHeight }}>
+      {/* main menu dropdown */}
       <CSSTransition
         in={activeMenu === "main"}
         unmountOnExit
@@ -79,6 +81,7 @@ function DropdownMenu() {
         </div>
       </CSSTransition>
 
+      {/* Offers menu dropdown. Changes based on login */}
       <CSSTransition
         in={activeMenu === "offers"}
         unmountOnExit
@@ -106,6 +109,7 @@ function DropdownMenu() {
         </div>
       </CSSTransition>
 
+      {/* Requests menu dropdown. Changes based on login */}
       <CSSTransition
         in={activeMenu === "requests"}
         unmountOnExit
