@@ -9,6 +9,9 @@ import { useEffect, useState } from "react";
 //react redux hooks
 import { useDispatch, useSelector } from "react-redux";
 
+//Header 2
+import { Header2 } from "../../../styles/MasterStyles";
+
 //selectors
 import { selectRequests, selectTags } from "../../../store/selectors/selectors";
 
@@ -101,9 +104,10 @@ function AllRequests() {
   };
 
   return (
-    <ContainerAllRequests>
-      <Header />
-      <h2>Latest Requests</h2>
+    <>
+    <Header />
+    <ContainerAllRequests>     
+      <Header2>Latest Requests</Header2>
       {requestList.length === 0 && (
         <div>
           No Search Results found. Please try a different search criteria..
@@ -123,8 +127,9 @@ function AllRequests() {
       {next !== null && (
         <button onClick={fetchMoreRequests}> Click for More..</button>
       )}
-      <FooterElement />
     </ContainerAllRequests>
+    <FooterElement />
+    </>
   );
 }
 

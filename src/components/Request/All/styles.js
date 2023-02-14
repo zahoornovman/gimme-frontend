@@ -5,13 +5,15 @@ export const ContainerAllRequests = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
+  margin-top: 50px;
 `;
 
 export const ListRequestsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* max-width: 1170px; */
-  margin: 5rem auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
   gap: 2rem;
   justify-items: center;
   align-items: center;

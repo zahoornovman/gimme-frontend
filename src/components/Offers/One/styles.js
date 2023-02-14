@@ -19,6 +19,7 @@ align-items: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 20px;
     .image {
       width: 100%;
       height: 100%;

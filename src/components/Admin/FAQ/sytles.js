@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ContainerFAQ = styled.div`
 width: 100vw;
 .fontSize{
-        font-size: ${(props) => props.theme.size.xxxs};
+        font-size: ${(props) => props.theme.size.xs};
 /*     @media (orientation: landscape){
         font-size: ${(props) => props.theme.size.xxxxs};
     }

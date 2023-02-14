@@ -6,7 +6,7 @@ const height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,
 const width = Math.max(body.scrollWidth, body.offsetWidth, html.clientWidth, html.scrollWidth, html.offsetWidth);
 
 export const ContainerHome = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@ export const ContainerHome = styled.div`
 
   .fontSize {
     font-size: ${(props) => props.theme.size.xxxs};
-    @media (orientation: portrait) and (min-width: 768px) {
+    /* @media (orientation: portrait) and (min-width: 768px) {
       font-size: ${(props) => props.theme.size.s};
     }
     @media (orientation: landscape) and (min-height: 768px) {
@@ -26,7 +26,7 @@ export const ContainerHome = styled.div`
     }
     @media (orientation: landscape) and (min-height: 1024px) {
       font-size: ${(props) => props.theme.size.l};
-    }
+    } */
   }
   .loading {
   }
@@ -99,7 +99,7 @@ export const ContainerWelcome = styled.div`
 
   .fontSize {
     font-size: ${(props) => props.theme.size.xxxs};
-    @media (orientation: portrait) and (min-width: 768px) {
+    /* @media (orientation: portrait) and (min-width: 768px) {
       font-size: ${(props) => props.theme.size.s};
     }
     @media (orientation: landscape) and (min-height: 768px) {
@@ -110,7 +110,7 @@ export const ContainerWelcome = styled.div`
     }
     @media (orientation: landscape) and (min-height: 1024px) {
       font-size: ${(props) => props.theme.size.l};
-    }
+    } */
   }
   .loading {
   }

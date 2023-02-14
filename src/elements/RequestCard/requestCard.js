@@ -23,7 +23,9 @@ function RequestCard(props) {
           <img src={props.obj.images[0].images} alt='' /> 
         </div>
       ) : (
+        <div className="imageBox">
         <img src={no_picture} />
+        </div>
       )}
 
       <h2>{props.obj.title}</h2>
