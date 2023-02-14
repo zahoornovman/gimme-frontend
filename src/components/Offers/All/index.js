@@ -28,6 +28,9 @@ import {
 //header
 import { Header2 } from "../../../styles/MasterStyles";
 
+//TextButton
+import { TextButton } from '../../../styles/MasterStyles';
+
 function AllOffers() {
   // useState hook to ffers, tags and errors
   const [offerList, setOfferList] = useState([]);
@@ -120,7 +123,7 @@ function AllOffers() {
           </ListOffersContainer>
         )}
         {next !== null && (
-          <button onClick={fetchMoreOffers}> Click for More..</button>
+          <TextButton className="buttonMore" onClick={fetchMoreOffers}> Click for More..</TextButton>
         )}
         <FooterElement />
       </ContainerAllOffers>

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Footer = styled.div`
-  font-weight: bold;
   font-size: ${(props) => props.theme.size.xxxxs};
   display: flex;
   flex-direction: row;

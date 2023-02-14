@@ -1,10 +1,20 @@
 import styled from "styled-components";
 
 export const ContainerAllRequests = styled.div`
-  margin-top: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin-top: 50px;
 `;
 
 export const ListRequestsContainer = styled.div`
-  height: 100%;
-  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
 `;
