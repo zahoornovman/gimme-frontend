@@ -1,13 +1,12 @@
 
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
-import { Header2, OpenCloseBox, TextContainer } from "../../../styles/MasterStyles";
+import { Header2, OpenCloseBox } from "../../../styles/MasterStyles";
 import { ContainerFAQ } from "./sytles";
 import img_barsArrowDown from "../../../images/barsArrowDown.svg"
 import img_barsArrowUp from "../../../images/barsArrowUp.svg"
-import { useNavigate, useParams, Link } from "react-router-dom"
-import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from "react";
+import {  Link } from "react-router-dom"
+import { useState } from "react";
 
 function FAQ() {
 

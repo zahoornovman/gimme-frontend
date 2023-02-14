@@ -2,15 +2,11 @@ import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
 import {
   Header2,
-  PopUp,
-  PopUpButtonNo,
-  PopUpButtonYes,
   TextButton,
 } from "../../../styles/MasterStyles";
 import { ContainerUpdateUserProfile } from "./styles";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
 import { updateProfile } from "../../../slices/user/userSlice";
 import { baseUrl } from "../../../baseurl";
 
@@ -21,7 +17,6 @@ function UpdateUserProfile() {
 
   const handleSaveChanges = () => {
     var myHeaders = new Headers();
-    //myHeaders.append("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc1NTIwMzUzLCJqdGkiOiI4MDJhZTIwOWZlZTA0NzUwYmVmMTZiY2E5MTFjZjRkNCIsInVzZXJfaWQiOjE5NzR9.astmhSWqikkfR7Hg_piMw70NpBn7onrR5-e8_-068us");
     myHeaders.append("Authorization", `Bearer ${user.acces}`);
 
     var formdata = new FormData();
@@ -59,7 +54,7 @@ function UpdateUserProfile() {
         );
         navigate("/");
       })
-      .catch((error) => {
+      .catch(() => {
         navigate("/admin/profile/changeserror");
       });
   };

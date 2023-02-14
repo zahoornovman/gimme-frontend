@@ -1,7 +1,6 @@
 import { TextButton } from "../../styles/MasterStyles";
 import { ContainerHomeContectButtonSection } from "./styles";
-import { useNavigate, useParams } from "react-router-dom"
-import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom"
 
 function HomeContactButtonSection() {
     const navigate = useNavigate()

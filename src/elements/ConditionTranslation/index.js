@@ -1,5 +1,4 @@
 import { ContainerConditionTranslation } from "./styles";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 
 function ConditionTranslation(props) {
