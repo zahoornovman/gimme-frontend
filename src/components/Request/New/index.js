@@ -5,7 +5,6 @@ import { ContainerNewRequest} from "./styles"
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { baseUrl } from "../../../baseurl";
 import { useSettingTags } from "../../../hooks/tagsFetch";
 import { errorNew, fields, loading } from "../../../elements/Statements/statements";
@@ -13,7 +12,6 @@ import { errorNew, fields, loading } from "../../../elements/Statements/statemen
 
 function NewRequest() {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
     const conditions = useSelector((state) => state.conditions)
 
@@ -61,11 +59,6 @@ function NewRequest() {
 
     const handleFileUpload = (event) => {
 
-        //source: https://www.youtube.com/watch?v=XeiOnkEI7XI
-        //source: https://levelup.gitconnected.com/how-to-implement-multiple-file-uploads-in-react-4cdcaadd0f6e
-
-        //code for 1 image
-        //setImagesPath(event.target.files[0])
         event.preventDefault()
         setMessage("no")
         const images = Array.prototype.slice.call(event.target.files)
@@ -102,13 +95,11 @@ function NewRequest() {
     }
     const handleSave = () => {
         setMessage("no");
-        console.log(imagesPath);
         const title = document.getElementById("title").value;
         const description = document.getElementById("description").value;
         const condition = document.getElementById("condition").value;
         const offered = document.getElementById("offer").value;
         const tag = document.getElementById("tagsSelection").value;
-        //const images = imagesPath;
         const imagesNumber = imagesPath.length;
 
         if (title === "" || description === "" || condition === "" || offered === "" || tag === "") {
@@ -121,11 +112,8 @@ function NewRequest() {
         else {
             console.log("everything is okay")
             if (message === "no") {
-                //trial 3
-                //source: https://www.youtube.com/watch?v=XeiOnkEI7XI
-
+    
                 var myHeaders = new Headers();
-                //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2MjI2NjYyLCJpYXQiOjE2NzU3OTQ2NjIsImp0aSI6IjBiZDUwNTlmM2QxNDRlNzY4ZjRiOTM5ZWNjNjk0M2JhIiwidXNlcl9pZCI6Mn0.r6TsaD9OlR9c-1w6yPA5AAOshfHceTY6ai0TdxL_A-s");
                 myHeaders.append("Authorization", `Bearer ${user.acces}`);
 
 
@@ -150,13 +138,12 @@ function NewRequest() {
 
                 fetch(`${baseUrl}/backend/api/wants/me/`, requestOptions)
                     .then(response => response.json())
-                    .then(result => {
+                    .then(() => {
                         setAction("created")
                         setImagesPath([])
 
                     })
-                    .catch(error => {
-                        console.log('error', error)
+                    .catch(() => {
                         setAction("error")
                         setImagesPath([])
                     });

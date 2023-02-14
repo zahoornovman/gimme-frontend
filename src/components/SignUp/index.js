@@ -1,21 +1,15 @@
 import FooterElement from "../../elements/Footer";
 import Header from "../../elements/Header";
 import { SignUpContainer } from "./styles";
-import { TextButton, TextContainer } from "../../styles/MasterStyles";
+import { TextButton } from "../../styles/MasterStyles";
 
 import img_email from "../../images/email.svg";
-import img_password from "../../images/password.svg";
 
-import {
-  loading,
-  successfulSignIn,
-  errorSignIn,
-} from "../../slices/user/userSlice";
 
-import { useNavigate, useParams, Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { store } from "../../store/store";
+import { useNavigate, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+
 
 import { lastPage } from "../../slices/lastPageSignUpBeforeSignIn/lastPageSignUpBeforeSignInSlice";
 

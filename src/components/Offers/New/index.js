@@ -5,17 +5,12 @@ import { ContainernewOffer } from "./styles";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchingTags } from "../../../slices/tags/tagsSlice";
-import { useDispatch } from "react-redux";
 import { baseUrl } from "../../../baseurl";
 import { useSettingTags } from "../../../hooks/tagsFetch";
-import axios from "axios";
-import { useRef } from "react";
 import { errorNew, fields, loading, offerImage, offerImageFields } from "../../../elements/Statements/statements";
 
 function NewOffer() {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
     const user = useSelector((state) => state.user)
     const conditions = useSelector((state) => state.conditions)
 
@@ -63,17 +58,10 @@ function NewOffer() {
 
     const handleFileUpload = (event) => {
 
-        //source: https://www.youtube.com/watch?v=XeiOnkEI7XI
-        //source: https://levelup.gitconnected.com/how-to-implement-multiple-file-uploads-in-react-4cdcaadd0f6e
-
-        //code for 1 image
-        //setImagesPath(event.target.files[0])
         event.preventDefault()
         setMessage("no")
         const images = Array.prototype.slice.call(event.target.files)
         const amountImages = images.length
-        console.log(images)
-        console.log(`amount: ${amountImages}`)
         let fileSizeExceeded = "no"
 
         for (let i = 0; i < amountImages; i++) {
@@ -101,58 +89,17 @@ function NewOffer() {
                 uploadedImages.push(images[j])
             }
             setImagesPath(uploadedImages)
-        }
-
-
-
-        //original code
-        // event.preventDefault()
-        // setMessage("no")
-        // const images = event.target.files
-        // const numberImages = Object.keys(images).length
-        // console.log(images)
-        // console.log(`number images: ${numberImages}`)
-        // console.log(message)
-        // if (numberImages === 0) {
-        //     setMessage("noImageSelected")
-        // }
-        // else {
-        //     if (numberImages > 5) {
-        //         setMessage("fileQuantityError")
-        //     }
-        //     else {
-        //         for (let i = 0; i < numberImages; i++) {
-        //             console.log(images[`${i}`].size)
-        //             if (images[`${i}`].size > maxImageFileSize) {
-        //                 setMessage("fileSizeExceededLimit");
-        //                 break;
-        //             }
-
-        //         }
-        //         if (message === "no") {
-        //             const imagesUrl = []
-        //             for (let j = 0; j < numberImages; j++) {
-        //                 let imageUrl = URL.createObjectURL(event.target.files[`${j}`])
-        //                 imagesUrl.push(imageUrl)
-        //             }
-
-        //             setImagesPath(imagesUrl)
-        //             console.log(imagesPath)
-        //         }
-        //     }
-        // }
+        }     
 
     }
     const handleSave = () => {
         setMessage("no")
-        console.log(imagesPath)
 
         const title = document.getElementById('title').value
         const description = document.getElementById('description').value
         const condition = document.getElementById('condition').value
         const requested = document.getElementById('request').value
         const tag = document.getElementById('tagsSelection').value
-        //const images = imagesPath
         const imagesNumber = imagesPath.length
 
         if (title === "" || description === "" || condition === "" || requested === "" || tag === "") {
@@ -169,11 +116,8 @@ function NewOffer() {
         else {
             console.log("everything is okay")
             if (message === "no") {
-                //trial 3
-                //source: https://www.youtube.com/watch?v=XeiOnkEI7XI
 
                 var myHeaders = new Headers();
-                //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2MjI2NjYyLCJpYXQiOjE2NzU3OTQ2NjIsImp0aSI6IjBiZDUwNTlmM2QxNDRlNzY4ZjRiOTM5ZWNjNjk0M2JhIiwidXNlcl9pZCI6Mn0.r6TsaD9OlR9c-1w6yPA5AAOshfHceTY6ai0TdxL_A-s");
                 myHeaders.append("Authorization", `Bearer ${user.acces}`);
 
 
@@ -198,93 +142,18 @@ function NewOffer() {
 
                 fetch(`${baseUrl}/backend/api/haves/me/`, requestOptions)
                     .then(response => response.json())
-                    .then(result => {
+                    .then(() => {
                         setAction("created")
                         setImagesPath([])
 
                     })
-                    .catch(error => {
-                        console.log('error', error)
+                    .catch(() => {
                         setAction("error")
                         setImagesPath([])
                     });
             }
 
         }
-
-
-
-        //original code
-        // setMessage("no")
-        // console.log(imagesPath)
-        // const title = document.getElementById('title').value
-        // const description = document.getElementById('description').value
-        // const condition = document.getElementById('condition').value
-        // const requested = document.getElementById('request').value
-        // const tag = document.getElementById('tags').value
-        // const images = imagesPath
-        // const imagesNumber = imagesPath.length
-
-        // console.log(`title: ${title}`)
-        // console.log(`description: ${description}`)
-        // console.log(`condition: ${condition}`)
-        // console.log(`requested: ${requested}`)
-        // console.log(`tag: ${tag}`)
-        // console.log(`images: ${images}`)
-        // console.log(`images number: ${imagesNumber}`)
-        // //console.log(`url create object:${URL.createObjectURL(document.getElementById("images").files[0])}`)
-
-
-        // if (title === "" || description === "" || condition === "" || requested === "" || tag === "") {
-        //     if (imagesNumber === 0) {
-        //         setMessage("imageAndFieldsNotCompleted")
-        //     }
-        //     else {
-        //         setMessage("FieldsNotCompleted")
-        //     }
-        // }
-        // else if (imagesNumber === 0) {
-        //     setMessage("noImageChoosen")
-        // }
-        // else {
-        //     console.log("everything is okay")
-        //     var myHeaders = new Headers();
-        //     //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2MjI2NjYyLCJpYXQiOjE2NzU3OTQ2NjIsImp0aSI6IjBiZDUwNTlmM2QxNDRlNzY4ZjRiOTM5ZWNjNjk0M2JhIiwidXNlcl9pZCI6Mn0.r6TsaD9OlR9c-1w6yPA5AAOshfHceTY6ai0TdxL_A-s");
-        //     myHeaders.append("Authorization", `Bearer ${user.acces}`);
-
-        //     var formdata = new FormData();
-        //     formdata.append("title", `${title}`);
-        //     formdata.append("description", `${description}`);
-        //     formdata.append("condition", `${condition}`);
-        //     formdata.append("wants_for_this_item", `${requested}`);
-        //     formdata.append("tags", `${tag}`);
-        //     formdata.append("status", "1");
-        //     //formdata.append("images", imagesPath[0], "boney")
-        //     // for (let k = 0; k < imagesNumber; k++){
-        //     //       console.log(`${k} path: ${imagesPath[k]}`)
-        //     //       formdata.append("images", imagesPath[k], `${title}-${k}`)
-        //     // }
-        //     //formdata.append("images", URL.createObjectURL(document.getElementById("images").files[0]), "/C:/Users/Christian/OneDrive/Bilder/Diashow/ISchgl, Schwarzwasser See.jpg");
-
-        //     var requestOptions = {
-        //         method: 'POST',
-        //         headers: myHeaders,
-        //         body: formdata,
-        //         redirect: 'follow'
-        //     };
-
-        //     fetch(`${baseUrl}/backend/api/haves/me/`, requestOptions)
-        //         .then(response => response.json())
-        //         .then(result => {
-        //             setAction("created")
-
-        //         })
-        //         .catch(error => {
-        //             console.log('error', error)
-        //             setAction("error")
-        //         });
-        // }
-
     }
     return (
         <ContainernewOffer>

@@ -5,10 +5,8 @@ import { ContainerUpdateRequest } from "./styles"
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
 import { useSettingTags } from '../../../hooks/tagsFetch';
 import { baseUrl } from '../../../baseurl';
-import { lastPath } from '../../../slices/messages/messageSlice';
 import img_cheveronDoubleLeft from "../../../images/chevronDoubleLeft.svg"
 import img_cheveronDoubleRight from "../../../images/chevronDoubleRight.svg"
 import img_trash from "../../../images/trash.svg"
@@ -16,7 +14,6 @@ import { deletedImageNotSuccessful, deletedImageSuccessful, fields, loading, req
 
 function UpdateRequest() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [request, setRequest] = useState("");
   const { id } = useParams();
   const [imageDisplayed, setImageDisplayed] = useState(0)
@@ -26,10 +23,6 @@ function UpdateRequest() {
   const conditions = useSelector((state) => state.conditions)
   const status = useSelector((state) => state.status)
 
-
-
-
-  const userFirstName = useSelector(state => state.user.first_name)
   const maxImageFileSize = 3145728
   const [maxNumberFiles, setMaxNumberFiles] = useState(5)
 
@@ -43,7 +36,6 @@ function UpdateRequest() {
   const [currentLengthOffered, setCurrentLengthOffered] = useState(0)
 
   const [message, setMessage] = useState("no")
-  const [action, setAction] = useState("notChanged")
   const [imagesPath, setImagesPath] = useState([])
 
   const [tagsBackend, setTagsBackground] = useState([]);
@@ -74,13 +66,11 @@ function UpdateRequest() {
     setActionResponse("")
     setMessage("no")
     setImageDisplayed(imageDisplayed + 1)
-    console.log(`image displayed: ${imageDisplayed}`)
   }
   const handleLeftCheveron = () => {
     setActionResponse("")
     setMessage("no")
     setImageDisplayed(imageDisplayed - 1)
-    console.log(`image displayed: ${imageDisplayed}`)
   }
 
   const getRequestObject = () => {
@@ -88,18 +78,14 @@ function UpdateRequest() {
     setMessage("no")
     setRequest("")
 
-    //var formdata = new FormData();
-
     var requestOptions = {
       method: 'GET',
-      //body: formdata,
       redirect: 'follow'
     };
 
     fetch(`${baseUrl}/backend/api/wants/${id}/`, requestOptions)
       .then(response => response.json())
       .then(result => {
-        console.log(result)
         setCurrentLengthDescription(result.description.length)
         setCurrentLengthTitle(result.title.length)
         setCurrentLengthOffered(result.has_for_this_item.length)
@@ -107,8 +93,7 @@ function UpdateRequest() {
         setImageAvailable(result.images)
         setRequest(result)
       })
-      .catch(error => {
-        console.log('error', error)
+      .catch(() => {
         setRequest("error")
       });
   }
@@ -117,23 +102,17 @@ function UpdateRequest() {
     setActionResponse("")
     setMessage("no")
     let imageId = request.images[imageDisplayed].id
-    console.log(`image id: ${imageId}`)
     var myHeaders = new Headers();
-    //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2NTQ0MzY0LCJpYXQiOjE2NzYxMTIzNjQsImp0aSI6IjA4ZDgzZDZiYzJmMTQyNzQ5YjZiOTA1MWJkZjgyYWNhIiwidXNlcl9pZCI6Mn0.0WNLR973Gggaiwl4h0KAgmEuq0RRLUHHI9YwlCHvCsk");
     myHeaders.append("Authorization", `Bearer ${user.acces}`);
-
-    //var formdata = new FormData();
 
     var requestOptions = {
       method: 'DELETE',
       headers: myHeaders,
-      //body: formdata,
       redirect: 'follow'
     };
 
     fetch(`${baseUrl}/backend/api/want_image/${imageId}/`, requestOptions)
       .then(response => {
-        console.log(response.status)
         if (response.status < 300) {
           setActionResponse("imageSuccessfullyDeleted")
           setMaxNumberFiles(maxNumberFiles + 1)
@@ -146,9 +125,7 @@ function UpdateRequest() {
           setActionResponse("imageDeletionFailed")
         }
       })
-      // .then(result => console.log(result))
-      .catch(error => {
-        console.log('error', error);
+      .catch(() => {
         setActionResponse("imageDeletionFailed");
       });
   }
@@ -160,8 +137,6 @@ function UpdateRequest() {
     setMessage("no")
     const images = Array.prototype.slice.call(event.target.files)
     const amountImages = images.length
-    console.log(images)
-    console.log(`amount: ${amountImages}`)
     let fileSizeExceeded = "no"
 
     for (let i = 0; i < amountImages; i++) {
@@ -196,7 +171,6 @@ function UpdateRequest() {
   const handleSave = () => {
     setActionResponse("")
     setMessage("no")
-    console.log(imagesPath)
 
     const title = document.getElementById('title').value
     const description = document.getElementById('description').value
@@ -204,7 +178,6 @@ function UpdateRequest() {
     const offered = document.getElementById('offered').value
     const tag = document.getElementById('tagsSelection').value
     const status = document.getElementById('status').value
-    //const images = imagesPath
     const imagesNumber = imagesPath.length
 
     if (title === "" || description === "" || condition === "" || offered === "" || tag === "" || status === "") {
@@ -215,16 +188,10 @@ function UpdateRequest() {
     }
 
     else {
-      console.log("everything is okay")
       if (message === "no") {
-        //trial 3
-        //source: https://www.youtube.com/watch?v=XeiOnkEI7XI
 
-        var myHeaders = new Headers();
-        //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2MjI2NjYyLCJpYXQiOjE2NzU3OTQ2NjIsImp0aSI6IjBiZDUwNTlmM2QxNDRlNzY4ZjRiOTM5ZWNjNjk0M2JhIiwidXNlcl9pZCI6Mn0.r6TsaD9OlR9c-1w6yPA5AAOshfHceTY6ai0TdxL_A-s");
+        var myHeaders = new Headers();      
         myHeaders.append("Authorization", `Bearer ${user.acces}`);
-
-
 
         const formdata = new FormData();
         for (let k = 0; k < imagesNumber; k++) {
@@ -246,13 +213,12 @@ function UpdateRequest() {
 
         fetch(`${baseUrl}/backend/api/wants/${id}/`, requestOptions)
           .then(response => response.json())
-          .then(result => {
+          .then(() => {
             navigate(`/requests/${id}`)
             setImagesPath([])
 
           })
-          .catch(error => {
-            console.log('error', error)
+          .catch(() => {  
             setActionResponse("updateFailed")
             setImagesPath([])
           });
@@ -307,7 +273,6 @@ function UpdateRequest() {
                               >Contact details</TextButton>
                             </>
                             :
-
                             message === "fileQuantityError"
                               ?
                               <div>{`Only ${maxNumberFiles} images are allowed. Please reduce the number of images to ${maxNumberFiles}. 😁`}</div>

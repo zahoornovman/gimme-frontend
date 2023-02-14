@@ -18,6 +18,7 @@ function Contact() {
                 <div className="sectionContactPossibility">
                     <div className="contactPosibility">
                         <img src={img_email}
+                            alt="email"
                             className="icons"
                         />
                         <span
@@ -26,6 +27,7 @@ function Contact() {
                     </div>
                     <div className="contactPosibility">
                         <img src={img_phone}
+                            alt="phone"
                             className="icons" />
                         <span
                             className="fontSize"
@@ -33,6 +35,7 @@ function Contact() {
                     </div>
                     <div className="contactPosibility">
                         <img src={img_whatsapp}
+                            alt="WhatsApp"
                             className="icons" />
                         <span
                             className="fontSize"
@@ -40,6 +43,7 @@ function Contact() {
                     </div>
                     <div className="contactPosibility">
                         <img src={img_mailbox}
+                            alt="mailbox"
                             className="mailbox" />
                         <div className="fontSize addressSection"
                         >

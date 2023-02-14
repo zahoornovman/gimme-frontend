@@ -2,7 +2,7 @@ import FooterElement from '../../../elements/Footer';
 import Header from '../../../elements/Header';
 import { Header2, PopUp, PopUpButtonNo, PopUpButtonYes, TextButton } from '../../../styles/MasterStyles';
 import { ContainerOneRequest } from './styles';
-import { useNavigate, Link, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 import { lastPath } from '../../../slices/messages/messageSlice';
@@ -37,11 +37,9 @@ function RequestDetails() {
 
   useEffect(() => {
     setRequest("")
-    //var formdata = new FormData();
 
     var requestOptions = {
       method: 'GET',
-      //body: formdata,
       redirect: 'follow'
     };
 
@@ -83,16 +81,12 @@ function RequestDetails() {
   const handleDeleteExecution = () => {
     setDeletePopUp("notDisplayed")
 
-    var myHeaders = new Headers();
-    //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2NTQ0MzY0LCJpYXQiOjE2NzYxMTIzNjQsImp0aSI6IjA4ZDgzZDZiYzJmMTQyNzQ5YjZiOTA1MWJkZjgyYWNhIiwidXNlcl9pZCI6Mn0.0WNLR973Gggaiwl4h0KAgmEuq0RRLUHHI9YwlCHvCsk");
+    var myHeaders = new Headers();  
     myHeaders.append("Authorization", `Bearer ${user.acces}`);
-
-    //var formdata = new FormData();
 
     var requestOptions = {
       method: 'DELETE',
       headers: myHeaders,
-      //body: formdata,
       redirect: 'follow'
     };
 
@@ -107,11 +101,8 @@ function RequestDetails() {
           }
         }
       )
-      //.then(result => console.log(result))
-      .catch(error => {
-        console.log('error', error)
+      .catch(() => {
         setRequest("deletionFailed")
-
       });
   }
 

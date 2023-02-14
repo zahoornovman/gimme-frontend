@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const ContainerFAQ = styled.div`
 width: 100vw;
 .fontSize{
-        font-size: ${(props) => props.theme.size.xxxs};
-    @media (orientation: landscape){
+        font-size: ${(props) => props.theme.size.xs};
+/*     @media (orientation: landscape){
         font-size: ${(props) => props.theme.size.xxxxs};
     }
     @media (orientation: portrait) and (min-width: 768px){
@@ -18,7 +18,7 @@ width: 100vw;
     }
     @media (orientation: landscape) and (min-height: 1024px){
         font-size: ${(props) => props.theme.size.l};
-    }
+    } */
     }
 .faqSection{
     height: 80vh;
@@ -28,7 +28,7 @@ width: 100vw;
     flex-direction: column;
     align-items: center;
     row-gap: ${(props) => props.theme.size.xxxxs};
-    @media (orientation: landscape){
+/*     @media (orientation: landscape){
         row-gap: ${(props) => props.theme.size.xxxxxxs};
     }
     @media (orientation: portrait) and (min-width: 768px){
@@ -46,6 +46,6 @@ width: 100vw;
     @media (orientation: landscape) and (min-height: 1024px){
         margin-top: ${(props) => props.theme.size.xxxxxxxxxl};
         margin-bottom: ${(props) => props.theme.size.xxxxxxxl};
-    }
+    } */
 }
 `

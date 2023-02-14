@@ -6,7 +6,7 @@ const height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight,
 const width = Math.max(body.scrollWidth, body.offsetWidth, html.clientWidth, html.scrollWidth, html.offsetWidth);
 
 export const ContainerHome = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@ export const ContainerHome = styled.div`
 
   .fontSize {
     font-size: ${(props) => props.theme.size.xxxs};
-    @media (orientation: portrait) and (min-width: 768px) {
+    /* @media (orientation: portrait) and (min-width: 768px) {
       font-size: ${(props) => props.theme.size.s};
     }
     @media (orientation: landscape) and (min-height: 768px) {
@@ -26,7 +26,7 @@ export const ContainerHome = styled.div`
     }
     @media (orientation: landscape) and (min-height: 1024px) {
       font-size: ${(props) => props.theme.size.l};
-    }
+    } */
   }
   .loading {
   }
@@ -40,9 +40,10 @@ export const ContainerHome = styled.div`
 
     .objects {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       row-gap: ${(props) => props.theme.size.xxxxxxs};
       column-gap: ${(props) => props.theme.size.xxxxxxs};
+      border: 10px solid pink;
       .object {
         border: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxxs};
         border-radius: 4px;
@@ -98,7 +99,7 @@ export const ContainerWelcome = styled.div`
 
   .fontSize {
     font-size: ${(props) => props.theme.size.xxxs};
-    @media (orientation: portrait) and (min-width: 768px) {
+    /* @media (orientation: portrait) and (min-width: 768px) {
       font-size: ${(props) => props.theme.size.s};
     }
     @media (orientation: landscape) and (min-height: 768px) {
@@ -109,7 +110,7 @@ export const ContainerWelcome = styled.div`
     }
     @media (orientation: landscape) and (min-height: 1024px) {
       font-size: ${(props) => props.theme.size.l};
-    }
+    } */
   }
   .loading {
   }
@@ -123,9 +124,9 @@ export const ContainerWelcome = styled.div`
 
     .objects {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      row-gap: ${(props) => props.theme.size.xxxxxxs};
-      column-gap: ${(props) => props.theme.size.xxxxxxs};
+      grid-template-columns: repeat(3, 1fr);
+      margin: 5rem auto;
+      gap: 2rem;
       .object {
         border: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxxs};
         border-radius: 4px;

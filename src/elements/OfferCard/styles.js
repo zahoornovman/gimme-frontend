@@ -18,5 +18,11 @@ export const ContainerOfferCardStyled = styled.div`
     width:100%;
     height: 100%;
     object-fit:cover;
+    box-shadow: 2px 2px 5px black;
+    cursor: pointer; 
+  }
+
+  img:hover {
+    transform: scale (1.5);
   }
 `;

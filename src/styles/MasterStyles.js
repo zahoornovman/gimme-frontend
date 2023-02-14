@@ -135,15 +135,14 @@ export const PopUp = styled.div`
 
 //open & close box
 export const OpenCloseBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: ${(props) => props.theme.colors.color3} solid
-    ${(props) => props.theme.size.xxxxxxxs};
-  border-radius: ${(props) => props.theme.size.xxxxxxxs};
-  width: 252px;
-  background-color: ${(props) => props.theme.colors.color5};
-  color: ${(props) => props.theme.colors.color2};
-  @media (orientation: landscape) {
+display: flex;
+flex-direction: column;
+border: ${(props) => props.theme.colors.color2} solid ${(props) => props.theme.size.xxxxxxxs};
+border-radius: ${(props) => props.theme.size.xxxxxxxs};
+width: 252px;
+background-color: ${(props) => props.theme.colors.color5};
+color: ${(props) => props.theme.colors.color4};
+@media (orientation: landscape){
     width: 580px;
   }
   @media (orientation: portrait) and (min-width: 768px) {
@@ -186,13 +185,12 @@ export const OpenCloseBox = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: ${(props) => props.theme.colors.color3} solid
-      ${(props) => props.theme.size.xxxxxxxs};
-    h3 {
-      font-weight: bold;
-      width: 232px;
-      text-align: center;
-      @media (orientation: landscape) {
+    border-bottom: ${(props) => props.theme.colors.color2} solid ${(props) => props.theme.size.xxxxxxxs};
+    h3{
+        font-weight: bold;
+        width: 232px;
+        text-align: center;
+        @media (orientation: landscape){
         width: 560px;
       }
       @media (orientation: portrait) and (min-width: 768px) {
