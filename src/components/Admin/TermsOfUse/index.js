@@ -1,11 +1,8 @@
-
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
-import { Header2, OpenCloseBox, TextContainer } from "../../../styles/MasterStyles";
+import { Header2, OpenCloseBox } from "../../../styles/MasterStyles";
 import { ContainerTermsOfUse } from "./styles"
-import { useNavigate, useParams, Link } from "react-router-dom"
-import { useDispatch, useSelector } from 'react-redux';
-import { useState, useEffect } from "react";
+
 
 function FAQ() {
 
@@ -20,7 +17,7 @@ function FAQ() {
                         Effective Date: 4 February 2023
                         <br></br>
                         <br></br>
-                        Welcome to Gimme! At Gimme our goal is to find you that perfect swap. Swapping saves money, can make you money, saves the environment and unlocks agreed value over cash value. Swapping and has been around for thousands of years. Gimme now brings these ancient skills into a convenient and modern application.
+                        Welcome to Gimme! At Gimme our goal is to find you that perfect swap. Swapping saves money, can make you money, saves the environment and unlocks agreed value over cash value. Swapping has been around for thousands of years. Gimme now brings these ancient skills into a convenient and modern application.
                         <br></br>
                         <br></br>
                         These terms govern your use of our web application, "Gimme" (“the web app” as further defined below). The app is owned and operated by Gimme Limited.
@@ -35,25 +32,44 @@ function FAQ() {
                     </div>
                     <div className="content padding fontSize">
                         "Web app" means the mobile application called "Gimme" including all pages, sub-pages, blogs, forums, and all other connected internet content whatsoever and includes any updated or subsequent versions.
-                        “Web app items” means the web app, Our Content and the Materials.
+                        <br></br>
+                        “Web app items” means the web app, our Content and the materials.
+                        <br></br>
                         “Content” means any content, writing, images, audiovisual content or other information published on the app.
-                        "Developer IP" is all intellectual property that is owned by us and/or that is licensed to us including, but not limited to, the contents, layout, design, colours, appearance, graphics, imagery and code for the app items and Our Content as well as all copyright, trade marks (registered and unregistered), trade secrets, patents and other intellectual property contained in the web app items and Our Content.
+                        <br></br>
+                        "Developer IP" is all intellectual property that is owned by us and/or that is licensed to us including, but not limited to, the contents, layout, design, colours, appearance, graphics, imagery and code for the app items and our content as well as all copyright, trade marks (registered and unregistered), trade secrets, patents and other intellectual property contained in the web app items and our content.
+                        <br></br>
                         “Digital Platform” is a third party digital platform which allows you to access the web app using your login details for that digital platform.
-                        “Digital Platform Login” means your login details for accessing a Digital Platform.
-                        “Goods” means any goods advertised, swapped, sold or posted on the web app by a User.
+                        <br></br>
+                        “Digital Platform Login” means your login details for accessing a digital platform.
+                        <br></br>
+                        “Goods” means any goods advertised, swapped, sold or posted on the web app by a user.
+                        <br></br>
                         "Identifying Information" means information provided by you when registering to use the web app items, including but not limited to your name and email address, a user name and a password.
+                        <br></br>
                         "Materials" means any content, materials, information or documentation that we may provide to you in connection with the app including documentation, data, information developed by us or owned by us, and other materials which may assist in your use of the web app.
-                        “Our Content” means all Content published on the web app by us.
+                        <br></br>
+                        “Our Content” means all content published on the web app by us.
+                        <br></br>
                         "Parties" means both you and us collectively.
-                        “Services” means any services advertised, swapped, sold or posted on the app by a User.
+                        <br></br>
+                        “Services” means any services advertised, swapped, sold or posted on the app by a user.
+                        <br></br>
                         "Terms" means these terms of use.
-                        “Third Party Goods” means any goods advertised, sold or provided via Third Party Links.
+                        <br></br>
+                        “Third Party Goods” means any goods advertised, sold or provided via third party links.
+                        <br></br>
                         "Third Party Links" means links or references to websites, applications or content other than the app, or to materials other than the Materials, none of which are controlled by us.
-                        “Third Party Services” means any services advertised, sold or provided via Third Party Links.
+                        <br></br>
+                        “Third Party Services” means any services advertised, sold or provided via third party links.
+                        <br></br>
                         "us", "we", "our" refers to Gimme Limited.
-                        “User” means any person (including body corporate) who offers to swap Goods or Services via the web app.
+                        <br></br>
+                        “User” means any person (including body corporate) who offers to swap goods or services via the web app.
+                        <br></br>
                         "you" or "your" refers to the user of the web app.
-                        “Your Content” means all Content published on the web app by you or which you otherwise share with us.
+                        <br></br>
+                        “Your content” means all content published on the web app by you or which you otherwise share with us.
                     </div>
                 </OpenCloseBox>
                 <OpenCloseBox>
@@ -70,7 +86,7 @@ function FAQ() {
                         <br></br>
                         (c) words referring to a person or persons includes companies, firms, corporations, organisations and vice versa; and
                         <br></br>
-                        (d) any obligation on a Party not to do something includes an obligation not to allow that thing to be done.
+                        (d) any obligation on a party not to do something includes an obligation not to allow that thing to be done.
                     </div>
                 </OpenCloseBox>
                 <OpenCloseBox>
@@ -108,12 +124,12 @@ function FAQ() {
                     </div>
                     <div className="content padding fontSize">
                         You may be asked to register with us in order to use or access the web app items.
-                        If you register with us, you will be asked to provide us with Identifying Information. This Identifying Information will allow you to access the web app items. We reserve the right to close any account if we are unable to verify your user registration details.
+                        If you register with us, you will be asked to provide us with identifying information. This identifying information will allow you to access the web app items. We reserve the right to close any account if we are unable to verify your user registration details.
                         You acknowledge that:
-                        you are responsible for ensuring the accuracy of any Identifying Information that you provide to us as part of the registration process;
+                        you are responsible for ensuring the accuracy of any identifying information that you provide to us as part of the registration process;
                         you will not share your login details with any third party and if you discover that your login details have been compromised, you will notify us immediately in writing; and
-                        you are responsible for maintaining the safety and security of your Identifying Information as well as keeping us informed of any changes to Your Identifying Information.
-                        You may also access the web app items by using a Digital Platform Login. If you access the web app items using a Digital Platform Login you authorise us to access and handle any information that we receive from the relevant social media platform.
+                        you are responsible for maintaining the safety and security of your identifying information as well as keeping us informed of any changes to your identifying information.
+                        You may also access the web app items by using a digital platform login. If you access the web app items using a digital platform login you authorise us to access and handle any information that we receive from the relevant social media platform.
                     </div>
                 </OpenCloseBox>
                 <OpenCloseBox>
@@ -133,16 +149,41 @@ function FAQ() {
                         all information that you upload or provide to the web app will be accurate, complete and honest and you will update all such information as necessary so that it remains at all times accurate, complete and honest;
                         you will not use the web app items for any unlawful purpose or any purpose prohibited under these terms;
                         you will not use the web app items in any way that could damage the app items or our general business;
-                        you hold full, clear and unencumbered title to any Goods which you make available on the web app for swapping and have such Goods in your possession at all times while they are posted on the web app;
-                        all Goods that you advertise for swapping are of acceptable quality and fit for the purpose for which they are intended (including any advertised purpose);
-                        you will not make any false or misleading statements in relation to Goods or Services;
-                        you will deliver Goods as you have advertised them, for example in the same condition and number;
-                        you will comply with The Australian Consumer Law (to the extent that it applies to any transaction between you and another User);
-                        if you agree to pay a monetary component for a swap of any Goods or Services, you will promptly pay the agreed amount of money as instructed by the other User;
-                        you will meet all of your tax obligations (if any) including any GST obligations in relation to all Goods and Services that you swap;
-                        if swapping Services which are required by law to be insured, you hold the appropriate insurance and the recipient of your Services is entitled to protection under your insurance policy; and
-                        if swapping Services which are required by law to be provided by certified persons, you hold the appropriate certification.
-                        You will not make available on the web app (or to Users with whom you were connected via the web app) for swapping any of the following Goods or Services: firearms, weapons, fireworks, explosives; drugs (including illicit, prescription and non-prescription drugs), other controlled substances and accessories intended for use in connection with drugs or other controlled substances, hazardous materials or substances; alcohol and tobacco products; electronic gift cards; animals, human or animal remains or parts; raffle tickets, lottery tickets or any other item that confers on the holder an opportunity to win a prize, gaming machines; tickets for more than face value; food products which have perished or are past their best before or use by date; identification cards and documents including passports; personal information; keys, key cutting or lock picking devices; burglary tools or accessories; stolen, pirated or counterfeit goods; pornography; stocks or other securities; used underwear, swimwear or other under garments; used cosmetics; sexual services; surrogacy or adoption services; goods or services which facilitate illegal activity; goods which are unsafe or do not meet mandatory safety standards; goods which do not comply with all applicable product safety laws; any other goods or services which are contrary to law.
+                        you hold full, clear and unencumbered title to any goods which you make available on the web app for swapping and have such goods in your possession at all times while they are posted on the web app;
+                        all goods that you advertise for swapping are of acceptable quality and fit for the purpose for which they are intended (including any advertised purpose);
+                        you will not make any false or misleading statements in relation to goods or services;
+                        you will deliver goods as you have advertised them, for example in the same condition and number;
+                        you will comply with the applicable law (to the extent that it applies to any transaction between you and another user);
+                        if you agree to pay a monetary component for a swap of any goods or services, you will promptly pay the agreed amount of money as instructed by the other user;
+                        you will meet all of your tax obligations (if any) including any VAT obligations in relation to all goods and services that you swap;
+                        if swapping services which are required by law to be insured, you hold the appropriate insurance and the recipient of your services is entitled to protection under your insurance policy; and
+                        if swapping services which are required by law to be provided by certified persons, you hold the appropriate certification.
+                        You will not make available on the web app (or to users with whom you were connected via the web app) for swapping any of the following goods or services:<br></br> 
+                        firearms, weapons, fireworks, explosives;<br></br> 
+                        drugs (including illicit, prescription and non-prescription drugs), other controlled substances and accessories intended for use in connection with drugs or other controlled substances, hazardous materials or substances;<br></br>
+                        alcohol and tobacco products;
+                        <br></br>electronic gift cards;<br></br>
+                        animals, human or animal remains or parts;<br></br>
+                        raffle tickets, lottery tickets or any other item that confers on the holder an opportunity to win a prize, gaming machines;
+                        <br></br>tickets for more than face value;
+                        <br></br>food products which have perished or are past their best before or use by date;
+                        <br></br>identification cards and documents including passports;
+                        <br></br>personal information; 
+                        <br></br>keys, key cutting or lock picking devices;
+                        <br></br>burglary tools or accessories;
+                        <br></br>stolen, pirated or counterfeit goods;
+                        <br></br>pornography;
+                        <br></br>stocks or other securities;
+                        <br></br>used underwear, swimwear or other under garments;
+                        <br></br>used cosmetics;
+                        <br></br>sexual services;<br></br>
+                        surrogacy or adoption services;
+                        <br></br>goods or services which facilitate illegal activity;
+                        <br></br>goods which are unsafe or do not meet mandatory safety standards;
+                        <br></br>goods which do not comply with all applicable product safety laws;
+                        <br></br>any other goods or services which are contrary to law.
+                        <br></br>
+                        <br></br>
                         You further agree not to use the web app items:
                         <br></br>
                         <br></br>
@@ -160,10 +201,10 @@ function FAQ() {
                         <br></br>
                         (g) to publish or distribute any material that incites violence, hatred or discrimination towards any person, group or community; and
                         <br></br>
-                        (h) to gather information about others unlawfully or use information obtained about others for any purpose other than in connection with the swapping of Goods and/or Services.
+                        (h) to gather information about others unlawfully or use information obtained about others for any purpose other than in connection with the swapping of goods and/or services.
                         <br></br>
                         <br></br>
-                        You may withdraw any Goods or Services posted on the web app at any time prior to agreeing to a swap with another User. You have no obligation to accept an offer to swap but once accepted you will honour your agreement with the other User. As soon as reasonably practicable after completing a swap you will remove the applicable post.
+                        You may withdraw any goods or services posted on the web app at any time prior to agreeing to a swap with another user. You have no obligation to accept an offer to swap but once accepted you will honour your agreement with the other user. As soon as reasonably practicable after completing a swap you will remove the applicable post.
                         If you become aware of any unacceptable use of the web app items please report it to us at gimme.switzerland@gmail.com
                     </div>
                 </OpenCloseBox>
