@@ -13,9 +13,12 @@
 }
 
 svg {
-  fill: #dadce1;
+  fill: #525357;
   width: 20px;
   height: 20px;
+}
+
+svg:hover {
 }
 
 .dropdown {
@@ -29,6 +32,7 @@ svg {
   border-radius: 8px;
   padding: 1rem;
   overflow: hidden;
+  transition: all 500ms;
 }
 
 .menu-item {
@@ -37,14 +41,50 @@ svg {
   align-items: center;
   border-radius: 8px;
   transition: background 500ms;
-  padding: 0.5 rem;
+  padding: 1 rem;
   font-size: small;
 }
 
 .menu-item:hover {
-  background-color: #525357;
+  background-color: #ffa800;
 }
 
 .icon-right {
   margin-left: auto;
+}
+
+.menu-primary-enter {
+  position: absolute;
+  transform: translateX(-110%);
+}
+
+.menu-primary-enter-activ {
+  transform: translateX(0%);
+  transition: all 250ms ease;
+}
+
+.menu-primary-exit {
+  position: absolute;
+}
+
+.menu-primary-exit-active {
+  transform: translateX(-110%);
+  transition: all 250ms ease;
+}
+
+.menu-secondary-enter {
+  transform: translateX(110%);
+}
+
+.menu-secondary-enter-activ {
+  transform: translateX(0%);
+  transition: all 250ms ease;
+}
+
+.menu-secondary-exit {
+}
+
+.menu-secondary-exit-active {
+  transform: translateX(110%);
+  transition: all 250ms ease;
 }
