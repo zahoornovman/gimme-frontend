@@ -205,10 +205,11 @@ function UpdateOffer() {
     const description = document.getElementById('description').value
     const condition = document.getElementById('condition').value
     const requested = document.getElementById('request').value
-    const tag = document.getElementById('tags').value
+    const tag = document.getElementById('tagsSelection').value
     const status = document.getElementById('status').value
     //const images = imagesPath
     const imagesNumber = imagesPath.length
+
 
     if (title === "" || description === "" || condition === "" || requested === "" || tag === "" || status === "") {
       if (imagesNumber === 0 && maxNumberFiles === 5) {
@@ -502,19 +503,18 @@ function UpdateOffer() {
                       <div className="inputField">
                         <label
                           className="fontSize"
-                          htmlFor="tags"
+                          htmlFor="tagsSelection"
                         >Tag:</label>
 
                         <select
                           defaultValue={offer.tags[0]}
-                          id="tags">
+                          id="tagsSelection">
                           {
                             tags === "notFetched"
                               ?
                               tagsBackend.map((tag, index) =>
                                 <option
-                                  key={index}
-                                  id={index}
+                                  key={index}                              
                                   className="fontSize"
                                   value={`${tag.id}`}
                                 >
@@ -526,8 +526,7 @@ function UpdateOffer() {
                               :
                               tags.map((tag, index) =>
                                 <option
-                                  key={index}
-                                  id={index}
+                                  key={index}                  
                                   className="fontSize"
                                   value={`${tag.id}`}
                                 >
@@ -585,7 +584,7 @@ function UpdateOffer() {
 
       
     </ContainerUpdateOffer>
-    <FooterElement></FooterElement>
+    {/* <FooterElement></FooterElement> */}
     </>
   );
 }
