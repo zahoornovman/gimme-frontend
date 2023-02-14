@@ -236,7 +236,7 @@ function OfferDetails() {
 
       
     </ContainerOneOffer>
-    <FooterElement></FooterElement>
+    {/* <FooterElement></FooterElement> */}
     </>
   );
 }
