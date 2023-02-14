@@ -6,10 +6,7 @@ import { ReactComponent as ChevronIcon } from "../../images/chevron.svg";
 import { CSSTransition } from "react-transition-group";
 import { useState } from "react";
 
-function Menu2(props) {
-  const status = useSelector((state) => state.user.loading);
-  const navigate = useNavigate();
-
+function Menu2() {
   return (
     <div>
       <DropdownMenu />
@@ -20,7 +17,21 @@ function Menu2(props) {
 export default Menu2;
 
 function DropdownMenu() {
+  const status = useSelector((state) => state.user.loading);
+  const navigate = useNavigate();
+
+  //for different dynamic menus
   const [activeMenu, setActiveMenu] = useState("main"); // offers, requests
+
+  //for menu transitioning
+  const [menuHeight, setMenuHeight] = useState(null);
+
+  function calcHeight(el) {
+    const height = el.offsetHeight;
+    setMenuHeight(height);
+  }
+
+  //each dropdown item has the below structure
   function DropdownItem(props) {
     return (
       <a
@@ -36,12 +47,13 @@ function DropdownMenu() {
   }
 
   return (
-    <div className="dropdown">
+    <div className="dropdown" style={{ height: menuHeight }}>
       <CSSTransition
         in={activeMenu === "main"}
         unmountOnExit
-        timeout={250}
+        timeout={500}
         classNames="menu-primary"
+        onEnter={calcHeight}
       >
         <div className="menu">
           <DropdownItem rightIcon={<ChevronIcon />}>My Profile</DropdownItem>
@@ -57,28 +69,42 @@ function DropdownMenu() {
       <CSSTransition
         in={activeMenu === "offers"}
         unmountOnExit
-        timeout={250}
+        timeout={500}
         classNames="menu-secondary"
+        onEnter={calcHeight}
       >
         <div className="menu">
           <DropdownItem goToMenu="main"> Go Back</DropdownItem>
-          <DropdownItem> All Offers</DropdownItem>
-          <DropdownItem> My Offers</DropdownItem>
-          <DropdownItem>Create New Offer</DropdownItem>
+          <DropdownItem goToMenu={() => navigate("/offers/all")}>
+            All Offers
+          </DropdownItem>
+          <DropdownItem goToMenu={() => navigate("/requests/my")}>
+            My Offers
+          </DropdownItem>
+          <DropdownItem goToMenu={() => navigate("/requests/new")}>
+            Create New Offer
+          </DropdownItem>
         </div>
       </CSSTransition>
 
       <CSSTransition
         in={activeMenu === "requests"}
         unmountOnExit
-        timeout={250}
+        timeout={500}
         classNames="menu-secondary"
+        onEnter={calcHeight}
       >
         <div className="menu">
           <DropdownItem goToMenu="main"> Go Back</DropdownItem>
-          <DropdownItem> All Requests</DropdownItem>
-          <DropdownItem> My Requests</DropdownItem>
-          <DropdownItem>Create New Request</DropdownItem>
+          <DropdownItem goToMenu={() => navigate("/requests/all")}>
+            All Requests
+          </DropdownItem>
+          <DropdownItem goToMenu={() => navigate("/requests/my")}>
+            My Requests
+          </DropdownItem>
+          <DropdownItem goToMenu={() => navigate("/requests/new")}>
+            Create New Request
+          </DropdownItem>
         </div>
       </CSSTransition>
     </div>
