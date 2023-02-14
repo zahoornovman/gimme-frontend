@@ -107,8 +107,10 @@ function RequestDetails() {
   }
 
   return (
+    <>
+    <Header></Header>
     <ContainerOneRequest>
-      <Header></Header>
+      
       {
         request === ""
           ?
@@ -147,7 +149,7 @@ function RequestDetails() {
                               src={img_cheveronDoubleLeft} />
 
                         }
-                        <img src={`${request.images[imageDisplayed].images}`} />
+                        <img className='image' src={`${request.images[imageDisplayed].images}`} />
                         {
                           imageDisplayed === request.images.length - 1
                             ?
@@ -160,6 +162,7 @@ function RequestDetails() {
                         }
                       </div>
                   }
+                  <div className='details'>
                   <div>
                     <h3>Description:</h3>
                     <div>{request.description}</div>
@@ -180,6 +183,7 @@ function RequestDetails() {
                     <h3>Status:</h3>
                     <StatusTranslation obj={request} />
                   </div>
+                  </div>
                 </div>
                 {
                   deletePopUp === "notDisplayed"
@@ -191,15 +195,18 @@ function RequestDetails() {
                           ?
                           <>
                             <TextButton
+                            className='messageUpdateDeleteButton'
                               onClick={() => navigate(`/requests/update/${id}`)}
                             >Update</TextButton>
                             <TextButton
-                              className='deleteButton'
+                              className='messageUpdateDeleteButton'
                               onClick={handleDeleteObject}
                             >Delete</TextButton>
                           </>
                           :
-                          <TextButton onClick={handleMessagedClicked}>Message</TextButton>
+                          <TextButton 
+                          className='messageUpdateDeleteButton'
+                          onClick={handleMessagedClicked}>Message</TextButton>
 
                       }
 
@@ -220,8 +227,10 @@ function RequestDetails() {
       }
 
 
-      <FooterElement></FooterElement>
+      
     </ContainerOneRequest>
+    <FooterElement></FooterElement>
+    </>
   );
 }
 

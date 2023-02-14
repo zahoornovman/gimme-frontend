@@ -7,6 +7,14 @@ export const ContainerAllRequests = styled.div`
   justify-content: center;
   min-height: 100vh;
   margin-top: 50px;
+
+    .buttonMore {
+    color: black;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    border-style: none;
+    padding: 10px;
+  }
 `;
 
 export const ListRequestsContainer = styled.div`
