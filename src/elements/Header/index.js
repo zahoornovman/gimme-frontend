@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import Menu from "../Menu";
+import Menu2 from "../Menu2";
 import { signOut } from "../../slices/user/userSlice";
 import SearchOffers from "../SearchOffers";
 import SearchRequests from "../SearchRequests";
@@ -49,11 +50,12 @@ function Header() {
           />
         )}
 
-        <SearchOffers/>
+        <SearchOffers />
 
         {isHoveringMenu && (
           <div onMouseLeave={handleMouseOutMenu}>
-            <Menu></Menu>
+            {/* <Menu></Menu> */}
+            <Menu2/>
           </div>
         )}
         {status === "completed" ? (
@@ -82,7 +84,7 @@ function Header() {
           </>
         )}
       </div>
-      
+
       {/* <div className="secondLine">
         {hour < 12 ? (
           userFirstname === "NoNa" ? (
@@ -120,6 +122,5 @@ function Header() {
     </HeaderContainer>
   );
 }
-
 
 export default Header;
