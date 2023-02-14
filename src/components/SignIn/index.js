@@ -2,7 +2,7 @@ import FooterElement from "../../elements/Footer";
 import Header from "../../elements/Header";
 import { SignInContainer } from "./styles";
 import { TextButton, TextContainer } from "../../styles/MasterStyles";
-
+import { loading as loadingMessage } from "../../elements/Statements/statements";
 import img_email from "../../images/email.svg";
 import img_password from "../../images/password.svg";
 
@@ -15,9 +15,8 @@ import {
   errorSignIn,
 } from "../../slices/user/userSlice";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 import { lastPage } from "../../slices/lastPageSignUpBeforeSignIn/lastPageSignUpBeforeSignInSlice";
 
 function SignIn() {
@@ -25,8 +24,6 @@ function SignIn() {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.user.loading);
   const lastPageBeforeSignIn = useSelector((state) => state.lastPageBeforeSignIn.lastPage)
-  //const access = useSelector((state) => state.user.acces)
-  const [access, setAccess] = useState("");
   const signInHandler = () => {
     dispatch(loading());
     const myHeaders = new Headers();
@@ -50,11 +47,6 @@ function SignIn() {
         dispatch(
           successfulSignIn({
             id: result.id,
-            //email: result.email,
-            //first_name: result.first_name,
-            //last_name: result.last_name,
-            //username: result.username,
-            //location: "Chur, Switzerland",
             refresh: result.refresh,
             acces: result.access,
           })
@@ -63,12 +55,9 @@ function SignIn() {
         var myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${result.access}`);
 
-        var formdata = new FormData();
-
         var requestOptions = {
           method: "GET",
           headers: myHeaders,
-          //body: formdata,
           redirect: "follow",
         };
 
@@ -77,14 +66,11 @@ function SignIn() {
           .then((result) => {
             dispatch(
               successfulGettingUserData({
-                //id: result.id,
                 email: result.email,
                 first_name: result.first_name,
                 last_name: result.last_name,
                 username: result.username,
                 location: result.userprofile.location,
-                //refresh: result.refresh,
-                //acces: result.access,
               })
             );
             if (lastPageBeforeSignIn === "signUp"){
@@ -97,11 +83,11 @@ function SignIn() {
               navigate(-1);
             }
           })
-          .catch((error) => {
+          .catch(() => {
             dispatch(errorSignIn());
           });
       })
-      .catch((error) => dispatch(errorSignIn()));
+      .catch(() => dispatch(errorSignIn()));
   };
 
   const handleEnter = (event) => {    
@@ -119,7 +105,7 @@ function SignIn() {
         <div className="messageSignIn fontSize">
           {status === "true" ? (
             <TextContainer className="signInMessage">
-              Loading. Please be patient. 😉
+              {loadingMessage}
             </TextContainer>
           ) : status === "error" ? (
             <TextContainer className="signInMessage">

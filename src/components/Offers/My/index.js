@@ -2,7 +2,7 @@ import FooterElement from '../../../elements/Footer';
 import Header from '../../../elements/Header';
 import { ContainerMyOffers } from './styles';
 import { Header2, TextButton } from '../../../styles/MasterStyles';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { baseUrl } from '../../../baseurl';
@@ -17,15 +17,13 @@ function MyOffers() {
   useEffect(() => {
     setMyOffers("")
     var myHeaders = new Headers();
-    //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2NDg1NjQ2LCJpYXQiOjE2NzYwNTM2NDYsImp0aSI6ImJiOWMwYjczYTAwMjQ0MTc5ZDNiZjVlZDRkYTAwMTY1IiwidXNlcl9pZCI6Mn0.EtgweMDaWsCbiF524p4pVoZ_3VnfsnRoOkUvBujkYEU");
     myHeaders.append("Authorization", `Bearer ${user.acces}`);
 
-    //var formdata = new FormData();
+
 
     var requestOptions = {
       method: 'GET',
-      headers: myHeaders,
-      //body: formdata,
+      headers: myHeaders,      
       redirect: 'follow'
     };
 
@@ -41,8 +39,7 @@ function MyOffers() {
         }
 
       })
-      .catch(error => {
-        console.log('error', error)
+      .catch(() => {
         setMyOffers("error")
       });
   }, [])
@@ -80,21 +77,7 @@ function MyOffers() {
                     <Header2>My offers</Header2>
                     <div className="objects">
                       {myOffers.map((obj) => (
-                        <OfferCard key={obj.id} obj={obj} />
-                        // <div
-                        //     key={obj.id}
-                        //     className="object fontSize"
-                        // >
-                        //     <h3>{obj.title}</h3>
-                        //     {
-                        //         obj.images[0]
-                        //             ?
-                        //             <img src={obj.images[0]} />
-                        //             :
-                        //             <img src={img_noPicture} />
-                        //     }
-
-                        // </div>
+                        <OfferCard key={obj.id} obj={obj} />                        
                       ))}
                     </div>
                   </>

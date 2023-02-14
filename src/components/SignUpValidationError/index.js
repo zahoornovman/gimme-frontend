@@ -1,13 +1,9 @@
 import FooterElement from "../../elements/Footer";
 import Header from "../../elements/Header";
-import { TextButton } from "../../styles/MasterStyles";
 import { ContainerSingUpValidationError} from "./styles"
-import { useNavigate, useParams } from "react-router-dom"
-import { useDispatch, useSelector } from 'react-redux';
 import HomeContactButtonSection from "../../elements/HomeContactButtonSection";
 
 function SingUpValidationError() {
-    const navigate = useNavigate()
     return (
         <ContainerSingUpValidationError>
             <Header></Header>

@@ -19,22 +19,18 @@ function MyRequests() {
     setMyRequests("")
 
     var myHeaders = new Headers();
-    //myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc2NTQ0MzY0LCJpYXQiOjE2NzYxMTIzNjQsImp0aSI6IjA4ZDgzZDZiYzJmMTQyNzQ5YjZiOTA1MWJkZjgyYWNhIiwidXNlcl9pZCI6Mn0.0WNLR973Gggaiwl4h0KAgmEuq0RRLUHHI9YwlCHvCsk");
     myHeaders.append("Authorization", `Bearer ${user.acces}`);
 
-    //var formdata = new FormData();
 
     var requestOptions = {
       method: 'GET',
       headers: myHeaders,
-      //body: formdata,
       redirect: 'follow'
     };
 
     fetch(`${baseUrl}/backend/api/wants/me/`, requestOptions)
       .then(response => response.json())
       .then(result => {
-        console.log(result)
         if (result.length === 0) {
           setMyRequests("noRequestsPlaced")
         }
@@ -43,8 +39,7 @@ function MyRequests() {
         }
 
       })
-      .catch(error => {
-        console.log('error', error)
+      .catch(() => {
         setMyRequests("error")
       });
   }, [])
