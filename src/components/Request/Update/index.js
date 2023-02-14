@@ -202,7 +202,7 @@ function UpdateRequest() {
     const description = document.getElementById('description').value
     const condition = document.getElementById('condition').value
     const offered = document.getElementById('offered').value
-    const tag = document.getElementById('tags').value
+    const tag = document.getElementById('tagsSelection').value
     const status = document.getElementById('status').value
     //const images = imagesPath
     const imagesNumber = imagesPath.length
@@ -490,12 +490,12 @@ function UpdateRequest() {
                       <div className="inputField">
                         <label
                           className="fontSize"
-                          htmlFor="tags"
+                          htmlFor="tagsSelection"
                         >Tag:</label>
 
                         <select
                           defaultValue={request.tags[0]}
-                          id="tags">
+                          id="tagsSelection">
                           {
                             tags === "notFetched"
                               ?

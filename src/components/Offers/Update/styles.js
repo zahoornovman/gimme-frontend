@@ -1,14 +1,30 @@
 import styled from 'styled-components';
 
 export const ContainerUpdateOffer = styled.div`
-  margin-top: ${(props) => props.theme.size.xxxxxxxl};
-  margin-bottom: ${(props) => props.theme.size.xxxxxxxl};
+height: 100vh;
+margin-top: ${(props) => props.theme.size.xxxxxxxl};
+margin-bottom: ${(props) => props.theme.size.xxxxxxxl};
+display: flex;
+flex-direction:column;
+justify-content:flex-start;
+align-items: center;
   .contentSection{
- 
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
   .imageGallery{
     border: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxxs};
-    height: 200px;
-    width: 200px;
+    height: 400px;
+    width: 600px;
+    background-color: ${(props) => props.theme.colors.color3};
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    img{
+      max-width: 450px;
+      max-height: 300px;
+    }
     .cheveronButton{
       height: 20px;
       cursor: pointer;

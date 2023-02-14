@@ -123,8 +123,11 @@ const offersSlice = createSlice({
   reducers: {
     setOffers: (state, { payload }) => {
       console.log("Entering slice to set offers");
-      state.offers = payload;
+      state.offers = payload.results;
       console.log(payload);
+    },
+    addMoreOffers: (state, { payload }) => {
+      state.offers = [...state.offers, ...payload.results];
     },
     // loading: (state) => {
     //   state.loading = "true";
@@ -158,6 +161,7 @@ const offersSlice = createSlice({
 });
 
 const setOffersInSlice = offersSlice.actions.setOffers;
+const setMoreOffers = offersSlice.actions.addMoreOffers;
 // const loading = offersSlice.actions.loading;
 // const successfulSignIn = offersSlice.actions.successfulSignIn;
 // const errorSignIn = offersSlice.actions.errorSignIn;
@@ -166,6 +170,7 @@ const reducer = offersSlice.reducer;
 
 export {
   setOffersInSlice,
+  setMoreOffers,
   // loading,
   // successfulSignIn,
   // errorSignIn,

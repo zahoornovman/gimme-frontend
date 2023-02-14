@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
 export const ContainerUpdateRequest = styled.div`
- height: 100vh;
-margin-top: 50px;
+height: 100vh;
+margin-top: ${(props) => props.theme.size.xxxxxxxl};
 margin-bottom: ${(props) => props.theme.size.xxxxxxxl};
 display: flex;
 flex-direction:column;
 justify-content:flex-start;
 align-items: center;
   .contentSection{
-    display: flex;
+  display: flex;
   flex-direction: column;
   row-gap: 10px;
   .imageGallery{
