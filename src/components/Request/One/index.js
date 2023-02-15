@@ -189,7 +189,10 @@ function RequestDetails() {
                   deletePopUp === "notDisplayed"
                     ?
                     <div className='buttonSection'>
-
+                      <TextButton
+                      className='messageUpdateDeleteButton'
+                      onClick={()=> navigate(-1)}
+                      >Go back</TextButton>
                       {
                         request.author.user.id === user.id
                           ?
