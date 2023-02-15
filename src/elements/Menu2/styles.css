@@ -1,4 +1,4 @@
-.navbar {
+/* .navbar {
   height: 60px;
   background-color: #242426;
   padding: 0 1rem;
@@ -10,7 +10,7 @@
   height: 100%;
   display: flex;
   justify-content: flex-end;
-}
+} */
 
 svg {
   fill: #525357;
@@ -30,6 +30,7 @@ svg {
   padding: 1rem;
   overflow: hidden;
   transition: height 500ms ease;
+  z-index: 10;
 }
 
 .menu-item {
