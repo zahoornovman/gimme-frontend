@@ -48,20 +48,17 @@ export const EmjoyContainer = styled.div`
 // `;
 
 export const TextButton = styled.button`
-  backface-visibility: hidden;
   background: ${(props) => props.theme.colors.color1};
+  border-radius: 5px;
   border: none;
-  border-radius: 0.375rem;
   box-sizing: border-box;
   color: ${(props) => props.theme.colors.color2};
   cursor: pointer;
-  /* display: inline-block; */
+  display: inline-block;
   font-family: ${(props) => props.theme.fontFamily};
-  /* font-size: 1.125rem; */
-  /* font-weight: 700; */
-  /* letter-spacing: -0.01em; */
-  /* line-height: 1.3; */
-  padding: 1rem 1.25rem;
+  font-size: ${(props) => props.theme.size.l};
+  font-weight: 700;
+  padding: 1rem 1.5rem;
   /* position: relative; */
   text-align: center;
   text-decoration: none;
@@ -71,32 +68,16 @@ export const TextButton = styled.button`
   -webkit-user-select: none;
   touch-action: manipulation;
 
-  :not(:disabled):hover {
+  /* :not(:disabled):hover {
     transform: scale(1.05);
-  }
-  :not(:disabled):hover:active {
+    transition: color 200ms;
+    color: black;
+  } */
+  :hover {
     transform: scale(1.05) translateY(0.125rem);
   }
-  /* :focus {
-    outline: 0 solid transparent;
-  } */
-  /* :focus:before {
-    border-width: 0.125rem;
-    content: "";
-    left: calc(-1 * 0.375rem);
-    pointer-events: none;
-    position: absolute;
-    top: calc(-1 * 0.375rem);
-    transition: border-radius;
-    user-select: none;
-  } */
-  /* :focus:not(:focus-visible) {
-    outline: 0 solid transparent;
-  }
-  :not(:disabled):active {
-    transform: translateY(0.125rem);
-  } */
 `;
+
 
 export const PopUpButtonYes = styled.button`
   border: ${(props) => props.theme.colors.color5} solid
@@ -135,14 +116,15 @@ export const PopUp = styled.div`
 
 //open & close box
 export const OpenCloseBox = styled.div`
-display: flex;
-flex-direction: column;
-border: ${(props) => props.theme.colors.color2} solid ${(props) => props.theme.size.xxxxxxxs};
-border-radius: ${(props) => props.theme.size.xxxxxxxs};
-width: 252px;
-background-color: ${(props) => props.theme.colors.color5};
-color: ${(props) => props.theme.colors.color4};
-@media (orientation: landscape){
+  display: flex;
+  flex-direction: column;
+  border: ${(props) => props.theme.colors.color2} solid
+    ${(props) => props.theme.size.xxxxxxxs};
+  border-radius: ${(props) => props.theme.size.xxxxxxxs};
+  width: 252px;
+  background-color: ${(props) => props.theme.colors.color5};
+  color: ${(props) => props.theme.colors.color4};
+  @media (orientation: landscape) {
     width: 580px;
   }
   @media (orientation: portrait) and (min-width: 768px) {
@@ -185,12 +167,13 @@ color: ${(props) => props.theme.colors.color4};
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: ${(props) => props.theme.colors.color2} solid ${(props) => props.theme.size.xxxxxxxs};
-    h3{
-        font-weight: bold;
-        width: 232px;
-        text-align: center;
-        @media (orientation: landscape){
+    border-bottom: ${(props) => props.theme.colors.color2} solid
+      ${(props) => props.theme.size.xxxxxxxs};
+    h3 {
+      font-weight: bold;
+      width: 232px;
+      text-align: center;
+      @media (orientation: landscape) {
         width: 560px;
       }
       @media (orientation: portrait) and (min-width: 768px) {
