@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ContainerTermsOfUse = styled.div`
-width: 100vw;
 .fontSize{
         font-size: 22px;
         font-family: ${(props)=>props.theme.fontFamily};

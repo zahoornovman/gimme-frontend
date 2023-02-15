@@ -19,4 +19,31 @@ export const Footer = styled.div`
     color: white;
     font-size: 16px;
   }
+
+  .admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+  }
+
+  .logo {
+    display: flex;
+    width: 80px;
+    height: auto;
+    margin: 50px;
+  }
+
+  .socialIcons {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 50px;
+  }
+
+  .socialIcons img {
+    width: 30px;
+    height: auto;
+    margin-right: 15px;
+  }
 `;

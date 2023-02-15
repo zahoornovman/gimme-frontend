@@ -100,13 +100,13 @@ function Profile() {
         <div className="profileButtonContainer">
           <TextButton
             onClick={() => navigate("/passwordreset")}
-            className="fontSize"
+            className="resetButton fontSize"
           >
             Reset password
           </TextButton>
           <TextButton
             onClick={() => navigate("/admin/profile/update")}
-            className="fontSize"
+            className="updateButton fontSize"
           >
             Update your profile
           </TextButton>

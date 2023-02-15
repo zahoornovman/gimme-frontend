@@ -166,7 +166,7 @@ function OfferDetails() {
                   <div className='details'>
                   <div>
                     <h3>Description:</h3>
-                    <div>{offer.description}</div>
+                    <div className='descriptionContainer' >{offer.description}</div>
                   </div>
                   <div>
                     <h3>Condition:</h3>
@@ -190,7 +190,10 @@ function OfferDetails() {
                   deletePopUp === "notDisplayed"
                     ?
                     <div className='buttonSection'>
-
+                      <TextButton
+                      className='messageUpdateDeleteButton'
+                      onClick={()=> navigate(-1)}
+                      >Go back</TextButton>
                       {
                         offer.author.user.id === user.id
                           ?

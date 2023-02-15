@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import Header from "../../elements/Header";
 import FooterElement from "../../elements/Footer";
-import { ContainerHome, ContainerWelcome } from "./styles";
+import { ContainerHome, ContainerWelcome, ContainerBanner } from "./styles";
 import { baseUrl } from "../../baseurl";
 import { useSettingTags } from "../../hooks/tagsFetch";
 import {
@@ -15,6 +15,8 @@ import {
 import { OfferCard } from "../../elements/OfferCard/offerCard";
 import { reply } from "../../slices/acceptance/acceptanceSlice";
 import { loading } from "../../elements/Statements/statements";
+import barter_banner from '../../images/barter_banner.jpg';
+
 
 function Welcome() {
   const user = useSelector((state) => state.user);
@@ -107,6 +109,16 @@ function Welcome() {
       ) : (
         <>
         <Header></Header>
+        <ContainerBanner>
+          <div className="leftSquare">
+            <h4>Make offers and requests...</h4>
+            <h4>...barter with others</h4>
+            <h2>WIN</h2>
+          </div>
+          <div className="bannerContainer">
+            <img className="banner" src={barter_banner} alt="barter_banner" />
+          </div>         
+        </ContainerBanner>
         <ContainerWelcome>
           {offersLatest10 === "" ? (
             <div className="loading">{loading}</div>

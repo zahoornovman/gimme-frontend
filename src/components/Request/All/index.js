@@ -18,6 +18,9 @@ import { selectRequests, selectTags } from "../../../store/selectors/selectors";
 //custom hooks
 import { useSettingTags } from "../../../hooks/tagsFetch";
 
+//Text Button
+import { TextButton } from '../../../styles/MasterStyles';
+
 //slices
 import {
   setMoreRequests,
@@ -125,7 +128,7 @@ function AllRequests() {
         </ListRequestsContainer>
       )}
       {next !== null && (
-        <button onClick={fetchMoreRequests}> Click for More..</button>
+        <TextButton className="buttonMore" onClick={fetchMoreRequests}> Click for More..</TextButton>
       )}
     </ContainerAllRequests>
     <FooterElement />
