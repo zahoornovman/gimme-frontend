@@ -1,6 +1,6 @@
 import FooterElement from '../../../elements/Footer';
 import Header from '../../../elements/Header';
-import { Header2, PopUp, PopUpButtonNo, PopUpButtonYes, TextButton } from '../../../styles/MasterStyles';
+import { Header2, PopUp, PopUpButtonNo, PopUpButtonYes, TextButton, TextButtonDelete } from '../../../styles/MasterStyles';
 import { ContainerOneOffer } from './styles';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -202,10 +202,10 @@ function OfferDetails() {
                               className='messageUpdateDeleteButton'
                               onClick={() => navigate(`/offers/update/${id}`)}
                             >Update</TextButton>
-                            <TextButton
+                            <TextButtonDelete
                               className='messageUpdateDeleteButton'
                               onClick={handleDeleteObject}
-                            >Delete</TextButton>
+                            >Delete</TextButtonDelete>
                           </>
                           :
                           <TextButton className='messageUpdateDeleteButton' onClick={handleMessagedClicked}>Message</TextButton>
