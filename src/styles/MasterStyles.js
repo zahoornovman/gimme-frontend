@@ -58,7 +58,7 @@ export const TextButton = styled.button`
   font-family: ${(props) => props.theme.fontFamily};
   font-size: ${(props) => props.theme.size.l};
   font-weight: 700;
-  padding: 1rem 1.5rem;
+  padding: 0 1.5rem;
   /* position: relative; */
   text-align: center;
   text-decoration: none;
@@ -67,6 +67,7 @@ export const TextButton = styled.button`
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  height: 3rem;
 
   /* :not(:disabled):hover {
     transform: scale(1.05);
