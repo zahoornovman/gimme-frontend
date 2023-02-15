@@ -190,7 +190,10 @@ function OfferDetails() {
                   deletePopUp === "notDisplayed"
                     ?
                     <div className='buttonSection'>
-
+                      <TextButton
+                      className='messageUpdateDeleteButton'
+                      onClick={()=> navigate(-1)}
+                      >Go back</TextButton>
                       {
                         offer.author.user.id === user.id
                           ?

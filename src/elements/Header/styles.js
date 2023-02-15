@@ -53,8 +53,13 @@ export const HeaderContainer = styled.div`
     padding-right: ${(props) => props.theme.size.s};
     align-items: center;
     justify-content: space-between;
+    .imageHome{
+      height: ${(props) => props.theme.size.m};
+      width: ${(props) => props.theme.size.m};
+    }
     .menuButton {
-      background-color: ${(props) => props.theme.colors.color5};
+      background-color: ${(props) => props.theme.colors.color7};
+      border: ${(props) => props.theme.colors.color1} solid ${(props) => props.theme.size.xxxxxxxxs};
       height: ${(props) => props.theme.size.s};
       width: ${(props) => props.theme.size.s};
       border-radius: 50%;
