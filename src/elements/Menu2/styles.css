@@ -20,8 +20,8 @@ svg {
 
 .dropdown {
   position: absolute;
-  top: 100px;
-  left: 875px;
+  top: 140px;
+  left: 85%;
   width: 300px;
   transform: translateX(-45%);
   background-color: white;

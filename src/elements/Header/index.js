@@ -33,65 +33,75 @@ function Header() {
   return (
     <HeaderContainer>
       <div className="firstLine">
-        <img
-          onClick={() => navigate("/")}
-          className="imageHome"
-          src={img_home}
-          alt=""
-        />
-        {/* Searchbar display based on the page being displayed */}
-        {path === "/requests/all" ||
-        path === "/requests/my" ||
-        path === "/requests/new" ||
-        path === "/requests/:id" ||
-        path === "/requests/update/:id" ? (
-          <SearchRequests />
-        ) : (
-          <SearchOffers />
-        )}
-        {path === "/signin" ||
-        path === "/passwordreset" ||
-        path === "/signup" ||
-        path === "/signup/validation" ? (
-          <></>
-        ) : (
+        <div>
           <img
-            className="menuButton"
-            onClick={handleMouseOverMenu}
-            src={img_menu}
+            onClick={() => navigate("/")}
+            className="imageHome"
+            src={img_home}
+            alt=""
           />
-        )}
+        </div>
+        {/* Searchbar display based on the page being displayed */}
+        <div className="searchBarPlacement">
+          {path === "/requests/all" ||
+          path === "/requests/my" ||
+          path === "/requests/new" ||
+          path === "/requests/:id" ||
+          path === "/requests/update/:id" ? (
+            <SearchRequests />
+          ) : (
+            <SearchOffers />
+          )}
+        </div>
 
-        {isHoveringMenu && (
-          <div onMouseLeave={handleMouseOutMenu}>
-            <Menu2 />
-          </div>
-        )}
-        {status === "completed" ? (
-          <TextButton className="buttonSignIn" onClick={handleSignOut}>
-            Sign out
-          </TextButton>
-        ) : path === "/signin" ||
+        <div>
+          {status === "completed" ? (
+            <TextButton className="buttonSignIn" onClick={handleSignOut}>
+              Sign out
+            </TextButton>
+          ) : path === "/signin" ||
+            path === "/passwordreset" ||
+            path === "/signup" ||
+            path === "/signup/validation" ? (
+            <></>
+          ) : (
+            <>
+              <TextButton
+                onClick={() => navigate("/signin")}
+                className="buttonSignIn"
+              >
+                Sign in
+              </TextButton>
+              <TextButton
+                className="buttonSignIn"
+                onClick={() => navigate("/signup")}
+              >
+                Sign up
+              </TextButton>
+            </>
+          )}
+        </div>
+
+        <div>
+          {isHoveringMenu && (
+            <div onMouseLeave={handleMouseOutMenu}>
+              <Menu2 />
+            </div>
+          )}
+
+          {path === "/signin" ||
           path === "/passwordreset" ||
           path === "/signup" ||
           path === "/signup/validation" ? (
-          <></>
-        ) : (
-          <>
-            <TextButton
-              onClick={() => navigate("/signin")}
-              className="buttonSignIn"
-            >
-              Sign in
-            </TextButton>
-            <TextButton
-              className="buttonSignIn"
-              onClick={() => navigate("/signup")}
-            >
-              Sign up
-            </TextButton>
-          </>
-        )}
+            <></>
+          ) : (
+            <img
+              className="menuButton"
+              onClick={handleMouseOverMenu}
+              src={img_menu}
+            />
+          )}
+        </div>
       </div>
     </HeaderContainer>
   );
