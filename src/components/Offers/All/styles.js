@@ -12,6 +12,8 @@ export const ContainerAllOffers = styled.div`
     color: black;
     margin-bottom: 50px;
     margin-top: 20px;
+    border-style: none;
+    padding: 10px;
   }
   /* border: 5px solid red; */
 `;
@@ -19,13 +21,11 @@ export const ContainerAllOffers = styled.div`
 export const ListOffersContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* max-width: 1170px; */
   margin-top: 30px;
   margin-bottom: 30px;
-  gap: 2rem;
+  gap: 3rem;
   justify-items: center;
   align-items: center;
-  /* border: 2px solid pink; */
 `;
 
 

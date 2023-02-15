@@ -166,7 +166,7 @@ function OfferDetails() {
                   <div className='details'>
                   <div>
                     <h3>Description:</h3>
-                    <div>{offer.description}</div>
+                    <div className='descriptionContainer' >{offer.description}</div>
                   </div>
                   <div>
                     <h3>Condition:</h3>

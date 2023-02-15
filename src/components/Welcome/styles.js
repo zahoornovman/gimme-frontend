@@ -5,6 +5,50 @@ const html = document.documentElement;
 const height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
 const width = Math.max(body.scrollWidth, body.offsetWidth, html.clientWidth, html.scrollWidth, html.offsetWidth);
 
+
+export const ContainerBanner = styled.div`
+    display: flex;
+    width: auto;
+    height: 500px;
+    margin-top: 0;
+    background-color: #fcfcfc;
+    Box-shadow: inset 0 0 10px 0 black;
+
+    .leftSquare {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 800px;
+      height: auto;
+      border-bottom-right-radius: 200px;
+      box-shadow: 10px 0 5px -8px black;
+    }
+     .leftSquare h4 {
+      font-size: 40px;
+      margin-bottom: 50px;
+      color: grey;
+    }
+
+    .leftSquare h2 {
+      font-size: 100px;
+      color: ${(props) => props.theme.colors.color1};
+    }
+
+    .bannerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: auto;
+    }
+
+    .banner {
+    width:1000px;
+    height: auto;
+    }
+`
+
 export const ContainerHome = styled.div`
   min-height: 100vh;
   width: 100vw;
@@ -43,7 +87,6 @@ export const ContainerHome = styled.div`
       grid-template-columns: repeat(3, 1fr);
       row-gap: ${(props) => props.theme.size.xxxxxxs};
       column-gap: ${(props) => props.theme.size.xxxxxxs};
-      border: 10px solid pink;
       .object {
         border: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxxs};
         border-radius: 4px;
@@ -126,7 +169,7 @@ export const ContainerWelcome = styled.div`
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       margin: 5rem auto;
-      gap: 2rem;
+      gap: 3rem;
       .object {
         border: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxxs};
         border-radius: 4px;

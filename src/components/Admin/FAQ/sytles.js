@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContainerFAQ = styled.div`
-width: 100vw;
+min-height: 100vh;
 .fontSize{
         font-size: ${(props) => props.theme.size.xs};
 /*     @media (orientation: landscape){

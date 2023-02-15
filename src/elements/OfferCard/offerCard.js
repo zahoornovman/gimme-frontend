@@ -18,6 +18,7 @@ function OfferCard(props) {
   // individual card displayed with image
   return (
     <ContainerOfferCardStyled onClick={() => handleClickNavigate(props.obj.id)}>
+     <div className='offerContainer'> 
       {props.obj.images[0] ? (
         <div className="imageBox">
           <img src={props.obj.images[0].images} alt='' /> 
@@ -26,6 +27,7 @@ function OfferCard(props) {
         <img src={no_picture} />
       )}
       <h2>{props.obj.title}</h2>
+     </div> 
     </ContainerOfferCardStyled>
   );
 }
