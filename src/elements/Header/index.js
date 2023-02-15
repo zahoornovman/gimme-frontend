@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import Menu2 from "../Menu2";
 import { signOut } from "../../slices/user/userSlice";
+import SearchRequests from "../SearchRequests";
 import SearchOffers from "../SearchOffers";
-import img_home from "../../images/home.svg"
-
+import img_home from "../../images/home.svg";
 
 function Header() {
   const navigate = useNavigate();
@@ -33,16 +33,26 @@ function Header() {
   return (
     <HeaderContainer>
       <div className="firstLine">
-
-        <img 
-        onClick={()=> navigate("/")}
-        className="imageHome"
-        src={img_home} alt=""/>
-        <SearchOffers />
+        <img
+          onClick={() => navigate("/")}
+          className="imageHome"
+          src={img_home}
+          alt=""
+        />
+        {/* Searchbar display based on the page being displayed */}
+        {path === "/requests/all" ||
+        path === "/requests/my" ||
+        path === "/requests/new" ||
+        path === "/requests/:id" ||
+        path === "/requests/update/:id" ? (
+          <SearchRequests />
+        ) : (
+          <SearchOffers />
+        )}
         {path === "/signin" ||
-          path === "/passwordreset" ||
-          path === "/signup" ||
-          path === "/signup/validation" ? (
+        path === "/passwordreset" ||
+        path === "/signup" ||
+        path === "/signup/validation" ? (
           <></>
         ) : (
           <img
@@ -83,8 +93,6 @@ function Header() {
           </>
         )}
       </div>
-
-
     </HeaderContainer>
   );
 }
