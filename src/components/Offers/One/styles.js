@@ -59,7 +59,7 @@ align-items: center;
   max-width: 800px;
   box-shadow: 2px 2px 5px black;
   margin-top: 50px;
-  padding: 20px 10px 20px 10px;
+  padding: 25px 10px 40px 10px;
 }
 
 .details h3{
@@ -67,6 +67,11 @@ align-items: center;
   padding: 20px;
   color: ${(props) => props.theme.colors.color7};
   text-align: center;
+}
+
+.descriptionContainer {
+  max-width: 700px;
+  height: auto;
 }
 
   

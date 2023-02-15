@@ -68,5 +68,10 @@ align-items: center;
   text-align: center;
 }
 
+.descriptionContainer {
+  max-width: 700px;
+  height: auto;
+}
+
   
 `;

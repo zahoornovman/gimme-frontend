@@ -7,6 +7,7 @@ export const theme = {
         color5: "#ffffff", // white
         color6: "#E9E9E9", // grey
         color7: "#577590", // blue background
+        color8: "#fcfcfc", // card grey
     },
     fontFamily: "Sulphur Point, Verdana, Geneva, Tahoma, sans-serif",
     size: {

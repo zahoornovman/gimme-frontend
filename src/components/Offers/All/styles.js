@@ -23,7 +23,7 @@ export const ListOffersContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   margin-top: 30px;
   margin-bottom: 30px;
-  gap: 2rem;
+  gap: 3rem;
   justify-items: center;
   align-items: center;
 `;

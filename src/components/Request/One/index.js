@@ -165,7 +165,7 @@ function RequestDetails() {
                   <div className='details'>
                   <div>
                     <h3>Description:</h3>
-                    <div>{request.description}</div>
+                    <div className='descriptionContainer' >{request.description}</div>
                   </div>
                   <div>
                     <h3>Condition:</h3>
