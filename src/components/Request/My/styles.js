@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ContainerMyRequests = styled.div`
 .requestContent{
+  min-height:100vh;
   display: flex;
   flex-direction: column;
   margin-top: 50px;

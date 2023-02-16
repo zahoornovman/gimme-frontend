@@ -23,7 +23,9 @@ function SignIn() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const status = useSelector((state) => state.user.loading);
-  const lastPageBeforeSignIn = useSelector((state) => state.lastPageBeforeSignIn.lastPage)
+  const lastPageBeforeSignIn = useSelector(
+    (state) => state.lastPageBeforeSignIn.lastPage
+  );
   const signInHandler = () => {
     dispatch(loading());
     const myHeaders = new Headers();
@@ -73,13 +75,14 @@ function SignIn() {
                 location: result.userprofile.location,
               })
             );
-            if (lastPageBeforeSignIn === "signUp"){
-              navigate(-2)
-              dispatch(lastPage({
-                lastPage: "notSignUp"
-              }))
-            }
-            else{
+            if (lastPageBeforeSignIn === "signUp") {
+              navigate(-2);
+              dispatch(
+                lastPage({
+                  lastPage: "notSignUp",
+                })
+              );
+            } else {
               navigate(-1);
             }
           })
@@ -90,13 +93,16 @@ function SignIn() {
       .catch(() => dispatch(errorSignIn()));
   };
 
-  const handleEnter = (event) => {    
-    if (event.key === "Enter"){
-      if (document.getElementById("email").value !== "" && document.getElementById("password").value !== ""){
-        signInHandler()
-      }      
+  const handleEnter = (event) => {
+    if (event.key === "Enter") {
+      if (
+        document.getElementById("email").value !== "" &&
+        document.getElementById("password").value !== ""
+      ) {
+        signInHandler();
+      }
     }
-  }
+  };
   return (
     <SignInContainer>
       <Header></Header>
@@ -138,12 +144,6 @@ function SignIn() {
             ></input>
           </div>
           <div className="buttonsSignIn">
-            <TextButton
-              onClick={() => navigate("/passwordreset")}
-              className="notSignInButton fontSize"
-            >
-              Password forgotten
-            </TextButton>
             <TextButton onClick={signInHandler} className="fontSize">
               Sign in
             </TextButton>
@@ -153,6 +153,15 @@ function SignIn() {
             >
               Create account
             </TextButton>
+          </div>
+          <div className="buttonPasswordReset">
+            <a
+              href=""
+              onClick={() => navigate("/passwordreset")}
+              className="notSignInButton fontSize"
+            >
+              Forgot Password
+            </a>
           </div>
         </div>
       </div>

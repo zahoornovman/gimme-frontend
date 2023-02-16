@@ -47,12 +47,11 @@ export const EmjoyContainer = styled.div`
 //   cursor: pointer;
 // `;
 
-export const TextButton = styled.button`
-  background: ${(props) => props.theme.colors.color1};
+export const TextButtonBasic = styled.button`
   border-radius: 5px;
   border: none;
   box-sizing: border-box;
-  color: ${(props) => props.theme.colors.color2};
+
   cursor: pointer;
   display: inline-block;
   font-family: ${(props) => props.theme.fontFamily};
@@ -68,17 +67,20 @@ export const TextButton = styled.button`
   -webkit-user-select: none;
   touch-action: manipulation;
   height: 3rem;
-
-  /* :not(:disabled):hover {
-    transform: scale(1.05);
-    transition: color 200ms;
-    color: black;
-  } */
   :hover {
     transform: scale(1.05) translateY(0.125rem);
   }
 `;
 
+export const TextButton = styled(TextButtonBasic)`
+  background: ${(props) => props.theme.colors.color1};
+  color: ${(props) => props.theme.colors.color2};
+`;
+
+export const TextButtonDelete = styled(TextButtonBasic)`
+  background: red;
+  color: red;
+`;
 
 export const PopUpButtonYes = styled.button`
   border: ${(props) => props.theme.colors.color5} solid
