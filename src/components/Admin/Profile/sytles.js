@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const ContainerUserProfile = styled.div`
 height: 100vh;
-width: 100vw;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -61,7 +60,7 @@ row-gap: ${(props) => props.theme.size.s};
         } */
         .profileItemTitle{
             font-weight: bold;
-            color: ${(props) => props.theme.colors.color5}
+            color: ${(props) => props.theme.colors.color4}
         }
     }
 }

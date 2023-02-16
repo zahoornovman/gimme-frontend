@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const ContainerOneOffer = styled.div`
 margin-top: 50px;
+min-height: 100vh;
 position: relative;
 display: flex;
 flex-direction:column;

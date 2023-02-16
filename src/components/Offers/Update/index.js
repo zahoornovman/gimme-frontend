@@ -353,7 +353,7 @@ function UpdateOffer() {
                                     src={img_cheveronDoubleLeft} />
 
                               }
-                              <img src={`${imageAvailable[imageDisplayed].images}`} />
+                              <img className='image' src={`${imageAvailable[imageDisplayed].images}`} />
                               {
                                 imageDisplayed === offer.images.length - 1
                                   ?
