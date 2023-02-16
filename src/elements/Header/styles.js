@@ -56,8 +56,8 @@ export const HeaderContainer = styled.div`
     padding-right: ${(props) => props.theme.size.s};
 
     .imageHome {
-      height: ${(props) => props.theme.size.m};
-      width: ${(props) => props.theme.size.m};
+      height: ${(props) => props.theme.size.xxxxxxl};
+      width: ${(props) => props.theme.size.xxxxxxl};
     }
     .menuButton {
       background-color: ${(props) => props.theme.colors.color7};
