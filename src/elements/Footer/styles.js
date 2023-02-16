@@ -13,11 +13,12 @@ export const Footer = styled.div`
   height: 75px;
   background-color: ${(props) => props.theme.colors.color7};
   box-shadow: 0px 15px 10px 12px #111;
-  a {
+  .a {
     text-decoration: none;
     margin-left: 15px;
     color: white;
     font-size: 16px;
+    cursor: pointer;
   }
 
   .admin {

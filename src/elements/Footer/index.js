@@ -18,10 +18,10 @@ function FooterElement() {
       className='logo'
       src={gimme_logo} alt="" />
       <div className='admin'>
-        <a href="">About us</a>
-        <a href="">Contact</a>
-        <a href="">FAQ</a>
-        <a href="">Terms of Use</a>
+        <div className='a'>About us</div>
+        <div className='a' onClick={()=> navigate("/admin/contact")}>Contact</div>
+        <div className='a'onClick={()=> navigate("/admin/faq")}>FAQ</div>
+        <div className='a'onClick={()=> navigate("/admin/termsofuse")}>Terms of Use</div>
       </div>
       <div className='socialIcons'>
         <a
