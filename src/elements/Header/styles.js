@@ -59,19 +59,22 @@ export const HeaderContainer = styled.div`
       height: ${(props) => props.theme.size.xxxxxxl};
       width: ${(props) => props.theme.size.xxxxxxl};
     }
-    .menuButton {
-      background-color: ${(props) => props.theme.colors.color7};
-      border: ${(props) => props.theme.colors.color1} solid
-        ${(props) => props.theme.size.xxxxxxxxs};
-      height: ${(props) => props.theme.size.s};
-      width: ${(props) => props.theme.size.s};
-      border-radius: 50%;
-      margin-right: 30px;
-
+    .menuArea{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      color: ${(props) => props.theme.colors.color1};
+      font-size: ${(props) => props.theme.size.xxs};
+      row-gap: ${(props) => props.theme.size.xxxxxxxxs};
       img {
-        height: ${(props) => props.theme.size.xs};
+        height: ${(props) => props.theme.size.xxs};
         width: ${(props) => props.theme.size.xs};
       }
     }
+    
+
+      
+    
   }
 `;

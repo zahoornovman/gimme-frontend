@@ -8,12 +8,15 @@ import Menu2 from "../Menu2";
 import { signOut } from "../../slices/user/userSlice";
 import SearchRequests from "../SearchRequests";
 import SearchOffers from "../SearchOffers";
-import img_home from "../../images/logo.png";
+import img_home from "../../images/home.svg";
+import img_chevronDown from "../../images/chevronDoubleDown.svg"
+import img_chevronUp from "../../images/chevronDoubleUp.svg"
 
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const status = useSelector((state) => state.user.loading);
+  const user = useSelector((state) => state.user);
 
   const handleSignOut = () => {
     dispatch(signOut());
@@ -44,10 +47,10 @@ function Header() {
         {/* Searchbar display based on the page being displayed */}
         <div className="searchBarPlacement">
           {path === "/requests/all" ||
-          path === "/requests/my" ||
-          path === "/requests/new" ||
-          path === "/requests/:id" ||
-          path === "/requests/update/:id" ? (
+            path === "/requests/my" ||
+            path === "/requests/new" ||
+            path === "/requests/:id" ||
+            path === "/requests/update/:id" ? (
             <SearchRequests />
           ) : (
             <SearchOffers />
@@ -90,17 +93,54 @@ function Header() {
           )}
 
           {path === "/signin" ||
-          path === "/passwordreset" ||
-          path === "/signup" ||
-          path === "/signup/validation" ? (
+            path === "/passwordreset" ||
+            path === "/signup" ||
+            path === "/signup/validation"
+            ?
             <></>
-          ) : (
-            <img
-              className="menuButton"
-              onClick={handleMouseOverMenu}
-              src={img_menu}
-            />
-          )}
+            :
+            user.first_name === "NoNa"
+              ?
+              isHoveringMenu
+                ?
+                <div className="menuArea">
+                  <div>my Gimme</div>
+                  <img
+                    className="menuButton"
+                    onClick={handleMouseOutMenu}
+                    src={img_chevronUp}
+                  />
+                </div>
+                :
+                <div className="menuArea">
+                  <div>my Gimme</div>
+                  <img
+                    className="menuButton"
+                    onClick={handleMouseOverMenu}
+                    src={img_chevronDown}
+                  />
+                </div>
+              :
+              isHoveringMenu
+                ?
+                <div className="menuArea">
+                  <div>{user.first_name}</div>
+                  <img
+                    className="menuButton"
+                    onClick={handleMouseOutMenu}
+                    src={img_chevronUp}
+                  />
+                </div>
+                :
+                <div className="menuArea">
+                  <div>{user.first_name}</div>
+                  <img
+                    className="menuButton"
+                    onClick={handleMouseOverMenu}
+                    src={img_chevronDown}
+                  />
+                </div>
+          }
         </div>
       </div>
     </HeaderContainer>
