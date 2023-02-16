@@ -423,13 +423,29 @@ function UpdateOffer() {
                         >
                           Description:
                         </label>
-                        <input
+                        <textarea
                           className="fontSize"
                           onChange={handleChangeDescription}
                           maxLength={maxLengthDescription}
                           defaultValue={offer.description}
-                          id="description"></input>
+                          id="description"></textarea>
                         <div className="fontSize">{`(${currentLengthDescription}/${maxLengthDescription})`}</div>
+                      </div>
+                      
+                      <div className="inputField">
+                        <label
+                          className="fontSize"
+                          htmlFor="request"
+                        >
+                          Requested:
+                        </label>
+                        <textarea
+                          className="fontSize"
+                          onChange={handleChangeRequested}
+                          maxLength={maxLengthRequested}
+                          defaultValue={offer.wants_for_this_item}
+                          id="request"></textarea>
+                        <div className="fontSize">{`(${currentLengthRequested}/${maxLengthRequested})`}</div>
                       </div>
                       <div className="inputField">
                         <label
@@ -462,21 +478,6 @@ function UpdateOffer() {
                             {conditions.c4}
                           </option>
                         </select>
-                      </div>
-                      <div className="inputField">
-                        <label
-                          className="fontSize"
-                          htmlFor="request"
-                        >
-                          Requested:
-                        </label>
-                        <input
-                          className="fontSize"
-                          onChange={handleChangeRequested}
-                          maxLength={maxLengthRequested}
-                          defaultValue={offer.wants_for_this_item}
-                          id="request"></input>
-                        <div className="fontSize">{`(${currentLengthRequested}/${maxLengthRequested})`}</div>
                       </div>
                       <div className="inputField">
                         <label

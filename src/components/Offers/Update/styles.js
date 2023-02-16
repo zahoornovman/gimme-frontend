@@ -36,6 +36,7 @@ align-items: center;
       height: 20px;
       cursor: pointer;
     }
+
   }
 
   .details {
@@ -49,9 +50,56 @@ align-items: center;
   padding: 25px 10px 40px 10px;
 }
 
-.inputField {
-  margin-top: 50px;
-}
+  .inputField {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+  }
+
+  .inputField label {
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: ${(props) => props.theme.colors.color7};
+  }
+
+  .inputField input {
+    width: 300px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: ${(props) => props.theme.colors.color5};
+    padding: 5px;
+    border: 1px solid ${(props) => props.theme.colors.color7};
+  }
+
+  .inputField select {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: ${(props) => props.theme.colors.color5};
+    padding: 5px;
+    border: 1px solid ${(props) => props.theme.colors.color7};
+  }
+
+  #description {
+    height: 200px;
+    width: 300px;
+    border-radius: 5px;
+    background-color: ${(props) => props.theme.colors.color5};
+    padding: 5px;
+    border: 1px solid ${(props) => props.theme.colors.color7};
+    resize: none;
+  }
+
+  #request {
+    height: 100px;
+    width: 300px;
+    border-radius: 5px;
+    background-color: ${(props) => props.theme.colors.color5};
+    padding: 5px;
+    border: 1px solid ${(props) => props.theme.colors.color7};
+    resize: none;
+  }
+
 }
 .saveGoBackButton {
     font-size: 15px;
@@ -63,19 +111,20 @@ align-items: center;
     margin-bottom: 50px;
 }
 .buttonStyle{
-    border: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxs};
+    font-size: 15px;
     border-radius: 25px;
-    background-color: ${(props) => props.theme.colors.color5};
-    color: ${(props) => props.theme.colors.color2};
+    background-color: ${(props) => props.theme.colors.color7};
+    color: ${(props) => props.theme.colors.color1};
     text-align: center;
-    font-weight: bold;
     font-family: ${(props) => props.theme.fontFamily};
-    cursor: pointer;}
+    padding: 7px;
+    cursor: pointer;
+  }
 .buttonSection{
   .deleteButton{
     background-color: ${(props) => props.theme.colors.color4};
     color: ${(props) => props.theme.colors.color3};
   }
-      margin-top: 50px;
+   margin-top: 50px;
 }
 `;

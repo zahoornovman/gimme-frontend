@@ -56,7 +56,7 @@ export const TextButtonBasic = styled.button`
   display: inline-block;
   font-family: ${(props) => props.theme.fontFamily};
   font-size: ${(props) => props.theme.size.l};
-  font-weight: 700;
+  font-weight: 500;
   padding: 0 1.5rem;
   /* position: relative; */
   text-align: center;
