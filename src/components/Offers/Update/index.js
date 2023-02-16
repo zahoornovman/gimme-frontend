@@ -260,7 +260,7 @@ function UpdateOffer() {
       {
         user.first_name === "NoNa"
           ?
-          <div>Please sign in to update an offer. 😋</div>
+          <div>Please sign in to update an offer.</div>
           :
           <>
             {
@@ -320,21 +320,7 @@ function UpdateOffer() {
                                         :
                                         <></>
                       }
-                      <div className="inputField">
-                        <label
-                          className="fontSize"
-                          htmlFor="title"
-                        >
-                          Title:
-                        </label>
-                        <input
-                          className="fontSize"
-                          onChange={handleChangeTitle}
-                          maxLength={maxLenghtTitle}
-                          defaultValue={offer.title}
-                          id="title"></input>
-                        <div className="fontSize">{`(${currentLengthTitle}/${maxLenghtTitle})`}</div>
-                      </div>
+                      
                       {
                         imageAvailable.length === 0
                           ?
@@ -373,6 +359,22 @@ function UpdateOffer() {
                             </div>
                           </div>
                       }
+                      <div className='details'>
+                      <div className="inputField">
+                        <label
+                          className="fontSize"
+                          htmlFor="title"
+                        >
+                          Title:
+                        </label>
+                        <input
+                          className="fontSize"
+                          onChange={handleChangeTitle}
+                          maxLength={maxLenghtTitle}
+                          defaultValue={offer.title}
+                          id="title"></input>
+                        <div className="fontSize">{`(${currentLengthTitle}/${maxLenghtTitle})`}</div>
+                      </div>
                       <div className="inputField">
                         <label
                           className="fontSize"
@@ -546,13 +548,18 @@ function UpdateOffer() {
                           </option>
                         </select>
                       </div>
+                      </div>
                     </div>
+                    <div className='buttonSection'>
                     <TextButton
+                      className='saveGoBackButton'
                       onClick={handleSave}
                     >Save changes</TextButton>
                     <TextButton
+                      className='saveGoBackButton'
                       onClick={() => navigate(`/offers/${id}`)}
                     >Go back</TextButton>
+                    </div>
                   </>
             }
           </>
