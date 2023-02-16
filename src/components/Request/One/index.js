@@ -173,7 +173,7 @@ function RequestDetails() {
                   </div>
                   <div>
                     <h3>Offered:</h3>
-                    <div>{request.has_for_this_item}</div>
+                    <div className='offeredContainer' >{request.has_for_this_item}</div>
                   </div>
                   <div>
                     <h3>Location:</h3>

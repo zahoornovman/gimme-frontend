@@ -174,7 +174,7 @@ function OfferDetails() {
                   </div>
                   <div>
                     <h3>Requested:</h3>
-                    <div>{offer.wants_for_this_item}</div>
+                    <div className='requestedContainer' >{offer.wants_for_this_item}</div>
                   </div>
                   <div>
                     <h3>Location:</h3>

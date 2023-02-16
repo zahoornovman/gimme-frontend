@@ -73,5 +73,10 @@ align-items: center;
   height: auto;
 }
 
+.offeredContainer {
+  max-width: 700px;
+  height: auto;
+}
+
   
 `;
