@@ -13,7 +13,7 @@ function Error() {
   const navigate = useNavigate()
   return (
     <MainError>
-      <div
+{/*       <div
         className="errorHeader"
       >
         {
@@ -63,7 +63,7 @@ function Error() {
                     className="fontSize"
                   >{`Good night ${userFirstname}!`}</Header1>
         }
-      </div>
+      </div> */}
       <div
         className="errorContent"
       >

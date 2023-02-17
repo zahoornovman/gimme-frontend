@@ -22,7 +22,7 @@ export const Header2 = styled.h2`
 
 //text
 export const TextContainer = styled.div`
-  color: ${(props) => props.theme.colors.color3};
+  color: ${(props) => props.theme.colors.color4};
   padding: ${(props) => props.theme.size.xxxxxxs};
   @media (orientation: portrait) and (min-width: 768px) {
     padding: ${(props) => props.theme.size.xxxxs};

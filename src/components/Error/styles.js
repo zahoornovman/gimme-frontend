@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const MainError = styled.div`
 height: 100vh;
-width: 100vw;
 display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
+margin-top: 50px;
 .fontSize {
     font-size:${(props) => props.theme.size.s};
     @media (orientation: landscape) {

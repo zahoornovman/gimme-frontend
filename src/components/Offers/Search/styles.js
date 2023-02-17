@@ -14,10 +14,9 @@ export const ContainerSearchListOffers = styled.div`
 export const ListOffersSearchContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* max-width: 1170px; */
-  margin: 5rem auto;
-  gap: 2rem;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  gap: 3rem;
   justify-items: center;
   align-items: center;
-  /* border: 2px solid pink; */
 `;
