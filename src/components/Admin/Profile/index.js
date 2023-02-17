@@ -6,6 +6,7 @@ import {
   PopUpButtonNo,
   PopUpButtonYes,
   TextButton,
+  TextButtonDelete,
 } from "../../../styles/MasterStyles";
 import { ContainerUserProfile } from "./sytles";
 import { useNavigate } from "react-router-dom";
@@ -42,15 +43,12 @@ function Profile() {
 
     fetch(`${baseUrl}/backend/api/user/me/`, requestOptions)
       .then((response) => {
-
         if (response.status < 300) {
           dispatch(signOut());
           navigate("/");
-        }
-        else {
+        } else {
           navigate("/admin/profile/deleteerror");
         }
-
       })
       .catch(() => {
         navigate("/admin/profile/deleteerror");
@@ -110,9 +108,12 @@ function Profile() {
           >
             Update your profile
           </TextButton>
-          <TextButton className="deleteButton fontSize" onClick={deleteHandler}>
+          <TextButtonDelete
+            className="deleteButton fontSize"
+            onClick={deleteHandler}
+          >
             Delete your profile
-          </TextButton>
+          </TextButtonDelete>
         </div>
       )}
 
