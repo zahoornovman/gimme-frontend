@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const ContainerSearchListOffers = styled.div`
+  margin-top: 50px;
+  min-height: 100vh;
+  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
+  justify-content:flex-start;
   align-items: center;
-  justify-content: center;
   /* border: 5px solid red; */
 `;
 

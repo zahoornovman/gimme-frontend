@@ -125,7 +125,7 @@ function Welcome() {
           ) : (
             <div className="notLoading">
               <div className="latestOfferContainer">
-                <Header2>Latest offers</Header2>
+                <Header2>Offers added in the last 24 hours</Header2>
                 {fetchingStatus === "error" ? (
                   <div>
                     Latest offers can't be displayed at the moment. We apologise

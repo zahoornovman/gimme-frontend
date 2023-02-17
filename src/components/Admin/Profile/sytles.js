@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const ContainerUserProfile = styled.div`
-height: 100vh;
+margin-top: 50px;
+min-height: 100vh;
+position: relative;
 display: flex;
-justify-content: center;
+flex-direction:column;
+justify-content:flex-start;
 align-items: center;
-flex-direction: column;
-row-gap: ${(props) => props.theme.size.s};
 /* @media (orientation: landscape){
     row-gap: ${(props) => props.theme.size.xxxxxxxs};
 }
@@ -40,6 +41,7 @@ row-gap: ${(props) => props.theme.size.s};
     align-items: center;
     padding: 30px;
     box-shadow: 2px 2px 5px black;
+    margin-top: 30px;
 /*     @media (orientation: landscape){
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -54,12 +56,16 @@ row-gap: ${(props) => props.theme.size.s};
     .profileItem{
         display: flex;
         flex-direction: column;
-        row-gap: ${(props) => props.theme.size.xxxxxxxxs};
+        margin-bottom: 20px;
 /*         @media (orientation: landscape){
         row-gap: ${(props) => props.theme.size.xxxxxxxxs};
         } */
         .profileItemTitle{
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
+            margin-top: 10px;
             color: ${(props) => props.theme.colors.color4}
         }
     }
@@ -67,7 +73,8 @@ row-gap: ${(props) => props.theme.size.s};
 .profileButtonContainer{
     display: flex;
     flex-direction: column;
-    row-gap: ${(props) => props.theme.size.xxxxxxs};
+    row-gap: ${(props) => props.theme.size.xxxxs};
+    margin-top: 50px;
 /*     @media (orientation: landscape){
         flex-direction: row;
         column-gap: ${(props) => props.theme.size.xxxxxxs};

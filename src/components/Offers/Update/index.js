@@ -326,8 +326,8 @@ function UpdateOffer() {
                           ?
                           <></>
                           :
-                          <div className='imageGallery'>
-                            <div>
+                          <>
+                            <div className='imageGallery'>
                               {
                                 imageDisplayed === 0
                                   ?
@@ -357,7 +357,7 @@ function UpdateOffer() {
                                 onClick={handleDeleteImage}
                                 className="imageTrash" />
                             </div>
-                          </div>
+                          </>
                       }
                       <div className='details'>
                       <div className="inputField">

@@ -302,8 +302,8 @@ function UpdateRequest() {
                           ?
                           <></>
                           :
-                          <div className='imageGallery'>
-                            <div>
+                          <>
+                            <div className='imageGallery'>
                               {
                                 imageDisplayed === 0
                                   ?
@@ -333,7 +333,7 @@ function UpdateRequest() {
                                 onClick={handleDeleteImage}
                                 className="imageTrash" />
                             </div>
-                          </div>
+                          </>
                       }
                       <div className='details' >
                       <div className="inputField">

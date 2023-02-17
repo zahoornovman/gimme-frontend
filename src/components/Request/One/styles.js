@@ -7,6 +7,7 @@ display: flex;
 flex-direction:column;
 justify-content:flex-start;
 align-items: center;
+min-height: 100vh;
 .contentSection{
   display: flex;
   flex-direction: column;

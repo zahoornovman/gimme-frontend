@@ -27,17 +27,19 @@ align-items: center;
       object-fit: cover;
       box-shadow: 2px 2px 5px black;
     }
-    .cheveronButton{
-      height: 20px;
-      cursor: pointer;
-    }
-    .imageTrash{
-      background-color: black;
+
+  }
+
+      .cheveronButton{
       height: 20px;
       cursor: pointer;
     }
 
-  }
+      .imageTrash{
+      background-color: black;
+      height: 20px;
+      cursor: pointer;
+    }
 
   .details {
   display: flex;

@@ -31,12 +31,13 @@ align-items: center;
       height: 20px;
       cursor: pointer;
     }
-    .imageTrash{
-      height: 20px;
-      cursor: pointer;
-    }
 
   }
+
+      .imageTrash{
+        height: 20px;
+        cursor: pointer;
+     }
 
   .details {
     display: flex;
