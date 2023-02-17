@@ -9,11 +9,12 @@ export const ContainerAllRequests = styled.div`
   margin-top: 50px;
 
     .buttonMore {
-    color: black;
     margin-bottom: 50px;
     margin-top: 20px;
     border-style: none;
     padding: 10px;
+    font-weight: 700;
+    font-size: ${(props) => props.theme.size.s};
   }
 `;
 
