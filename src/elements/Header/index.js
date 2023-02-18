@@ -9,8 +9,8 @@ import { signOut } from "../../slices/user/userSlice";
 import SearchRequests from "../SearchRequests";
 import SearchOffers from "../SearchOffers";
 import img_home from "../../images/gimmeHome.png";
-import img_chevronDown from "../../images/chevronDoubleDown.svg"
-import img_chevronUp from "../../images/chevronDoubleUp.svg"
+import img_chevronDown from "../../images/chevronDoubleDown.svg";
+import img_chevronUp from "../../images/chevronDoubleUp.svg";
 
 function Header() {
   const navigate = useNavigate();
@@ -47,10 +47,11 @@ function Header() {
         {/* Searchbar display based on the page being displayed */}
         <div className="searchBarPlacement">
           {path === "/requests/all" ||
-            path === "/requests/my" ||
-            path === "/requests/new" ||
-            path === "/requests/:id" ||
-            path === "/requests/update/:id" ? (
+          path === "/requests/searchResults" ||
+          path === "/requests/my" ||
+          path === "/requests/new" ||
+          path === "/requests/:id" ||
+          path === "/requests/update/:id" ? (
             <SearchRequests />
           ) : (
             <SearchOffers />
@@ -93,62 +94,49 @@ function Header() {
           )}
 
           {path === "/signin" ||
-            path === "/passwordreset" ||
-            path === "/signup" ||
-            path === "/signup/validation"
-            ?
+          path === "/passwordreset" ||
+          path === "/signup" ||
+          path === "/signup/validation" ? (
             <></>
-            :
-            user.first_name === "NoNa"
-              ?
-              isHoveringMenu
-                ?
-                <div className="menuArea">
-                  <div
-                    onClick={handleMouseOutMenu}
-                  >my Gimme</div>
-                  <img
-                    className="menuButton"
-                    onClick={handleMouseOutMenu}
-                    src={img_chevronUp}
-                  />
-                </div>
-                :
-                <div className="menuArea">
-                  <div
-                    onClick={handleMouseOverMenu}
-                  >my Gimme</div>
-                  <img
-                    className="menuButton"
-                    onClick={handleMouseOverMenu}
-                    src={img_chevronDown}
-                  />
-                </div>
-              :
-              isHoveringMenu
-                ?
-                <div className="menuArea">
-                  <div
-                    onClick={handleMouseOutMenu}
-                  >{user.first_name}</div>
-                  <img
-                    className="menuButton"
-                    onClick={handleMouseOutMenu}
-                    src={img_chevronUp}
-                  />
-                </div>
-                :
-                <div className="menuArea">
-                  <div
-                    onClick={handleMouseOverMenu}
-                  >{user.first_name}</div>
-                  <img
-                    className="menuButton"
-                    onClick={handleMouseOverMenu}
-                    src={img_chevronDown}
-                  />
-                </div>
-          }
+          ) : user.first_name === "NoNa" ? (
+            isHoveringMenu ? (
+              <div className="menuArea">
+                <div onClick={handleMouseOutMenu}>my Gimme</div>
+                <img
+                  className="menuButton"
+                  onClick={handleMouseOutMenu}
+                  src={img_chevronUp}
+                />
+              </div>
+            ) : (
+              <div className="menuArea">
+                <div onClick={handleMouseOverMenu}>my Gimme</div>
+                <img
+                  className="menuButton"
+                  onClick={handleMouseOverMenu}
+                  src={img_chevronDown}
+                />
+              </div>
+            )
+          ) : isHoveringMenu ? (
+            <div className="menuArea">
+              <div onClick={handleMouseOutMenu}>{user.first_name}</div>
+              <img
+                className="menuButton"
+                onClick={handleMouseOutMenu}
+                src={img_chevronUp}
+              />
+            </div>
+          ) : (
+            <div className="menuArea">
+              <div onClick={handleMouseOverMenu}>{user.first_name}</div>
+              <img
+                className="menuButton"
+                onClick={handleMouseOverMenu}
+                src={img_chevronDown}
+              />
+            </div>
+          )}
         </div>
       </div>
     </HeaderContainer>
