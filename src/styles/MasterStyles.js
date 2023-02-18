@@ -22,7 +22,7 @@ export const Header2 = styled.h2`
 
 //text
 export const TextContainer = styled.div`
-  color: ${(props) => props.theme.colors.color3};
+  color: ${(props) => props.theme.colors.color4};
   padding: ${(props) => props.theme.size.xxxxxxs};
   @media (orientation: portrait) and (min-width: 768px) {
     padding: ${(props) => props.theme.size.xxxxs};
@@ -56,7 +56,7 @@ export const TextButtonBasic = styled.button`
   display: inline-block;
   font-family: ${(props) => props.theme.fontFamily};
   font-size: ${(props) => props.theme.size.l};
-  font-weight: 700;
+  font-weight: 500;
   padding: 0 1.5rem;
   /* position: relative; */
   text-align: center;

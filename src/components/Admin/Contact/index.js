@@ -9,52 +9,25 @@ import img_mailbox from "../../../images/mailbox.svg"
 
 function Contact() {
     return (
+        <><Header></Header>
         <ContainerContact>
-            <Header></Header>
-            <div className="contactContentSection">
-                <Header2
-                    className="fontSize"
-                >Contact possibilities:</Header2>
-                <div className="sectionContactPossibility">
-                    <div className="contactPosibility">
-                        <img src={img_email}
-                            alt="email"
-                            className="icons"
-                        />
-                        <span
-                            className="fontSize"
-                        >gimme.switzerland@gmail.com</span>
-                    </div>
-                    <div className="contactPosibility">
-                        <img src={img_phone}
-                            alt="phone"
-                            className="icons" />
-                        <span
-                            className="fontSize"
-                        >+41 44 111 11 11</span>
-                    </div>
-                    <div className="contactPosibility">
-                        <img src={img_whatsapp}
-                            alt="WhatsApp"
-                            className="icons" />
-                        <span
-                            className="fontSize"
-                        >+41 79 111 11 11</span>
-                    </div>
-                    <div className="contactPosibility">
-                        <img src={img_mailbox}
-                            alt="mailbox"
-                            className="mailbox" />
-                        <div className="fontSize addressSection"
-                        >
-                            <span>Heinrichstrasse 200</span><span>8005 Zurich</span><span>Switzerland</span>
-                        </div>
-                    </div>
-                </div>
+            
 
-            </div>
-            <FooterElement></FooterElement>
+                <Header2> Contact: </Header2>
+
+
+            <section className="contactInfo">
+                <div className="contactElements">gimme.switzerland@gmail.com</div>
+                <div className="contactElements">+41 44 111 11 11</div>
+                <div className="contactElements">+41 79 111 11 11 </div>
+                <div className="contactElements">
+                    <p>Heinrichstrasse 200 <br />8005 Zürich <br />Switzerland</p>
+                </div>
+            </section>
+            
         </ContainerContact>
+        <FooterElement></FooterElement>
+        </>
     );
 }
 

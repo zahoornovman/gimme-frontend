@@ -7,6 +7,7 @@ display: flex;
 flex-direction:column;
 justify-content:flex-start;
 align-items: center;
+min-height: 100vh;
 .contentSection{
   display: flex;
   flex-direction: column;
@@ -69,6 +70,11 @@ align-items: center;
 }
 
 .descriptionContainer {
+  max-width: 700px;
+  height: auto;
+}
+
+.offeredContainer {
   max-width: 700px;
   height: auto;
 }

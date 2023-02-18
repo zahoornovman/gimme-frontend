@@ -260,7 +260,7 @@ function UpdateOffer() {
       {
         user.first_name === "NoNa"
           ?
-          <div>Please sign in to update an offer. 😋</div>
+          <div>Please sign in to update an offer.</div>
           :
           <>
             {
@@ -320,28 +320,14 @@ function UpdateOffer() {
                                         :
                                         <></>
                       }
-                      <div className="inputField">
-                        <label
-                          className="fontSize"
-                          htmlFor="title"
-                        >
-                          Title:
-                        </label>
-                        <input
-                          className="fontSize"
-                          onChange={handleChangeTitle}
-                          maxLength={maxLenghtTitle}
-                          defaultValue={offer.title}
-                          id="title"></input>
-                        <div className="fontSize">{`(${currentLengthTitle}/${maxLenghtTitle})`}</div>
-                      </div>
+                      
                       {
                         imageAvailable.length === 0
                           ?
                           <></>
                           :
-                          <div className='imageGallery'>
-                            <div>
+                          <>
+                            <div className='imageGallery'>
                               {
                                 imageDisplayed === 0
                                   ?
@@ -353,7 +339,7 @@ function UpdateOffer() {
                                     src={img_cheveronDoubleLeft} />
 
                               }
-                              <img src={`${imageAvailable[imageDisplayed].images}`} />
+                              <img className='image' src={`${imageAvailable[imageDisplayed].images}`} />
                               {
                                 imageDisplayed === offer.images.length - 1
                                   ?
@@ -371,8 +357,24 @@ function UpdateOffer() {
                                 onClick={handleDeleteImage}
                                 className="imageTrash" />
                             </div>
-                          </div>
+                          </>
                       }
+                      <div className='details'>
+                      <div className="inputField">
+                        <label
+                          className="fontSize"
+                          htmlFor="title"
+                        >
+                          Title:
+                        </label>
+                        <input
+                          className="fontSize"
+                          onChange={handleChangeTitle}
+                          maxLength={maxLenghtTitle}
+                          defaultValue={offer.title}
+                          id="title"></input>
+                        <div className="fontSize">{`(${currentLengthTitle}/${maxLenghtTitle})`}</div>
+                      </div>
                       <div className="inputField">
                         <label
                           className="fontSize"
@@ -421,13 +423,29 @@ function UpdateOffer() {
                         >
                           Description:
                         </label>
-                        <input
+                        <textarea
                           className="fontSize"
                           onChange={handleChangeDescription}
                           maxLength={maxLengthDescription}
                           defaultValue={offer.description}
-                          id="description"></input>
+                          id="description"></textarea>
                         <div className="fontSize">{`(${currentLengthDescription}/${maxLengthDescription})`}</div>
+                      </div>
+                      
+                      <div className="inputField">
+                        <label
+                          className="fontSize"
+                          htmlFor="request"
+                        >
+                          Requested:
+                        </label>
+                        <textarea
+                          className="fontSize"
+                          onChange={handleChangeRequested}
+                          maxLength={maxLengthRequested}
+                          defaultValue={offer.wants_for_this_item}
+                          id="request"></textarea>
+                        <div className="fontSize">{`(${currentLengthRequested}/${maxLengthRequested})`}</div>
                       </div>
                       <div className="inputField">
                         <label
@@ -460,21 +478,6 @@ function UpdateOffer() {
                             {conditions.c4}
                           </option>
                         </select>
-                      </div>
-                      <div className="inputField">
-                        <label
-                          className="fontSize"
-                          htmlFor="request"
-                        >
-                          Requested:
-                        </label>
-                        <input
-                          className="fontSize"
-                          onChange={handleChangeRequested}
-                          maxLength={maxLengthRequested}
-                          defaultValue={offer.wants_for_this_item}
-                          id="request"></input>
-                        <div className="fontSize">{`(${currentLengthRequested}/${maxLengthRequested})`}</div>
                       </div>
                       <div className="inputField">
                         <label
@@ -546,13 +549,18 @@ function UpdateOffer() {
                           </option>
                         </select>
                       </div>
+                      </div>
                     </div>
+                    <div className='buttonSection'>
                     <TextButton
+                      className='saveGoBackButton'
                       onClick={handleSave}
                     >Save changes</TextButton>
                     <TextButton
+                      className='saveGoBackButton'
                       onClick={() => navigate(`/offers/${id}`)}
                     >Go back</TextButton>
+                    </div>
                   </>
             }
           </>

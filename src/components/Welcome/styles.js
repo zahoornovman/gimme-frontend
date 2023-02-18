@@ -136,6 +136,7 @@ export const ContainerWelcome = styled.div`
   margin-top: ${(props) => props.theme.size.xxxxxxl};
   margin-bottom: ${(props) => props.theme.size.xxxxxxl};
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;

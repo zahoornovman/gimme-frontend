@@ -156,8 +156,9 @@ function NewOffer() {
         }
     }
     return (
+        <><Header></Header>
         <ContainernewOffer>
-            <Header></Header>
+            
             {
                 userFirstName === "NoNa"
                     ?
@@ -240,6 +241,7 @@ function NewOffer() {
                                                             :
                                                             <></>
                                     }
+                                    <div className="details">
                                     <div className="inputField">
                                         <label
                                             className="fontSize"
@@ -261,11 +263,11 @@ function NewOffer() {
                                         >
                                             Description:
                                         </label>
-                                        <input
+                                        <textarea
                                             className="fontSize"
                                             onChange={handleChangeDescription}
                                             maxLength={maxLengthDescription}
-                                            id="description"></input>
+                                            id="description"></textarea>
                                         <div className="fontSize">{`(${currentLengthDescription}/${maxLengthDescription})`}</div>
                                     </div>
                                     <div className="inputField">
@@ -306,11 +308,11 @@ function NewOffer() {
                                         >
                                             Requested:
                                         </label>
-                                        <input
+                                        <textarea
                                             className="fontSize"
                                             onChange={handleChangeRequested}
                                             maxLength={maxLengthRequested}
-                                            id="request"></input>
+                                            id="request"></textarea>
                                         <div className="fontSize">{`(${currentLengthRequested}/${maxLengthRequested})`}</div>
                                     </div>
                                     <div className="inputField">
@@ -395,15 +397,18 @@ function NewOffer() {
                                             }
                                         </div>
                                     </div>
+                                    </div>
                                     <TextButton
-                                        className="fontSize"
+                                        className="saveButton"
                                         onClick={handleSave}
                                     >Save</TextButton>
                                 </div>
             }
 
-            <FooterElement></FooterElement>
+            
         </ContainernewOffer>
+        <FooterElement></FooterElement>
+        </>
     );
 }
 

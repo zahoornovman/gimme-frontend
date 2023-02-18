@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
 import { RequestCard } from "../../../elements/RequestCard/requestCard";
+import { Header2 } from '../../../styles/MasterStyles';
 
 //styled components import
 import {
@@ -31,9 +32,10 @@ function RequestsSearchResults() {
   }, [requests]);
 
   return (
+    <><Header />
     <ContainerSearchListRequests>
-      <Header />
-      <h2>Request Search Results</h2>
+      
+      <Header2>Request Search Results</Header2>
       {requestSearchList.length === 0 && (
         <div>
           No Search Results found. Please try a different search criteria...
@@ -46,8 +48,10 @@ function RequestsSearchResults() {
           requestSearchList.map((obj) => <RequestCard key={obj.id} obj={obj} />)
         )}
       </ListRequestsSearchContainer>
-      <FooterElement />
+      
     </ContainerSearchListRequests>
+    <FooterElement />
+    </>
   );
 }
 
