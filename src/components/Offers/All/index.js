@@ -111,6 +111,7 @@ function AllOffers() {
             No Search Results found. Please try a different search criteria..
           </div>
         )}
+        {/* <div className="gridWithButton"> */}
         {errorMessage !== null ? (
           <div>{errorMessage}</div>
         ) : (

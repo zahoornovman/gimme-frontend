@@ -19,7 +19,7 @@ import { selectRequests, selectTags } from "../../../store/selectors/selectors";
 import { useSettingTags } from "../../../hooks/tagsFetch";
 
 //Text Button
-import { TextButton } from '../../../styles/MasterStyles';
+import { TextButton } from "../../../styles/MasterStyles";
 
 //slices
 import {
@@ -108,30 +108,33 @@ function AllRequests() {
 
   return (
     <>
-    <Header />
-    <ContainerAllRequests>     
-      <Header2>Latest Requests</Header2>
-      {requestList.length === 0 && (
-        <div>
-          No Search Results found. Please try a different search criteria..
-        </div>
-      )}
-      {errorMessage !== null ? (
-        <div>{errorMessage}</div>
-      ) : (
-        <ListRequestsContainer>
-          {requestList === "notFetched" ? (
-            <div>Loading....</div>
-          ) : (
-            requestList.map((obj) => <RequestCard key={obj.id} obj={obj} />)
-          )}
-        </ListRequestsContainer>
-      )}
-      {next !== null && (
-        <TextButton className="buttonMore" onClick={fetchMoreRequests}> Click for More..</TextButton>
-      )}
-    </ContainerAllRequests>
-    <FooterElement />
+      <Header />
+      <ContainerAllRequests>
+        <Header2>Latest Requests</Header2>
+        {requestList.length === 0 && (
+          <div>
+            No Search Results found. Please try a different search criteria..
+          </div>
+        )}
+        {errorMessage !== null ? (
+          <div>{errorMessage}</div>
+        ) : (
+          <ListRequestsContainer>
+            {requestList === "notFetched" ? (
+              <div>Loading....</div>
+            ) : (
+              requestList.map((obj) => <RequestCard key={obj.id} obj={obj} />)
+            )}
+          </ListRequestsContainer>
+        )}
+        {next !== null && (
+          <TextButton className="buttonMore" onClick={fetchMoreRequests}>
+            {" "}
+            Click for More..
+          </TextButton>
+        )}
+      </ContainerAllRequests>
+      <FooterElement />
     </>
   );
 }
