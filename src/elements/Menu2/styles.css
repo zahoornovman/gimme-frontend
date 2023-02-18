@@ -13,11 +13,9 @@
 } */
 
 svg {
-  fill: #525357;
   width: 35px;
   height: 35px;
 }
-
 .dropdown {
   position: absolute;
   top: 140px;

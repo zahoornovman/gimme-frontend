@@ -117,17 +117,23 @@ export const ContainerHome = styled.div`
     align-items: start;
     .popUpWelcomePage {
       position: fixed;
-      top: ${(props) => props.theme.size.xxxxxxxxl};
+      top: ${(props) => props.theme.size.xxxxxxxxxxxxl};
       width: 400px;
       z-index: 20;
       a {
-        color: ${(props) => props.theme.colors.color3};
+        color: ${(props) => props.theme.colors.color1};
       }
       a:hover {
         font-weight: bold;
       }
       a:visited {
-        color: ${(props) => props.theme.colors.color5};
+        color: ${(props) => props.theme.colors.color4};
+      }
+      .popUpButtonSection{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 20px;
       }
     }
   }
@@ -136,6 +142,7 @@ export const ContainerWelcome = styled.div`
   margin-top: ${(props) => props.theme.size.xxxxxxl};
   margin-bottom: ${(props) => props.theme.size.xxxxxxl};
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;

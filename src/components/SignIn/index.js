@@ -104,8 +104,9 @@ function SignIn() {
     }
   };
   return (
+    <><Header></Header>
     <SignInContainer>
-      <Header></Header>
+      
 
       <div className="contentSignIn">
         <div className="messageSignIn fontSize">
@@ -124,7 +125,7 @@ function SignIn() {
         </div>
         <div className="inputSignIn">
           <div className="inputField">
-            <img src={img_email} />
+            {/* <img src={img_email} /> */}
             <input
               id="email"
               type="email"
@@ -134,7 +135,7 @@ function SignIn() {
             ></input>
           </div>
           <div className="inputField">
-            <img src={img_password} />
+            {/* <img src={img_password} /> */}
             <input
               id="password"
               type="password"
@@ -144,12 +145,12 @@ function SignIn() {
             ></input>
           </div>
           <div className="buttonsSignIn">
-            <TextButton onClick={signInHandler} className="fontSize">
+            <TextButton onClick={signInHandler} className="signInCreateButton">
               Sign in
             </TextButton>
             <TextButton
               onClick={() => navigate("/signup")}
-              className="notSignInButton fontSize"
+              className="signInCreateButton"
             >
               Create account
             </TextButton>
@@ -166,8 +167,10 @@ function SignIn() {
         </div>
       </div>
 
-      <FooterElement></FooterElement>
+      
     </SignInContainer>
+    <FooterElement></FooterElement>
+    </>
   );
 }
 

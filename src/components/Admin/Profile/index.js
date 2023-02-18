@@ -56,10 +56,11 @@ function Profile() {
   };
 
   return (
+    <><Header></Header>
     <ContainerUserProfile>
-      <Header></Header>
-      <Header2 className="fontSize">Your profile</Header2>
-      <div className="profileContentSection fontSize">
+      
+      <Header2>Your profile</Header2>
+      <div className="profileContentSection">
         <div className="profileItem">
           <span className="profileItemTitle">Username:</span>
           <span>{user.username}</span>
@@ -84,12 +85,12 @@ function Profile() {
 
       {isDeletedClicked ? (
         <PopUp className="popUpProfileDelete">
-          <div className="fontSize">Do you really want to leave us?</div>
+          <div>Do you really want to leave us?</div>
           <div className="popUpButtonSection">
-            <PopUpButtonYes className="fontSize" onClick={handlerNoDelete}>
+            <PopUpButtonYes onClick={handlerNoDelete}>
               No
             </PopUpButtonYes>
-            <PopUpButtonNo className="fontSize" onClick={handlerYesDelete}>
+            <PopUpButtonNo onClick={handlerYesDelete}>
               Yes
             </PopUpButtonNo>
           </div>
@@ -98,13 +99,13 @@ function Profile() {
         <div className="profileButtonContainer">
           <TextButton
             onClick={() => navigate("/passwordreset")}
-            className="resetButton fontSize"
+            className="resetButton"
           >
             Reset password
           </TextButton>
           <TextButton
             onClick={() => navigate("/admin/profile/update")}
-            className="updateButton fontSize"
+            className="updateButton"
           >
             Update your profile
           </TextButton>
@@ -117,8 +118,10 @@ function Profile() {
         </div>
       )}
 
-      <FooterElement></FooterElement>
+      
     </ContainerUserProfile>
+    <FooterElement></FooterElement>
+    </>
   );
 }
 

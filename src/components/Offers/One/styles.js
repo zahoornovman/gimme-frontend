@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const ContainerOneOffer = styled.div`
 margin-top: 50px;
+min-height: 100vh;
 position: relative;
 display: flex;
 flex-direction:column;
@@ -21,14 +22,18 @@ align-items: center;
     align-items: center;
     margin-top: 20px;
     .image {
-      width: 100%;
-      height: 100%;
+      width: 740px;
+      height: 490px;
       object-fit: cover;
       box-shadow: 2px 2px 5px black;
     }
     .cheveronButton{
       height: 20px;
+      width: 30px;
       cursor: pointer;
+    }
+    .noCheveronButton{
+      width: 30px;
     }
 
   }
@@ -74,5 +79,19 @@ align-items: center;
   height: auto;
 }
 
+.requestedContainer {
+  max-width: 700px;
+  height: auto;
+}
+
+.popUpDelete{
+  margin: 20px; 
+  .popUpButtonSection{
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+    margin-top: 10px;
+  }
+}
   
 `;

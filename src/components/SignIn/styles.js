@@ -1,147 +1,69 @@
 import styled from "styled-components";
 
 export const SignInContainer = styled.div`
-  height: 100vh;
+  margin-top: 50px;
+  min-height: 100vh;
+  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction:column;
+  justify-content:flex-start;
   align-items: center;
 
   .fontSize {
     font-size: ${(props) => props.theme.size.xxxs};
-    @media (orientation: portrait) and (min-width: 768px) {
-      font-size: ${(props) => props.theme.size.s};
-    }
-    @media (orientation: landscape) and (min-height: 768px) {
-      font-size: ${(props) => props.theme.size.s};
-    }
-    @media (orientation: portrait) and (min-width: 1024px) {
-      font-size: ${(props) => props.theme.size.l};
-    }
-    @media (orientation: landscape) and (min-height: 1024px) {
-      font-size: ${(props) => props.theme.size.l};
-    }
+
   }
   .contentSignIn {
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    height: 70%;
-    row-gap: ${(props) => props.theme.size.xs};
-    @media (orientation: portrait) and (min-width: 768px) {
-      row-gap: ${(props) => props.theme.size.m};
-    }
-    @media (orientation: portrait) and (min-width: 1024px) {
-      row-gap: ${(props) => props.theme.size.l};
-    }
+    align-items: center;
+    justify-content: center;
+    row-gap: 10px;
+
     .messageSignIn {
       width: 250px;
-      @media (orientation: landscape) {
-        width: 500px;
-      }
-      @media (orientation: portrait) and (min-width: 768px) {
-        width: 600px;
-      }
-      @media (orientation: landscape) and (min-height: 768px) {
-        width: 800px;
-      }
-      @media (orientation: portrait) and (min-width: 1024px) {
-        width: 900px;
-      }
-      @media (orientation: landscape) and (min-height: 1024px) {
-        width: 1000px;
-      }
+
     }
     .inputSignIn {
       display: flex;
       flex-direction: column;
-      justify-content: space-evenly;
-      height: 100%;
-      row-gap: ${(props) => props.theme.size.xxxxxxs};
       justify-content: center;
       align-items: center;
+      width: 600px;
+      max-width: 800px;
+      box-shadow: 2px 2px 5px black;
+      margin-top: 30px;
+      padding: 50px 10px 50px 10px;
 
-      @media (orientation: portrait) and (min-width: 768px) {
-        row-gap: ${(props) => props.theme.size.xxxxs};
-      }
-      @media (orientation: portrait) and (min-width: 1024px) {
-        row-gap: ${(props) => props.theme.size.xxxs};
-      }
+
       .inputField {
-        display: flex;
-        align-items: center;
-        margin: 0.5rem 0;
-        border-bottom: ${(props) => props.theme.colors.color3} solid
-          ${(props) => props.theme.size.xxxxxxxs};
-        width: 250px;
-        column-gap: ${(props) => props.theme.size.xxxxxxs};
-        @media (orientation: portrait) and (min-width: 768px) {
-          width: 410px;
-        }
-        @media (orientation: landscape) and (min-height: 768px) {
-          width: 410px;
-        }
-        @media (orientation: portrait) and (min-width: 1024px) {
-          width: 620px;
-        }
-        @media (orientation: landscape) and (min-height: 1024px) {
-          width: 620px;
-        }
-        img {
-          height: 20px;
-          width: 20px;
-          margin-bottom: ${(props) => props.theme.size.xxxxxxxs};
-          @media (orientation: portrait) and (min-width: 768px) {
-            height: 30px;
-            width: 30px;
-          }
-          @media (orientation: landscape) and (min-height: 768px) {
-            height: 30px;
-            width: 30px;
-          }
-          @media (orientation: portrait) and (min-width: 1024px) {
-            height: 40px;
-            width: 40px;
-          }
-          @media (orientation: landscape) and (min-height: 1024px) {
-            height: 40px;
-            width: 40px;
-          }
-        }
+
         input {
-          width: 222px;
-          margin-bottom: ${(props) => props.theme.size.xxxxxxxs};
-          border: none;
-          @media (orientation: portrait) and (min-width: 768px) {
-            width: 372px;
-          }
-          @media (orientation: landscape) and (min-height: 768px) {
-            width: 372px;
-          }
-          @media (orientation: portrait) and (min-width: 1024px) {
-            width: 572px;
-          }
-          @media (orientation: landscape) and (min-height: 1024px) {
-            width: 572px;
-          }
+          width: 300px;
+          height: 25px;
+          border-radius: 5px;
+          background-color: ${(props) => props.theme.colors.color5};
+          padding: 5px;
+          border: 1px solid ${(props) => props.theme.colors.color7};
+          margin-top: 10px;
+        }
+
+        input:focus {
+          outline:none;
         }
       }
       .buttonsSignIn {
         display: flex;
-        flex-direction: column;
         row-gap: ${(props) => props.theme.size.xxxxxxs};
-        @media (orientation: landscape) {
-          flex-direction: row;
-          column-gap: ${(props) => props.theme.size.xxxxxxs};
-        }
-        @media (orientation: portrait) and (min-width: 768px) {
-          row-gap: ${(props) => props.theme.size.xxxxs};
-        }
-        @media (orientation: portrait) and (min-width: 1024px) {
-          row-gap: ${(props) => props.theme.size.xxxs};
-        }
-        .notSignInButton {
-          background-color: ${(props) => props.theme.colors.color1};
-          color: ${(props) => props.theme.colors.color3};
+        .signInCreateButton {
+          font-size: 15px;
+          height: 40px;
+          border-style: none;
+          color: ${(props) => props.theme.colors.color5};
+          border-radius: 10px;
+          margin-left: 20px;
+          margin-bottom: 50px;
+          margin-top: 10px;
         }
       }
       .buttonPasswordReset {

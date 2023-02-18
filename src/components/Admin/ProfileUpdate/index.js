@@ -52,7 +52,7 @@ function UpdateUserProfile() {
             location: result.userprofile.location,
           })
         );
-        navigate("/");
+        navigate("/admin/profile");
       })
       .catch(() => {
         navigate("/admin/profile/changeserror");
@@ -60,15 +60,16 @@ function UpdateUserProfile() {
   };
 
   return (
+    <><Header></Header>
     <ContainerUpdateUserProfile>
-      <Header></Header>
+      
       <Header2 className="fontSize">Update your profile</Header2>
-      <div className="profileContentSection fontSize">
-        <div className="profileItem">
+      <div className="details">
+{/*         <div className="inputField">
           <span className="profileItemTitle">Username (unchangeable):</span>
           <span>{user.username}</span>
-        </div>
-        <div className="profileItem">
+        </div> */}
+        <div className="inputField">
           <label className="profileItemTitle" htmlFor="email">
             Email:
           </label>
@@ -79,7 +80,7 @@ function UpdateUserProfile() {
             className="profileItemInput fontSize"
           ></input>
         </div>
-        <div className="profileItem">
+        <div className="inputField">
           <label className="profileItemTitle" htmlFor="first_name">
             First name:
           </label>
@@ -89,7 +90,7 @@ function UpdateUserProfile() {
             className="profileItemInput fontSize"
           ></input>
         </div>
-        <div className="profileItem">
+        <div className="inputField">
           <label className="profileItemTitle" htmlFor="last_name">
             Last name:
           </label>
@@ -99,7 +100,7 @@ function UpdateUserProfile() {
             className="profileItemInput fontSize"
           ></input>
         </div>
-        <div className="profileItem">
+        <div className="inputField">
           <label className="profileItemTitle" htmlFor="location">
             Location:
           </label>
@@ -111,16 +112,18 @@ function UpdateUserProfile() {
         </div>
       </div>
       <div className="profileButtonContainer">
-        <TextButton className="fontSize" onClick={handleSaveChanges}>
+        <TextButton className="saveGoBackButton" onClick={handleSaveChanges}>
           Save changes
         </TextButton>
-        <TextButton className="fontSize" onClick={() => navigate(-1)}>
+        <TextButton className="saveGoBackButton" onClick={() => navigate(-1)}>
           Drop changes
         </TextButton>
       </div>
 
-      <FooterElement></FooterElement>
+      
     </ContainerUpdateUserProfile>
+    <FooterElement></FooterElement>
+    </>
   );
 }
 

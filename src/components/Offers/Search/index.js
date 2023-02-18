@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
 import { OfferCard } from "../../../elements/OfferCard/offerCard";
+import { Header2 } from '../../../styles/MasterStyles';
 
 //styled components import
 import { ContainerSearchListOffers, ListOffersSearchContainer } from "./styles";
@@ -28,9 +29,10 @@ function OffersSearchResults() {
   }, [offers]);
 
   return (
+    <><Header />
     <ContainerSearchListOffers>
-      <Header />
-      <h2>Offer Search Results</h2>
+      
+      <Header2>Offer Search Results</Header2>
       {offerSearchList.length === 0 && (
         <div>
           No Search Results found. Please try a different search criteria..
@@ -43,8 +45,10 @@ function OffersSearchResults() {
           offerSearchList.map((obj) => <OfferCard key={obj.id} obj={obj} />)
         )}
       </ListOffersSearchContainer>
-      <FooterElement />
+      
     </ContainerSearchListOffers>
+    <FooterElement />
+    </>
   );
 }
 

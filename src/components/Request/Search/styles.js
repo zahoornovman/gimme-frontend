@@ -1,18 +1,22 @@
 import styled from "styled-components";
 
 export const ContainerSearchListRequests = styled.div`
+  margin-top: 50px;
+  min-height: 100vh;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  padding-top: 90px;
-  height: 100vh;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items: center;
   /* border: 5px solid red; */
 `;
 
 export const ListRequestsSearchContainer = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  gap: 3rem;
+  justify-items: center;
   align-items: center;
-  height: 100%;
-  /* border: 2px solid pink; */
 `;

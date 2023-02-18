@@ -81,7 +81,7 @@ function Welcome() {
                 <Link to={"../admin/termsofuse"}>terms of use</Link> and with
                 usage of cookies?
               </div>
-              <div>
+              <div className="popUpButtonSection">
                 <PopUpButtonYes className="fontSize" onClick={handleAgreement}>
                   Yes, I do.
                 </PopUpButtonYes>
@@ -125,7 +125,7 @@ function Welcome() {
           ) : (
             <div className="notLoading">
               <div className="latestOfferContainer">
-                <Header2>Latest offers</Header2>
+                <Header2>Offers added in the last 24 hours</Header2>
                 {fetchingStatus === "error" ? (
                   <div>
                     Latest offers can't be displayed at the moment. We apologise
