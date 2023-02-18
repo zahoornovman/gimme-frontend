@@ -9,7 +9,7 @@ const width = Math.max(body.scrollWidth, body.offsetWidth, html.clientWidth, htm
 export const ContainerBanner = styled.div`
     display: flex;
     width: auto;
-    height: 500px;
+    height: 350px;
     margin-top: 0;
     background-color: #fcfcfc;
     Box-shadow: inset 0 0 10px 0 black;
@@ -39,12 +39,12 @@ export const ContainerBanner = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width:100%;
+    width:1200px;
     height: auto;
     }
 
     .banner {
-    width:1000px;
+    width: 700px;
     height: auto;
     }
 `
