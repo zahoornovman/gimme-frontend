@@ -58,7 +58,11 @@ export const HeaderContainer = styled.div`
     .imageHome {
       height: ${(props) => props.theme.size.xxxxxl};
       width: ${(props) => props.theme.size.xxxxxl};
+      transition-duration: 250ms;
+      hover {
+      }
     }
+
     .menuArea {
       display: flex;
       flex-direction: row;

@@ -8,7 +8,7 @@ import Menu2 from "../Menu2";
 import { signOut } from "../../slices/user/userSlice";
 import SearchRequests from "../SearchRequests";
 import SearchOffers from "../SearchOffers";
-import img_home from "../../images/home.svg";
+import img_home from "../../images/gimmeHome.png";
 import img_chevronDown from "../../images/chevronDoubleDown.svg"
 import img_chevronUp from "../../images/chevronDoubleUp.svg"
 
