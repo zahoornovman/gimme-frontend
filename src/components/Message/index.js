@@ -309,14 +309,14 @@ function MessageService() {
                                                     <></>
                                             }
                                             <div className="fromContainer">
-                                                <h4>from :</h4>
+                                                <h3>from :</h3>
                                                 <div className="fromContainerInformation">
                                                         <h4>{`${user.username}`}</h4>
                                                         <h4>{`${user.email}`}</h4>
                                                 </div>
                                             </div>
                                             <div className="toContainer">
-                                                <h4>to :</h4>
+                                                <h3>to :</h3>
                                                 <div className="toContainerInformation">
                                                     <div>
                                                         <div></div>
@@ -327,7 +327,7 @@ function MessageService() {
                                             <div className="message">
                                                 <label
                                                     htmlFor="message"></label>
-                                                <h3>Message:</h3>
+                                                <h3>message :</h3>
                                                 <textarea
                                                     onChange={handleChangeMessage}
                                                     maxLength={maxLengthMessage}
@@ -340,7 +340,7 @@ function MessageService() {
                                                 Send
                                                 </TextButton>
                                                 <div className="buttonSection">
-                                                    <h3>Quick Reply</h3>
+                                                    <h3>quick reply</h3>
                                                     <TextButton
                                                         className="quickButton"
                                                         onClick={handleContactMe}>{interestedInText}</TextButton>
