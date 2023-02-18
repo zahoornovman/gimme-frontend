@@ -18,6 +18,7 @@ function MessageService() {
     const [messageStatus, setMessageStatus] = useState("draft")
     const [currentLengthMessage, setCurrentLengthMessage] = useState(0)
     const [receiverId, setReceiverId] = useState("")
+    const [receiverUserName, setReceiverUserName] = useState("")
     const interestedInText = "I'm interessed in it. Plaese contact me."
     const availableText = "Is it still available?"
 
@@ -218,7 +219,9 @@ function MessageService() {
             fetch(`${baseUrl}/backend/api/haves/${Number(addSubject.accessedFromID)}/`, requestOptions)
                 .then(response => response.json())
                 .then(result => {
+                    console.log(result)
                     setReceiverId(Number(result.author.id))
+                    setReceiverUserName(result.author.user.username)
                 })
                 .catch(() => {
 
@@ -315,6 +318,15 @@ function MessageService() {
                                                         <div>Email:</div>
                                                         <div>{`${user.email}`}</div>
                                                     </div>
+                                                </div>
+                                            </div>
+                                            <div className="toContainer">
+                                                <div>To</div>
+                                                <div className="toContainerInformation">
+                                                    <div>
+                                                        <div>Username:</div>
+                                                        <div>{`${receiverUserName}`}</div>
+                                                    </div>                                                    
                                                 </div>
                                             </div>
                                             <div>

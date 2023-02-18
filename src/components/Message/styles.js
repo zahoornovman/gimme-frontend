@@ -45,4 +45,12 @@ export const ContainerMessageService = styled.div`
         column-gap: ${(props) => props.theme.size.xxxs};
     }
 }
+.toContainer{
+    background-color:  ${(props) => props.theme.colors.color3};
+    padding:  ${(props) => props.theme.size.xxxs};
+    .toContainerInformation{
+        display: flex;
+        column-gap: ${(props) => props.theme.size.xxxs};
+    }
+}
 `
