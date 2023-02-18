@@ -1,8 +1,8 @@
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { ReactComponent as ChevronRightIcon } from "../../images/chevronDoubleRight.svg";
-import { ReactComponent as ChevronLeftIcon } from "../../images/chevronDoubleLeft.svg";
+import { ReactComponent as ChevronRightIcon } from "../../images/blackChevronRight.svg";
+import { ReactComponent as ChevronLeftIcon } from "../../images/blackChevronLeft.svg";
 import { CSSTransition } from "react-transition-group";
 import { useState } from "react";
 

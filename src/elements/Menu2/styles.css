@@ -1,21 +1,9 @@
-/* .navbar {
-  height: 60px;
-  background-color: #242426;
-  padding: 0 1rem;
-  border-bottom: 1px solid #474a4d;
-}
-
-.navbar-nav {
-  max-width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: flex-end;
-} */
-
 svg {
   width: 35px;
   height: 35px;
+  color: black;
 }
+
 .dropdown {
   position: absolute;
   top: 140px;
@@ -46,6 +34,7 @@ svg {
 
 .menu-item:hover {
   background-color: #ffa800;
+  padding-left: 1rem;
 }
 
 .icon-right {
