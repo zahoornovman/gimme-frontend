@@ -43,7 +43,11 @@ export const ContainerMessageService = styled.div`
 
         h4 {
             font-size: 15px;
-            padding-bottom: 5px;
+        }
+
+        h3 {
+            font-size: 15px;
+            font-weight: bold;
         }
 
         .message {
@@ -53,8 +57,8 @@ export const ContainerMessageService = styled.div`
             align-items: center;
 
             h3 {
-               font-size: 18px;
-               margin-bottom: 10px;
+                font-size: 20px;
+                margin-bottom: 10px;
             }
 
             #message {
@@ -92,11 +96,6 @@ export const ContainerMessageService = styled.div`
                 margin-bottom: 20px;
                 row-gap: 10px;
 
-                h3 {
-                    font-size: 18px;
-                    margin-bottom: 10px;
-                }
-
                 .quickButton {
                     font-size: 15px;
                     border-radius: 25px;
@@ -120,8 +119,10 @@ export const ContainerMessageService = styled.div`
         .fromContainerInformation{
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
             column-gap: ${(props) => props.theme.size.xxxs};
-            padding: 10px;
+            padding: 5px;
         }
     }
         .toContainer{
@@ -134,6 +135,7 @@ export const ContainerMessageService = styled.div`
                 .toContainerInformation{
                     display: flex;
                     column-gap: ${(props) => props.theme.size.xxxs};
+                    padding: 5px;
                  }   
         }        
 }
