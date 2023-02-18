@@ -14,7 +14,7 @@ h2 {
 .contactInfo{
     display: flex;
     flex-direction: column;
-    font-size: 30px;
+    font-size: 20px;
     padding: 50px;
     box-shadow: 2px 2px 5px black;
     

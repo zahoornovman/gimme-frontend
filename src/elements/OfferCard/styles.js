@@ -13,7 +13,7 @@ export const ContainerOfferCardStyled = styled.div`
     justify-content: center;
     align-items: center;
     padding: 20px;
-    box-shadow: 1px 1px 5px black;
+    box-shadow: 0px 0px 3px black;
     background-color: ${(props) => props.theme.colors.color8};
   }
 
