@@ -25,8 +25,8 @@ export const ContainerBanner = styled.div`
       box-shadow: 10px 0 5px -8px black;
     }
      .leftSquare h4 {
-      font-size: 40px;
-      margin-bottom: 50px;
+      font-size: 35px;
+      margin-bottom: 35px;
       color: grey;
     }
 

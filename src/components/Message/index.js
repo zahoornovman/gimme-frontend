@@ -12,15 +12,136 @@ function MessageService() {
     const navigate = useNavigate()
     const addSubject = useSelector((state) => state.message)
     const userFirstName = useSelector((state) => state.user.first_name)
+    const user = useSelector((state) => state.user)
     const accessToken = useSelector((state) => state.user.acces)
     const maxLengthMessage = 300
     const [messageStatus, setMessageStatus] = useState("draft")
     const [currentLengthMessage, setCurrentLengthMessage] = useState(0)
     const [receiverId, setReceiverId] = useState("")
+    const [receiverUserName, setReceiverUserName] = useState("")
+    const interestedInText = "I'm interessed in it. Plaese contact me."
+    const availableText = "Is it still available?"
 
 
     const handleChangeMessage = (event) => {
         setCurrentLengthMessage(event.target.value.length)
+    }
+    const handleAvailable = () => {
+        setMessageStatus("draft")
+        
+        
+            setCurrentLengthMessage(0)
+
+            var myHeaders = new Headers();
+            myHeaders.append("Authorization", `Bearer ${accessToken}`);
+            myHeaders.append("Content-Type", "application/json");
+
+            if (addSubject.accessedFromOfferOrRequest === "have") {
+                var raw = JSON.stringify({
+                    "receiver_id": receiverId,
+                    "sender": "",
+                    "receiver": {
+                        "id": Number(addSubject.accessedFromID),
+                        "type": "have"
+                    },
+                    "content": `${availableText}`
+                });
+            }
+            else {
+
+                var raw = JSON.stringify({
+                    "receiver_id": receiverId,
+                    "sender": "",
+                    "receiver": {
+                        "id": Number(addSubject.accessedFromID),
+                        "type": "want"
+                    },
+                    "content": `${availableText}`
+                });
+            }
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch(`${baseUrl}/backend/api/message/`, requestOptions)
+                .then(response => {
+
+                    if (response.status === 201) {
+                        setMessageStatus("sent")
+                    }
+                    else {
+                        setMessageStatus("error")
+                    }
+                })
+
+
+                .catch(() => {
+
+                    setMessageStatus("error")
+                });      
+    }
+
+    const handleContactMe = () => {
+        setMessageStatus("draft")
+        
+        
+            setCurrentLengthMessage(0)
+
+            var myHeaders = new Headers();
+            myHeaders.append("Authorization", `Bearer ${accessToken}`);
+            myHeaders.append("Content-Type", "application/json");
+
+            if (addSubject.accessedFromOfferOrRequest === "have") {
+                var raw = JSON.stringify({
+                    "receiver_id": receiverId,
+                    "sender": "",
+                    "receiver": {
+                        "id": Number(addSubject.accessedFromID),
+                        "type": "have"
+                    },
+                    "content": `${interestedInText}`
+                });
+            }
+            else {
+
+                var raw = JSON.stringify({
+                    "receiver_id": receiverId,
+                    "sender": "",
+                    "receiver": {
+                        "id": Number(addSubject.accessedFromID),
+                        "type": "want"
+                    },
+                    "content": `${interestedInText}`
+                });
+            }
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch(`${baseUrl}/backend/api/message/`, requestOptions)
+                .then(response => {
+
+                    if (response.status === 201) {
+                        setMessageStatus("sent")
+                    }
+                    else {
+                        setMessageStatus("error")
+                    }
+                })
+
+
+                .catch(() => {
+
+                    setMessageStatus("error")
+                });      
     }
     const handleSend = () => {
         setMessageStatus("draft")
@@ -78,7 +199,7 @@ function MessageService() {
 
 
                 .catch(() => {
-            
+
                     setMessageStatus("error")
                 });
 
@@ -88,7 +209,7 @@ function MessageService() {
     useEffect(() => {
         setMessageStatus("draft")
         if (addSubject.accessedFromOfferOrRequest === "have") {
-           
+
 
             var requestOptions = {
                 method: 'GET',
@@ -98,10 +219,12 @@ function MessageService() {
             fetch(`${baseUrl}/backend/api/haves/${Number(addSubject.accessedFromID)}/`, requestOptions)
                 .then(response => response.json())
                 .then(result => {
+                    console.log(result)
                     setReceiverId(Number(result.author.id))
+                    setReceiverUserName(result.author.user.username)
                 })
                 .catch(() => {
-               
+
                     setMessageStatus("ReceiverNotAccessible")
                 });
         }
@@ -109,7 +232,7 @@ function MessageService() {
             var myHeaders = new Headers();
             myHeaders.append("Authorization", `Bearer ${accessToken}`);
 
-            
+
 
             var requestOptions = {
                 method: 'GET',
@@ -149,7 +272,7 @@ function MessageService() {
                                 Select an offer
                             </TextButton>
                             <TextButton
-                                onClick={()=> navigate("/requests/all")}
+                                onClick={() => navigate("/requests/all")}
                                 className="fontSize">
                                 Select a request
                             </TextButton>
@@ -184,13 +307,45 @@ function MessageService() {
                                                     :
                                                     <></>
                                             }
-                                            <label
-                                                htmlFor="message">Message:</label>
-                                            <input
-                                                onChange={handleChangeMessage}
-                                                maxLength={maxLengthMessage}
-                                                id="message"></input>
-                                            <div className="fontSize">{`(${currentLengthMessage}/${maxLengthMessage})`}</div>
+                                            <div className="fromContainer">
+                                                <div>From</div>
+                                                <div className="fromContainerInformation">
+                                                    <div>
+                                                        <div>Name:</div>
+                                                        <div>{`${user.first_name} ${user.last_name}`}</div>
+                                                    </div>
+                                                    <div>
+                                                        <div>Email:</div>
+                                                        <div>{`${user.email}`}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="toContainer">
+                                                <div>To</div>
+                                                <div className="toContainerInformation">
+                                                    <div>
+                                                        <div>Username:</div>
+                                                        <div>{`${receiverUserName}`}</div>
+                                                    </div>                                                    
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label
+                                                    htmlFor="message">Message:</label>
+                                                <input
+                                                    onChange={handleChangeMessage}
+                                                    maxLength={maxLengthMessage}
+                                                    id="message"></input>
+                                                <div className="fontSize">{`(${currentLengthMessage}/${maxLengthMessage})`}</div>
+                                                <div>
+                                                    <TextButton
+                                                        onClick={handleContactMe}>{interestedInText}</TextButton>
+                                                    <TextButton
+                                                        onClick={handleAvailable}
+                                                    >{availableText}</TextButton>
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <TextButton
                                             className="fontSize"
