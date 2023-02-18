@@ -31,9 +31,9 @@ function SignUp() {
   };
 
   return (
+    <><Header></Header>
     <SignUpContainer>
-      <Header></Header>
-
+      
       <div className="contentSignUp">
         <div className="inputSignUp">
           {acceptanceTermsOfUse === "false" ? (
@@ -44,7 +44,7 @@ function SignUp() {
             <></>
           )}
           <div className="inputField">
-            <img src={img_email} />
+            {/* <img src={img_email} /> */}
             <input
               id="email"
               type="email"
@@ -103,8 +103,10 @@ function SignUp() {
         </div>
       </div>
 
-      <FooterElement></FooterElement>
+      
     </SignUpContainer>
+    <FooterElement></FooterElement>
+    </>
   );
 }
 

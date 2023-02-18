@@ -101,6 +101,19 @@ align-items: center;
     padding: 8px;
     cursor: pointer;
 }
+
+.createdButtons button {
+  font-size: 15px;
+  height: 40px;
+  width: 120px;
+  border-style: none;
+  text-align: center;
+  color: ${(props) => props.theme.colors.color5};
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-top: 30px;
+}
+
 .accessDenied{
     margin-top: ${(props) => props.theme.size.xxxxxxxl};
 }

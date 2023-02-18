@@ -7,7 +7,8 @@ export const ContainerMyOffers = styled.div`
     flex-direction: column;
     margin-top: 50px;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-bottom: 50px;
     .objects {
       display: grid;
       grid-template-columns: repeat(3, 1fr);

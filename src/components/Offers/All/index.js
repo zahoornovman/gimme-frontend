@@ -126,9 +126,9 @@ function AllOffers() {
         {next !== null && (
           <TextButton className="buttonMore" onClick={fetchMoreOffers}> Click for More..</TextButton>
         )}
-        {/* </div> */}
-        <FooterElement />
+        
       </ContainerAllOffers>
+      <FooterElement />
     </>
   );
 }
