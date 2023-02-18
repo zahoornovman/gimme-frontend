@@ -8,7 +8,7 @@ import Menu2 from "../Menu2";
 import { signOut } from "../../slices/user/userSlice";
 import SearchRequests from "../SearchRequests";
 import SearchOffers from "../SearchOffers";
-import img_home from "../../images/home.svg";
+import img_home from "../../images/gimmeHome.png";
 import img_chevronDown from "../../images/chevronDoubleDown.svg";
 import img_chevronUp from "../../images/chevronDoubleUp.svg";
 
@@ -37,12 +37,18 @@ function Header() {
     <HeaderContainer>
       <div className="firstLine">
         <div className="headerLeft">
-          <div className="imageHome">
-            <img onClick={() => navigate("/")} src={img_home} alt="" />
+          <div>
+            <img
+              className="imageHome"
+              onClick={() => navigate("/")}
+              src={img_home}
+              alt=""
+            />
           </div>
           {/* Searchbar display based on the page being displayed */}
           <div className="searchBarPlacement">
             {path === "/requests/all" ||
+            path === "/requests/searchResults" ||
             path === "/requests/my" ||
             path === "/requests/new" ||
             path === "/requests/:id" ||

@@ -4,7 +4,7 @@ export const HeaderContainer = styled.div`
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  height: 150px;
+  height: 100px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -79,9 +79,14 @@ export const HeaderContainer = styled.div`
       padding: 0 0rem;
 
       .imageHome {
-        height: ${(props) => props.theme.size.xxxxl};
-        width: ${(props) => props.theme.size.xxxxl};
+        height: ${(props) => props.theme.size.xxxxxl};
+        width: ${(props) => props.theme.size.xxxxxl};
         padding-right: 2rem;
+        transition-duration: 250ms;
+        transition-property: transform;
+        :hover {
+          transform: scale(1.05) rotate(10deg);
+        }
       }
     }
 
@@ -101,4 +106,3 @@ export const HeaderContainer = styled.div`
     }
   }
 `;
-
