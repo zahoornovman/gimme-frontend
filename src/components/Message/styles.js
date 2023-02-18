@@ -37,4 +37,12 @@ export const ContainerMessageService = styled.div`
 .noAddSelected{
     margin-top: ${(props) => props.theme.size.xxxxxxxl}; 
 }
+.fromContainer{
+    background-color:  ${(props) => props.theme.colors.color3};
+    padding:  ${(props) => props.theme.size.xxxs};
+    .fromContainerInformation{
+        display: flex;
+        column-gap: ${(props) => props.theme.size.xxxs};
+    }
+}
 `
