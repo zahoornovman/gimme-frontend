@@ -9,8 +9,8 @@ import { signOut } from "../../slices/user/userSlice";
 import SearchRequests from "../SearchRequests";
 import SearchOffers from "../SearchOffers";
 import img_home from "../../images/home.svg";
-import img_chevronDown from "../../images/chevronDoubleDown.svg"
-import img_chevronUp from "../../images/chevronDoubleUp.svg"
+import img_chevronDown from "../../images/chevronDoubleDown.svg";
+import img_chevronUp from "../../images/chevronDoubleUp.svg";
 
 function Header() {
   const navigate = useNavigate();
@@ -36,39 +36,38 @@ function Header() {
   return (
     <HeaderContainer>
       <div className="firstLine">
-        <div>
-          <img
-            onClick={() => navigate("/")}
-            className="imageHome"
-            src={img_home}
-            alt=""
-          />
-        </div>
-        {/* Searchbar display based on the page being displayed */}
-        <div className="searchBarPlacement">
-          {path === "/requests/all" ||
+        <div className="headerLeft">
+          <div className="imageHome">
+            <img onClick={() => navigate("/")} src={img_home} alt="" />
+          </div>
+          {/* Searchbar display based on the page being displayed */}
+          <div className="searchBarPlacement">
+            {path === "/requests/all" ||
             path === "/requests/my" ||
             path === "/requests/new" ||
             path === "/requests/:id" ||
             path === "/requests/update/:id" ? (
-            <SearchRequests />
-          ) : (
-            <SearchOffers />
-          )}
+              <SearchRequests />
+            ) : (
+              <SearchOffers />
+            )}
+          </div>
         </div>
 
-        <div>
+        <div className="headerRight">
           {status === "completed" ? (
-            <TextButton className="buttonSignIn" onClick={handleSignOut}>
-              Sign out
-            </TextButton>
+            <div className="userloggedIn">
+              <TextButton className="buttonSignIn" onClick={handleSignOut}>
+                Sign out
+              </TextButton>
+            </div>
           ) : path === "/signin" ||
             path === "/passwordreset" ||
             path === "/signup" ||
             path === "/signup/validation" ? (
             <></>
           ) : (
-            <>
+            <div className="userNotLoggedIn">
               <TextButton
                 onClick={() => navigate("/signin")}
                 className="buttonSignIn"
@@ -81,11 +80,9 @@ function Header() {
               >
                 Sign up
               </TextButton>
-            </>
+            </div>
           )}
-        </div>
 
-        <div>
           {isHoveringMenu && (
             <div onMouseLeave={handleMouseOutMenu}>
               <Menu2 />
@@ -93,62 +90,49 @@ function Header() {
           )}
 
           {path === "/signin" ||
-            path === "/passwordreset" ||
-            path === "/signup" ||
-            path === "/signup/validation"
-            ?
+          path === "/passwordreset" ||
+          path === "/signup" ||
+          path === "/signup/validation" ? (
             <></>
-            :
-            user.first_name === "NoNa"
-              ?
-              isHoveringMenu
-                ?
-                <div className="menuArea">
-                  <div
-                    onClick={handleMouseOutMenu}
-                  >my Gimme</div>
-                  <img
-                    className="menuButton"
-                    onClick={handleMouseOutMenu}
-                    src={img_chevronUp}
-                  />
-                </div>
-                :
-                <div className="menuArea">
-                  <div
-                    onClick={handleMouseOverMenu}
-                  >my Gimme</div>
-                  <img
-                    className="menuButton"
-                    onClick={handleMouseOverMenu}
-                    src={img_chevronDown}
-                  />
-                </div>
-              :
-              isHoveringMenu
-                ?
-                <div className="menuArea">
-                  <div
-                    onClick={handleMouseOutMenu}
-                  >{user.first_name}</div>
-                  <img
-                    className="menuButton"
-                    onClick={handleMouseOutMenu}
-                    src={img_chevronUp}
-                  />
-                </div>
-                :
-                <div className="menuArea">
-                  <div
-                    onClick={handleMouseOverMenu}
-                  >{user.first_name}</div>
-                  <img
-                    className="menuButton"
-                    onClick={handleMouseOverMenu}
-                    src={img_chevronDown}
-                  />
-                </div>
-          }
+          ) : user.first_name === "NoNa" ? (
+            isHoveringMenu ? (
+              <div className="menuArea">
+                <div onClick={handleMouseOutMenu}>my Gimme</div>
+                <img
+                  className="menuButton"
+                  onClick={handleMouseOutMenu}
+                  src={img_chevronUp}
+                />
+              </div>
+            ) : (
+              <div className="menuArea">
+                <div onClick={handleMouseOverMenu}>my Gimme</div>
+                <img
+                  className="menuButton"
+                  onClick={handleMouseOverMenu}
+                  src={img_chevronDown}
+                />
+              </div>
+            )
+          ) : isHoveringMenu ? (
+            <div className="menuArea">
+              <div onClick={handleMouseOutMenu}>{user.first_name}</div>
+              <img
+                className="menuButton"
+                onClick={handleMouseOutMenu}
+                src={img_chevronUp}
+              />
+            </div>
+          ) : (
+            <div className="menuArea">
+              <div onClick={handleMouseOverMenu}>{user.first_name}</div>
+              <img
+                className="menuButton"
+                onClick={handleMouseOverMenu}
+                src={img_chevronDown}
+              />
+            </div>
+          )}
         </div>
       </div>
     </HeaderContainer>

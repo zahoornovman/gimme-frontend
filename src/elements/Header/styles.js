@@ -12,7 +12,7 @@ export const HeaderContainer = styled.div`
   font-size: ${(props) => props.theme.size.xxxxxs};
   background-color: ${(props) => props.theme.colors.color7};
   box-shadow: 0px 15px 10px -18px #111;
-/*   @media (orientation: portrait) and (min-width: 768px) {
+  /*   @media (orientation: portrait) and (min-width: 768px) {
     font-size: ${(props) => props.theme.size.xs};
   }
   @media (orientation: landscape) and (min-height: 768px) {
@@ -32,7 +32,7 @@ export const HeaderContainer = styled.div`
     border-radius: 10px;
     margin-left: 20px;
 
-/*     @media (orientation: portrait) and (min-width: 768px) {
+    /*     @media (orientation: portrait) and (min-width: 768px) {
       font-size: ${(props) => props.theme.size.xs};
     }
     @media (orientation: landscape) and (min-height: 768px) {
@@ -47,22 +47,49 @@ export const HeaderContainer = styled.div`
   }
   .firstLine {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    height: auto;
+    display: grid;
+    grid-template-columns: 60% 40%;
     padding-left: ${(props) => props.theme.size.xxxxxxs};
     padding-top: ${(props) => props.theme.size.xxxxxxs};
     padding-bottom: ${(props) => props.theme.size.xxxxxxs};
     padding-right: ${(props) => props.theme.size.s};
 
-    .imageHome {
-      height: ${(props) => props.theme.size.xxxxxxl};
-      width: ${(props) => props.theme.size.xxxxxxl};
+    .headerRight {
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+
+      .userloggedIn {
+        padding: 0 4rem;
+        margin-left: 6rem;
+      }
+
+      .userNotLoggedIn {
+        display: flex;
+        justify-content: space-around;
+        padding: 0 1.5rem;
+      }
     }
-    .menuArea{
+
+    .headerLeft {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 0rem;
+
+      .imageHome {
+        height: ${(props) => props.theme.size.xxxxl};
+        width: ${(props) => props.theme.size.xxxxl};
+        padding-right: 2rem;
+      }
+    }
+
+    .menuArea {
       display: flex;
       flex-direction: row;
       justify-content: center;
+      margin: 0 1rem;
       align-items: center;
       color: ${(props) => props.theme.colors.color1};
       font-size: ${(props) => props.theme.size.xxs};
@@ -72,9 +99,6 @@ export const HeaderContainer = styled.div`
         width: ${(props) => props.theme.size.xs};
       }
     }
-    
-
-      
-    
   }
 `;
+
