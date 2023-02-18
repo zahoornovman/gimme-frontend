@@ -81,7 +81,7 @@ function Welcome() {
                 <Link to={"../admin/termsofuse"}>terms of use</Link> and with
                 usage of cookies?
               </div>
-              <div>
+              <div className="popUpButtonSection">
                 <PopUpButtonYes className="fontSize" onClick={handleAgreement}>
                   Yes, I do.
                 </PopUpButtonYes>

@@ -86,7 +86,7 @@ function OfferDetails() {
 
     var requestOptions = {
       method: 'DELETE',
-      headers: myHeaders,     
+      headers: myHeaders,
       redirect: 'follow'
     };
 
@@ -96,7 +96,7 @@ function OfferDetails() {
           if (response.status < 300) {
             navigate("/offers/all")
           }
-          else{
+          else {
             setOffer("deletionFailed")
           }
         }
@@ -109,126 +109,128 @@ function OfferDetails() {
 
   return (
     <>
-    <Header></Header>
-    <ContainerOneOffer>
-      
-      {
-        offer === ""
-          ?
-          <div>{loading}</div>
-          :
-          offer === "error"
+      <Header></Header>
+      <ContainerOneOffer>
+
+        {
+          offer === ""
             ?
-            <div>{offerNotDisplayed}</div>
+            <div>{loading}</div>
             :
-            offer === "deletionFailed"
+            offer === "error"
               ?
-              <>
-                <div>{`Deletion has failed. Please contact our backoffice with referring to offer ${offer.id}.`}</div>
-                <TextButton
-                  onClick={() => navigate("/admin/contact")}
-                >Contact details</TextButton>
-              </>
+              <div>{offerNotDisplayed}</div>
               :
-              <>
-                <Header2>{offer.title}</Header2>
-                <div className='contentSection fontSize'>
-                  {
-                    offer.images.length === 0
-                      ?
-                      <></>
-                      :
-                      <div className='imageGallery'>
-                        {
-                          imageDisplayed === 0
-                            ?
-                            <></>
-                            :
-                            <img
-                              className='cheveronButton'
-                              onClick={handleLeftCheveron}
-                              src={img_cheveronDoubleLeft} />
+              offer === "deletionFailed"
+                ?
+                <>
+                  <div>{`Deletion has failed. Please contact our backoffice with referring to offer ${offer.id}.`}</div>
+                  <TextButton
+                    onClick={() => navigate("/admin/contact")}
+                  >Contact details</TextButton>
+                </>
+                :
+                <>
+                  <Header2>{offer.title}</Header2>
+                  <div className='contentSection fontSize'>
+                    {
+                      offer.images.length === 0
+                        ?
+                        <></>
+                        :
+                        <div className='imageGallery'>
+                          {
+                            imageDisplayed === 0
+                              ?
+                              <div className='noCheveronButton'></div>
+                              :
+                              <img
+                                className='cheveronButton'
+                                onClick={handleLeftCheveron}
+                                src={img_cheveronDoubleLeft} />
 
-                        }
-                        <img className='image' src={`${offer.images[imageDisplayed].images}`} />
-                        {
-                          imageDisplayed === offer.images.length - 1
-                            ?
-                            <></>
-                            :
-                            <img
-                              className='cheveronButton'
-                              onClick={handleRightCheveron}
-                              src={img_cheveronDoubleRight} />
-                        }
+                          }
+                          <img className='image' src={`${offer.images[imageDisplayed].images}`} />
+                          {
+                            imageDisplayed === offer.images.length - 1
+                              ?
+                              <div className='noCheveronButton'></div>
+                              :
+                              <img
+                                className='cheveronButton'
+                                onClick={handleRightCheveron}
+                                src={img_cheveronDoubleRight} />
+                          }
+                        </div>
+                    }
+                    <div className='details'>
+                      <div>
+                        <h3>Description:</h3>
+                        <div className='descriptionContainer' >{offer.description}</div>
                       </div>
-                  }
-                  <div className='details'>
-                  <div>
-                    <h3>Description:</h3>
-                    <div className='descriptionContainer' >{offer.description}</div>
-                  </div>
-                  <div>
-                    <h3>Condition:</h3>
-                    <ConditionTranslation obj={offer} />
-                  </div>
-                  <div>
-                    <h3>Requested:</h3>
-                    <div className='requestedContainer' >{offer.wants_for_this_item}</div>
-                  </div>
-                  <div>
-                    <h3>Location:</h3>
-                    <div>{offer.author.location}</div>
-                  </div>
-                  <div>
-                    <h3>Status:</h3>
-                    <StatusTranslation obj={offer} />
-                  </div>
-                  </div>
-                </div>
-                {
-                  deletePopUp === "notDisplayed"
-                    ?
-                    <div className='buttonSection'>
-                      <TextButton
-                      className='messageUpdateDeleteButton'
-                      onClick={()=> navigate(-1)}
-                      >Go back</TextButton>
-                      {
-                        offer.author.user.id === user.id
-                          ?
-                          <>
-                            <TextButton
-                              className='messageUpdateDeleteButton'
-                              onClick={() => navigate(`/offers/update/${id}`)}
-                            >Update</TextButton>
-                            <TextButtonDelete
-                              className='messageUpdateDeleteButton'
-                              onClick={handleDeleteObject}
-                            >Delete</TextButtonDelete>
-                          </>
-                          :
-                          <TextButton className='messageUpdateDeleteButton' onClick={handleMessagedClicked}>Message</TextButton>
-
-                      }
-
+                      <div>
+                        <h3>Condition:</h3>
+                        <ConditionTranslation obj={offer} />
+                      </div>
+                      <div>
+                        <h3>Requested:</h3>
+                        <div className='requestedContainer' >{offer.wants_for_this_item}</div>
+                      </div>
+                      <div>
+                        <h3>Location:</h3>
+                        <div>{offer.author.location}</div>
+                      </div>
+                      <div>
+                        <h3>Status:</h3>
+                        <StatusTranslation obj={offer} />
+                      </div>
                     </div>
-                    :
-                    <PopUp>
-                      <div>Are you sure that you'd like to delete this offer? Deletion can't be undone.</div>
-                      <PopUpButtonYes
-                        onClick={handleExitDelete}
-                      >No</PopUpButtonYes>
-                      <PopUpButtonNo
-                        onClick={handleDeleteExecution}
-                      >Yes</PopUpButtonNo>
-                    </PopUp>
-                }
+                  </div>
+                  {
+                    deletePopUp === "notDisplayed"
+                      ?
+                      <div className='buttonSection'>
+                        <TextButton
+                          className='messageUpdateDeleteButton'
+                          onClick={() => navigate(-1)}
+                        >Go back</TextButton>
+                        {
+                          offer.author.user.id === user.id
+                            ?
+                            <>
+                              <TextButton
+                                className='messageUpdateDeleteButton'
+                                onClick={() => navigate(`/offers/update/${id}`)}
+                              >Update</TextButton>
+                              <TextButtonDelete
+                                className='messageUpdateDeleteButton'
+                                onClick={handleDeleteObject}
+                              >Delete</TextButtonDelete>
+                            </>
+                            :
+                            <TextButton className='messageUpdateDeleteButton' onClick={handleMessagedClicked}>Message</TextButton>
 
-              </>
-      }      
-    </ContainerOneOffer>
-    <FooterElement></FooterElement>
+                        }
+
+                      </div>
+                      :
+                      <PopUp className='popUpDelete'>
+                        <div>Are you sure that you'd like to delete this offer? Deletion can't be undone.</div>
+                        <div className='popUpButtonSection'>
+                          <PopUpButtonYes
+                            onClick={handleExitDelete}
+                          >No</PopUpButtonYes>
+                          <PopUpButtonNo
+                            onClick={handleDeleteExecution}
+                          >Yes</PopUpButtonNo>
+                        </div>
+                      </PopUp>
+                  }
+
+                </>
+        }
+      </ContainerOneOffer>
+      <FooterElement></FooterElement>
     </>
   );
 }

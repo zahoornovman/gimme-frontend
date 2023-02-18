@@ -83,24 +83,22 @@ export const TextButtonDelete = styled(TextButtonBasic)`
 `;
 
 export const PopUpButtonYes = styled.button`
-  border: ${(props) => props.theme.colors.color5} solid
-    ${(props) => props.theme.size.xxxxxxxs};
+  border: none;
   border-radius: 25px;
   background-color: ${(props) => props.theme.colors.color1};
   color: ${(props) => props.theme.colors.color5};
   text-align: center;
-  font-weight: bold;
   font-family: ${(props) => props.theme.fontFamily};
   cursor: pointer;
 `;
 export const PopUpButtonNo = styled.button`
-  border: ${(props) => props.theme.colors.color5} solid
-    ${(props) => props.theme.size.xxxxxxxs};
+
+    border: none;
   border-radius: 25px;
   background-color: ${(props) => props.theme.colors.color2};
-  color: ${(props) => props.theme.colors.color5};
+  color: ${(props) => props.theme.colors.color7};
   text-align: center;
-  font-weight: bold;
+  /* font-weight: bold; */
   font-family: ${(props) => props.theme.fontFamily};
   cursor: pointer;
 `;
@@ -108,11 +106,10 @@ export const PopUpButtonNo = styled.button`
 //popup
 export const PopUp = styled.div`
   background-color: ${(props) => props.theme.colors.color2};
-  color: ${(props) => props.theme.colors.color5};
+  color: ${(props) => props.theme.colors.color4};
   border: ${(props) => props.theme.colors.color3} solid
     ${(props) => props.theme.size.xxxxxxxs};
   border-radius: ${(props) => props.theme.size.xxxxxxxs};
-  width: 90vw;
   font-weight: bold;
   text-align: center;
 `;
