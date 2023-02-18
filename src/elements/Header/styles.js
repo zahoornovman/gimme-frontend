@@ -59,7 +59,9 @@ export const HeaderContainer = styled.div`
       height: ${(props) => props.theme.size.xxxxxl};
       width: ${(props) => props.theme.size.xxxxxl};
       transition-duration: 250ms;
-      hover {
+      transition-property: transform;
+      :hover {
+        transform: scale(1.05) rotate(30deg);
       }
     }
 
