@@ -26,6 +26,10 @@ input {
     box-shadow: 3px 3px 1px grey;
 }
 
+input:focus {
+    outline:none;
+}
+
 button {
     width: 90px;
     height: 40px;
@@ -36,6 +40,7 @@ button {
     background-color: ${(props) => props.theme.colors.color2};
     font-family: ${(props)=>props.theme.fontFamily};
     font-size: 15px;
+    cursor: pointer;
 }
 
 `;

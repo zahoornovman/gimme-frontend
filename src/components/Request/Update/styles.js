@@ -97,6 +97,18 @@ align-items: center;
     border: 1px solid ${(props) => props.theme.colors.color7};
   }
 
+  .inputField input:focus {
+    outline:none;
+  }
+
+  .inputField select:focus {
+    outline:none;
+  }
+
+  .inputField textarea:focus {
+    outline:none;
+  }
+
   #description {
     height: 200px;
     width: 300px;

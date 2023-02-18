@@ -4,9 +4,10 @@ export const ContainerAllRequests = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 100vh;
   margin-top: 50px;
+  margin-bottom: 50px;
 
     .buttonMore {
     color: black;

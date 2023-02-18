@@ -3,9 +3,11 @@ import styled from 'styled-components';
 export const ContainerAllOffers = styled.div`
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   margin-top: 50px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-bottom: 50px;
 
   
   .buttonMore {
