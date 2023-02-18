@@ -55,18 +55,6 @@ export const HeaderContainer = styled.div`
     padding-bottom: ${(props) => props.theme.size.xxxxxxs};
     padding-right: ${(props) => props.theme.size.s};
 
-<<<<<<< HEAD
-    .imageHome {
-      height: ${(props) => props.theme.size.xxxxxl};
-      width: ${(props) => props.theme.size.xxxxxl};
-      transition-duration: 250ms;
-      transition-property: transform;
-      :hover {
-        transform: scale(1.05) rotate(30deg);
-      }
-    }
-
-=======
     .headerRight {
       display: flex;
       align-items: center;
@@ -91,13 +79,16 @@ export const HeaderContainer = styled.div`
       padding: 0 0rem;
 
       .imageHome {
-        height: ${(props) => props.theme.size.xxxxl};
-        width: ${(props) => props.theme.size.xxxxl};
-        padding-right: 2rem;
+        height: ${(props) => props.theme.size.xxl};
+        width: ${(props) => props.theme.size.xxl};
+        transition-duration: 250ms;
+        transition-property: transform;
+        :hover {
+          transform: scale(1.05) rotate(30deg);
+        }
       }
     }
 
->>>>>>> main
     .menuArea {
       display: flex;
       flex-direction: row;
@@ -114,4 +105,3 @@ export const HeaderContainer = styled.div`
     }
   }
 `;
-

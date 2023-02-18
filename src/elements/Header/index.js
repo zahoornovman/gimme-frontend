@@ -43,6 +43,7 @@ function Header() {
           {/* Searchbar display based on the page being displayed */}
           <div className="searchBarPlacement">
             {path === "/requests/all" ||
+            path === "/requests/searchResults" ||
             path === "/requests/my" ||
             path === "/requests/new" ||
             path === "/requests/:id" ||
