@@ -37,8 +37,13 @@ function Header() {
     <HeaderContainer>
       <div className="firstLine">
         <div className="headerLeft">
-          <div className="imageHome">
-            <img onClick={() => navigate("/")} src={img_home} alt="" />
+          <div>
+            <img
+              className="imageHome"
+              onClick={() => navigate("/")}
+              src={img_home}
+              alt=""
+            />
           </div>
           {/* Searchbar display based on the page being displayed */}
           <div className="searchBarPlacement">

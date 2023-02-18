@@ -79,12 +79,13 @@ export const HeaderContainer = styled.div`
       padding: 0 0rem;
 
       .imageHome {
-        height: ${(props) => props.theme.size.xxl};
-        width: ${(props) => props.theme.size.xxl};
+        height: ${(props) => props.theme.size.xxxxxl};
+        width: ${(props) => props.theme.size.xxxxxl};
+        padding-right: 2rem;
         transition-duration: 250ms;
         transition-property: transform;
         :hover {
-          transform: scale(1.05) rotate(30deg);
+          transform: scale(1.05) rotate(10deg);
         }
       }
     }
