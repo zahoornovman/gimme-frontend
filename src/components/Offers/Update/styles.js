@@ -13,32 +13,46 @@ align-items: center;
   flex-direction: column;
   row-gap: 10px;
   .imageGallery {
-    border: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxxs};
-    height: 550px;
-    width: 800px;
+    border: ${(props) => props.theme.colors.color3} solid ${(props) => props.theme.size.xxxxxxxxs};    
     background-color: ${(props) => props.theme.colors.color3};
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
-    .image {
-      width: 100%;
-      height: 100%;
+    .containerImage{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 490px;
+      width: 800px;
+      .image {
+      width: 740px;
+      height: 490px;
       object-fit: cover;
       box-shadow: 2px 2px 5px black;
     }
-
   }
-
       .cheveronButton{
+      height: 20px;
+      width: 30px;
+      cursor: pointer;
+    }
+    .noCheveronButton{
+      width: 30px;
+    }
+    }  
+    .containerTrash{
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .imageTrash{
       height: 20px;
       cursor: pointer;
     }
 
-      .imageTrash{
-      background-color: black;
-      height: 20px;
-      cursor: pointer;
+     
     }
 
   .details {

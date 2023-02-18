@@ -81,7 +81,7 @@ function RequestDetails() {
   const handleDeleteExecution = () => {
     setDeletePopUp("notDisplayed")
 
-    var myHeaders = new Headers();  
+    var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${user.acces}`);
 
     var requestOptions = {
@@ -108,131 +108,135 @@ function RequestDetails() {
 
   return (
     <>
-    <Header></Header>
-    <ContainerOneRequest>
-      
-      {
-        request === ""
-          ?
-          <div>{loading}</div>
-          :
-          request === "error"
+      <Header></Header>
+      <ContainerOneRequest>
+
+        {
+          request === ""
             ?
-            <div>{requestNotDisplayed}</div>
+            <div>{loading}</div>
             :
-            request === "deletionFailed"
+            request === "error"
               ?
-              <>
-                <div>{`Deletion has failed. Please contact our backoffice with referring to request ${request.id}.`}</div>
-                <TextButton
-                  onClick={() => navigate("/admin/contact")}
-                >Contact details</TextButton>
-              </>
+              <div>{requestNotDisplayed}</div>
               :
-              <>
-                <Header2>{request.title}</Header2>
-                <div className='contentSection fontSize'>
-                  {
-                    request.images.length === 0
-                      ?
-                      <></>
-                      :
-                      <div className='imageGallery'>
-                        {
-                          imageDisplayed === 0
-                            ?
-                            <></>
-                            :
-                            <img
-                              className='cheveronButton'
-                              onClick={handleLeftCheveron}
-                              src={img_cheveronDoubleLeft} />
+              request === "deletionFailed"
+                ?
+                <>
+                  <div>{`Deletion has failed. Please contact our backoffice with referring to request ${request.id}.`}</div>
+                  <TextButton
+                    onClick={() => navigate("/admin/contact")}
+                  >Contact details</TextButton>
+                </>
+                :
+                <>
+                  <Header2>{request.title}</Header2>
+                  <div className='contentSection fontSize'>
+                    {
+                      request.images.length === 0
+                        ?
+                        <></>
+                        :
+                        <div className='imageGallery'>
+                          {
+                            imageDisplayed === 0
+                              ?
+                              <div className='noCheveronButton'></div>
+                              :
+                              <img
+                                className='cheveronButton'
+                                onClick={handleLeftCheveron}
+                                src={img_cheveronDoubleLeft} />
 
-                        }
-                        <img className='image' src={`${request.images[imageDisplayed].images}`} />
-                        {
-                          imageDisplayed === request.images.length - 1
-                            ?
-                            <></>
-                            :
-                            <img
-                              className='cheveronButton'
-                              onClick={handleRightCheveron}
-                              src={img_cheveronDoubleRight} />
-                        }
+                          }
+                          <img className='image' src={`${request.images[imageDisplayed].images}`} />
+                          {
+                            imageDisplayed === request.images.length - 1
+                              ?
+                              <div className='noCheveronButton'></div>
+                              :
+                              <img
+                                className='cheveronButton'
+                                onClick={handleRightCheveron}
+                                src={img_cheveronDoubleRight} />
+                          }
+                        </div>
+                    }
+                    <div className='details'>
+                      <div>
+                        <h3>Description:</h3>
+                        <div className='descriptionContainer' >{request.description}</div>
                       </div>
-                  }
-                  <div className='details'>
-                  <div>
-                    <h3>Description:</h3>
-                    <div className='descriptionContainer' >{request.description}</div>
-                  </div>
-                  <div>
-                    <h3>Condition:</h3>
-                    <ConditionTranslation obj={request} />
-                  </div>
-                  <div>
-                    <h3>Offered:</h3>
-                    <div className='offeredContainer' >{request.has_for_this_item}</div>
-                  </div>
-                  <div>
-                    <h3>Location:</h3>
-                    <div>{request.author.location}</div>
-                  </div>
-                  <div>
-                    <h3>Status:</h3>
-                    <StatusTranslation obj={request} />
-                  </div>
-                  </div>
-                </div>
-                {
-                  deletePopUp === "notDisplayed"
-                    ?
-                    <div className='buttonSection'>
-                      <TextButton
-                      className='messageUpdateDeleteButton'
-                      onClick={()=> navigate(-1)}
-                      >Go back</TextButton>
-                      {
-                        request.author.user.id === user.id
-                          ?
-                          <>
-                            <TextButton
-                            className='messageUpdateDeleteButton'
-                              onClick={() => navigate(`/requests/update/${id}`)}
-                            >Update</TextButton>
-                            <TextButtonDelete
-                              className='messageUpdateDeleteButton'
-                              onClick={handleDeleteObject}
-                            >Delete</TextButtonDelete>
-                          </>
-                          :
-                          <TextButton 
-                          className='messageUpdateDeleteButton'
-                          onClick={handleMessagedClicked}>Message</TextButton>
-
-                      }
-
+                      <div>
+                        <h3>Condition:</h3>
+                        <ConditionTranslation obj={request} />
+                      </div>
+                      <div>
+                        <h3>Offered:</h3>
+                        <div className='offeredContainer' >{request.has_for_this_item}</div>
+                      </div>
+                      <div>
+                        <h3>Location:</h3>
+                        <div>{request.author.location}</div>
+                      </div>
+                      <div>
+                        <h3>Status:</h3>
+                        <StatusTranslation obj={request} />
+                      </div>
                     </div>
-                    :
-                    <PopUp>
-                      <div>Are you sure that you'd like to delete this request? Deletion can't be undone.</div>
-                      <PopUpButtonYes
-                        onClick={handleExitDelete}
-                      >No</PopUpButtonYes>
-                      <PopUpButtonNo
-                        onClick={handleDeleteExecution}
-                      >Yes</PopUpButtonNo>
-                    </PopUp>
-                }
+                  </div>
+                  {
+                    deletePopUp === "notDisplayed"
+                      ?
+                      <div className='buttonSection'>
+                        <TextButton
+                          className='messageUpdateDeleteButton'
+                          onClick={() => navigate(-1)}
+                        >Go back</TextButton>
+                        {
+                          request.author.user.id === user.id
+                            ?
+                            <>
+                              <TextButton
+                                className='messageUpdateDeleteButton'
+                                onClick={() => navigate(`/requests/update/${id}`)}
+                              >Update</TextButton>
+                              <TextButtonDelete
+                                className='messageUpdateDeleteButton'
+                                onClick={handleDeleteObject}
+                              >Delete</TextButtonDelete>
+                            </>
+                            :
+                            <TextButton
+                              className='messageUpdateDeleteButton'
+                              onClick={handleMessagedClicked}>Message</TextButton>
 
-              </>
-      }
+                        }
+
+                      </div>
+                      :
+                      <PopUp
+                        className='popUpDelete'>
+                        <div>Are you sure that you'd like to delete this request? Deletion can't be undone.</div>
+                        <div className='popUpButtonSection'>
+                          <PopUpButtonYes
+                            onClick={handleExitDelete}
+                          >No</PopUpButtonYes>
+                          <PopUpButtonNo
+                            onClick={handleDeleteExecution}
+                          >Yes</PopUpButtonNo>
+                        </div>
+
+                      </PopUp>
+                  }
+
+                </>
+        }
 
 
-      
-    </ContainerOneRequest>
-    <FooterElement></FooterElement>
+
+      </ContainerOneRequest>
+      <FooterElement></FooterElement>
     </>
   );
 }

@@ -52,7 +52,7 @@ function UpdateUserProfile() {
             location: result.userprofile.location,
           })
         );
-        navigate("/");
+        navigate("/admin/profile");
       })
       .catch(() => {
         navigate("/admin/profile/changeserror");
