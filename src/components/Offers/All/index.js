@@ -111,6 +111,7 @@ function AllOffers() {
             No Search Results found. Please try a different search criteria..
           </div>
         )}
+        {/* <div className="gridWithButton"> */}
         {errorMessage !== null ? (
           <div>{errorMessage}</div>
         ) : (
@@ -125,6 +126,7 @@ function AllOffers() {
         {next !== null && (
           <TextButton className="buttonMore" onClick={fetchMoreOffers}> Click for More..</TextButton>
         )}
+        {/* </div> */}
         <FooterElement />
       </ContainerAllOffers>
     </>

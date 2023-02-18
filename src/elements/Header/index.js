@@ -36,40 +36,38 @@ function Header() {
   return (
     <HeaderContainer>
       <div className="firstLine">
-        <div>
-          <img
-            onClick={() => navigate("/")}
-            className="imageHome"
-            src={img_home}
-            alt=""
-          />
-        </div>
-        {/* Searchbar display based on the page being displayed */}
-        <div className="searchBarPlacement">
-          {path === "/requests/all" ||
-          path === "/requests/searchResults" ||
-          path === "/requests/my" ||
-          path === "/requests/new" ||
-          path === "/requests/:id" ||
-          path === "/requests/update/:id" ? (
-            <SearchRequests />
-          ) : (
-            <SearchOffers />
-          )}
+        <div className="headerLeft">
+          <div className="imageHome">
+            <img onClick={() => navigate("/")} src={img_home} alt="" />
+          </div>
+          {/* Searchbar display based on the page being displayed */}
+          <div className="searchBarPlacement">
+            {path === "/requests/all" ||
+            path === "/requests/my" ||
+            path === "/requests/new" ||
+            path === "/requests/:id" ||
+            path === "/requests/update/:id" ? (
+              <SearchRequests />
+            ) : (
+              <SearchOffers />
+            )}
+          </div>
         </div>
 
-        <div>
+        <div className="headerRight">
           {status === "completed" ? (
-            <TextButton className="buttonSignIn" onClick={handleSignOut}>
-              Sign out
-            </TextButton>
+            <div className="userloggedIn">
+              <TextButton className="buttonSignIn" onClick={handleSignOut}>
+                Sign out
+              </TextButton>
+            </div>
           ) : path === "/signin" ||
             path === "/passwordreset" ||
             path === "/signup" ||
             path === "/signup/validation" ? (
             <></>
           ) : (
-            <>
+            <div className="userNotLoggedIn">
               <TextButton
                 onClick={() => navigate("/signin")}
                 className="buttonSignIn"
@@ -82,11 +80,9 @@ function Header() {
               >
                 Sign up
               </TextButton>
-            </>
+            </div>
           )}
-        </div>
 
-        <div>
           {isHoveringMenu && (
             <div onMouseLeave={handleMouseOutMenu}>
               <Menu2 />
