@@ -4,7 +4,7 @@ export const HeaderContainer = styled.div`
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  height: 150px;
+  height: 100px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -12,7 +12,7 @@ export const HeaderContainer = styled.div`
   font-size: ${(props) => props.theme.size.xxxxxs};
   background-color: ${(props) => props.theme.colors.color7};
   box-shadow: 0px 15px 10px -18px #111;
-/*   @media (orientation: portrait) and (min-width: 768px) {
+  /*   @media (orientation: portrait) and (min-width: 768px) {
     font-size: ${(props) => props.theme.size.xs};
   }
   @media (orientation: landscape) and (min-height: 768px) {
@@ -32,7 +32,7 @@ export const HeaderContainer = styled.div`
     border-radius: 10px;
     margin-left: 20px;
 
-/*     @media (orientation: portrait) and (min-width: 768px) {
+    /*     @media (orientation: portrait) and (min-width: 768px) {
       font-size: ${(props) => props.theme.size.xs};
     }
     @media (orientation: landscape) and (min-height: 768px) {
@@ -56,10 +56,10 @@ export const HeaderContainer = styled.div`
     padding-right: ${(props) => props.theme.size.s};
 
     .imageHome {
-      height: ${(props) => props.theme.size.xxxxxxl};
-      width: ${(props) => props.theme.size.xxxxxxl};
+      height: ${(props) => props.theme.size.xxxxxl};
+      width: ${(props) => props.theme.size.xxxxxl};
     }
-    .menuArea{
+    .menuArea {
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -72,9 +72,5 @@ export const HeaderContainer = styled.div`
         width: ${(props) => props.theme.size.xs};
       }
     }
-    
-
-      
-    
   }
 `;
