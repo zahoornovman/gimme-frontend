@@ -93,7 +93,8 @@ function NewRequest() {
         }      
 
     }
-    const handleSave = () => {
+    const handleSave = (e) => {
+        e.currentTarget.disabled = true
         setMessage("no");
         const title = document.getElementById("title").value;
         const description = document.getElementById("description").value;

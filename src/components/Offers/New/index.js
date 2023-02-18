@@ -92,7 +92,8 @@ function NewOffer() {
         }     
 
     }
-    const handleSave = () => {
+    const handleSave = (e) => {
+        e.currentTarget.disabled = true
         setMessage("no")
 
         const title = document.getElementById('title').value
