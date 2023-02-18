@@ -311,7 +311,7 @@ function MessageService() {
                                             <div className="fromContainer">
                                                 <h4>from :</h4>
                                                 <div className="fromContainerInformation">
-                                                        <h4>{`${user.first_name} ${user.last_name}`}</h4>
+                                                        <h4>{`${user.username}`}</h4>
                                                         <h4>{`${user.email}`}</h4>
                                                 </div>
                                             </div>
