@@ -96,6 +96,7 @@ export const HeaderContainer = styled.div`
       justify-content: center;
       margin: 0 1rem;
       align-items: center;
+      cursor: pointer;
       color: ${(props) => props.theme.colors.color1};
       font-size: ${(props) => props.theme.size.xxs};
       row-gap: ${(props) => props.theme.size.xxxxxxxxs};
