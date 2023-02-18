@@ -19,7 +19,7 @@ function MessageService() {
     const [currentLengthMessage, setCurrentLengthMessage] = useState(0)
     const [receiverId, setReceiverId] = useState("")
     const [receiverUserName, setReceiverUserName] = useState("")
-    const interestedInText = "I'm interessed in it. Plaese contact me."
+    const interestedInText = "I'm interested in it. Please contact me."
     const availableText = "Is it still available?"
 
 
@@ -253,8 +253,9 @@ function MessageService() {
     }, [])
 
     return (
+        <><Header></Header>
         <ContainerMessageService>
-            <Header></Header>
+            
             {
                 userFirstName === "NoNa"
                     ?
@@ -308,56 +309,57 @@ function MessageService() {
                                                     <></>
                                             }
                                             <div className="fromContainer">
-                                                <div>From</div>
+                                                <h4>from :</h4>
                                                 <div className="fromContainerInformation">
-                                                    <div>
-                                                        <div>Name:</div>
-                                                        <div>{`${user.first_name} ${user.last_name}`}</div>
-                                                    </div>
-                                                    <div>
-                                                        <div>Email:</div>
-                                                        <div>{`${user.email}`}</div>
-                                                    </div>
+                                                        <h4>{`${user.first_name} ${user.last_name}`}</h4>
+                                                        <h4>{`${user.email}`}</h4>
                                                 </div>
                                             </div>
                                             <div className="toContainer">
-                                                <div>To</div>
+                                                <h4>to :</h4>
                                                 <div className="toContainerInformation">
                                                     <div>
-                                                        <div>Username:</div>
-                                                        <div>{`${receiverUserName}`}</div>
+                                                        <div></div>
+                                                        <h4>{`${receiverUserName}`}</h4>
                                                     </div>                                                    
                                                 </div>
                                             </div>
-                                            <div>
+                                            <div className="message">
                                                 <label
-                                                    htmlFor="message">Message:</label>
-                                                <input
+                                                    htmlFor="message"></label>
+                                                <h3>Message:</h3>
+                                                <textarea
                                                     onChange={handleChangeMessage}
                                                     maxLength={maxLengthMessage}
-                                                    id="message"></input>
+                                                    id="message"></textarea>
                                                 <div className="fontSize">{`(${currentLengthMessage}/${maxLengthMessage})`}</div>
-                                                <div>
+                                                <TextButton
+                                                    className="sendButton"
+                                                    onClick={handleSend}
+                                                >
+                                                Send
+                                                </TextButton>
+                                                <div className="buttonSection">
+                                                    <h3>Quick Reply</h3>
                                                     <TextButton
+                                                        className="quickButton"
                                                         onClick={handleContactMe}>{interestedInText}</TextButton>
                                                     <TextButton
+                                                        className="quickButton"
                                                         onClick={handleAvailable}
                                                     >{availableText}</TextButton>
                                                 </div>
                                             </div>
 
                                         </div>
-                                        <TextButton
-                                            className="fontSize"
-                                            onClick={handleSend}
-                                        >
-                                            Send
-                                        </TextButton>
+
                                     </div>
 
             }
-            <FooterElement></FooterElement>
+            
         </ContainerMessageService>
+        <FooterElement></FooterElement>
+        </>
     );
 }
 
