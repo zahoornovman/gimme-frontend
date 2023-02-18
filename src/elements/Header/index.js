@@ -122,7 +122,7 @@ function Header() {
             )
           ) : isHoveringMenu ? (
             <div className="menuArea">
-              <div onClick={handleMouseOutMenu}>{user.first_name}</div>
+              <div onClick={handleMouseOutMenu}>{user.username}</div>
               <img
                 className="menuButton"
                 onClick={handleMouseOutMenu}
@@ -131,7 +131,7 @@ function Header() {
             </div>
           ) : (
             <div className="menuArea">
-              <div onClick={handleMouseOverMenu}>{user.first_name}</div>
+              <div onClick={handleMouseOverMenu}>{user.username}</div>
               <img
                 className="menuButton"
                 onClick={handleMouseOverMenu}
