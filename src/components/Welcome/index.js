@@ -17,6 +17,12 @@ import { reply } from "../../slices/acceptance/acceptanceSlice";
 import { loading } from "../../elements/Statements/statements";
 import barter_banner from "../../images/barter_banner.jpg";
 
+//selectors
+import { selectLanguage } from "../../store/selectors/selectors";
+
+//use
+import { setLanguageInSlice } from "../../slices/language/languageSlice";
+
 import { useIntl } from "react-intl";
 
 import { FormattedMessage } from "react-intl";
@@ -36,6 +42,17 @@ function Welcome() {
   const acceptance = useSelector((state) => state.acceptance.acceptance);
 
   const [offersLatest10, setOffersLatest10] = useState([]);
+  const storeLanguage = useSelector(selectLanguage);
+
+  //language local state
+  const [language, setLanguage] = useState("en-US");
+
+  //useEffect to be triggered when language is changed
+  useEffect(() => {
+    console.log("Entering use Effect for language on welcome page");
+    setLanguage(storeLanguage);
+    console.log(language);
+  }, [storeLanguage]);
 
   useSettingTags();
   useEffect(() => {

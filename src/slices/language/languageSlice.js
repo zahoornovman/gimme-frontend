@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    language: "en-US"
-}
+  language: "en-US",
+};
 
 const languageSlice = createSlice({
   name: "language",
@@ -10,7 +10,7 @@ const languageSlice = createSlice({
   reducers: {
     setLanguage: (state, { payload }) => {
       console.log("Entering Locale Slice");
-      state.currentLocale = payload.results;
+      state.language = payload;
       console.log(payload);
     },
   },

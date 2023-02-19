@@ -3,7 +3,7 @@ import { TextButton } from "../../styles/MasterStyles";
 import { HeaderContainer } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Menu2 from "../Menu2";
 import { signOut } from "../../slices/user/userSlice";
 import SearchRequests from "../SearchRequests";
@@ -15,17 +15,18 @@ import img_chevronUp from "../../images/chevronDoubleUp.svg";
 //languages
 import { LOCALES } from "../../i18n/locales";
 
+//slice
+import { setLanguageInSlice } from "../../slices/language/languageSlice";
+
+//selectors
+import { selectLanguage } from "../../store/selectors/selectors";
+
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const status = useSelector((state) => state.user.loading);
   const user = useSelector((state) => state.user);
-
-  // Languages
-  const languages = [
-    { name: "English", code: LOCALES.ENGLISH },
-    { name: "Deutsche", code: LOCALES.GERMAN },
-  ];
+  const storeLanguage = useSelector(selectLanguage);
 
   const handleSignOut = () => {
     dispatch(signOut());
@@ -41,6 +42,30 @@ function Header() {
   const handleMouseOutMenu = () => {
     setIsHoveringMenu(false);
   };
+
+  // Languages
+  const languages = [
+    { name: "English", code: LOCALES.ENGLISH },
+    { name: "Deutsche", code: LOCALES.GERMAN },
+  ];
+
+  //language local state
+  const [language, setLanguage] = useState("en-US");
+
+  //useEffect to be triggered when language is changed
+  useEffect(() => {
+    console.log("Entering use Effect for language on welcome page");
+    setLanguage(storeLanguage);
+    console.log(language);
+    console.log(storeLanguage);
+  }, [storeLanguage]);
+
+  //changing language handled here
+  const handleLanguageChange = (event) => {
+    console.log(event.currentTarget.value);
+    dispatch(setLanguageInSlice(event.currentTarget.value));
+  };
+
   let path = window.location.pathname;
   return (
     <HeaderContainer>
@@ -150,7 +175,7 @@ function Header() {
           )}
           <div className="switcher">
             {/* Language switch dropdown here */}
-            <select onChange="{props.handleChange}" value="{props.currentLocale}">
+            <select onChange={handleLanguageChange} value={storeLanguage}>
               {languages.map(({ name, code }) => (
                 <option key={code} value={code}>
                   {name}
