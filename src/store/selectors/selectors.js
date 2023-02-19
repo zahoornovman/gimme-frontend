@@ -8,3 +8,6 @@ export const selectRequests = (state) => state.requests.requests;
 
 //Tag Slice selectors
 export const selectTags = (state) => state.tags.tags;
+
+//Language Slice selectors
+export const selectLanguage = (state) => state.languages.language;

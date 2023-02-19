@@ -15,10 +15,16 @@ import {
 import { OfferCard } from "../../elements/OfferCard/offerCard";
 import { reply } from "../../slices/acceptance/acceptanceSlice";
 import { loading } from "../../elements/Statements/statements";
-import barter_banner from '../../images/barter_banner.jpg';
+import barter_banner from "../../images/barter_banner.jpg";
 
+import { useIntl } from "react-intl";
+
+import { FormattedMessage } from "react-intl";
 
 function Welcome() {
+  const intl = useIntl();
+  console.log(intl);
+
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -108,41 +114,45 @@ function Welcome() {
         </ContainerHome>
       ) : (
         <>
-        <Header></Header>
-        <ContainerBanner>
-          <div className="leftSquare">
-            <h4>Make offers and requests...</h4>
-            <h4>...barter with others</h4>
-            <h2>WIN</h2>
-          </div>
-          <div className="bannerContainer">
-            <img className="banner" src={barter_banner} alt="barter_banner" />
-          </div>         
-        </ContainerBanner>
-        <ContainerWelcome>
-          {offersLatest10 === "" ? (
-            <div className="loading">{loading}</div>
-          ) : (
-            <div className="notLoading">
-              <div className="latestOfferContainer">
-                <Header2>Offers added in the last 24 hours</Header2>
-                {fetchingStatus === "error" ? (
-                  <div>
-                    Latest offers can't be displayed at the moment. We apologise
-                    for the inconvenience. 😖
-                  </div>
-                ) : (
-                  <div className="objects">
-                    {offersLatest10.map((obj) => (
-                      <OfferCard key={obj.id} obj={obj} />
-                    ))}
-                  </div>
-                )}
-              </div>
+          <Header></Header>
+          <ContainerBanner>
+            <div className="leftSquare">
+              <h4>
+                <FormattedMessage id="welcome_banner_1" />
+              </h4>
+              <h4>
+                <FormattedMessage id="welcome_banner_2" />
+              </h4>
+              <h2>WIN</h2>
             </div>
-          )}          
-        </ContainerWelcome>
-        <FooterElement></FooterElement>
+            <div className="bannerContainer">
+              <img className="banner" src={barter_banner} alt="barter_banner" />
+            </div>
+          </ContainerBanner>
+          <ContainerWelcome>
+            {offersLatest10 === "" ? (
+              <div className="loading">{loading}</div>
+            ) : (
+              <div className="notLoading">
+                <div className="latestOfferContainer">
+                  <Header2>Offers added in the last 24 hours</Header2>
+                  {fetchingStatus === "error" ? (
+                    <div>
+                      Latest offers can't be displayed at the moment. We
+                      apologise for the inconvenience. 😖
+                    </div>
+                  ) : (
+                    <div className="objects">
+                      {offersLatest10.map((obj) => (
+                        <OfferCard key={obj.id} obj={obj} />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </ContainerWelcome>
+          <FooterElement></FooterElement>
         </>
       )}
     </>

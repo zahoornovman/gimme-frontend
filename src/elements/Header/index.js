@@ -12,11 +12,20 @@ import img_home from "../../images/gimmeHome.png";
 import img_chevronDown from "../../images/chevronDoubleDown.svg";
 import img_chevronUp from "../../images/chevronDoubleUp.svg";
 
+//languages
+import { LOCALES } from "../../i18n/locales";
+
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const status = useSelector((state) => state.user.loading);
   const user = useSelector((state) => state.user);
+
+  // Languages
+  const languages = [
+    { name: "English", code: LOCALES.ENGLISH },
+    { name: "Deutsche", code: LOCALES.GERMAN },
+  ];
 
   const handleSignOut = () => {
     dispatch(signOut());
@@ -139,6 +148,16 @@ function Header() {
               />
             </div>
           )}
+          <div className="switcher">
+            {/* Language switch dropdown here */}
+            <select onChange="{props.handleChange}" value="{props.currentLocale}">
+              {languages.map(({ name, code }) => (
+                <option key={code} value={code}>
+                  {name}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
       </div>
     </HeaderContainer>
