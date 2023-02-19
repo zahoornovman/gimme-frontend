@@ -12,6 +12,8 @@ import img_home from "../../images/gimmeHome.png";
 import img_chevronDown from "../../images/chevronDoubleDown.svg";
 import img_chevronUp from "../../images/chevronDoubleUp.svg";
 
+import { FormattedMessage } from "react-intl";
+
 //languages
 import { LOCALES } from "../../i18n/locales";
 
@@ -98,7 +100,7 @@ function Header() {
           {status === "completed" ? (
             <div className="userloggedIn">
               <TextButton className="buttonSignIn" onClick={handleSignOut}>
-                Sign out
+                <FormattedMessage id="signOut" />
               </TextButton>
             </div>
           ) : path === "/signin" ||
@@ -112,13 +114,13 @@ function Header() {
                 onClick={() => navigate("/signin")}
                 className="buttonSignIn"
               >
-                Sign in
+                <FormattedMessage id="signIn" />
               </TextButton>
               <TextButton
                 className="buttonSignIn"
                 onClick={() => navigate("/signup")}
               >
-                Sign up
+                <FormattedMessage id="signUp" />
               </TextButton>
             </div>
           )}
@@ -137,7 +139,9 @@ function Header() {
           ) : user.first_name === "NoNa" ? (
             isHoveringMenu ? (
               <div className="menuArea">
-                <div onClick={handleMouseOutMenu}>my Gimme</div>
+                <div onClick={handleMouseOutMenu}>
+                  <FormattedMessage id="myGimme" />
+                </div>
                 <img
                   className="menuButton"
                   onClick={handleMouseOutMenu}
@@ -146,7 +150,9 @@ function Header() {
               </div>
             ) : (
               <div className="menuArea">
-                <div onClick={handleMouseOverMenu}>my Gimme</div>
+                <div onClick={handleMouseOverMenu}>
+                  <FormattedMessage id="myGimme" />
+                </div>
                 <img
                   className="menuButton"
                   onClick={handleMouseOverMenu}
