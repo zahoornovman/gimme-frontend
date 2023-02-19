@@ -45,7 +45,7 @@ function Welcome() {
   const storeLanguage = useSelector(selectLanguage);
 
   //language local state
-  const [language, setLanguage] = useState("en-US");
+  const [language, setLanguage] = useState(storeLanguage);
 
   //useEffect to be triggered when language is changed
   useEffect(() => {
@@ -140,7 +140,9 @@ function Welcome() {
               <h4>
                 <FormattedMessage id="welcome_banner_2" />
               </h4>
-              <h2>WIN</h2>
+              <h2>
+                <FormattedMessage id="welcome_banner_3" />
+              </h2>
             </div>
             <div className="bannerContainer">
               <img className="banner" src={barter_banner} alt="barter_banner" />
@@ -152,11 +154,12 @@ function Welcome() {
             ) : (
               <div className="notLoading">
                 <div className="latestOfferContainer">
-                  <Header2>Offers added in the last 24 hours</Header2>
+                  <Header2>
+                    <FormattedMessage id="header_2" />
+                  </Header2>
                   {fetchingStatus === "error" ? (
                     <div>
-                      Latest offers can't be displayed at the moment. We
-                      apologise for the inconvenience. 😖
+                      <FormattedMessage id="errorFetchingOffers" />
                     </div>
                   ) : (
                     <div className="objects">
