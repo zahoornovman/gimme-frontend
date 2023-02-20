@@ -124,7 +124,7 @@ function AllOffers() {
           </ListOffersContainer>
         )}
         {next !== null && (
-          <TextButton className="buttonMore" onClick={fetchMoreOffers}> Click for More..</TextButton>
+          <TextButton className="buttonMore" onClick={fetchMoreOffers}> Click for more...</TextButton>
         )}
         
       </ContainerAllOffers>

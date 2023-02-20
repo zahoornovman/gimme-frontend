@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   requests: "notFetched",
-
 };
 const requestsSlice = createSlice({
   name: "requests",
@@ -13,7 +12,7 @@ const requestsSlice = createSlice({
     },
     addMoreRequests: (state, { payload }) => {
       state.requests = [...state.requests, ...payload.results];
-    },    
+    },
   },
 });
 
@@ -21,8 +20,4 @@ const setRequestsInSlice = requestsSlice.actions.setRequests;
 const setMoreRequests = requestsSlice.actions.addMoreRequests;
 const reducer = requestsSlice.reducer;
 
-export {
-  setRequestsInSlice,
-  setMoreRequests,
-  reducer,
-};
+export { setRequestsInSlice, setMoreRequests, reducer };

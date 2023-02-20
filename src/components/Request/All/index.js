@@ -129,8 +129,7 @@ function AllRequests() {
         )}
         {next !== null && (
           <TextButton className="buttonMore" onClick={fetchMoreRequests}>
-            {" "}
-            Click for More..
+            Click for more...
           </TextButton>
         )}
       </ContainerAllRequests>
