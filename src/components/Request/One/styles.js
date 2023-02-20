@@ -59,6 +59,7 @@ export const ContainerOneRequest = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 800px;
     max-width: 800px;
     box-shadow: 2px 2px 5px black;
     margin-top: 50px;

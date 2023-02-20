@@ -28,10 +28,6 @@ import SingUpValidationError from "./components/SignUpValidationError";
 import MessageService from "./components/Message";
 import UpdateOffer from "./components/Offers/Update";
 import UpdateRequest from "./components/Request/Update";
-import AllrequestsRelatedToTag from "./components/Request/Tags";
-import AllOffersRelatedToTag from "./components/Offers/Tags";
-
-//import NewRequest from "./components/Request/New";
 
 function App() {
   return (
