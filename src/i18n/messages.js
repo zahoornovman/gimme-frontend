@@ -11,7 +11,7 @@ export const messages = {
     defaultOption: "All",
     searchButton: "Search",
     placeholder: "Enter Offer title...",
-    vehicles: "Vehicles",
+    Vehicles: "Vehicles",
     boats: "Boats",
     Cars: "Cars",
     Motorcycles: "Motorcycles",
@@ -26,6 +26,12 @@ export const messages = {
     header_2: "Offers added in the last 24 hours",
     errorFetchingOffers:
       "Latest offers can't be displayed at the moment. We apologise for the inconvenience. 😖",
+    //All Offers Page
+    all_offer_header_2: "All offers",
+    no_search_results_error:
+      "No Search Results found. Please try a different search criteria..",
+    loading: "Loading....",
+    button_more: "Click for More..",
   },
   [LOCALES.GERMAN]: {
     //Header
@@ -37,7 +43,7 @@ export const messages = {
     defaultOption: "Alle",
     searchButton: "Suchen",
     placeholder: "Geben Sie den Angebotstitel ein",
-    vehicles: "Fahrzeuge",
+    Vehicles: "Fahrzeuge",
     Boats: "Boote",
     Cars: "Autos",
     Motorcycles: "Motorräder",
@@ -52,5 +58,11 @@ export const messages = {
     header_2: "Angebote, die in den letzten 24 Stunden hinzugefügt wurden",
     errorFetchingOffers:
       "Aktuelle Angebote können derzeit nicht angezeigt werden. Wir entschuldigen uns für die Unannehmlichkeiten. 😖",
+    //All Offers Page
+    all_offer_header_2: "Alle Angebote",
+    no_search_results_error:
+      "Keine Suchergebnisse gefunden. Bitte versuchen Sie es mit einem anderen Suchkriterium..",
+    loading: "Wird geladen....",
+    button_more: "Klicken Sie für mehr..",
   },
 };

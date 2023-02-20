@@ -14,7 +14,11 @@ import { ContainerAllOffers, ListOffersContainer } from "./styles";
 import { OfferCard } from "../../../elements/OfferCard/offerCard";
 
 //selectors
-import { selectOffers, selectTags } from "../../../store/selectors/selectors";
+import {
+  selectOffers,
+  selectTags,
+  selectLanguage,
+} from "../../../store/selectors/selectors";
 
 //custom hooks
 import { useSettingTags } from "../../../hooks/tagsFetch";
@@ -29,7 +33,9 @@ import {
 import { Header2 } from "../../../styles/MasterStyles";
 
 //TextButton
-import { TextButton } from '../../../styles/MasterStyles';
+import { TextButton } from "../../../styles/MasterStyles";
+
+import { FormattedMessage } from "react-intl";
 
 function AllOffers() {
   // useState hook to ffers, tags and errors
@@ -43,6 +49,16 @@ function AllOffers() {
   //Variables to  provide data from redux store
   const storeTags = useSelector(selectTags);
   const offers = useSelector(selectOffers);
+  const storeLanguage = useSelector(selectLanguage);
+
+  //language local state
+  const [language, setLanguage] = useState(storeLanguage);
+
+  //useEffect to be triggered when language is changed
+  useEffect(() => {
+    console.log("Entering use Effect for language on All Offers page");
+    setLanguage(storeLanguage);
+  }, [storeLanguage]);
 
   //Offers loaded first time
   useEffect(() => {
@@ -124,9 +140,11 @@ function AllOffers() {
           </ListOffersContainer>
         )}
         {next !== null && (
-          <TextButton className="buttonMore" onClick={fetchMoreOffers}> Click for More..</TextButton>
+          <TextButton className="buttonMore" onClick={fetchMoreOffers}>
+            {" "}
+            Click for More..
+          </TextButton>
         )}
-        
       </ContainerAllOffers>
       <FooterElement />
     </>

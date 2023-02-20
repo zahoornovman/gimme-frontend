@@ -20,11 +20,9 @@ import barter_banner from "../../images/barter_banner.jpg";
 //selectors
 import { selectLanguage } from "../../store/selectors/selectors";
 
-
 import { FormattedMessage } from "react-intl";
 
 function Welcome() {
-
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
@@ -45,7 +43,6 @@ function Welcome() {
   useEffect(() => {
     console.log("Entering use Effect for language on welcome page");
     setLanguage(storeLanguage);
-    console.log(language);
   }, [storeLanguage]);
 
   useSettingTags();
@@ -165,6 +162,7 @@ function Welcome() {
                 </div>
               </div>
             )}
+            <div>{language}</div>
           </ContainerWelcome>
           <FooterElement></FooterElement>
         </>

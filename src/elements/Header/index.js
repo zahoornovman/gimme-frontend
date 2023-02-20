@@ -58,8 +58,8 @@ function Header() {
   useEffect(() => {
     console.log("Entering use Effect for language on welcome page");
     setLanguage(storeLanguage);
-    console.log(language);
-    console.log(storeLanguage);
+    console.log(`Language in Header Local storage${language}`);
+    console.log(`Language in Store${storeLanguage}`);
   }, [storeLanguage]);
 
   //changing language handled here
