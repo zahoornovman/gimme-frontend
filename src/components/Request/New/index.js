@@ -111,7 +111,6 @@ function NewRequest() {
         }
         
         else {
-            console.log("everything is okay")
             if (message === "no") {
     
                 var myHeaders = new Headers();
