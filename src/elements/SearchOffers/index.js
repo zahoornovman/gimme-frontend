@@ -15,6 +15,7 @@ import { SearchOfferContainer } from "./styles";
 
 //selectors
 import { selectTags } from "../../store/selectors/selectors";
+import { selectLanguage } from "../../store/selectors/selectors";
 
 //custom hooks
 import { useSettingTags } from "../../hooks/tagsFetch";
@@ -22,14 +23,18 @@ import { useSettingTags } from "../../hooks/tagsFetch";
 //slices
 import { setOffersInSlice } from "../../slices/offers/offersSlice";
 
+import { FormattedMessage } from "react-intl";
+
 function SearchOffers() {
+  //Variables to  provide data from redux store
+  const storeTags = useSelector(selectTags);
+  const storeLanguage = useSelector(selectLanguage);
+
   //Hooks to keep track of tags and search params locally
   const [tags, setTagsBackground] = useState([]);
   const [searchTerm, setSearchTerm] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
-
-  //Variables to  provide data from redux store
-  const storeTags = useSelector(selectTags);
+  const [language, setLanguage] = useState(storeLanguage);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -70,6 +75,13 @@ function SearchOffers() {
       );
   };
 
+  //useEffect to be triggered when language is changed
+  useEffect(() => {
+    console.log("Entering use Effect for language on welcome page");
+    setLanguage(storeLanguage);
+    console.log(language);
+  }, [storeLanguage]);
+
   return (
     <SearchOfferContainer>
       {errorMessage !== null && <div>{errorMessage}</div>}
@@ -78,10 +90,12 @@ function SearchOffers() {
           <span>Loading..</span>
         ) : (
           <select name="tag" id="tags">
-            <option value="">All</option>
-            {tags.map((key) => (
-              <option key={key.id} value={key.id}>
-                {`${key.title}`}
+            <option value="">
+              <FormattedMessage id="defaultOption" />
+            </option>
+            {tags.map((obj) => (
+              <option key={obj.id} value={obj.id}>
+                {<FormattedMessage id={obj.title} />}
               </option>
             ))}
           </select>
@@ -94,7 +108,9 @@ function SearchOffers() {
           }}
           placeholder="Enter Offer title..."
         />
-        <button type="submit">Search</button>
+        <button type="submit">
+          <FormattedMessage id="searchButton" />
+        </button>
       </form>
     </SearchOfferContainer>
   );

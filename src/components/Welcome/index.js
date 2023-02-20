@@ -20,16 +20,10 @@ import barter_banner from "../../images/barter_banner.jpg";
 //selectors
 import { selectLanguage } from "../../store/selectors/selectors";
 
-//use
-import { setLanguageInSlice } from "../../slices/language/languageSlice";
-
-import { useIntl } from "react-intl";
 
 import { FormattedMessage } from "react-intl";
 
 function Welcome() {
-  const intl = useIntl();
-  console.log(intl);
 
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();

@@ -2,11 +2,23 @@ import { LOCALES } from "./locales";
 
 export const messages = {
   [LOCALES.ENGLISH]: {
-    //Header
+    //Header Element
     signOut: "Sign out",
     signIn: "Sign in",
     signUp: "Sign up",
-    myGimme:"my Gimme",
+    myGimme: "my Gimme",
+    //SearchOffers/Request Element
+    defaultOption: "All",
+    searchButton: "Search",
+    placeholder: "Enter Offer title...",
+    vehicles: "Vehicles",
+    boats: "Boats",
+    Cars: "Cars",
+    Motorcycles: "Motorcycles",
+    RVs: "RVs",
+    Trailers: "Trailers",
+    Trucks: "Trucks",
+
     //Welcome Page
     welcome_banner_1: "Make offers and requests...",
     welcome_banner_2: "...barter with others",
@@ -20,7 +32,19 @@ export const messages = {
     signOut: "Austragen",
     signIn: "Anmelden",
     signUp: "Anmeldung",
-    myGimme:"mein Gimme",
+    myGimme: "mein Gimme",
+    //SearchOffers/Request Element
+    defaultOption: "Alle",
+    searchButton: "Suchen",
+    placeholder: "Geben Sie den Angebotstitel ein",
+    vehicles: "Fahrzeuge",
+    Boats: "Boote",
+    Cars: "Autos",
+    Motorcycles: "Motorräder",
+    RVs: "Wohnmobile",
+    Trailers: "Anhänger",
+    Trucks: "Lastwagen",
+
     //Welcome Page
     welcome_banner_1: "Angebote und Anfragen stellen...",
     welcome_banner_2: "...mit anderen tauschen",
