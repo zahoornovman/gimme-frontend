@@ -15,7 +15,7 @@ export const ContainerAllRequests = styled.div`
     border-style: none;
     padding: 10px;
     font-weight: 700;
-    font-size: ${(props) => props.theme.size.s};
+    font-size: ${(props) => props.theme.size.xxs};
   }
 `;
 
