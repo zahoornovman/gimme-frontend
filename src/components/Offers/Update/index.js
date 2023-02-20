@@ -88,7 +88,6 @@ function UpdateOffer() {
     fetch(`${baseUrl}/backend/api/haves/${id}/`, requestOptions)
       .then(response => response.json())
       .then(result => {
-        console.log(result)
         setCurrentLengthDescription(result.description.length)
         setCurrentLengthTitle(result.title.length)
         setCurrentLengthRequested(result.wants_for_this_item.length)
@@ -119,7 +118,6 @@ function UpdateOffer() {
 
     fetch(`${baseUrl}/backend/api/have_image/${imageId}/`, requestOptions)
       .then(response => {
-        console.log(response.status)
         if (response.status < 300) {
           setActionResponse("imageSuccessfullyDeleted")
           setMaxNumberFiles(maxNumberFiles + 1)
@@ -203,7 +201,6 @@ function UpdateOffer() {
       setMessage("noImageChoosen")
     }
     else {
-      console.log("everything is okay")
       if (message === "no") {
 
 
