@@ -264,6 +264,20 @@ function NewRequest() {
                                     <div className="inputField">
                                         <label
                                             className="fontSize"
+                                            htmlFor="offer"
+                                        >
+                                            Offered:
+                                        </label>
+                                        <textarea
+                                            className="fontSize"
+                                            onChange={handleChangeOffered}
+                                            maxLength={maxLengthOffered}
+                                            id="offer"></textarea>
+                                        <div className="fontSize">{`(${currentLengthOffered}/${maxLengthOffered})`}</div>
+                                    </div>
+                                                                        <div className="inputField">
+                                        <label
+                                            className="fontSize"
                                             htmlFor="condition"
                                         >Condition:</label>
 
@@ -291,20 +305,6 @@ function NewRequest() {
                                                 {conditions.c4}
                                             </option>
                                         </select>
-                                    </div>
-                                    <div className="inputField">
-                                        <label
-                                            className="fontSize"
-                                            htmlFor="offer"
-                                        >
-                                            Offered:
-                                        </label>
-                                        <textarea
-                                            className="fontSize"
-                                            onChange={handleChangeOffered}
-                                            maxLength={maxLengthOffered}
-                                            id="offer"></textarea>
-                                        <div className="fontSize">{`(${currentLengthOffered}/${maxLengthOffered})`}</div>
                                     </div>
                                     <div className="inputField">
                                         <label
@@ -345,7 +345,7 @@ function NewRequest() {
                                             }
                                         </select>
                                     </div>
-                                    <div className="inputField">
+                                    <div className="inputField addImage">
                                         <label
                                             className="fontSize"
                                             htmlFor="images"

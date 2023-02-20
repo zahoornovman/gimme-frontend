@@ -21,11 +21,11 @@ align-items: center;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
+    box-shadow: 2px 2px 5px black;
     .image {
       width: 740px;
       height: 490px;
-      object-fit: cover;
-      box-shadow: 2px 2px 5px black;
+      object-fit: contain;
     }
     .cheveronButton{
       height: 20px;
