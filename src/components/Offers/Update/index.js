@@ -380,47 +380,6 @@ function UpdateOffer() {
                           <div className="inputField">
                             <label
                               className="fontSize"
-                              htmlFor="images"
-                            >
-                              <a className="fontSize buttonStyle">Add images</a>
-                            </label>
-                            <input
-                              className="fontSize"
-                              id="images"
-                              type="file"
-                              accept=".jpeg, .jpg, .png, .gif"
-                              onChange={handleFileUpload}
-                              style={{ display: "none" }}
-                              multiple></input>
-
-                            <div className="fontSize">
-                              <p>only .jpeg, .jpg, .png, .gif</p>
-                              <p>{`max. ${maxNumberFiles} images`}</p>
-                              <p>{`max. ${maxImageFileSize / 1024 / 1024} MB / image`}</p>
-                            </div>
-                            <div>
-
-                              {
-                                imagesPath.length === 0
-                                  ?
-                                  <></>
-                                  :
-                                  <>
-                                    <h3 className="fontSize">files selected:</h3>
-                                    {
-                                      imagesPath.map((image, index) =>
-                                        <div
-                                          className="fontSize"
-                                          key={index}
-                                        >{`${image.name} (size: ${Math.round(image.size / 1024 / 1024 * 100) / 100} MB)`}</div>)
-                                    }
-                                  </>
-                              }
-                            </div>
-                          </div>
-                          <div className="inputField">
-                            <label
-                              className="fontSize"
                               htmlFor="description"
                             >
                               Description:
@@ -550,6 +509,47 @@ function UpdateOffer() {
                                 {status.s4}
                               </option>
                             </select>
+                          </div>
+                          <div className="inputField addImage">
+                            <label
+                              className="fontSize"
+                              htmlFor="images"
+                            >
+                              <a className="fontSize buttonStyle">Add images</a>
+                            </label>
+                            <input
+                              className="fontSize"
+                              id="images"
+                              type="file"
+                              accept=".jpeg, .jpg, .png, .gif"
+                              onChange={handleFileUpload}
+                              style={{ display: "none" }}
+                              multiple></input>
+
+                            <div className="fontSize">
+                              <p>only .jpeg, .jpg, .png, .gif</p>
+                              <p>{`max. ${maxNumberFiles} images`}</p>
+                              <p>{`max. ${maxImageFileSize / 1024 / 1024} MB / image`}</p>
+                            </div>
+                            <div>
+
+                              {
+                                imagesPath.length === 0
+                                  ?
+                                  <></>
+                                  :
+                                  <>
+                                    <h3 className="fontSize">files selected:</h3>
+                                    {
+                                      imagesPath.map((image, index) =>
+                                        <div
+                                          className="fontSize"
+                                          key={index}
+                                        >{`${image.name} (size: ${Math.round(image.size / 1024 / 1024 * 100) / 100} MB)`}</div>)
+                                    }
+                                  </>
+                              }
+                            </div>
                           </div>
                         </div>
                       </div>

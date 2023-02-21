@@ -64,6 +64,13 @@ align-items: center;
   box-shadow: 2px 2px 5px black;
   margin-top: 50px;
   padding: 25px 10px 40px 10px;
+
+    .addImage {
+      display: flex; 
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
 }
 
   .inputField {
@@ -79,7 +86,7 @@ align-items: center;
   }
 
   .inputField input {
-    width: 300px;
+    width: 600px;
     height: 25px;
     border-radius: 5px;
     background-color: ${(props) => props.theme.colors.color5};
@@ -110,22 +117,24 @@ align-items: center;
 
   #description {
     height: 200px;
-    width: 300px;
+    width: 600px;
     border-radius: 5px;
     background-color: ${(props) => props.theme.colors.color5};
     padding: 5px;
     border: 1px solid ${(props) => props.theme.colors.color7};
     resize: none;
+    font-family: ${(props) => props.theme.fontFamily};
   }
 
   #request {
     height: 100px;
-    width: 300px;
+    width: 600px;
     border-radius: 5px;
     background-color: ${(props) => props.theme.colors.color5};
     padding: 5px;
     border: 1px solid ${(props) => props.theme.colors.color7};
     resize: none;
+    font-family: ${(props) => props.theme.fontFamily};
   }
 
 }
