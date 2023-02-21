@@ -5,6 +5,7 @@ import { TextButton, TextContainer } from "../../styles/MasterStyles";
 import { loading as loadingMessage } from "../../elements/Statements/statements";
 import img_email from "../../images/email.svg";
 import img_password from "../../images/password.svg";
+import img_home from "../../images/gimmeHome.png";
 
 import { baseUrl } from "../../baseurl";
 
@@ -105,9 +106,7 @@ function SignIn() {
   };
   return (
     <><Header></Header>
-    <SignInContainer>
-      
-
+    <SignInContainer>      
       <div className="contentSignIn">
         <div className="messageSignIn fontSize">
           {status === "true" ? (
@@ -123,7 +122,9 @@ function SignIn() {
             <></>
           )}
         </div>
+        <img className="gimmeLogo" src={img_home} alt="gimme_logo" />
         <div className="inputSignIn">
+          <h2>Log into your account</h2>
           <div className="inputField">
             {/* <img src={img_email} /> */}
             <input

@@ -9,6 +9,11 @@ export const SignInContainer = styled.div`
   justify-content:flex-start;
   align-items: center;
 
+  .gimmeLogo {
+    height: 100px;
+    width: auto;
+  }
+
   .fontSize {
     font-size: ${(props) => props.theme.size.xxxs};
 
@@ -27,13 +32,18 @@ export const SignInContainer = styled.div`
     .inputSignIn {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      width: 600px;
-      max-width: 800px;
-      box-shadow: 2px 2px 5px black;
+      width: 380px;
+      height: 300px;
+      box-shadow: 1px 1px 5px black;
       margin-top: 30px;
       padding: 50px 10px 50px 10px;
+
+      h2 {
+        margin-bottom: 30px;
+        font-size: 20px;
+      }
 
 
       .inputField {
@@ -41,10 +51,13 @@ export const SignInContainer = styled.div`
         input {
           width: 300px;
           height: 25px;
-          border-radius: 5px;
           background-color: ${(props) => props.theme.colors.color5};
-          padding: 5px;
-          border: 1px solid ${(props) => props.theme.colors.color7};
+          font-size: 15px;
+          padding-left: 10px;
+          padding-right: 10px;
+          padding-bottom: 10px;
+          border-style: none;
+          border-bottom: 1px solid ${(props) => props.theme.colors.color7};
           margin-top: 10px;
         }
 
@@ -55,6 +68,7 @@ export const SignInContainer = styled.div`
       .buttonsSignIn {
         display: flex;
         row-gap: ${(props) => props.theme.size.xxxxxxs};
+        margin-top: 30px;
         .signInCreateButton {
           font-size: 15px;
           height: 40px;
