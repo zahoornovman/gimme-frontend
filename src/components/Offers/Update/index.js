@@ -254,7 +254,7 @@ function UpdateOffer() {
 
   return (
     <><Header></Header>
-      <ContainerUpdateOffer>
+      <ContainerUpdateOffer> 
         {
           user.first_name === "NoNa"
             ?
