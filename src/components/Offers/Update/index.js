@@ -27,7 +27,7 @@ function UpdateOffer() {
   const [maxNumberFiles, setMaxNumberFiles] = useState(5)
   const maxAllowedFiles = 5;
 
-  const maxLengthDescription = 500;
+  const maxLengthDescription = 1000;
   const [currentLengthDescription, setCurrentLengthDescription] = useState(0)
 
   const maxLenghtTitle = 100;
@@ -254,7 +254,7 @@ function UpdateOffer() {
 
   return (
     <><Header></Header>
-      <ContainerUpdateOffer> 
+      <ContainerUpdateOffer>
         {
           user.first_name === "NoNa"
             ?
@@ -273,51 +273,6 @@ function UpdateOffer() {
                     <>
                       <Header2>Please modify your offer!</Header2>
                       <div className='contentSection'>
-                        {
-                          actionResponse === "imageSuccessfullyDeleted"
-                            ?
-                            <div>{deletedImageSuccessful}</div>
-                            :
-                            actionResponse === "imageDeletionFailed"
-                              ?
-                              <>
-                                <div>{deletedImageNotSuccessful}</div>
-                                <TextButton
-                                  onClick={() => navigate("/admin/contact")}
-                                >Contact details</TextButton>
-                              </>
-                              :
-                              message === "noImageSelected" || message === "noImageChoosen"
-                                ?
-                                <div>{offerImage}</div>
-                                :
-                                message === "fileQuantityError"
-                                  ?
-                                  <div>{`Only ${maxNumberFiles} images are allowed. Please reduce the number of images to ${maxNumberFiles}. 😁`}</div>
-                                  :
-                                  message === "fileSizeExceededLimit"
-                                    ?
-                                    <div>{`File size can't exceed ${maxImageFileSize / 1024 / 1024} MB. Please remove all files exceeding ${maxImageFileSize / 1024 / 1024} MB. 😉`}</div>
-                                    :
-                                    message === "imageAndFieldsNotCompleted"
-                                      ?
-                                      <div>{offerImageFields}</div>
-                                      :
-                                      message === "FieldsNotCompleted"
-                                        ?
-                                        <div>{fields}</div>
-                                        :
-                                        actionResponse === "updateFailed"
-                                          ?
-                                          <>
-                                            <div>{updateObjectFailed}</div>
-                                            <TextButton
-                                              onClick={() => navigate("/admin/contact")}
-                                            >Contact details</TextButton>
-                                          </>
-                                          :
-                                          <></>
-                        }
 
                         {
                           imageAvailable.length === 0
@@ -351,13 +306,36 @@ function UpdateOffer() {
                                         src={img_cheveronDoubleRight} />
                                   }
                                 </div>
-                                <div className='containerTrash'>
-                                  <img
-                                    src={img_trash}
-                                    onClick={handleDeleteImage}
-                                    className="imageTrash" />
-                                </div>
+                                {
+                                  imageAvailable.length === 1
+                                    ?
+                                    <div>Another image has to be added, before this image can be deleted.</div>
+                                    :
+                                    <div className='containerTrash'>
+                                      <img
+                                        src={img_trash}
+                                        onClick={handleDeleteImage}
+                                        className="imageTrash" />
+                                    </div>
+                                }
+
                               </div>
+                              {
+                                actionResponse === "imageSuccessfullyDeleted"
+                                  ?
+                                  <div>{deletedImageSuccessful}</div>
+                                  :
+                                  actionResponse === "imageDeletionFailed"
+                                    ?
+                                    <>
+                                      <div>{deletedImageNotSuccessful}</div>
+                                      <TextButton
+                                        onClick={() => navigate("/admin/contact")}
+                                      >Contact details</TextButton>
+                                    </>
+                                    :
+                                    <></>
+                              }
 
                             </>
                         }
@@ -531,6 +509,17 @@ function UpdateOffer() {
                               <p>{`max. ${maxNumberFiles} images`}</p>
                               <p>{`max. ${maxImageFileSize / 1024 / 1024} MB / image`}</p>
                             </div>
+                            {
+                              message === "fileQuantityError"
+                                ?
+                                <div>{`Only ${maxNumberFiles} images are allowed. Please reduce the number of images to ${maxNumberFiles}. 😁`}</div>
+                                :
+                                message === "fileSizeExceededLimit"
+                                  ?
+                                  <div>{`File size can't exceed ${maxImageFileSize / 1024 / 1024} MB. Please remove all files exceeding ${maxImageFileSize / 1024 / 1024} MB. 😉`}</div>
+                                  :
+                                  <></>
+                            }
                             <div>
 
                               {
@@ -553,6 +542,30 @@ function UpdateOffer() {
                           </div>
                         </div>
                       </div>
+                      {
+                        message === "noImageSelected" || message === "noImageChoosen"
+                          ?
+                          <div>{offerImage}</div>
+                          :
+                          message === "imageAndFieldsNotCompleted"
+                            ?
+                            <div>{offerImageFields}</div>
+                            :
+                            message === "FieldsNotCompleted"
+                              ?
+                              <div>{fields}</div>
+                              :
+                              actionResponse === "updateFailed"
+                                ?
+                                <>
+                                  <div>{updateObjectFailed}</div>
+                                  <TextButton
+                                    onClick={() => navigate("/admin/contact")}
+                                  >Contact details</TextButton>
+                                </>
+                                :
+                                <></>
+                      }
                       <div className='buttonSection'>
                         <TextButton
                           className='saveGoBackButton'
@@ -563,6 +576,7 @@ function UpdateOffer() {
                           onClick={() => navigate(`/offers/${id}`)}
                         >Go back</TextButton>
                       </div>
+
                     </>
               }
             </>
