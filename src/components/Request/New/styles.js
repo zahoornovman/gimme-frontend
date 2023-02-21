@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ContainerNewRequest = styled.div`
-margin-top: 50px;
 min-height: 100vh;
 position: relative;
 display: flex;
@@ -32,17 +31,6 @@ align-items: center;
           align-items: center;
           justify-content: center;
         }
-}
-      .saveButton {
-        font-size: 15px;
-        height: 40px;
-        width: 80px;
-        border-style: none;
-        text-align: center;
-        color: ${(props) => props.theme.colors.color5};
-        border-radius: 10px;
-        margin-left: 20px;
-        margin-bottom: 50px;
 }
 
   .inputField {
@@ -111,6 +99,18 @@ align-items: center;
 
 }
 
+  .saveButton {
+    font-size: 15px;
+    height: 40px;
+    width: 80px;
+    border-style: none;
+    text-align: center;
+    color: ${(props) => props.theme.colors.color5};
+    border-radius: 10px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+}
+
 .createdButton {
   display: flex;
 }
@@ -138,6 +138,27 @@ align-items: center;
     padding: 8px;
     cursor: pointer;
 }
+
+.errorMessage {
+  margin-top: 30px;
+  color: red;
+}
+
+.deletedImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactButton {
+    font-size: 15px;
+    height: 40px;
+    border-style: none;
+    color: ${(props) => props.theme.colors.color5};
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
 .accessDenied{
     margin-top: ${(props) => props.theme.size.xxxxxxxl};
 }

@@ -63,10 +63,12 @@ margin-top: 50px;
     input{
     width: 300px;
     height: 25px;
-    border-radius: 5px;
     background-color: ${(props) => props.theme.colors.color5};
-    padding: 5px;
-    border: 1px solid ${(props) => props.theme.colors.color7};
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-style: none;
+    border-bottom: 1px solid ${(props) => props.theme.colors.color7};
     margin-top: 10px;
     }
     input:focus {

@@ -178,7 +178,7 @@ function NewOffer() {
                                     <div>Your offer has been successfully created. 😃</div>
                                     <div className="createdButtons">
                                         <TextButton
-                                            className="fontSize"
+                                            className="contactButton"
                                             onClick={() => {
                                                 setAction("new")
                                                 setCurrentLengthDescription(0)
@@ -188,7 +188,7 @@ function NewOffer() {
                                         >New offer
                                         </TextButton>
                                         <TextButton
-                                            className="fontSize"
+                                            className="contactButton"
                                             onClick={() => navigate("/")}
                                         >Home</TextButton>
                                     </div>
@@ -199,7 +199,7 @@ function NewOffer() {
                                     <div className="error fontSize">
                                         <div>{errorNew}</div>
                                         <TextButton
-                                            className="fontSize"
+                                            className="contactButton"
                                             onClick={() => navigate("/admin/contact")}
                                         >Contact details</TextButton>
                                     </div>
@@ -346,13 +346,13 @@ function NewOffer() {
                                                 {
                                                     message === "fileQuantityError"
                                                         ?
-                                                        <div className="fontSize">
+                                                        <div className="errorMessage">
                                                             {`Only ${maxNumberFiles} images are allowed. Please reduce the number of images to ${maxNumberFiles}. 😁`}
                                                         </div>
                                                         :
                                                         message === "fileSizeExceededLimit"
                                                             ?
-                                                            <div className="fontSize">
+                                                            <div className="errorMessage">
                                                                 {`File size can't exceed ${maxImageFileSize / 1024 / 1024} MB. Please remove all files exceeding ${maxImageFileSize / 1024 / 1024} MB. 😉`}
                                                             </div>
                                                             :
@@ -384,19 +384,19 @@ function NewOffer() {
                                         {
                                             message === "noImageSelected" || message === "noImageChoosen"
                                                 ?
-                                                <div className="fontSize">
+                                                <div className="errorMessage">
                                                     {offerImage}
                                                 </div>
                                                 :
                                                 message === "imageAndFieldsNotCompleted"
                                                     ?
-                                                    <div className="fontSize">
+                                                    <div className="errorMessage">
                                                         {offerImageFields}
                                                     </div>
                                                     :
                                                     message === "FieldsNotCompleted"
                                                         ?
-                                                        <div className="fontSize">
+                                                        <div className="errorMessage">
                                                             {fields}
                                                         </div>
                                                         :

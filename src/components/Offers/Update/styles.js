@@ -164,4 +164,24 @@ align-items: center;
   }
    margin-top: 50px;
 }
+
+.errorMessage {
+  margin-top: 30px;
+  color: red;
+}
+
+.deletedImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactButton {
+    font-size: 15px;
+    height: 40px;
+    border-style: none;
+    color: ${(props) => props.theme.colors.color5};
+    border-radius: 10px;
+    margin-top: 10px;
+}
 `;

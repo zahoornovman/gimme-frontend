@@ -309,7 +309,7 @@ function UpdateOffer() {
                                 {
                                   imageAvailable.length === 1
                                     ?
-                                    <div>Another image has to be added, before this image can be deleted.</div>
+                                    <div className='errorMessage'>Another image has to be added, before this image can be deleted.</div>
                                     :
                                     <div className='containerTrash'>
                                       <img
@@ -323,13 +323,14 @@ function UpdateOffer() {
                               {
                                 actionResponse === "imageSuccessfullyDeleted"
                                   ?
-                                  <div>{deletedImageSuccessful}</div>
+                                  <div className='deletedImage'>{deletedImageSuccessful}</div>
                                   :
                                   actionResponse === "imageDeletionFailed"
                                     ?
                                     <>
                                       <div>{deletedImageNotSuccessful}</div>
                                       <TextButton
+                                        className='contactButton'
                                         onClick={() => navigate("/admin/contact")}
                                       >Contact details</TextButton>
                                     </>
@@ -512,11 +513,11 @@ function UpdateOffer() {
                             {
                               message === "fileQuantityError"
                                 ?
-                                <div>{`Only ${maxNumberFiles} images are allowed. Please reduce the number of images to ${maxNumberFiles}. 😁`}</div>
+                                <div className='errorMessage'>{`Only ${maxNumberFiles} images are allowed. Please reduce the number of images to ${maxNumberFiles}. 😁`}</div>
                                 :
                                 message === "fileSizeExceededLimit"
                                   ?
-                                  <div>{`File size can't exceed ${maxImageFileSize / 1024 / 1024} MB. Please remove all files exceeding ${maxImageFileSize / 1024 / 1024} MB. 😉`}</div>
+                                  <div className='errorMessage'>{`File size can't exceed ${maxImageFileSize / 1024 / 1024} MB. Please remove all files exceeding ${maxImageFileSize / 1024 / 1024} MB. 😉`}</div>
                                   :
                                   <></>
                             }
@@ -545,21 +546,22 @@ function UpdateOffer() {
                       {
                         message === "noImageSelected" || message === "noImageChoosen"
                           ?
-                          <div>{offerImage}</div>
+                          <div className='errorMessage'>{offerImage}</div>
                           :
                           message === "imageAndFieldsNotCompleted"
                             ?
-                            <div>{offerImageFields}</div>
+                            <div className='errorMessage'>{offerImageFields}</div>
                             :
                             message === "FieldsNotCompleted"
                               ?
-                              <div>{fields}</div>
+                              <div className='errorMessage'>{fields}</div>
                               :
                               actionResponse === "updateFailed"
                                 ?
                                 <>
                                   <div>{updateObjectFailed}</div>
                                   <TextButton
+                                    className='contactButton'
                                     onClick={() => navigate("/admin/contact")}
                                   >Contact details</TextButton>
                                 </>

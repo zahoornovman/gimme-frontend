@@ -301,13 +301,14 @@ function UpdateRequest() {
                               {
                                 actionResponse === "imageSuccessfullyDeleted"
                                   ?
-                                  <div>{deletedImageSuccessful}</div>
+                                  <div className='deletedImage'>{deletedImageSuccessful}</div>
                                   :
                                   actionResponse === "imageDeletionFailed"
                                     ?
                                     <>
                                       <div>{deletedImageNotSuccessful}</div>
                                       <TextButton
+                                        className='contactButton'
                                         onClick={() => navigate("/admin/contact")}
                                       >Contact details</TextButton>
                                     </>
@@ -491,11 +492,11 @@ function UpdateRequest() {
                             {
                               message === "fileQuantityError"
                                 ?
-                                <div>{`Only ${maxNumberFiles} images are allowed. Please reduce the number of images to ${maxNumberFiles}. 😁`}</div>
+                                <div className='errorMessage'>{`Only ${maxNumberFiles} images are allowed. Please reduce the number of images to ${maxNumberFiles}. 😁`}</div>
                                 :
                                 message === "fileSizeExceededLimit"
                                   ?
-                                  <div>{`File size can't exceed ${maxImageFileSize / 1024 / 1024} MB. Please remove all files exceeding ${maxImageFileSize / 1024 / 1024} MB. 😉`}</div>
+                                  <div className='errorMessage'>{`File size can't exceed ${maxImageFileSize / 1024 / 1024} MB. Please remove all files exceeding ${maxImageFileSize / 1024 / 1024} MB. 😉`}</div>
                                   :
                                   <></>
                             }
@@ -524,13 +525,14 @@ function UpdateRequest() {
                       {
                           message === "FieldsNotCompleted"
                             ?
-                            <div>{fields}</div>
+                            <div className='errorMessage'>{fields}</div>
                             :
                             actionResponse === "updateFailed"
                               ?
                               <>
                                 <div>{updateObjectFailed}</div>
                                 <TextButton
+                                  className='contactButton'
                                   onClick={() => navigate("/admin/contact")}
                                 >Contact details</TextButton>
                               </>
