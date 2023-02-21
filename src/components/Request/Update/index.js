@@ -27,7 +27,7 @@ function UpdateRequest() {
   const [maxNumberFiles, setMaxNumberFiles] = useState(5)
   const maxAllowedFiles = 5;
 
-  const maxLengthDescription = 500;
+  const maxLengthDescription = 1000;
   const [currentLengthDescription, setCurrentLengthDescription] = useState(0)
 
   const maxLenghtTitle = 100;
@@ -258,44 +258,7 @@ function UpdateRequest() {
                     <>
                       <Header2>Please modify your request!</Header2>
                       <div className='contentSection'>
-                        {
-                          actionResponse === "imageSuccessfullyDeleted"
-                            ?
-                            <div>{deletedImageSuccessful}</div>
-                            :
-                            actionResponse === "imageDeletionFailed"
-                              ?
-                              <>
-                                <div>{deletedImageNotSuccessful}</div>
-                                <TextButton
-                                  onClick={() => navigate("/admin/contact")}
-                                >Contact details</TextButton>
-                              </>
-                              :
-                              message === "fileQuantityError"
-                                ?
-                                <div>{`Only ${maxNumberFiles} images are allowed. Please reduce the number of images to ${maxNumberFiles}. 😁`}</div>
-                                :
-                                message === "fileSizeExceededLimit"
-                                  ?
-                                  <div>{`File size can't exceed ${maxImageFileSize / 1024 / 1024} MB. Please remove all files exceeding ${maxImageFileSize / 1024 / 1024} MB. 😉`}</div>
-                                  :
-                                  message === "FieldsNotCompleted"
-                                    ?
-                                    <div>{fields}</div>
-                                    :
-                                    actionResponse === "updateFailed"
-                                      ?
-                                      <>
-                                        <div>{updateObjectFailed}</div>
-                                        <TextButton
-                                          onClick={() => navigate("/admin/contact")}
-                                        >Contact details</TextButton>
-                                      </>
-                                      :
-                                      <></>
-                        }
-
+                        
                         {
                           imageAvailable.length === 0
                             ?
@@ -335,6 +298,22 @@ function UpdateRequest() {
                                     className="imageTrash" />
                                 </div>
                               </div>
+                              {
+                                actionResponse === "imageSuccessfullyDeleted"
+                                  ?
+                                  <div>{deletedImageSuccessful}</div>
+                                  :
+                                  actionResponse === "imageDeletionFailed"
+                                    ?
+                                    <>
+                                      <div>{deletedImageNotSuccessful}</div>
+                                      <TextButton
+                                        onClick={() => navigate("/admin/contact")}
+                                      >Contact details</TextButton>
+                                    </>
+                                    :
+                                    <></>
+                              }
                             </>
                         }
                         <div className='details' >
@@ -509,6 +488,17 @@ function UpdateRequest() {
                               <p>{`max. ${maxNumberFiles} images`}</p>
                               <p>{`max. ${maxImageFileSize / 1024 / 1024} MB / image`}</p>
                             </div>
+                            {
+                              message === "fileQuantityError"
+                                ?
+                                <div>{`Only ${maxNumberFiles} images are allowed. Please reduce the number of images to ${maxNumberFiles}. 😁`}</div>
+                                :
+                                message === "fileSizeExceededLimit"
+                                  ?
+                                  <div>{`File size can't exceed ${maxImageFileSize / 1024 / 1024} MB. Please remove all files exceeding ${maxImageFileSize / 1024 / 1024} MB. 😉`}</div>
+                                  :
+                                  <></>
+                            }
                             <div>
 
                               {
@@ -531,6 +521,22 @@ function UpdateRequest() {
                           </div>
                         </div>
                       </div>
+                      {
+                          message === "FieldsNotCompleted"
+                            ?
+                            <div>{fields}</div>
+                            :
+                            actionResponse === "updateFailed"
+                              ?
+                              <>
+                                <div>{updateObjectFailed}</div>
+                                <TextButton
+                                  onClick={() => navigate("/admin/contact")}
+                                >Contact details</TextButton>
+                              </>
+                              :
+                              <></>
+                        }
                       <div className='buttonSection' >
                         <TextButton
                           className='saveGoBackButton'

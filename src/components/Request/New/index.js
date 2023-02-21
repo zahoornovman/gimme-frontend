@@ -1,7 +1,7 @@
 import FooterElement from "../../../elements/Footer";
 import Header from "../../../elements/Header";
 import { Header2, TextButton } from "../../../styles/MasterStyles";
-import { ContainerNewRequest} from "./styles"
+import { ContainerNewRequest } from "./styles"
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +20,7 @@ function NewRequest() {
     const maxImageFileSize = 3145728
     const maxNumberFiles = 5
 
-    const maxLengthDescription = 500;
+    const maxLengthDescription = 1000;
     const [currentLengthDescription, setCurrentLengthDescription] = useState(0);
 
     const maxLenghtTitle = 100;
@@ -90,7 +90,7 @@ function NewRequest() {
                 uploadedImages.push(images[j])
             }
             setImagesPath(uploadedImages)
-        }      
+        }
 
     }
     const handleSave = (e) => {
@@ -104,15 +104,15 @@ function NewRequest() {
         const imagesNumber = imagesPath.length;
 
         if (title === "" || description === "" || condition === "" || offered === "" || tag === "") {
-            
-           
-                setMessage("FieldsNotCompleted")
-           
+
+
+            setMessage("FieldsNotCompleted")
+
         }
-        
+
         else {
             if (message === "no") {
-    
+
                 var myHeaders = new Headers();
                 myHeaders.append("Authorization", `Bearer ${user.acces}`);
 
@@ -149,256 +149,260 @@ function NewRequest() {
                     });
             }
 
-        }      
+        }
 
     }
     return (
         <><Header></Header>
-        <ContainerNewRequest>
-            
-            {
-                userFirstName === "NoNa"
-                    ?
-                    <div className="fontSize accessDenied">
-                        Please sign in to place a new request. 😋
-                    </div>
-                    :
-                    tags === "notFetched"
+            <ContainerNewRequest>
+
+                {
+                    userFirstName === "NoNa"
                         ?
-                        <div className="loading">
-                            {loading}
+                        <div className="fontSize accessDenied">
+                            Please sign in to place a new request. 😋
                         </div>
                         :
-                        action === "created"
+                        tags === "notFetched"
                             ?
-                            <div className="created fontSize">
-                                <div>Your request has been successfully created. 😃</div>
-                                <div className="createdButtons">
-                                    <TextButton
-                                        className="fontSize"
-                                        onClick={() => {
-                                            setAction("new")
-                                            setCurrentLengthDescription(0)
-                                            setCurrentLengthOffered(0)
-                                            setCurrentLengthTitle(0)
-                                        }}
-                                    >New request
-                                    </TextButton>
-                                    <TextButton
-                                        className="fontSize"
-                                        onClick={() => navigate("/")}
-                                    >Home</TextButton>
-                                </div>
+                            <div className="loading">
+                                {loading}
                             </div>
                             :
-                            action === "error"
+                            action === "created"
                                 ?
-                                <div className="error fontSize">
-                                    <div>{errorNew}</div>
-                                    <TextButton
-                                        className="fontSize"
-                                        onClick={() => navigate("/admin/contact")}
-                                    >Contact details</TextButton>
+                                <div className="created fontSize">
+                                    <div>Your request has been successfully created. 😃</div>
+                                    <div className="createdButtons">
+                                        <TextButton
+                                            className="fontSize"
+                                            onClick={() => {
+                                                setAction("new")
+                                                setCurrentLengthDescription(0)
+                                                setCurrentLengthOffered(0)
+                                                setCurrentLengthTitle(0)
+                                            }}
+                                        >New request
+                                        </TextButton>
+                                        <TextButton
+                                            className="fontSize"
+                                            onClick={() => navigate("/")}
+                                        >Home</TextButton>
+                                    </div>
                                 </div>
                                 :
-                                <div
-                                    className="requestContentSection">
-                                    <Header2
-                                        className="fontSize">What do you like to receive?</Header2>
-                                    {
-                                        message === "fileQuantityError"
-                                            ?
-                                            <div className="fontSize">
-                                                {`Only ${maxNumberFiles} images are allowed. Please reduce the number of images to ${maxNumberFiles}. 😁`}
+                                action === "error"
+                                    ?
+                                    <div className="error fontSize">
+                                        <div>{errorNew}</div>
+                                        <TextButton
+                                            className="fontSize"
+                                            onClick={() => navigate("/admin/contact")}
+                                        >Contact details</TextButton>
+                                    </div>
+                                    :
+                                    <div
+                                        className="requestContentSection">
+                                        <Header2
+                                            className="fontSize">What do you like to receive?</Header2>
+                                     
+                                        <div className="details">
+                                            <div className="inputField">
+                                                <label
+                                                    className="fontSize"
+                                                    htmlFor="title"
+                                                >
+                                                    Title:
+                                                </label>
+                                                <input
+                                                    className="fontSize"
+                                                    onChange={handleChangeTitle}
+                                                    maxLength={maxLenghtTitle}
+                                                    id="title"></input>
+                                                <div className="fontSize">{`(${currentLengthTitle}/${maxLenghtTitle})`}</div>
                                             </div>
-                                            :
-                                            message === "fileSizeExceededLimit"
-                                                ?
+                                            <div className="inputField">
+                                                <label
+                                                    className="fontSize"
+                                                    htmlFor="description"
+                                                >
+                                                    Description:
+                                                </label>
+                                                <textarea
+                                                    className="fontSize"
+                                                    onChange={handleChangeDescription}
+                                                    maxLength={maxLengthDescription}
+                                                    id="description"></textarea>
+                                                <div className="fontSize">{`(${currentLengthDescription}/${maxLengthDescription})`}</div>
+                                            </div>
+                                            <div className="inputField">
+                                                <label
+                                                    className="fontSize"
+                                                    htmlFor="offer"
+                                                >
+                                                    Offered:
+                                                </label>
+                                                <textarea
+                                                    className="fontSize"
+                                                    onChange={handleChangeOffered}
+                                                    maxLength={maxLengthOffered}
+                                                    id="offer"></textarea>
+                                                <div className="fontSize">{`(${currentLengthOffered}/${maxLengthOffered})`}</div>
+                                            </div>
+                                            <div className="inputField">
+                                                <label
+                                                    className="fontSize"
+                                                    htmlFor="condition"
+                                                >Condition:</label>
+
+                                                <select
+                                                    id="condition"
+                                                >
+                                                    <option
+                                                        value="1"
+                                                        className="fontSize">
+                                                        {conditions.c1}
+                                                    </option>
+                                                    <option
+                                                        value="2"
+                                                        className="fontSize">
+                                                        {conditions.c2}
+                                                    </option>
+                                                    <option
+                                                        value="3"
+                                                        className="fontSize">
+                                                        {conditions.c3}
+                                                    </option>
+                                                    <option
+                                                        value="4"
+                                                        className="fontSize">
+                                                        {conditions.c4}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div className="inputField">
+                                                <label
+                                                    className="fontSize"
+                                                    htmlFor="tagsSelection"
+                                                >Tag:</label>
+
+                                                <select
+                                                    id="tagsSelection">
+                                                    {
+                                                        tags === "notFetched"
+                                                            ?
+                                                            tagsBackend.map((tag, index) =>
+                                                                <option
+                                                                    key={index}
+                                                                    id={index}
+                                                                    className="fontSize"
+                                                                    value={`${tag.id}`}
+                                                                >
+                                                                    {
+                                                                        `${tag.title}`
+                                                                    }
+                                                                </option>
+                                                            )
+                                                            :
+                                                            tags.map((tag, index) =>
+                                                                <option
+                                                                    key={index}
+                                                                    id={index}
+                                                                    className="fontSize"
+                                                                    value={`${tag.id}`}
+                                                                >
+                                                                    {
+                                                                        `${tag.title}`
+                                                                    }
+                                                                </option>
+                                                            )
+                                                    }
+                                                </select>
+                                            </div>
+                                            <div className="inputField addImage">
+                                                <label
+                                                    className="fontSize"
+                                                    htmlFor="images"
+                                                >
+                                                    <a className="fontSize buttonStyle">Upload images</a>
+                                                </label>
+                                                <input
+                                                    className="fontSize"
+                                                    id="images"
+                                                    type="file"
+                                                    accept=".jpeg, .jpg, .png, .gif"
+                                                    onChange={handleFileUpload}
+                                                    style={{ display: "none" }}
+                                                    multiple></input>
+
                                                 <div className="fontSize">
-                                                    {`File size can't exceed ${maxImageFileSize / 1024 / 1024} MB. Please remove all files exceeding ${maxImageFileSize / 1024 / 1024} MB. 😉`}
+                                                    <p>only .jpeg, .jpg, .png, .gif</p>
+                                                    <p>{`max. ${maxNumberFiles} images`}</p>
+                                                    <p>{`max. ${maxImageFileSize / 1024 / 1024} MB / image`}</p>
                                                 </div>
-                                                :
-                                                message === "noImageSelected" || message === "noImageChoosen"
-                                                    ?
-                                                    <div className="fontSize">
-                                                        {`No image has been added. A request doesn't require an image. 😉`}
-                                                    </div>
-                                                    :                                                    
-                                                        message === "FieldsNotCompleted"
+                                                {
+                                                    message === "fileQuantityError"
+                                                        ?
+                                                        <div className="fontSize">
+                                                            {`Only ${maxNumberFiles} images are allowed. Please reduce the number of images to ${maxNumberFiles}. 😁`}
+                                                        </div>
+                                                        :
+                                                        message === "fileSizeExceededLimit"
                                                             ?
                                                             <div className="fontSize">
-                                                                {fields}
+                                                                {`File size can't exceed ${maxImageFileSize / 1024 / 1024} MB. Please remove all files exceeding ${maxImageFileSize / 1024 / 1024} MB. 😉`}
                                                             </div>
                                                             :
                                                             <></>
-                                    }
-                                    <div className="details">
-                                    <div className="inputField">
-                                        <label
-                                            className="fontSize"
-                                            htmlFor="title"
-                                        >
-                                            Title:
-                                        </label>
-                                        <input
-                                            className="fontSize"
-                                            onChange={handleChangeTitle}
-                                            maxLength={maxLenghtTitle}
-                                            id="title"></input>
-                                        <div className="fontSize">{`(${currentLengthTitle}/${maxLenghtTitle})`}</div>
-                                    </div>
-                                    <div className="inputField">
-                                        <label
-                                            className="fontSize"
-                                            htmlFor="description"
-                                        >
-                                            Description:
-                                        </label>
-                                        <textarea
-                                            className="fontSize"
-                                            onChange={handleChangeDescription}
-                                            maxLength={maxLengthDescription}
-                                            id="description"></textarea>
-                                        <div className="fontSize">{`(${currentLengthDescription}/${maxLengthDescription})`}</div>
-                                    </div>
-                                    <div className="inputField">
-                                        <label
-                                            className="fontSize"
-                                            htmlFor="offer"
-                                        >
-                                            Offered:
-                                        </label>
-                                        <textarea
-                                            className="fontSize"
-                                            onChange={handleChangeOffered}
-                                            maxLength={maxLengthOffered}
-                                            id="offer"></textarea>
-                                        <div className="fontSize">{`(${currentLengthOffered}/${maxLengthOffered})`}</div>
-                                    </div>
-                                                                        <div className="inputField">
-                                        <label
-                                            className="fontSize"
-                                            htmlFor="condition"
-                                        >Condition:</label>
+                                                }
+                                                <div>
 
-                                        <select
-                                            id="condition"
-                                        >
-                                            <option
-                                                value="1"
-                                                className="fontSize">
-                                                {conditions.c1}
-                                            </option>
-                                            <option
-                                                value="2"
-                                                className="fontSize">
-                                                {conditions.c2}
-                                            </option>
-                                            <option
-                                                value="3"
-                                                className="fontSize">
-                                                {conditions.c3}
-                                            </option>
-                                            <option
-                                                value="4"
-                                                className="fontSize">
-                                                {conditions.c4}
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <div className="inputField">
-                                        <label
-                                            className="fontSize"
-                                            htmlFor="tagsSelection"
-                                        >Tag:</label>
+                                                    {
+                                                        imagesPath.length === 0
+                                                            ?
+                                                            <></>
+                                                            :
+                                                            <>
+                                                                <h3 className="fontSize">files selected:</h3>
+                                                                {
+                                                                    imagesPath.map((image, index) =>
+                                                                        <div
+                                                                            className="fontSize"
+                                                                            key={index}
+                                                                        >{`${image.name} (size: ${Math.round(image.size / 1024 / 1024 * 100) / 100} MB)`}</div>)
+                                                                }
+                                                            </>
 
-                                        <select
-                                            id="tagsSelection">
-                                            {
-                                                tags === "notFetched"
-                                                    ?
-                                                    tagsBackend.map((tag, index) =>
-                                                        <option
-                                                            key={index}
-                                                            id={index}
-                                                            className="fontSize"
-                                                            value={`${tag.id}`}
-                                                        >
-                                                            {
-                                                                `${tag.title}`
-                                                            }
-                                                        </option>
-                                                    )
-                                                    :
-                                                    tags.map((tag, index) =>
-                                                        <option
-                                                            key={index}
-                                                            id={index}
-                                                            className="fontSize"
-                                                            value={`${tag.id}`}
-                                                        >
-                                                            {
-                                                                `${tag.title}`
-                                                            }
-                                                        </option>
-                                                    )
-                                            }
-                                        </select>
-                                    </div>
-                                    <div className="inputField addImage">
-                                        <label
-                                            className="fontSize"
-                                            htmlFor="images"
-                                        >
-                                            <a className="fontSize buttonStyle">Upload images</a>
-                                        </label>
-                                        <input
-                                            className="fontSize"
-                                            id="images"
-                                            type="file"
-                                            accept=".jpeg, .jpg, .png, .gif"
-                                            onChange={handleFileUpload}
-                                            style={{ display: "none" }}
-                                            multiple></input>
 
-                                        <div className="fontSize">
-                                            <p>only .jpeg, .jpg, .png, .gif</p>
-                                            <p>{`max. ${maxNumberFiles} images`}</p>
-                                            <p>{`max. ${maxImageFileSize / 1024 / 1024} MB / image`}</p>
+                                                    }
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div>
-
-                                            {
-                                                imagesPath.length === 0
+                                        {
+                                            message === "noImageSelected" || message === "noImageChoosen"
+                                                ?
+                                                <div className="fontSize">
+                                                    {`No image has been added. A request doesn't require an image. 😉`}
+                                                </div>
+                                                :
+                                                message === "FieldsNotCompleted"
                                                     ?
+                                                    <div className="fontSize">
+                                                        {fields}
+                                                    </div>
+                                                    :
                                                     <></>
-                                                    :
-                                                    <>
-                                                        <h3 className="fontSize">files selected:</h3>
-                                                        {
-                                                            imagesPath.map((image, index) =>
-                                                                <div
-                                                                    className="fontSize"
-                                                                    key={index}
-                                                                >{`${image.name} (size: ${Math.round(image.size / 1024 / 1024 * 100) / 100} MB)`}</div>)
-                                                        }
-                                                    </>
-
-
-                                            }
-                                        </div>
+                                        }
+                                        <TextButton
+                                            className="saveButton"
+                                            onClick={handleSave}
+                                        >Save</TextButton>
                                     </div>
-                                    </div>
-                                    <TextButton
-                                        className="saveButton"
-                                        onClick={handleSave}
-                                    >Save</TextButton>
-                                </div>
-            }
+                }
 
-            
-        </ContainerNewRequest>
-        <FooterElement></FooterElement>
+
+            </ContainerNewRequest>
+            <FooterElement></FooterElement>
         </>
     );
 }
