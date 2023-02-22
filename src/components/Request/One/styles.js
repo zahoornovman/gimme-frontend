@@ -59,11 +59,11 @@ export const ContainerOneRequest = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 800px;
+    min-width: 740px;
     max-width: 800px;
     box-shadow: 2px 2px 5px black;
     margin-top: 50px;
-    padding: 20px 10px;
+    padding: 25px 10px 40px 10px;
   }
 
   .details h3 {
