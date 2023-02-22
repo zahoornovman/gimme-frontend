@@ -93,6 +93,7 @@ align-items: center;
     background-color: ${(props) => props.theme.colors.color5};
     padding: 5px;
     border: 1px solid ${(props) => props.theme.colors.color7};
+    font-family: ${(props) => props.theme.fontFamily};
   }
 
   .inputField select {
